@@ -1,0 +1,16 @@
+table.table.table-bordered
+  tr
+    th Name
+    th Rejected
+    th Pending
+    th Accepted
+    th Total
+    th Review status
+  each
+    tr
+      td= link-to 'project.commits' this: name
+      td= rejected
+      td= pending
+      td= accepted
+      td= total
+      td= grade

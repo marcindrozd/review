@@ -1,0 +1,17 @@
+defaults: &defaults
+  seconds_to_delay_response: 0
+  ticket_trackers:
+    pivotal_story_url: "https://www.pivotaltracker.com/story/show/"
+    myacc_jira_story_url: "http://example.com/"
+  github:
+    appkey: <%= ENV['GITHUB_SECRET'] %>
+    secret: <%= ENV['GITHUB_APPKEY'] %>
+development:
+  <<: *defaults
+  hostname: 'review.dev'
+  seconds_to_delay_response: 2
+production:
+  <<: *defaults
+  ga_id: '<%= ENV['GOOGLE_A_ID'] %>'
+test:
+  <<: *defaults

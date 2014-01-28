@@ -1,0 +1,16 @@
+!!! 5
+%html(lang="en")
+  %head
+    %title Review app
+    = stylesheet_link_tag    "application", :media => "all"
+    = analytics_init if Rails.env.production? || Rails.env.staging?
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-fixed-top.navbar-inverse
+      .navbar-header
+        = link_to 'Review', root_path, class: 'navbar-brand'
+    .container
+      .content
+        .row
+          .col-md-12
+            = yield

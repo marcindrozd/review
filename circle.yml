@@ -1,0 +1,11 @@
+dependencies:
+  pre:
+    - 'npm install testem'
+test:
+  post:
+    - './node_modules/.bin/testem ci'
+deployment:
+  master:
+    branch: master
+    heroku:
+      appname: review-app

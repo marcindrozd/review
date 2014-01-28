@@ -1,0 +1,93 @@
+{
+  "ref":"refs/heads/master",
+  "after":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7",
+  "before":"77aa29f80b86a261bb0662fab6cfd56f83784dfa",
+  "created":false,
+  "deleted":false,
+  "forced":false,
+  "compare":"https://github.com/netguru/review/compare/77aa29f80b86...c8675819ee04",
+  "commits":[
+    {
+      "id":"19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349",
+      "distinct":true,
+      "message":"add Konf 55e5a7b12d413ea605dda91b5911d5a27cafdfd6",
+      "timestamp":"2013-09-12T10:09:27-07:00",
+      "url":"https://github.com/netguru/review/commit/19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349",
+      "author":{
+        "name":"Krzysztof Urban",
+        "email":"krzysztof.urban@netguru.pl",
+        "username":"mamut"
+      },
+      "committer":{
+        "name":"Krzysztof Urban",
+        "email":"krzysztof.urban@netguru.pl",
+        "username":"mamut"
+      },
+      "added":[
+
+      ],
+      "removed":[
+
+      ],
+      "modified":[
+        "Gemfile",
+        "Gemfile.lock"
+      ]
+    },
+    {
+      "id":"55e5a7b12d413ea605dda91b5911d5a27cafdfd6",
+      "distinct":true,
+      "message":"support AppConfig convention",
+      "timestamp":"2013-09-12T10:10:01-07:00",
+      "url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd6",
+      "author":{
+        "name":"Krzysztof Urban",
+        "email":"krzysztof.urban@netguru.pl",
+        "username":"mamut"
+      },
+      "committer":{
+        "name":"Krzysztof Urban",
+        "email":"krzysztof.urban@netguru.pl",
+        "username":"mamut"
+      },
+      "added":[
+        "config/preinitializer.rb"
+      ],
+      "removed":[
+
+      ],
+      "modified":[
+        "config/application.rb"
+      ]
+    }
+  ],
+  "repository":{
+    "id":9954005,
+    "name":"review",
+    "url":"https://github.com/netguru/review",
+    "description":"simple review app",
+    "watchers":0,
+    "stargazers":0,
+    "forks":0,
+    "fork":false,
+    "size":308,
+    "owner":{
+      "name":"netguru",
+      "email":"hi@netguru.pl"
+    },
+    "private":true,
+    "open_issues":0,
+    "has_issues":true,
+    "has_downloads":true,
+    "has_wiki":true,
+    "language":"Ruby",
+    "created_at":1368082324,
+    "pushed_at":1379006654,
+    "master_branch":"master",
+    "organization":"netguru"
+  },
+  "pusher":{
+    "name":"mamut",
+    "email":"krzysztof.urban@netguru.pl"
+  }
+}

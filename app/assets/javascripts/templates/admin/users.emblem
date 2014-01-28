@@ -1,0 +1,11 @@
+table.table.table-bordered
+  tr
+    th User name
+    each projects
+      th.text-center= name
+  each user in users
+    unless user.isMe
+      tr
+        th= user.nickname
+        each project in projects
+          = permission-cell user=user project=project

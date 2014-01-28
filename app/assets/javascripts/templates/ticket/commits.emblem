@@ -1,0 +1,7 @@
+article.ticket-description
+  h2
+    = ticket.remoteId
+    a target='_blank' href=ticket.remoteUrl
+      span.glyphicon.glyphicon-link
+
+= commits-table commits=commits

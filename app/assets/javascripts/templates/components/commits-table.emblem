@@ -1,0 +1,24 @@
+table.table.table-bordered.table-hover
+  each commits
+    tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
+      td
+        shortHash
+        td
+          a target='_blank' href=remoteUrl: message
+        td
+          each tickets
+            = ticket-tag ticket=this
+        td
+          strong: state
+        if isSaving
+          td colspan='3' Saving…
+        else
+          td
+            unless isAccepted
+              a click="acceptCommit this" accept
+          td
+            unless isPassed
+              a click="passCommit this" pass
+          td
+            unless isRejected
+              a click="rejectCommit this" reject

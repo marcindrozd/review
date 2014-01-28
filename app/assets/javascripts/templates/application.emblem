@@ -1,0 +1,21 @@
+nav.navbar.navbar-fixed-top.navbar-inverse
+  .navbar-header
+    = link-to 'index' classNames='navbar-brand' | Review
+  ul.nav.navbar-nav.navbar-left
+    Review.NavView
+      = link-to 'projects' | Projects
+    if current_user.admin
+      Review.NavView
+        = link-to 'admin' | Admin
+  ul.nav.navbar-nav.navbar-right.logout
+    li
+      Review.LogoutButton classNames='btn btn-danger navbar-btn'
+        'Log out
+  ul.nav.navbar-nav.navbar-img.navbar-right
+    li
+      img.img-circle.avatar src=current_user.image_url alt=current_user.nickname
+.container
+  .content
+    .row
+      .col-md-12
+        = outlet
