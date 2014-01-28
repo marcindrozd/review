@@ -3,5 +3,4 @@ Review.AdminRoute = Ember.Route.extend
     @store.find('user', 'me')
 
   afterModel: (model, transition)->
-    model.set('admin', true)
     @transitionTo('index') unless model.get('admin')
