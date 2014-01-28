@@ -17,5 +17,6 @@
 config/database.yml
 
 .powrc
+.powenv
 .rvmrc
 .ruby-gemset
