@@ -1,3 +1,3 @@
 Review.ApplicationRoute = Ember.Route.extend
   setupController: (controller, model)->
-    controller.set('current_user', Review.User.find('me'))
+    controller.set('current_user', @store.find('user', 'me'))
