@@ -1,28 +1,19 @@
-== README
+# Review
+## Deploying app on Heroku
+You can read how to deploy the app on heroku [here](https://devcenter.heroku.com/articles/git)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+If you need help setting up database, you can check [here](https://devcenter.heroku.com/articles/heroku-postgresql)
 
-Things you may want to cover:
+Below you will find environment variables you will need to [setup](https://devcenter.heroku.com/articles/config-vars#setting-up-config-vars-for-a-deployed-application):
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * SECRET_KEY_BASE
+  * GITHUB_APPKEY
+  * GITHUB_SECRET
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Setting up these variables is not required:
+
+  * ROLLBAR_TOKEN
+  * GOOGLE_A_ID
+
+## Testing
