@@ -5,11 +5,10 @@ class Commit < ActiveRecord::Base
   has_and_belongs_to_many :tickets
 
   scope :for_state, ->(state){ where(state: state) }
+  [:accepted, :pending, :rejected, :passed].each do |state|
+    scope state, ->{ for_state state.to_s }
+  end
 
-  scope :accepted, ->{ for_state 'accepted' }
-  scope :pending, ->{ for_state 'pending' }
-  scope :rejected, ->{ for_state 'rejected' }
-  scope :passed, ->{ for_state 'passed' }
 
   state_machine :state, :initial => :pending do
 
