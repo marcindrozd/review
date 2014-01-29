@@ -9,6 +9,7 @@ class Commit < ActiveRecord::Base
   scope :accepted, ->{ for_state 'accepted' }
   scope :pending, ->{ for_state 'pending' }
   scope :rejected, ->{ for_state 'rejected' }
+  scope :passed, ->{ for_state 'passed' }
 
   state_machine :state, :initial => :pending do
 
