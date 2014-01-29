@@ -1,4 +1,5 @@
 class Commit < ActiveRecord::Base
+  EXPIRATION = 2.days
 
   before_create :get_associated_project
   belongs_to :project
@@ -9,6 +10,8 @@ class Commit < ActiveRecord::Base
     scope state, ->{ for_state state.to_s }
   end
 
+  scope :stale_pending, ->{ pending.where{created_at.lteq EXPIRATION.ago} }
+  scope :stale_passed, ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
 
   state_machine :state, :initial => :pending do
 
