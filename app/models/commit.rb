@@ -13,15 +13,15 @@ class Commit < ActiveRecord::Base
   state_machine :state, :initial => :pending do
 
     event :accept do
-      transition [:pending, :rejected] => :accepted
+      transition all - :accepted => :accepted
     end
 
     event :pass do
-      transition [:accepted, :pending, :rejected] => :passed
+      transition all - :passed => :passed
     end
 
     event :reject do
-      transition :pending => :rejected
+      transition all - :rejected => :rejected
     end
   end
 

@@ -45,4 +45,26 @@ describe Commit do
       described_class.add_remote(remote_commit)
     end.should change{ described_class.count }.by(0)
   end
+
+  describe 'state machine' do
+    let(:commit){ Commit.create(commit_attributes) }
+
+    it 'ensures initial state is `pending`' do
+      commit.pending?.should be_true
+    end
+
+    [:reject, :pass, :accept].permutation(2).to_a.each do |from, to|
+      it "allows to change states between #{from} and #{to}" do
+        commit.public_send(from).should be_true
+        commit.public_send(to).should be_true
+      end
+    end
+
+    it 'disallows to change state to the same we are in' do
+      [:reject, :pass, :accept].each do |action|
+        commit.public_send(action).should be_true
+        commit.public_send(action).should be_false
+      end
+    end
+  end
 end
