@@ -1,31 +1,27 @@
 Review.PermissionCellComponent = Ember.Component.extend
   tagName: 'th'
   classNames: ['permissions', 'text-center']
-  classNameBindings: ['permission.isAllowed:success','permission.isDenied:danger']
+  classNameBindings: ['permission.isAllowed:success:danger']
 
   permission: (() ->
     user = @get('user')
     project = @get('project')
-    tempPermission = user.get('permissions').filter((item, index, enumerable) ->
-      item.get("project.id").match(project.id)
-    ).get('firstObject')
-    tempPermission ||= @createPermission(user, project)
+    permission = user.get('permissions').find((item) -> item.get('project.id') == project.get('id'))
+    permission ||= @createPermission(user, project)
   ).property('project', 'user')
 
   createPermission: (user, project) ->
     permission = Review.Permission.createRecord({
         allowed: false
+        user: user
+        project: project
       })
-    permission.set('user', user)
-    permission.set('project', project)
-    permission.save()
-    permission
 
   actions:
-    addAccess: (permission)->
+    grantAccess: (permission)->
       permission.set('allowed', true)
       permission.get('store').commit()
 
-    removeAccess: (permission)->
+    revokeAccess: (permission)->
       permission.set('allowed', false)
       permission.get('store').commit()
