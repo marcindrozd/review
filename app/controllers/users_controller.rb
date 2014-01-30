@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   expose(:user) { find_user }
-  expose(:users) { User.all }
+  expose(:users)
 
   respond_to :json
 

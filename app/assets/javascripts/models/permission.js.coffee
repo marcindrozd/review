@@ -6,7 +6,3 @@ Review.Permission = DS.Model.extend
   isAllowed: (()->
     @get('allowed') == true
   ).property('allowed')
-
-  isDenied: (()->
-    @get('allowed') == false
-  ).property('allowed')

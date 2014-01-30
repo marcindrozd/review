@@ -2,6 +2,6 @@ if permission.isSaving
   span Saving…
 else
   unless permission.isAllowed
-    a click="addAccess permission" Allow
+    a click="grantAccess permission" Allow
   else
-    a click="removeAccess permission" Deny
+    a click="revokeAccess permission" Deny
