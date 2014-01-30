@@ -2,10 +2,10 @@ table.table.table-bordered
   tr
     th User name
     each projects
-      th.text-center= name
+      th.project.text-center= name
   each user in users
     unless user.isMe
-      tr
+      tr.user
         th= user.nickname
         each project in projects
           = permission-cell user=user project=project
