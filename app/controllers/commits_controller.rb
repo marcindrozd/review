@@ -3,6 +3,8 @@ class CommitsController < ApplicationController
   include Support::FakeSlowResponse
 
   expose(:commit)
+  expose(:project)
+  expose(:ticket)
   expose(:commits) { find_commits }
 
   respond_to :json
@@ -32,9 +34,12 @@ class CommitsController < ApplicationController
   end
 
   def find_commits
-    commits = Commit.all
-    commits = commits.where(project_id: project_id) if project_id.present?
-    commits = commits.where(ticket_ids: ticket_id) if ticket_id.present?
-    commits
+    if project_id.present?
+      project.commits
+    elsif ticket_id.present?
+      ticket.commits
+    else
+      Commit.all
+    end
   end
 end
