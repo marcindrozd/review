@@ -1,1 +1,0 @@
-Review.ProjectsController = Ember.ArrayController.extend()
