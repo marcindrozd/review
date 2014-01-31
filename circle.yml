@@ -6,6 +6,7 @@ test:
     - './node_modules/.bin/testem ci'
 deployment:
   master:
+    branch: master
     commands:
       - heroku maintenance:on --app review-app
       - git push git@heroku.com:review-app.git $CIRCLE_SHA1:master
