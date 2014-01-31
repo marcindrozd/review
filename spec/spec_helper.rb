@@ -12,6 +12,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+Review::Application.config.secret_key_base = 'deadbeef'
+
 RSpec.configure do |config|
 
   config.infer_base_class_for_anonymous_controllers = false

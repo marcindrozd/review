@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   respond_to :json, only: [:destroy]
 
+  expose(:failure_message) { params[:message].presence || 'unknown' }
   expose(:github_auth_path) { '/auth/github' }
 
   def index
@@ -24,6 +25,9 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     respond_with nil, location: auth_url
+  end
+
+  def failure
   end
 
   private

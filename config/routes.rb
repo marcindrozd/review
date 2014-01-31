@@ -4,6 +4,7 @@ Review::Application.routes.draw do
 
   get '/auth' => 'sessions#index'
   get '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/failure' => 'sessions#failure'
   delete '/auth/signout' => 'sessions#destroy'
 
   resources :users, only: [:show, :index]
