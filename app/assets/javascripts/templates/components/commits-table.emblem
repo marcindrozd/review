@@ -9,7 +9,7 @@ table.table.table-bordered.table-hover
           each tickets
             = ticket-tag ticket=this
         td
-          strong: state
+          = commit-state-label reviewState=state
         if isSaving
           td colspan='3' Saving…
         else
