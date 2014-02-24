@@ -10,15 +10,5 @@ table.table.table-bordered.table-hover
             = ticket-tag ticket=this
         td
           = commit-state-label reviewState=state
-        if isSaving
-          td colspan='3' Saving…
-        else
-          td
-            unless isAccepted
-              a click="acceptCommit this" accept
-          td
-            unless isPassed
-              a click="passCommit this" pass
-          td
-            unless isRejected
-              a click="rejectCommit this" reject
+        td
+          = commit-action-buttons commit=this
