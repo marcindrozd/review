@@ -1,5 +1,5 @@
 Review.CommitActionButtonsComponent = Ember.Component.extend
-  classNames: ['btn-group', 'btn-group-xs']
+  classNames: ['btn-group', 'btn-group-xs', 'commit-action-buttons']
 
   changeCommitStateTo: (state)->
       commit = @get('commit')

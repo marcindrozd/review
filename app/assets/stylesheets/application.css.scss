@@ -59,3 +59,11 @@ ul.nav.navbar-img.navbar-right:last-child {
 .navbar .logout {
   padding: 0px 15px;
 }
+
+.commit-action-buttons {
+  button[disabled] {
+    background-color: #999;
+    border-color: #AAA;
+    color: #111;
+  }
+}
