@@ -23,7 +23,7 @@ class GithubHookParser::Commit
   end
 
   def tickets
-    pivotal_tickets | myaccount_jira_tickets
+    pivotal_tickets
   end
 
   def attributes
@@ -38,10 +38,6 @@ class GithubHookParser::Commit
 
   def pivotal_tickets
     GithubHookParser::PivotalTicket.from_message message
-  end
-
-  def myaccount_jira_tickets
-    GithubHookParser::MyaccountTicket.from_message message
   end
 
   def lookup_key(key)

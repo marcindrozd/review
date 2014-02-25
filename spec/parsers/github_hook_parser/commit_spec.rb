@@ -30,10 +30,10 @@ describe GithubHookParser::Commit do
 
   describe "parsing ticket ids from message" do
 
-    let(:commit_parser) { described_class.new(message: 'MYACC-464 #1234 #56789') }
+    let(:commit_parser) { described_class.new(message: '#1234 #56789') }
 
     it "returns a list of ticket parsers" do
-      expect(commit_parser.tickets).to have(3).items
+      expect(commit_parser.tickets).to have(2).items
     end
   end
 end
