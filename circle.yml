@@ -9,6 +9,6 @@ deployment:
     branch: master
     commands:
       - heroku maintenance:on --app review-app
-      - git push git@heroku.com:review-app.git $CIRCLE_SHA1:master
+      - git push git@heroku.com:${HEROKU_APP_NAME}.git $CIRCLE_SHA1:master
       - heroku run rake db:migrate --app review-app
       - heroku maintenance:off --app review-app
