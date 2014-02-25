@@ -4,7 +4,7 @@ table.table.table-bordered.table-hover
       td
         shortHash
         td
-          a target='_blank' href=remoteUrl: message
+          message
         td
           each tickets
             = ticket-tag ticket=this
