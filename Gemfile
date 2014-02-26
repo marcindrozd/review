@@ -37,7 +37,6 @@ gem 'haml'
 
 gem 'konf'
 
-gem 'pry-rails'
 
 gem 'ember-rails'
 gem 'emblem-rails'
@@ -52,6 +51,9 @@ gem 'google-analytics-rails'
 
 group :development do
   gem 'proxylocal'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
 end
 
 group :test do

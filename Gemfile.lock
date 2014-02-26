@@ -45,6 +45,11 @@ GEM
       barber (>= 0.4.1)
       emblem-source
     bert (1.1.6)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -60,6 +65,7 @@ GEM
     coffee-script-source (1.6.3)
     daemons (1.1.9)
     database_cleaner (1.2.0)
+    debug_inspector (0.0.2)
     decent_exposure (2.3.0)
     diff-lcs (1.2.5)
     ember-data-source (0.14)
@@ -227,6 +233,8 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   astrails-safe
+  better_errors
+  binding_of_caller
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   database_cleaner
