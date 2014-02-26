@@ -49,6 +49,8 @@ gem 'astrails-safe'
 gem 'rollbar'
 gem 'google-analytics-rails'
 
+gem 'zeroclipboard-rails'
+
 group :development do
   gem 'proxylocal'
   gem 'better_errors'
