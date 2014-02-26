@@ -2,13 +2,14 @@ table.table.table-bordered.table-hover
   each commits
     tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
       td
-        shortHash
-        td
-          message
-        td
-          each tickets
-            = ticket-tag ticket=this
-        td
-          = commit-state-label reviewState=state
-        td
-          = commit-action-buttons commit=this
+        message
+      td
+        each tickets
+          = ticket-tag ticket=this
+      td
+        = commit-state-label reviewState=state
+      td
+        = commit-action-buttons commit=this
+      td
+        = copy-to-clipboard text=shortHash
+          'Copy SHA
