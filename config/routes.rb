@@ -7,6 +7,12 @@ Review::Application.routes.draw do
   get '/auth/failure' => 'sessions#failure'
   delete '/auth/signout' => 'sessions#destroy'
 
+  namespace :api do
+    namespace :v1 do
+      resources :projects, only: :show
+    end
+  end
+
   resources :users, only: [:show, :index]
   resources :commits, only: [:index, :update]
   resources :projects, only: [:index, :show]

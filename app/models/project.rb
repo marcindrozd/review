@@ -3,14 +3,15 @@ class Project < ActiveRecord::Base
   has_many :permissions
 
   validates :name,  uniqueness: true
-  validates :token, uniqueness: true, presence: true
+  validates :token, uniqueness: true
 
-  after_initialize :generate_token!
+  before_create :generate_token!
+  scope :from_token, ->(token){ where(token: token) }
 
 private
   def generate_token!
     begin
       self.token = SecureRandom.hex
-    end while self.class.where(token: self.token).present?
+    end while self.class.from_token(self.token).exists?
   end
 end

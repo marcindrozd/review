@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+
+  api:
+    v1:
+      projects:
+        show:
+          no_access: 'You do not have access to this area.'
