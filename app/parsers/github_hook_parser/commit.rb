@@ -18,6 +18,10 @@ class GithubHookParser::Commit
     lookup_key 'message'
   end
 
+  def author
+    lookup_key 'author'
+  end
+
   def referenced_commits
     message.scan /[\da-f]{40}/
   end
@@ -26,15 +30,23 @@ class GithubHookParser::Commit
     pivotal_tickets
   end
 
+  def commit_author
+    parse_author
+  end
+
   def attributes
     {
       remote_id: remote_id,
       url: url,
-      message: message,
+      message: message
     }
   end
 
   private
+
+  def parse_author
+    GithubHookParser::Person.new author
+  end
 
   def pivotal_tickets
     GithubHookParser::PivotalTicket.from_message message
