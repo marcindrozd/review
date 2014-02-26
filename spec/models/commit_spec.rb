@@ -6,6 +6,7 @@ describe Commit do
   it { should respond_to(:project_id) }
 
   let(:remote_id) { 'asdf' }
+  let(:commit_author) { CommitUser.create(username:'test', email:'test@test.com', name: 'test test') }
 
   let(:commit_attributes) do
     {
@@ -16,7 +17,7 @@ describe Commit do
   end
 
   let(:remote_commit) do
-    double('RemoteCommit', remote_id: remote_id, attributes: commit_attributes, tickets: [])
+    double('RemoteCommit', remote_id: remote_id, attributes: commit_attributes, tickets: [], commit_author: commit_author)
   end
 
   describe "#get_associated_project" do
