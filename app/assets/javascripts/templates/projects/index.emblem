@@ -6,6 +6,7 @@ table.table.table-bordered
     th Accepted
     th Total
     th Review status
+    th Token
   each
     tr
       td= link-to 'project.commits' this: name
@@ -14,3 +15,4 @@ table.table.table-bordered
       td= accepted
       td= total
       td= grade
+      td= token

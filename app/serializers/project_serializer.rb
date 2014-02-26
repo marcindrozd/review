@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :name, :rejected, :pending, :accepted, :total, :grade
+  attributes :id, :name, :rejected, :pending, :accepted, :total, :grade, :token
 
   def rejected
     stats.rejected
