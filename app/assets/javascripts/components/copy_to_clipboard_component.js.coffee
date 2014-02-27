@@ -6,5 +6,5 @@ Review.CopyToClipboardComponent = Ember.Component.extend
 
   bindCopyButton: (()->
     clip = new ZeroClipboard(@get('element'))
-    clip.on 'complete', (client, args)=> client.setText(@get('text'))
+    clip.on 'dataRequested', (client, args)=> client.setText(@get('text'))
   ).on('didInsertElement')
