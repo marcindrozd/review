@@ -1,0 +1,4 @@
+if justCopied
+ 'Copied!
+else
+  = yield
