@@ -2,9 +2,9 @@ Review.CommitActionButtonsComponent = Ember.Component.extend
   classNames: ['btn-group', 'btn-group-xs', 'commit-action-buttons']
 
   changeCommitStateTo: (state)->
-      commit = @get('commit')
-      commit.set('state', state)
-      commit.get('store').commit()
+    commit = @get('commit')
+    commit.set('state', state)
+    commit.get('store').commit()
 
   actions:
     acceptCommit: ()-> @changeCommitStateTo('accepted')
