@@ -3,6 +3,7 @@ Review.CopyToClipboardComponent = Ember.Component.extend
   classNames: ['btn', 'btn-default', 'btn-xs', 'copy-to-clipboard']
 
   justCopied: false
+  notificationClearDelay: 1500
 
   text: ''
 
@@ -10,7 +11,7 @@ Review.CopyToClipboardComponent = Ember.Component.extend
     @setupClipboard()
     @get('clip').on 'dataRequested', (client, args)=>
       client.setText(@get('text'))
-      @set('justCopied', true)
+      @triggerCopiedNotification()
   ).on('didInsertElement')
 
   unbindCopyButton: (()->
@@ -20,3 +21,8 @@ Review.CopyToClipboardComponent = Ember.Component.extend
   setupClipboard: ()->
     clip = new ZeroClipboard(@get('element'))
     @set('clip', clip)
+
+  triggerCopiedNotification: ()->
+    @set('justCopied', true)
+    callback = (=> @set('justCopied', false))
+    setTimeout callback, @get('notificationClearDelay')
