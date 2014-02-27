@@ -1,7 +1,7 @@
 class GithubHookParser::Person
 
-  def initialize(person)
-    @person = person
+  def initialize(raw)
+    @raw = raw
   end
 
   def attributes
@@ -13,15 +13,15 @@ class GithubHookParser::Person
   end
 
   def username
-    @person.fetch('username')
+    @raw.fetch('username')
   end
 
   def email
-    @person.fetch('email')
+    @raw.fetch('email')
   end
 
   def name
-    @person.fetch('name')
+    @raw.fetch('name')
   end
 
 end
