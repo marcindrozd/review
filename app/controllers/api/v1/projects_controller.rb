@@ -3,6 +3,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   expose(:project)
 
   def show
-    respond_with(project)
+    render json: project
   end
+
 end
