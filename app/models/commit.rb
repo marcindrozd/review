@@ -3,7 +3,7 @@ class Commit < ActiveRecord::Base
 
   before_create :get_associated_project
   belongs_to :project
-  belongs_to :commit_user
+  belongs_to :author, class_name: 'Person'
   has_and_belongs_to_many :tickets
 
   scope :for_state, ->(state){ where(state: state) }
@@ -33,7 +33,7 @@ class Commit < ActiveRecord::Base
     unless where(remote_id: remote_commit.remote_id).exists?
       create(remote_commit.attributes) do |commit|
         commit.add_remote_tickets remote_commit.tickets
-        commit.add_commit_author remote_commit.commit_author
+        commit.set_commit_author remote_commit.commit_author
       end
     end
   end
@@ -46,9 +46,9 @@ class Commit < ActiveRecord::Base
     tickets.each { |ticket| add_remote_ticket ticket }
   end
 
-  def add_commit_author(author)
-    user = CommitUser.find_or_create_by author.attributes
-    self.commit_user = user
+  def set_commit_author(author)
+    user = Person.find_or_create_by author.attributes
+    self.author = user
   end
 
   def add_remote_ticket(remote_ticket)
@@ -73,7 +73,7 @@ class Commit < ActiveRecord::Base
 
   def get_associated_project
     if url.present? and (parts = url.split('/'))[4].present?
-      self.project = Project.find_or_create_by(name: parts[4], url: parts[0..4].join('/'))
+      self.project = Project.find_or_create_by(name: parts[4])
     end
   end
 end

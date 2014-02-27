@@ -8,6 +8,7 @@ module Payloads
 
     def create
       commits = Commit.add_batch_remote(parser.commits)
+      project = Project.create_from_hash(parser.repository)
       render :text => 'ok'
     end
   end

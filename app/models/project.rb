@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   has_many :commits
   has_many :permissions
 
-  validates :name,  uniqueness: true
+  validates :name,  uniqueness: true, presence: true
   validates :token, uniqueness: true
 
   before_create :generate_token!
