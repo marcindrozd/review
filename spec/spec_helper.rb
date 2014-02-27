@@ -25,6 +25,6 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.clean
   end
-
+  config.include FactoryGirl::Syntax::Methods
   config.order = "random"
 end
