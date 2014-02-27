@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   scope :from_token, ->(token){ where(token: token) }
 
   def self.create_from_hash remote_repository
-    create(remote_repository.attributes).save
+    create(remote_repository.attributes)
   end
 
 private

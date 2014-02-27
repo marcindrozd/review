@@ -7,8 +7,8 @@ module Payloads
     expose(:parser) { GithubHookParser::Main.new params[:payload] }
 
     def create
-      commits = Commit.add_batch_remote(parser.commits)
       project = Project.create_from_hash(parser.repository)
+      commits = Commit.add_batch_remote(parser.commits)
       render :text => 'ok'
     end
   end
