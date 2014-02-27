@@ -67,3 +67,14 @@ ul.nav.navbar-img.navbar-right:last-child {
     color: #111;
   }
 }
+
+.btn-default.copy-to-clipboard {
+  &.zeroclipboard-is-hover {
+    @extend .btn:hover;
+    @extend .btn-default:hover;
+  }
+  &.zeroclipboard-is-active {
+    @extend .btn:active;
+    @extend .btn-default:active;
+  }
+}

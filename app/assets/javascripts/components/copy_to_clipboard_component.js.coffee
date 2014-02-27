@@ -1,6 +1,6 @@
 Review.CopyToClipboardComponent = Ember.Component.extend
   tagName: 'button'
-  classNames: ['btn', 'btn-default', 'btn-xs']
+  classNames: ['btn', 'btn-default', 'btn-xs', 'copy-to-clipboard']
 
   text: ''
 
