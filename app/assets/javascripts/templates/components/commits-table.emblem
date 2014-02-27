@@ -11,5 +11,5 @@ table.table.table-bordered.table-hover
       td
         = commit-action-buttons commit=this
       td
-        = copy-to-clipboard text=shortHash
+        = copy-to-clipboard text=remoteId
           'Copy SHA
