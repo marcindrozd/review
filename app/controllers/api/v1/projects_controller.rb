@@ -6,4 +6,12 @@ class Api::V1::ProjectsController < Api::V1::BaseController
     render json: project
   end
 
+  private
+  def auth_token
+    render json: { message: t('.no_access') }, status: 401 unless token && Project.from_token(token).exists?
+  end
+
+  def token
+    params[:token]
+  end
 end
