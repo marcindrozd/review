@@ -18,7 +18,7 @@ class GithubHookParser::Commit
     lookup_key 'message'
   end
 
-  def author
+  def author_raw
     lookup_key 'author'
   end
 
@@ -30,7 +30,7 @@ class GithubHookParser::Commit
     pivotal_tickets
   end
 
-  def commit_author
+  def author
     parse_author
   end
 
@@ -38,14 +38,14 @@ class GithubHookParser::Commit
     {
       remote_id: remote_id,
       url: url,
-      message: message
+      message: message,
     }
   end
 
   private
 
   def parse_author
-    GithubHookParser::Person.new author
+    GithubHookParser::Person.new author_raw
   end
 
   def pivotal_tickets

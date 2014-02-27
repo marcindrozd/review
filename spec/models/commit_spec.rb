@@ -17,7 +17,7 @@ describe Commit do
   end
 
   let(:remote_commit) do
-    double('RemoteCommit', remote_id: remote_id, attributes: commit_attributes, tickets: [], commit_author: commit_author)
+    double('RemoteCommit', remote_id: remote_id, attributes: commit_attributes, tickets: [], author: commit_author)
   end
 
   describe "#get_associated_project" do

@@ -33,7 +33,7 @@ class Commit < ActiveRecord::Base
     unless where(remote_id: remote_commit.remote_id).exists?
       create(remote_commit.attributes) do |commit|
         commit.add_remote_tickets remote_commit.tickets
-        commit.set_commit_author remote_commit.commit_author
+        commit.set_commit_author remote_commit.author
       end
     end
   end
