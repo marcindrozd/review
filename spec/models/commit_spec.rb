@@ -6,7 +6,7 @@ describe Commit do
   it { should respond_to(:project_id) }
 
   let(:remote_id) { 'asdf' }
-  let(:commit_author) { CommitUser.create(username:'test', email:'test@test.com', name: 'test test') }
+  let(:commit_author) { create(:person) }
 
   let(:commit_attributes) do
     {
