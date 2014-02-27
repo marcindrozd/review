@@ -10,6 +10,10 @@ class GithubHookParser::Main
     commit_hashes.map{ |hash| GithubHookParser::Commit.new(hash) }
   end
 
+  def repository
+    GithubHookParser::Repository.new(to_hash.fetch('repository'))
+  end
+
   private
 
   def commit_hashes
