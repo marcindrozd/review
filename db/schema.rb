@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227111729) do
+ActiveRecord::Schema.define(version: 20140227130000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "commit_users", force: true do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "commits", force: true do |t|
     t.string   "remote_id"
@@ -32,10 +24,10 @@ ActiveRecord::Schema.define(version: 20140227111729) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "passed_at"
-    t.integer  "commit_user_id"
+    t.integer  "author_id"
   end
 
-  add_index "commits", ["commit_user_id"], name: "index_commits_on_commit_user_id", using: :btree
+  add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
   add_index "commits", ["project_id"], name: "index_commits_on_project_id", using: :btree
 
   create_table "commits_tickets", id: false, force: true do |t|
@@ -44,6 +36,14 @@ ActiveRecord::Schema.define(version: 20140227111729) do
   end
 
   add_index "commits_tickets", ["commit_id", "ticket_id"], name: "index_commits_tickets_on_commit_id_and_ticket_id", using: :btree
+
+  create_table "people", force: true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "permissions", force: true do |t|
     t.integer "project_id"
