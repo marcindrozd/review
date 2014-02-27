@@ -3,7 +3,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   expose(:project)
 
   def show
-    render json: project
+    render json: project, serializer: Api::V1::ProjectSerializer
   end
 
   private
