@@ -1,7 +1,9 @@
 class GithubHookParser::Repository
 
+  attr_reader :raw
+
   def initialize(raw)
-    @raw = raw
+    @raw = raw.with_indifferent_access
   end
 
   def attributes
