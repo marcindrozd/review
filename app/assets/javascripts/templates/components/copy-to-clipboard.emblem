@@ -1,4 +1,4 @@
 if justCopied
- 'Copied!
+  'Copied!
 else
   = yield
