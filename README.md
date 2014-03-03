@@ -1,4 +1,7 @@
 # Review
+
+[![Code Climate](https://codeclimate.com/github/netguru/review.png)](https://codeclimate.com/github/netguru/review)
+
 ## Deploying app on Heroku
 You can read how to deploy the app on heroku [here](https://devcenter.heroku.com/articles/git)
 
