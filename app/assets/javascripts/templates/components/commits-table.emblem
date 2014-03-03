@@ -2,6 +2,8 @@ table.table.table-bordered.table-hover
   each commits
     tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
       td
+        = gravatar-image person=author
+      td
         message
       td
         each tickets
