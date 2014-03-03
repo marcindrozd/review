@@ -2,6 +2,8 @@
 
 [![Code Climate](https://codeclimate.com/github/netguru/review.png)](https://codeclimate.com/github/netguru/review)
 
+![Circle CI](https://circleci.com/gh/netguru/review/tree/master.png?circle-token=f05c3dd432a61a6c0fe4fc4b20d5f7b6468868c9)
+
 ## Deploying app on Heroku
 You can read how to deploy the app on heroku [here](https://devcenter.heroku.com/articles/git)
 
