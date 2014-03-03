@@ -50,6 +50,7 @@ gem 'rollbar'
 gem 'google-analytics-rails'
 
 gem 'zeroclipboard-rails'
+gem 'gravatar-ultimate'
 
 group :development do
   gem 'proxylocal'
