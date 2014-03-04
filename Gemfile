@@ -64,6 +64,7 @@ group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'codeclimate-test-reporter', require: false
 end
 
 gem 'rails_12factor', group: :production
