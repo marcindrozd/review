@@ -8,7 +8,7 @@ module Payloads
 
     def create
       ProjectFromRepositoryParser.new(parser.repository).find_or_create
-      commits = Commit.add_batch_remote(parser.commits)
+      CommitsFromCommitParsers.new(parser.commits).create
       render :text => 'ok'
     end
   end
