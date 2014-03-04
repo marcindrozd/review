@@ -1,6 +1,6 @@
 class Commit < ActiveRecord::Base
   EXPIRATION = 2.days
-  AUTOREJECT_TIME = 48.business_hours
+  AUTOREJECT_TIME = 48.hours
 
   before_create :get_associated_project, :set_expires_at
   belongs_to :project
@@ -80,7 +80,7 @@ class Commit < ActiveRecord::Base
   end
 
   def outdated?
-    expires_at < AUTOREJECT_TIME.ago
+    Time.now > expires_at
   end
 
   private
