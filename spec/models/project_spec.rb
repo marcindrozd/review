@@ -15,11 +15,13 @@ describe Project do
     let!(:project){ Project.create(name: 'something') }
 
     it "should not let me create new project with the same name" do
-      -> { Project.create(name: project.name) }.should_not change{ Project.count }
+      -> do
+        expect(Project.create(name: project.name)).not_to change{ Project.all.count }
+      end
     end
 
     it "should have uniq token generated" do
-      project.token.should_not be_nil
+      expect(project.token).not_to be_nil
     end
 
   end
