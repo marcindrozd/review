@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227130000) do
+ActiveRecord::Schema.define(version: 20140304100855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140227130000) do
     t.datetime "created_at"
     t.datetime "passed_at"
     t.integer  "author_id"
+    t.datetime "expires_at"
   end
 
   add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
@@ -62,6 +63,15 @@ ActiveRecord::Schema.define(version: 20140227130000) do
   end
 
   add_index "projects", ["token"], name: "index_projects_on_token", using: :btree
+
+  create_table "queue_classic_jobs", force: true do |t|
+    t.text     "q_name",    null: false
+    t.text     "method",    null: false
+    t.json     "args",      null: false
+    t.datetime "locked_at"
+  end
+
+  add_index "queue_classic_jobs", ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
 
   create_table "tickets", force: true do |t|
     t.string "remote_id"
