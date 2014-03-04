@@ -6,7 +6,7 @@ describe Commit do
   it { should respond_to(:project_id) }
 
   let(:remote_id) { 'asdf' }
-  let(:commit_author) { Person.create(name: 'levis', email: 'john@levis.com', username: 'john levis') }
+  let(:commit_author) { GithubHookParser::Person.new('name'=> 'levis', 'email'=> 'john@levis.com', 'username'=> 'john levis') }
 
   let(:commit_attributes) do
     {
