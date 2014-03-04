@@ -26,12 +26,15 @@ class Api::V1::ProjectSerializer < ActiveModel::Serializer
 
   def commits_as_json
     {
-      'by_user' => object.commits.joins(:author).group("people.name").count,
-      'by_state' => object.commits.group("state").count
+      'by_user'  => object.commits.by_user_hash,
+      'by_state' => object.commits.by_state_hash,
     }
   end
 
   def project_as_json
-    object.attributes.slice('name', 'url')
+    {
+      name: object.name,
+      url: object.url,
+    }
   end
 end
