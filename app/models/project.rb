@@ -9,10 +9,6 @@ class Project < ActiveRecord::Base
   before_create :generate_token!
   scope :from_token, ->(token){ where(token: token) }
 
-  def self.create_from_hash remote_repository
-    create(remote_repository.attributes)
-  end
-
   def deadline
     first_commit.present? ? first_commit.expires_at : nil
   end
