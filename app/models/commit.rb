@@ -15,6 +15,7 @@ class Commit < ActiveRecord::Base
   scope :stale_pending, ->{ pending.where{created_at.lteq EXPIRATION.ago} }
   scope :stale_passed, ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
   scope :not_reviewed, ->{ where{state.eq nil} }
+  scope :by_expire_date, ->{ order(:expires_at) }
 
   state_machine :state, :initial => :pending do
 

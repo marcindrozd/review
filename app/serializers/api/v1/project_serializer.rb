@@ -11,7 +11,7 @@ class Api::V1::ProjectSerializer < ActiveModel::Serializer
   end
 
   def deadline
-    # TODO
+    object.deadline
   end
 
   def commits
