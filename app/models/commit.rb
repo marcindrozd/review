@@ -1,7 +1,8 @@
 class Commit < ActiveRecord::Base
   EXPIRATION = 2.days
+  AUTOREJECT_TIME = 48.business_hours
 
-  before_create :get_associated_project
+  before_create :get_associated_project, :set_expires_at
   belongs_to :project
   belongs_to :author, class_name: 'Person'
   has_and_belongs_to_many :tickets
@@ -30,7 +31,7 @@ class Commit < ActiveRecord::Base
     end
 
     event :auto_reject do
-      transition all - :auto_rejected => :auto_rejected
+      transition :pending => :auto_rejected
     end
   end
 
@@ -74,6 +75,14 @@ class Commit < ActiveRecord::Base
     group("state").count
   end
 
+  def check_outdate
+    auto_reject! if outdated?
+  end
+
+  def outdated?
+    expires_at < AUTOREJECT_TIME.ago
+  end
+
   private
 
   def external_transitions
@@ -89,5 +98,9 @@ class Commit < ActiveRecord::Base
     if url.present? and (parts = url.split('/'))[4].present?
       self.project = Project.find_or_create_by(name: parts[4])
     end
+  end
+
+  def set_expires_at
+    self.expires_at = AUTOREJECT_TIME.from_now
   end
 end
