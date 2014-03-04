@@ -79,6 +79,7 @@ class Commit < ActiveRecord::Base
   def self.default_hash
     {
       "pending"         => 0,
+      "not_reviewed"    => 0,
       "passed"          => 0,
       "soon_to_expire"  => 0,
       "auto_rejected"   => 0,
