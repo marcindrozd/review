@@ -15,4 +15,5 @@ table.table.table-bordered
       td= accepted
       td= total
       td= grade
-      td= token
+      td= copy-to-clipboard text=token
+            'Copy API token
