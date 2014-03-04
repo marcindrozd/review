@@ -34,16 +34,17 @@ describe Commit do
     end
   end
 
-  it "should add new commit" do
-    -> do
-      expect(described_class.add_remote(remote_commit)).to change{ described_class.count }.by(1)
+  describe 'commit creation' do
+    it "should add new commit" do
+      expect do
+        described_class.add_remote(remote_commit)
+      end.to change{ described_class.count }.by(1)
     end
-  end
 
-  it "should not create new commit twice" do
-    described_class.add_remote(remote_commit)
-    -> do
-      expect(described_class.add_remote(remote_commit)).to change{ described_class.count }.by(0)
+    it "should not create new commit twice" do
+      expect do
+        2.times { described_class.add_remote(remote_commit) }
+      end.to change{ described_class.count }.by(1)
     end
   end
 
@@ -51,13 +52,15 @@ describe Commit do
     let(:commit){ Commit.create(commit_attributes) }
 
     it 'ensures initial state is `pending`' do
-      expect(commit.pending?).to be_true
+      expect(commit).to be_pending
     end
 
     [:reject, :pass, :accept].permutation(2).to_a.each do |from, to|
       it "allows to change states between #{from} and #{to}" do
-        expect(commit.public_send(from)).to be_true
-        expect(commit.public_send(to)).to be_true
+        expect do
+          commit.public_send(from)
+          commit.public_send(to)
+        end.to be_true
       end
     end
 

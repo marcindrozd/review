@@ -15,9 +15,9 @@ describe Project do
     let!(:project){ Project.create(name: 'something', url: 'http://test.com') }
 
     it "should not let me create new project with the same name" do
-      -> do
-        expect(Project.create(name: project.name)).not_to change{ Project.all.count }
-      end
+      expect do
+        Project.create(name: project.name)
+      end.not_to change{ Project.all.count }
     end
 
     it "should have uniq token generated" do
