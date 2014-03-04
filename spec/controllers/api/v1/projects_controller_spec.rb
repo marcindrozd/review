@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::V1::ProjectsController do
 
-  let(:project) { create(:project) }
+  let(:project){ Project.create(name: 'something', url: 'http://test.com') }
 
   describe "when auth fails" do
     before do

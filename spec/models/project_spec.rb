@@ -12,7 +12,7 @@ describe Project do
 
   describe "with project named something" do
 
-    let!(:project){ Project.create(name: 'something') }
+    let!(:project){ Project.create(name: 'something', url: 'http://test.com') }
 
     it "should not let me create new project with the same name" do
       -> do
