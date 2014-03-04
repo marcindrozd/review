@@ -53,6 +53,9 @@ GEM
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
+    business_time (0.7.1)
+      activesupport (>= 3.1.0)
+      tzinfo
     cloudfiles (1.5.0.3)
       json
     coderay (1.1.0)
@@ -148,6 +151,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    queue_classic (3.0.0beta)
+      pg (~> 0.17.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -243,6 +248,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  business_time
   coffee-rails (~> 4.0.0)
   database_cleaner
   decent_exposure
@@ -258,6 +264,7 @@ DEPENDENCIES
   pg
   proxylocal
   pry-rails
+  queue_classic (= 3.0.0beta)
   rails (~> 4.0)
   rails_12factor
   rollbar
