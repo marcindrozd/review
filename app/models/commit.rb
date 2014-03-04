@@ -7,12 +7,13 @@ class Commit < ActiveRecord::Base
   has_and_belongs_to_many :tickets
 
   scope :for_state, ->(state){ where(state: state) }
-  [:accepted, :pending, :rejected, :passed].each do |state|
+  [:accepted, :pending, :rejected, :passed, :auto_rejected].each do |state|
     scope state, ->{ for_state state.to_s }
   end
 
   scope :stale_pending, ->{ pending.where{created_at.lteq EXPIRATION.ago} }
   scope :stale_passed, ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
+  scope :not_reviewed, ->{ where{state.eq nil} }
 
   state_machine :state, :initial => :pending do
 
@@ -26,6 +27,10 @@ class Commit < ActiveRecord::Base
 
     event :reject do
       transition all - :rejected => :rejected
+    end
+
+    event :auto_reject do
+      transition all - :auto_rejected => :auto_rejected
     end
   end
 
@@ -68,6 +73,7 @@ class Commit < ActiveRecord::Base
       "accepted" => "accept",
       "passed" => "pass",
       "rejected" => "reject",
+      "auto_rejected" => "auto_reject",
     }
   end
 
