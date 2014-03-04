@@ -37,6 +37,8 @@ gem 'haml'
 
 gem 'konf'
 
+gem 'queue_classic', '3.0.0beta'
+gem 'business_time'
 
 gem 'ember-rails'
 gem 'emblem-rails'
