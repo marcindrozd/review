@@ -73,7 +73,17 @@ class Commit < ActiveRecord::Base
   end
 
   def self.by_state_hash
-    group("state").count
+    default_hash.merge(group("state").count)
+  end
+
+  def self.default_hash
+    {
+      "pending"         => 0,
+      "passed"          => 0,
+      "soon_to_expire"  => 0,
+      "auto_rejected"   => 0,
+      "rejected"        => 0,
+    }
   end
 
   def check_outdate
