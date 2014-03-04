@@ -66,6 +66,14 @@ class Commit < ActiveRecord::Base
     commits.map{ |commit| add_remote commit }.compact
   end
 
+  def self.by_user_hash
+    joins(:author).group("people.name").count
+  end
+
+  def self.by_state_hash
+    group("state").count
+  end
+
   private
 
   def external_transitions
