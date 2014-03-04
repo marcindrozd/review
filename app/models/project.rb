@@ -21,7 +21,8 @@ class Project < ActiveRecord::Base
     commits.by_expire_date.first
   end
 
-private
+  private
+
   def generate_token!
     begin
       self.token = SecureRandom.hex
