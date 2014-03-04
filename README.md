@@ -14,7 +14,7 @@ Below you will find environment variables you will need to [setup](https://devce
   * SECRET_KEY_BASE
   * GITHUB_APPKEY
   * GITHUB_SECRET
-
+  * QC_DATABASE_URL
 
 Setting up these variables is not required:
 
