@@ -13,6 +13,14 @@ class Project < ActiveRecord::Base
     create(remote_repository.attributes)
   end
 
+  def deadline
+    first_commit.present? ? first_commit.expires_at : nil
+  end
+
+  def first_commit
+    commits.by_expire_date.first
+  end
+
 private
   def generate_token!
     begin
