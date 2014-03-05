@@ -10,11 +10,11 @@ class Project < ActiveRecord::Base
   scope :from_token, ->(token){ where(token: token) }
 
   def deadline
-    first_commit.present? ? first_commit.expires_at : nil
+    first_commit.expires_at
   end
 
   def first_commit
-    commits.by_expire_date.first
+    commits.by_expire_date.first || Commit.new(expires_at: nil)
   end
 
   private
