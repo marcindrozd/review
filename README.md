@@ -19,5 +19,7 @@ Setting up these variables is not required:
 
   * ROLLBAR_TOKEN
   * GOOGLE_A_ID
+  * REVIEW_DOMAIN
+  * REVIEW_TOKEN
 
 ## Testing
