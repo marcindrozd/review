@@ -17,7 +17,7 @@ class Commit < ActiveRecord::Base
   scope :stale_passed,   ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
   scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
   scope :by_expire_date, ->{ order(:expires_at) }
-  scope :with_author,    ->{ joins(:author).group("people.name") }
+  scope :with_author,    ->{ joins(:author).group("people.email") }
 
   state_machine :state, :initial => :pending do
 
