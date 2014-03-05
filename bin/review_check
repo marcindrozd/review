@@ -16,7 +16,7 @@ class ReviewCheck
   end
 
   def raise_exception number
-    raise 'Review failed – there are #{number} rejected commits!'
+    raise "Review failed – there are #{number} rejected commits!"
   end
 end
 
