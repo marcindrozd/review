@@ -1,5 +1,6 @@
 class Commit < ActiveRecord::Base
   EXPIRATION = 2.days
+  SOON_TO_EXPIRE = 6.hours
   AUTOREJECT_TIME = 48.hours
 
   before_create :get_associated_project, :set_expires_at
@@ -12,9 +13,9 @@ class Commit < ActiveRecord::Base
     scope state, ->{ for_state state.to_s }
   end
 
-  scope :stale_pending, ->{ pending.where{created_at.lteq EXPIRATION.ago} }
-  scope :stale_passed, ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
-  scope :not_reviewed, ->{ where{state.eq nil} }
+  scope :stale_pending,  ->{ pending.where{created_at.lteq EXPIRATION.ago} }
+  scope :stale_passed,   ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
+  scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
   scope :by_expire_date, ->{ order(:expires_at) }
 
   state_machine :state, :initial => :pending do
@@ -73,17 +74,13 @@ class Commit < ActiveRecord::Base
   end
 
   def self.by_state_hash
-    default_hash.merge(group("state").count)
-  end
-
-  def self.default_hash
     {
-      "pending"         => 0,
-      "not_reviewed"    => 0,
-      "passed"          => 0,
-      "soon_to_expire"  => 0,
-      "auto_rejected"   => 0,
-      "rejected"        => 0,
+      "pending"         => pending.count,
+      "not_reviewed"    => (pending + auto_rejected).size,
+      "passed"          => passed.count,
+      "soon_to_expire"  => pending.soon_to_expire.count,
+      "auto_rejected"   => auto_rejected.count,
+      "rejected"        => (rejected + auto_rejected).size,
     }
   end
 
