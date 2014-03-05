@@ -4,6 +4,7 @@ Review.Commit = DS.Model.extend
   state: DS.attr('string')
   remoteUrl: DS.attr('string')
   project: DS.belongsTo('Review.Project')
+  expires_at: DS.attr('string')
   author: DS.belongsTo('Review.Author')
   tickets: DS.hasMany('Review.Ticket')
 
