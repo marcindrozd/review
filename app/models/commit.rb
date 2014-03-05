@@ -17,6 +17,7 @@ class Commit < ActiveRecord::Base
   scope :stale_passed,   ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
   scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
   scope :by_expire_date, ->{ order(:expires_at) }
+  scope :with_author,    ->{ joins(:author).group("people.name") }
 
   state_machine :state, :initial => :pending do
 
@@ -70,7 +71,7 @@ class Commit < ActiveRecord::Base
   end
 
   def self.by_user_hash
-    joins(:author).group("people.name").count
+    with_author.count
   end
 
   def self.by_state_hash
