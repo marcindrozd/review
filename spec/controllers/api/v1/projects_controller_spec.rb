@@ -6,7 +6,7 @@ describe Api::V1::ProjectsController do
 
   describe "when auth fails" do
     before do
-      get :show, id: project.id, token: 'wrong_token'
+      get :index, token: 'wrong_token'
     end
 
     it { expect(response.status).to eq(401) }
@@ -15,7 +15,7 @@ describe Api::V1::ProjectsController do
 
   describe "when auth fails" do
     before do
-      get :show, id: project.id, token: project.token
+      get :index, token: project.token
     end
 
     it { expect(response.status).to eq(200) }
