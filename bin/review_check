@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'uri'
+require 'json'
+
+class ReviewCheck
+  def validate! body
+    parsed        = JSON.parse(body)['commits']['by_state']
+    auto_rejected = parsed['auto_rejected']
+    rejected      = parsed['rejected']
+
+    if (wrong_commits = auto_rejected + rejected) > 0
+      self.raise_exception wrong_commits
+    end
+  end
+
+  def raise_exception number
+    raise 'Review failed – there are #{number} rejected commits!'
+  end
+end
+
+class Request
+  attr_reader :body
+
+  def parse!
+    uri      = URI.parse("http://#{ENV['REVIEW_DOMAIN']}/api/v1/projects?token=#{ENV['REVIEW_TOKEN']}")
+    puts uri
+    http     = Net::HTTP.new(uri.host, uri.port)
+    request  = Net::HTTP::Get.new(uri.request_uri)
+    response = http.request(request)
+    @body    = response.body
+  end
+
+  def check!
+    rc = ReviewCheck.new
+    rc.validate! body
+  end
+end
+
+begin
+  r = Request.new
+  r.parse!
+  r.check!
+rescue SystemExit, Interrupt
+  exit(1)
+end
+
