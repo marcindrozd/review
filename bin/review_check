@@ -24,7 +24,7 @@ class Request
   attr_reader :body
 
   def parse!
-    uri      = URI.parse("http://#{ENV['REVIEW_DOMAIN']}/api/v1/projects?token=#{ENV['REVIEW_TOKEN']}")
+    uri      = URI.parse("http://#{ENV['REVIEW_DOMAIN']}/api/v1/review_check?token=#{ENV['REVIEW_TOKEN']}")
     http     = Net::HTTP.new(uri.host, uri.port)
     request  = Net::HTTP::Get.new(uri.request_uri)
     response = http.request(request)
