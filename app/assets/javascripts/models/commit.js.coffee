@@ -13,7 +13,7 @@ Review.Commit = DS.Model.extend
   ).property('remoteId')
 
   isRejected: (()->
-    @get('state') == 'rejected'
+    ['rejected', 'auto_rejected'].contains(@get('state'))
   ).property('state')
 
   isPassed: (()->
