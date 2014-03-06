@@ -8,8 +8,4 @@ class CommitSerializer < ActiveModel::Serializer
   def remote_url
     object.url
   end
-
-  def expires_at
-    object.expires_at.strftime("%F %l:%M")
-  end
 end
