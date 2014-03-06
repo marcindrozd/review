@@ -1,14 +1,13 @@
 table.table.table-bordered
   tr
     th User name
-    th Admin
+    th.text-center Admin
     each projects
       th.project.text-center= name
   each user in users
     unless user.isMe
       tr.user
         th= user.nickname
-        th
-          = admin-cell user=user
+        = admin-cell user=user
         each project in projects
           = permission-cell user=user project=project

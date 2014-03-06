@@ -13,7 +13,7 @@ Review::Application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :update]
   resources :commits, only: [:index, :update]
   resources :projects, only: [:index, :show]
   resources :permissions, only: [:index, :show, :create, :update]
