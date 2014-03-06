@@ -6,7 +6,9 @@ table.table.table-bordered.table-hover
       td
         message
       td
-        expires_at
+        strong Expiration:
+        '
+        = timeRelative expires_at
       td
         each tickets
           = ticket-tag ticket=this
