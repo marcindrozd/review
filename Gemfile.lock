@@ -121,6 +121,8 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
+    momentjs-rails (2.5.1)
+      railties (>= 3.1)
     multi_json (1.8.4)
     multipart-post (2.0.0)
     net-sftp (2.1.2)
@@ -266,6 +268,7 @@ DEPENDENCIES
   haml
   jquery-rails
   konf
+  momentjs-rails
   omniauth
   omniauth-github
   pg

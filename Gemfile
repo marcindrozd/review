@@ -42,6 +42,7 @@ gem 'business_time'
 gem 'ember-rails'
 gem 'emblem-rails'
 
+gem 'momentjs-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 
