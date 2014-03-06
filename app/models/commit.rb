@@ -86,7 +86,7 @@ class Commit < ActiveRecord::Base
   end
 
   def check_outdate
-    auto_reject! && save if outdated?
+    auto_reject! if outdated?
   end
 
   def outdated?
