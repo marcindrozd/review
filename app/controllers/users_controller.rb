@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :change_admin_flag, only: :update
 
   expose(:user) { find_user }
   expose(:users)
@@ -13,6 +14,11 @@ class UsersController < ApplicationController
     respond_with(user)
   end
 
+  def update
+    user.update_attributes(admin_parameters)
+    respond_with(user)
+  end
+
   private
 
   def find_user
@@ -21,5 +27,15 @@ class UsersController < ApplicationController
 
   def for_current_user?
     params[:id] == 'me'
+  end
+
+  private
+
+  def change_admin_flag
+    render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.admin?
+  end
+
+  def admin_parameters
+    params.require(:user).permit(:admin)
   end
 end

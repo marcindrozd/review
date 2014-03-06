@@ -8,3 +8,7 @@ Review.User = DS.Model.extend
   isMe: (()->
     @.get('id') == 'me'
   ).property('id')
+
+  isAdmin: (()->
+    @get('admin') == true
+  ).property('admin')
