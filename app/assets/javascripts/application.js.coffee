@@ -17,6 +17,7 @@
 #= require ember-data
 #= require csrf
 #= require zeroclipboard
+#= require moment
 #= require_self
 #= require review
 
