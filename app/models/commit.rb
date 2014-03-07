@@ -1,5 +1,4 @@
 class Commit < ActiveRecord::Base
-  EXPIRATION = 2.days
   SOON_TO_EXPIRE = 6.hours
   AUTOREJECT_TIME = 48.hours
 
@@ -13,8 +12,8 @@ class Commit < ActiveRecord::Base
     scope state, ->{ for_state state.to_s }
   end
 
-  scope :stale_pending,  ->{ pending.where{created_at.lteq EXPIRATION.ago} }
-  scope :stale_passed,   ->{ passed.where{passed_at.lteq EXPIRATION.ago} }
+  scope :stale_pending,  ->{ pending.where{created_at.lteq AUTOREJECT_TIME.ago} }
+  scope :stale_passed,   ->{ passed.where{passed_at.lteq AUTOREJECT_TIME.ago} }
   scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
   scope :by_expire_date, ->{ order(:expires_at) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
