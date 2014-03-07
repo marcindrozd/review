@@ -7,8 +7,8 @@ table.table.table-bordered.table-hover
           commit.message
         td
           strong Expiration:
-        '
-        = timeRelative commit.expires_at
+          '
+          = timeRelative commit.expires_at
         td
           each t in commit.tickets
             = ticket-tag ticket=t
