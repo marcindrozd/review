@@ -13,6 +13,11 @@ class Commit < ActiveRecord::Base
   scope :by_expire_date, ->{ order(:expires_at) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
 
+  scope :for_state, ->(state){ where(state: state) }
+  [:accepted, :pending, :rejected, :passed, :auto_rejected].each do |state|
+    scope state, ->{ for_state state.to_s }
+  end
+
   state_machine :state, :initial => :pending do
 
     event :accept do
