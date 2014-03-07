@@ -1,21 +1,23 @@
 table.table.table-bordered.table-hover
-  each commits
+  each commit in paginatedContent
     tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
-      td
-        = gravatar-image person=author
-      td
-        message
-      td
-        strong Expiration:
+        td
+          = gravatar-image person=commit.author
+        td
+          commit.message
+        td
+          strong Expiration:
         '
-        = timeRelative expires_at
-      td
-        each tickets
-          = ticket-tag ticket=this
-      td
-        = commit-state-label reviewState=state
-      td
-        = commit-action-buttons commit=this
-      td
-        = copy-to-clipboard text=remoteId
-          'Copy SHA
+        = timeRelative commit.expires_at
+        td
+          each t in commit.tickets
+            = ticket-tag ticket=t
+        td
+          = commit-state-label reviewState=commit.state
+        td
+          = commit-action-buttons commit=commit
+        td
+          = copy-to-clipboard text=commit.remoteId
+            'Copy SHA
+
+= pagination-links page=page pages=pages
