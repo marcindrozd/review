@@ -4,6 +4,7 @@ Review.User = DS.Model.extend
   nickname: DS.attr('string')
   admin: DS.attr('boolean')
   permissions: DS.hasMany('Review.Permission' )
+  person: DS.belongsTo('Review.Author')
 
   isMe: (()->
     @.get('id') == 'me'
