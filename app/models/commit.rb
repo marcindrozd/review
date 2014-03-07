@@ -7,11 +7,6 @@ class Commit < ActiveRecord::Base
   belongs_to :author, class_name: 'Person'
   has_and_belongs_to_many :tickets
 
-  scope :for_state, ->(state){ where(state: state) }
-  [:accepted, :pending, :rejected, :passed, :auto_rejected].each do |state|
-    scope state, ->{ for_state state.to_s }
-  end
-
   scope :stale_pending,  ->{ pending.where{created_at.lteq AUTOREJECT_TIME.ago} }
   scope :stale_passed,   ->{ passed.where{passed_at.lteq AUTOREJECT_TIME.ago} }
   scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
