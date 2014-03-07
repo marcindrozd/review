@@ -1,0 +1,16 @@
+
+ul.pagination
+  li{bind-attr class="hasPrevious::disabled"}
+    a{action 'goToPreviousPage' } &laquo;
+  if showBeforeEllipsis
+    = pagination-page page=1 currentPage=page
+    li.disabled
+      a &hellip;
+  each pageNumber in visiblePages
+    = pagination-page page=pageNumber currentPage=page
+  if showAfterEllipsis
+    li.disabled
+      a &hellip;
+    = pagination-page page=lastPage currentPage=page
+  li{bind-attr class="hasNext::disabled"}
+    a{action 'goToNextPage'} &raquo;
