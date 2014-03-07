@@ -1,7 +1,7 @@
 class GithubHookParser::Person
 
   def initialize(raw)
-    @raw = raw
+    @raw = raw.with_indifferent_access
   end
 
   def attributes
