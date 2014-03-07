@@ -2,6 +2,8 @@ class CommitsController < ApplicationController
 
   include Support::FakeSlowResponse
 
+  before_filter :ensure_permission, only: :update
+
   expose(:commit)
   expose(:project)
   expose(:ticket)
@@ -20,6 +22,10 @@ class CommitsController < ApplicationController
   end
 
   private
+
+  def ensure_permission
+    render json: { message: "You are not authorized to do it." }, status: 401 if commit.author == current_user.person
+  end
 
   def commit_params
     params.require(:commit).permit(:state)
