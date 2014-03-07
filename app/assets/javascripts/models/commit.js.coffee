@@ -23,3 +23,7 @@ Review.Commit = DS.Model.extend
   isAccepted: (()->
     @get('state') == 'accepted'
   ).property('state')
+
+  belongsToMe: (()->
+    Review.User.find('me')?.get('person') is @get('author')
+  ).property('id')
