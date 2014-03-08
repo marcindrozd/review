@@ -2,7 +2,7 @@ Review.CommitsTableComponent = Ember.Component.extend
   tagName:    'article'
   classNames: ['commits']
   page:           1
-  perPage:        4
+  perPage:        10
 
   paginatedContent: (->
     page    = @get('page')
