@@ -11,7 +11,7 @@ Review.CommitsTableComponent = Ember.Component.extend
     end     = page * perPage
 
     @get('commits.content').slice(start, end)
-  ).property('arrangedContent.[]', 'page')
+  ).property('arrangedContent.[]', 'page', 'perPage')
 
   pages: (->
     result = parseInt(@get('commits.content.length') / @get('perPage'))
