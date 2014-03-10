@@ -11,8 +11,11 @@ class GithubHookParser::Main
   end
 
   def repository
-    return unless to_hash.keys.include?('repository')
     GithubHookParser::Repository.new(to_hash.fetch('repository'))
+  end
+
+  def is_valid?
+    to_hash.keys.include?('repository')
   end
 
   private
