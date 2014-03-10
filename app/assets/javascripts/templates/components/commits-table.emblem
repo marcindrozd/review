@@ -1,3 +1,7 @@
+label
+  view Ember.Checkbox name="hideAccepted" checkedBinding="hideAccepted"
+  | Hide accepted commits
+
 table.table.table-bordered.table-hover
   each paginatedContent
     tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
