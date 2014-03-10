@@ -3,7 +3,7 @@ label
   | Hide accepted commits
 
 table.table.table-bordered.table-hover
-  each paginatedContent
+  each filteredContent
     tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
       td
         = gravatar-image person=author
@@ -23,5 +23,3 @@ table.table.table-bordered.table-hover
       td
         = copy-to-clipboard text=remoteId
           'Copy SHA
-
-= pagination-links page=page pages=pages
