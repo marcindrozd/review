@@ -59,6 +59,32 @@
       "modified":[
         "config/application.rb"
       ]
+    },
+    {
+      "id":"55e5a7b12d413ea605dda91b5911d5a27cafdfd7",
+      "distinct":true,
+      "message":"fixing [55e5a7b12d413ea605dda91b5911d5a27cafdfd6]",
+      "timestamp":"2013-09-12T10:31:01-07:00",
+      "url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd7",
+      "author":{
+        "name":"Krzysztof Urban",
+        "email":"krzysztof.urban@netguru.pl",
+        "username":"mamut"
+      },
+      "committer":{
+        "name":"Krzysztof Urban",
+        "email":"krzysztof.urban@netguru.pl",
+        "username":"mamut"
+      },
+      "added":[
+
+      ],
+      "removed":[
+
+      ],
+      "modified":[
+        "config/preinitializer.rb"
+      ]
     }
   ],
   "repository":{
