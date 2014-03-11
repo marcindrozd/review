@@ -14,7 +14,7 @@ class Commit < ActiveRecord::Base
   scope :with_author,    ->{ joins(:author).group("people.email") }
 
   scope :for_state, ->(state){ where(state: state) }
-  [:accepted, :pending, :rejected, :passed, :auto_rejected].each do |state|
+  [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, ->{ for_state state.to_s }
   end
 
@@ -35,6 +35,11 @@ class Commit < ActiveRecord::Base
     event :auto_reject do
       transition :pending => :auto_rejected
     end
+
+    event :fix do
+      transition [:passed, :rejected] => :fixed
+    end
+
   end
 
   def self.add_remote(remote_commit)
@@ -99,6 +104,7 @@ class Commit < ActiveRecord::Base
       "passed" => "pass",
       "rejected" => "reject",
       "auto_rejected" => "auto_reject",
+      "fixed" => "fix",
     }
   end
 
