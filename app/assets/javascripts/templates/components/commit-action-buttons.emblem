@@ -1,7 +1,7 @@
 if commit.isSaving
   'Saving…
 else
-  a.btn.btn-default target='_blank' href=commit.remoteUrl view
+  a.btn.btn-default{action "viewCommit" on="click"} view
   unless commit.belongsToMe
     button.btn.btn-default.btn-success{bind-attr disabled="commit.isAccepted"}{action "acceptCommit" on="click"} accept
     button.btn.btn-default.btn-warning{bind-attr disabled="commit.isPassed"}{action "passCommit" on="click"} pass
