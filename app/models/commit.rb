@@ -55,8 +55,7 @@ class Commit < ActiveRecord::Base
   end
 
   def set_commit_author(author)
-    user = Person.find_or_create_by author.attributes
-    self.author = user
+    self.author = Person.find_or_create_by author.attributes
   end
 
   def add_remote_ticket(remote_ticket)
