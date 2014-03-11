@@ -1,3 +1,3 @@
 Review.ProjectCommitsController = Ember.ArrayController.extend
-  sortProperties: ['createdAt']
+  sortProperties: ['authoredAt']
   sortAscending: true
