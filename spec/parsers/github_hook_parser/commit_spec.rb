@@ -6,15 +6,15 @@ describe GithubHookParser::Commit do
 
     let(:commit_parser) { described_class.new id: 'deadbeef', url: 'http://example.com/commit', message: 'fixed a bug' }
 
-    it "should return remote_id" do
+    it "returns remote_id" do
       expect(commit_parser.remote_id).to eq 'deadbeef'
     end
 
-    it "should return url" do
+    it "returns url" do
       expect(commit_parser.url).to eq 'http://example.com/commit'
     end
 
-    it "should return commit message" do
+    it "returns commit message" do
       expect(commit_parser.message).to eq 'fixed a bug'
     end
   end

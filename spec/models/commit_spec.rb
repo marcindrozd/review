@@ -24,24 +24,24 @@ describe Commit do
 
     let(:commit_creation){ -> { Commit.create(commit_attributes) } }
 
-    it "should create new project for new commit" do
+    it "creates new project for new commit" do
       expect(commit_creation).to change{ Project.count }
     end
 
-    it "should not create project duplicates" do
+    it "doesnt create project duplicates" do
       commit_creation.call
       expect(commit_creation).not_to change{ Project.count }
     end
   end
 
   describe 'commit creation' do
-    it "should add new commit" do
+    it "adds new commit" do
       expect do
         described_class.add_remote(remote_commit)
       end.to change{ described_class.count }.by(1)
     end
 
-    it "should not create new commit twice" do
+    it "doesnt create new commit twice" do
       expect do
         2.times { described_class.add_remote(remote_commit) }
       end.to change{ described_class.count }.by(1)
