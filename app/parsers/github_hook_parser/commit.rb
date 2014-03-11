@@ -22,6 +22,10 @@ class GithubHookParser::Commit
     lookup_key 'author'
   end
 
+  def authored_at
+    lookup_key 'timestamp'
+  end
+
   def referenced_commits
     message.scan /[\da-f]{40}/
   end
@@ -39,6 +43,7 @@ class GithubHookParser::Commit
       remote_id: remote_id,
       url: url,
       message: message,
+      authored_at: authored_at,
     }
   end
 
