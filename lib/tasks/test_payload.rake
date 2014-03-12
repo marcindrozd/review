@@ -24,7 +24,7 @@ class SeedPoster
   end
 
   def request
-    Net::HTTP::Post.new(uri.request_uri).tap do |req|
+    Net::HTTP::Post.new(uri.request_uri, initheader = { 'X-GitHub-Event'=> 'push' }).tap do |req|
       req.set_form_data(payload: read_fixture)
     end
   end
