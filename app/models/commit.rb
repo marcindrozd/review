@@ -16,8 +16,8 @@ class Commit < ActiveRecord::Base
   scope :by_remote,      ->(remote){ where{remote_id.eq remote} }
   scope :with_author,    ->{ joins(:author).group("people.email") }
 
-  has_many  :fixing_commits, class_name: 'FixingCommit', foreign_key: 'fixed_commit_id'
-  has_many  :fixed_commits,  class_name: 'FixingCommit', foreign_key: 'fixing_commit_id'
+  has_many  :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
+  has_many  :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
 
   scope :for_state, ->(state){ where(state: state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
