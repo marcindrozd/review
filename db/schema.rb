@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311085900) do
+ActiveRecord::Schema.define(version: 20140312121955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20140311085900) do
   end
 
   add_index "commits_tickets", ["commit_id", "ticket_id"], name: "index_commits_tickets_on_commit_id_and_ticket_id", using: :btree
+
+  create_table "fixing_commits", force: true do |t|
+    t.integer  "fixing_commit_id", null: false
+    t.integer  "fixed_commit_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fixing_commits", ["fixed_commit_id"], name: "index_fixing_commits_on_fixed_commit_id", using: :btree
+  add_index "fixing_commits", ["fixing_commit_id", "fixed_commit_id"], name: "index_fixing_commits_on_fixing_commit_id_and_fixed_commit_id", unique: true, using: :btree
+  add_index "fixing_commits", ["fixing_commit_id"], name: "index_fixing_commits_on_fixing_commit_id", using: :btree
 
   create_table "people", force: true do |t|
     t.string   "username"
