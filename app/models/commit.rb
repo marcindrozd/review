@@ -43,7 +43,7 @@ class Commit < ActiveRecord::Base
     end
 
     event :fix do
-      transition [:passed, :rejected] => :fixed
+      transition all => :fixed
     end
 
   end
