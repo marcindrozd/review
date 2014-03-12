@@ -14,10 +14,6 @@ class GithubHookParser::Main
     GithubHookParser::Repository.new(to_hash.fetch('repository'))
   end
 
-  def is_valid?
-    to_hash.keys.include?('repository')
-  end
-
   private
 
   def commit_hashes
