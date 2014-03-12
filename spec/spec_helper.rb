@@ -8,6 +8,9 @@ require 'database_cleaner'
 if ENV['CI']
   require 'codeclimate-test-reporter'
   CodeClimate::TestReporter.start
+else
+  require 'simplecov'
+  SimpleCov.start 'rails'
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc,

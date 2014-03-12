@@ -281,6 +281,7 @@ DEPENDENCIES
   sass-rails (~> 4.0)
   sdoc
   shoulda-matchers
+  simplecov
   squeel
   state_machine
   therubyracer

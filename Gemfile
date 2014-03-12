@@ -66,6 +66,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
+  gem 'simplecov', require: false
 end
 
 gem 'rails_12factor', group: :production
