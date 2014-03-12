@@ -3,7 +3,7 @@ class Commit < ActiveRecord::Base
   AUTOREJECT_TIME = 48.hours
 
   before_create :get_associated_project, :set_expires_at
-  after_create  :get_associated_commits
+  after_create  :get_associated_commits, :fix_commits
 
   belongs_to :project
   belongs_to :author, class_name: 'Person'
@@ -125,9 +125,16 @@ class Commit < ActiveRecord::Base
   end
 
   def get_associated_commits
-    fixed_commits = message.scan(/[\da-f]{40}/).map{ |x| Commit.by_remote(x) }.flatten
-    fixed_commits.each do |fc|
+    commit_list.each do |fc|
       fc.fixing_commits.create(fixing_commit_id: id)
     end
+  end
+
+  def fix_commits
+    commit_list.each {|c| c.fix }
+  end
+
+  def commit_list
+    message.scan(/[\da-f]{40}/).map{ |x| Commit.by_remote(x) }.flatten
   end
 end
