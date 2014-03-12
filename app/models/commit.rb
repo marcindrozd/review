@@ -11,6 +11,7 @@ class Commit < ActiveRecord::Base
   scope :stale_passed,   ->{ passed.where{passed_at.lteq AUTOREJECT_TIME.ago} }
   scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
   scope :by_expire_date, ->{ order(:expires_at) }
+  scope :by_remote,      ->(remote){ where{remote_id.eq remote} }
   scope :with_author,    ->{ joins(:author).group("people.email") }
 
   has_many   :fixing_commits, class_name: 'FixingCommit', foreign_key: 'fixed_commit_id'
