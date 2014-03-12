@@ -13,6 +13,9 @@ class Commit < ActiveRecord::Base
   scope :by_expire_date, ->{ order(:expires_at) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
 
+  has_many   :fixing_commits, class_name: 'FixingCommit', foreign_key: 'fixed_commit_id'
+  belongs_to :fixed_commit,   class_name: 'FixingCommit', foreign_key: 'fixing_commit_id'
+
   scope :for_state, ->(state){ where(state: state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, ->{ for_state state.to_s }
