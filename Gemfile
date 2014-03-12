@@ -57,8 +57,6 @@ gem 'gravatar-ultimate'
 group :development do
   gem 'proxylocal'
   gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'pry-rails'
 end
 
 group :test do
@@ -67,6 +65,11 @@ group :test do
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
   gem 'simplecov', require: false
+end
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'binding_of_caller'
 end
 
 gem 'rails_12factor', group: :production
