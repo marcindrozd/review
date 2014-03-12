@@ -3,6 +3,8 @@ class Commit < ActiveRecord::Base
   AUTOREJECT_TIME = 48.hours
 
   before_create :get_associated_project, :set_expires_at
+  after_create  :get_associated_commits
+
   belongs_to :project
   belongs_to :author, class_name: 'Person'
   has_and_belongs_to_many :tickets
@@ -14,8 +16,8 @@ class Commit < ActiveRecord::Base
   scope :by_remote,      ->(remote){ where{remote_id.eq remote} }
   scope :with_author,    ->{ joins(:author).group("people.email") }
 
-  has_many   :fixing_commits, class_name: 'FixingCommit', foreign_key: 'fixed_commit_id'
-  belongs_to :fixed_commit,   class_name: 'FixingCommit', foreign_key: 'fixing_commit_id'
+  has_many  :fixing_commits, class_name: 'FixingCommit', foreign_key: 'fixed_commit_id'
+  has_many  :fixed_commits,  class_name: 'FixingCommit', foreign_key: 'fixing_commit_id'
 
   scope :for_state, ->(state){ where(state: state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
@@ -120,5 +122,12 @@ class Commit < ActiveRecord::Base
 
   def set_expires_at
     self.expires_at = AUTOREJECT_TIME.from_now
+  end
+
+  def get_associated_commits
+    fixed_commits = message.scan(/[\da-f]{40}/).map{ |x| Commit.by_remote(x) }.flatten
+    fixed_commits.each do |fc|
+      fc.fixing_commits.create(fixing_commit_id: id)
+    end
   end
 end
