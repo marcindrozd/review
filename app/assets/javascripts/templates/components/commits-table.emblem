@@ -12,7 +12,7 @@ table.table.table-bordered.table-hover
       td
         strong Fixes to this commit:
         '
-        each fixes
+        each fix
           commit-github-button commit=this
       td
         strong Fixed by this commit:
