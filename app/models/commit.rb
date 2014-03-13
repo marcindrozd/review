@@ -18,6 +18,8 @@ class Commit < ActiveRecord::Base
 
   has_many  :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
   has_many  :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
+  has_many :fixes, class_name: 'Commit', through: :fixing_commits
+  has_many :fixed, class_name: 'Commit', through: :fixed_commits
 
   scope :for_state, ->(state){ where(state: state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
