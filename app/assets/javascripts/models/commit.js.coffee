@@ -9,7 +9,7 @@ Review.Commit = DS.Model.extend
   authoredAt: DS.attr('date')
   author: DS.belongsTo('Review.Author')
   tickets: DS.hasMany('Review.Ticket')
-  fixes: DS.hasMany('Review.Commit')
+  fix: DS.hasMany('Review.Commit')
   fixed: DS.hasMany('Review.Commit')
 
   shortHash: (()->
