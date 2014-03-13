@@ -4,6 +4,8 @@ class CommitSerializer < ActiveModel::Serializer
   has_one :project
   has_one :author
   has_many :tickets
+  has_many :fixes, include: true, root: :commits
+  has_many :fixed, include: true, root: :commits
 
   def remote_url
     object.url
