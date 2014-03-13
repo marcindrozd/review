@@ -58,7 +58,8 @@ describe Commit do
   end
 
   describe 'state machine' do
-    let(:commit){ Commit.create(commit_attributes) }
+    let!(:commit){ Commit.create(commit_attributes) }
+    let!(:commit_2){ Commit.create(fixing_attributes) }
 
     it 'ensures initial state is `pending`' do
       expect(commit).to be_pending
@@ -78,6 +79,10 @@ describe Commit do
         expect(commit.public_send(action)).to be_true
         expect(commit.public_send(action)).to be_false
       end
+    end
+
+    it 'changes commit spec when proper message passed' do
+      expect(commit.reload.state).to eq('fixed')
     end
   end
 
