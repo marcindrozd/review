@@ -65,7 +65,7 @@ describe Commit do
       expect(commit).to be_pending
     end
 
-    [:reject, :pass, :accept].permutation(2).to_a.each do |from, to|
+    [:reject, :pass, :accept, :fixed].permutation(2).to_a.each do |from, to|
       it "allows to change states between #{from} and #{to}" do
         expect do
           commit.public_send(from)
