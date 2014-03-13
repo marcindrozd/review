@@ -5,26 +5,27 @@ class Commit < ActiveRecord::Base
   before_create :get_associated_project, :set_expires_at
   after_create  :get_associated_commits, :fix_commits
 
-  belongs_to :project
-  belongs_to :author, class_name: 'Person'
-  has_and_belongs_to_many :tickets
-
   scope :stale_pending,  ->{ pending.where{created_at.lteq AUTOREJECT_TIME.ago} }
   scope :stale_passed,   ->{ passed.where{passed_at.lteq AUTOREJECT_TIME.ago} }
   scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
   scope :by_expire_date, ->{ order(:expires_at) }
   scope :by_remote,      ->(remote){ where{remote_id.eq remote} }
   scope :with_author,    ->{ joins(:author).group("people.email") }
+  scope :for_state,      ->(state){ where(state: state) }
 
-  has_many  :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
-  has_many  :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
-  has_many :fixes, class_name: 'Commit', through: :fixing_commits
-  has_many :fixed, class_name: 'Commit', through: :fixed_commits
-
-  scope :for_state, ->(state){ where(state: state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, ->{ for_state state.to_s }
   end
+
+  has_many  :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
+  has_many  :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
+  has_many  :fixes, class_name: 'Commit', through: :fixing_commits
+  has_many  :fixed, class_name: 'Commit', through: :fixed_commits
+
+  belongs_to :project
+  belongs_to :author, class_name: 'Person'
+
+  has_and_belongs_to_many :tickets
 
   state_machine :state, :initial => :pending do
 
