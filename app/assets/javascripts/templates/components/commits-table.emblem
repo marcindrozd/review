@@ -4,11 +4,21 @@ label
 
 table.table.table-bordered.table-hover
   each paginatedContent
-    tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger"}
+    tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger isFixed:active"}
       td
         = gravatar-image person=author
       td
         message
+      td
+        strong Fixes to this commit:
+        '
+        each fixes
+          commit-github-button commit=this
+      td
+        strong Fixed by this commit:
+        '
+        each fixed
+          commit-github-button commit=this
       td
         strong Expiration:
         '

@@ -9,6 +9,8 @@ Review.Commit = DS.Model.extend
   authoredAt: DS.attr('date')
   author: DS.belongsTo('Review.Author')
   tickets: DS.hasMany('Review.Ticket')
+  fixes: DS.hasMany('Review.Commit')
+  fixed: DS.hasMany('Review.Commit')
 
   shortHash: (()->
     @get('remoteId').substr(0,6)
@@ -20,6 +22,10 @@ Review.Commit = DS.Model.extend
 
   isPassed: (()->
     @get('state') == 'passed'
+  ).property('state')
+
+  isFixed: (()->
+    @get('state') == 'fixed'
   ).property('state')
 
   isAccepted: (()->
