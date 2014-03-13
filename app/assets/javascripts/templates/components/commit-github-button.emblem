@@ -1,0 +1,1 @@
+a.btn.btn-default{action "viewCommit" on="click"} view
