@@ -1,4 +1,3 @@
-
 ul.pagination
   li{bind-attr class="hasPrevious::disabled"}
     a{action 'goToPreviousPage' } &laquo;
