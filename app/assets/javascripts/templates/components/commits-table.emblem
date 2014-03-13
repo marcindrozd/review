@@ -10,12 +10,12 @@ table.table.table-bordered.table-hover
       td
         message
       td
-        strong Fixes to this commit:
+        strong Fixes for:
         '
         each fix
           commit-github-button commit=this
       td
-        strong Fixed by this commit:
+        strong Fixed by:
         '
         each fixed
           commit-github-button commit=this
