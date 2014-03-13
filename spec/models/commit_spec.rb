@@ -5,7 +5,8 @@ describe Commit do
   it { should respond_to(:project) }
   it { should respond_to(:project_id) }
 
-  let(:remote_id) { 'asdf' }
+  let(:remote_id) { '19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349' }
+  let(:fixing_remote_id) { '19a8f144c94f0a7c38e7bd4fe0b018e8dca4c350' }
   let(:commit_author) { GithubHookParser::Person.new(name: 'levis', email: 'john@levis.com', username: 'john levis') }
 
   let(:commit_attributes) do
@@ -13,6 +14,14 @@ describe Commit do
       'url' => 'http://test.host/netguru/review/commit/123123',
       'message' => 'cool commit message',
       'remote_id' => remote_id,
+    }
+  end
+
+  let(:fixing_attributes) do
+    {
+      'url' => 'http://test.host/netguru/review/commit/123123',
+      'message' => "fixing [#{commit.remote_id}]",
+      'remote_id' => fixing_remote_id,
     }
   end
 
@@ -69,6 +78,23 @@ describe Commit do
         expect(commit.public_send(action)).to be_true
         expect(commit.public_send(action)).to be_false
       end
+    end
+  end
+
+  describe 'commit fixation' do
+    let!(:commit){ Commit.create(commit_attributes) }
+    let!(:commit_2){ Commit.create(fixing_attributes) }
+
+    it 'creates commit fix' do
+      expect(CommitFix.count).to eq(1)
+    end
+
+    it 'can access its fixing commit' do
+      expect(commit.fixes.first).to eq(commit_2)
+    end
+
+    it 'can access fixed commit' do
+      expect(commit_2.fixed.first).to eq(commit)
     end
   end
 end
