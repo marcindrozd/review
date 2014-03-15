@@ -8,7 +8,11 @@ class Api::V1::ProjectsController < Api::V1::BaseController
 
   private
   def auth_token
-    render json: { message: t('.no_access') }, status: 401 unless token && project.present?
+    deny_access unless token && project.present?
+  end
+
+  def deny_access
+    render json: { message: t('.no_access') }, status: 401
   end
 
   def token
