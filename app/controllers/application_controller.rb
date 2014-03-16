@@ -11,13 +11,15 @@ class ApplicationController < ActionController::Base
 
   before_filter :authentication_check
 
+  expose(:current_user) { get_current_user }
+
   def index
   end
 
   private
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
+  def get_current_user
+    User.find(session[:user_id]) if session[:user_id].present?
   end
 
   def authenticated?
