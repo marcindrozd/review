@@ -1,1 +1,249 @@
-{"ref":"refs/heads/master","after":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7","before":"77aa29f80b86a261bb0662fab6cfd56f83784dfa","created":false,"deleted":false,"forced":false,"compare":"https://github.com/netguru/review/compare/77aa29f80b86...c8675819ee04","commits":[{"id":"19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349","distinct":true,"message":"add Konf #12345678 #9876543","timestamp":"2013-09-12T10:09:27-07:00","url":"https://github.com/netguru/review/commit/19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":[],"removed":[],"modified":["Gemfile","Gemfile.lock"]},{"id":"55e5a7b12d413ea605dda91b5911d5a27cafdfd6","distinct":true,"message":"support AppConfig convention MYACC-123","timestamp":"2013-09-12T10:10:01-07:00","url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd6","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":["config/preinitializer.rb"],"removed":[],"modified":["config/application.rb"]},{"id":"55e5a7b12d413ea605dda91b5911d5a27cafdfd7","distinct":true,"message":"fixing [55e5a7b12d413ea605dda91b5911d5a27cafdfd6]","timestamp":"2013-09-12T10:31:01-07:00","url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd7","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":[],"removed":[],"modified":["config/application.rb"]},{"id":"f57e9067d1e2c0da224c780f9586f86ad201261a","distinct":true,"message":"fixing [55e5a7b12d413ea605dda91b5911d5a27cafdfd6]","timestamp":"2013-09-12T10:22:26-07:00","url":"https://github.com/netguru/review/commit/f57e9067d1e2c0da224c780f9586f86ad201261a","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":[],"removed":["db/seeds.rb"],"modified":[]},{"id":"9b57352b18cb4d8b46c94744b1053bcd5322a76a","distinct":true,"message":"sample payload","timestamp":"2013-09-12T10:22:53-07:00","url":"https://github.com/netguru/review/commit/9b57352b18cb4d8b46c94744b1053bcd5322a76a","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":["db/fixtures/payload.json"],"removed":[],"modified":[]},{"id":"0d3163293c35181ac59cc7d3a0deae6cf9560838","distinct":true,"message":"add config for hostname","timestamp":"2013-09-12T10:23:14-07:00","url":"https://github.com/netguru/review/commit/0d3163293c35181ac59cc7d3a0deae6cf9560838","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":["config/config.yml"],"removed":[],"modified":[]},{"id":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7","distinct":true,"message":"add rake task to send fixture data to commit hook","timestamp":"2013-09-12T10:23:45-07:00","url":"https://github.com/netguru/review/commit/c8675819ee04ef20af37a6d332b73b9d7b1d6ef7","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":["lib/tasks/test_payload.rake"],"removed":[],"modified":[]}],"head_commit":{"id":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7","distinct":true,"message":"add rake task to send fixture data to commit hook","timestamp":"2013-09-12T10:23:45-07:00","url":"https://github.com/netguru/review/commit/c8675819ee04ef20af37a6d332b73b9d7b1d6ef7","author":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"committer":{"name":"Krzysztof Urban","email":"krzysztof.urban@netguru.pl","username":"mamut"},"added":["lib/tasks/test_payload.rake"],"removed":[],"modified":[]},"repository":{"id":9954005,"name":"review","url":"https://github.com/netguru/review","description":"simple review app","watchers":0,"stargazers":0,"forks":0,"fork":false,"size":308,"owner":{"name":"netguru","email":"hi@netguru.pl"},"private":true,"open_issues":0,"has_issues":true,"has_downloads":true,"has_wiki":true,"language":"Ruby","created_at":1368082324,"pushed_at":1379006654,"master_branch":"master","organization":"netguru"},"pusher":{"name":"mamut","email":"krzysztof.urban@netguru.pl"}}
+{
+   "ref":"refs/heads/master",
+   "after":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7",
+   "before":"77aa29f80b86a261bb0662fab6cfd56f83784dfa",
+   "created":false,
+   "deleted":false,
+   "forced":false,
+   "compare":"https://github.com/netguru/review/compare/77aa29f80b86...c8675819ee04",
+   "commits":[
+      {
+         "id":"19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349",
+         "distinct":true,
+         "message":"add Konf #12345678 #9876543",
+         "timestamp":"2013-09-12T10:09:27-07:00",
+         "url":"https://github.com/netguru/review/commit/19a8f144c94f0a7c38e7bd4fe0b018e8dca4c349",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"commiter@github.com",
+            "username":"test_account"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"commiter@github.com",
+            "username":"test_account"
+         },
+         "added":[
+
+         ],
+         "removed":[
+
+         ],
+         "modified":[
+            "Gemfile",
+            "Gemfile.lock"
+         ]
+      },
+      {
+         "id":"55e5a7b12d413ea605dda91b5911d5a27cafdfd6",
+         "distinct":true,
+         "message":"support AppConfig convention MYACC-123",
+         "timestamp":"2013-09-12T10:10:01-07:00",
+         "url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd6",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "added":[
+            "config/preinitializer.rb"
+         ],
+         "removed":[
+
+         ],
+         "modified":[
+            "config/application.rb"
+         ]
+      },
+      {
+         "id":"55e5a7b12d413ea605dda91b5911d5a27cafdfd7",
+         "distinct":true,
+         "message":"fixing [55e5a7b12d413ea605dda91b5911d5a27cafdfd6]",
+         "timestamp":"2013-09-12T10:31:01-07:00",
+         "url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd7",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "added":[
+
+         ],
+         "removed":[
+
+         ],
+         "modified":[
+            "config/application.rb"
+         ]
+      },
+      {
+         "id":"f57e9067d1e2c0da224c780f9586f86ad201261a",
+         "distinct":true,
+         "message":"fixing [55e5a7b12d413ea605dda91b5911d5a27cafdfd6]",
+         "timestamp":"2013-09-12T10:22:26-07:00",
+         "url":"https://github.com/netguru/review/commit/f57e9067d1e2c0da224c780f9586f86ad201261a",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "added":[
+
+         ],
+         "removed":[
+            "db/seeds.rb"
+         ],
+         "modified":[
+
+         ]
+      },
+      {
+         "id":"9b57352b18cb4d8b46c94744b1053bcd5322a76a",
+         "distinct":true,
+         "message":"sample payload",
+         "timestamp":"2013-09-12T10:22:53-07:00",
+         "url":"https://github.com/netguru/review/commit/9b57352b18cb4d8b46c94744b1053bcd5322a76a",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "added":[
+            "db/fixtures/payload.json"
+         ],
+         "removed":[
+
+         ],
+         "modified":[
+
+         ]
+      },
+      {
+         "id":"0d3163293c35181ac59cc7d3a0deae6cf9560838",
+         "distinct":true,
+         "message":"add config for hostname",
+         "timestamp":"2013-09-12T10:23:14-07:00",
+         "url":"https://github.com/netguru/review/commit/0d3163293c35181ac59cc7d3a0deae6cf9560838",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "added":[
+            "config/config.yml"
+         ],
+         "removed":[
+
+         ],
+         "modified":[
+
+         ]
+      },
+      {
+         "id":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7",
+         "distinct":true,
+         "message":"add rake task to send fixture data to commit hook",
+         "timestamp":"2013-09-12T10:23:45-07:00",
+         "url":"https://github.com/netguru/review/commit/c8675819ee04ef20af37a6d332b73b9d7b1d6ef7",
+         "author":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "committer":{
+            "name":"John Kovalsky",
+            "email":"krzysztof.urban@netguru.pl",
+            "username":"mamut"
+         },
+         "added":[
+            "lib/tasks/test_payload.rake"
+         ],
+         "removed":[
+
+         ],
+         "modified":[
+
+         ]
+      }
+   ],
+   "head_commit":{
+      "id":"c8675819ee04ef20af37a6d332b73b9d7b1d6ef7",
+      "distinct":true,
+      "message":"add rake task to send fixture data to commit hook",
+      "timestamp":"2013-09-12T10:23:45-07:00",
+      "url":"https://github.com/netguru/review/commit/c8675819ee04ef20af37a6d332b73b9d7b1d6ef7",
+      "author":{
+         "name":"John Kovalsky",
+         "email":"krzysztof.urban@netguru.pl",
+         "username":"mamut"
+      },
+      "committer":{
+         "name":"John Kovalsky",
+         "email":"krzysztof.urban@netguru.pl",
+         "username":"mamut"
+      },
+      "added":[
+         "lib/tasks/test_payload.rake"
+      ],
+      "removed":[
+
+      ],
+      "modified":[
+
+      ]
+   },
+   "repository":{
+      "id":9954005,
+      "name":"review",
+      "url":"https://github.com/netguru/review",
+      "description":"simple review app",
+      "watchers":0,
+      "stargazers":0,
+      "forks":0,
+      "fork":false,
+      "size":308,
+      "owner":{
+         "name":"netguru",
+         "email":"hi@netguru.pl"
+      },
+      "private":true,
+      "open_issues":0,
+      "has_issues":true,
+      "has_downloads":true,
+      "has_wiki":true,
+      "language":"Ruby",
+      "created_at":1368082324,
+      "pushed_at":1379006654,
+      "master_branch":"master",
+      "organization":"netguru"
+   },
+   "pusher":{
+      "name":"mamut",
+      "email":"krzysztof.urban@netguru.pl"
+   }
+}
