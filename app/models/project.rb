@@ -1,10 +1,13 @@
 class Project < ActiveRecord::Base
+  KINDS = %w( internal global none )
+
   has_many :commits
   has_many :permissions
 
   validates :name,  uniqueness: true, presence: true
   validates :url,   uniqueness: true
   validates :token, uniqueness: true
+  validates :trade_details, inclusion: { in: KINDS }, allow_nil: true
 
   before_create :generate_token!
   scope :from_token, ->(token){ where(token: token) }
