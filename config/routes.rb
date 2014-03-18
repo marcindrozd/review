@@ -10,6 +10,7 @@ Review::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :review_check, controller: 'projects', only: [:index]
+      resources :trade_check, controller: 'trade', only: [:index]
     end
   end
 
