@@ -9,7 +9,7 @@ Review.CommitActionButtonsComponent = Ember.Component.extend
 
   showCommitInModal: ()->
     url = @get('commit.remoteUrl')
-    window.open(url, '', "width = #{COMMIT_PREVIEW.width}, height = #{COMMIT_PREVIEW.height}")
+    window.open(url, 'commit_preview', "width = #{COMMIT_PREVIEW.width}, height = #{COMMIT_PREVIEW.height}")
 
   actions:
     viewCommit: ()-> @showCommitInModal()
