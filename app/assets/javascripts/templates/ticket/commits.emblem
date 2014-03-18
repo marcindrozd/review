@@ -4,4 +4,4 @@ article.ticket-description
     a target='_blank' href=ticket.remoteUrl
       span.glyphicon.glyphicon-link
 
-= commits-table commits=this.commits
+= commits-table commits=commits
