@@ -22,7 +22,7 @@ table.table.table-bordered.table-hover
       td
         strong Expiration:
         '
-        = timeRelative expires_at
+        = timeRelative expiresAt
       td
         each tickets
           = ticket-tag ticket=this
