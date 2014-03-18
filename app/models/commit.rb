@@ -12,7 +12,7 @@ class Commit < ActiveRecord::Base
   scope :by_remote,      ->(remote){ where{remote_id.eq remote} }
   scope :with_author,    ->{ joins(:author).group("people.email") }
   scope :for_state,      ->(state){ where(state: state) }
-  scope :to_auto_reject, ->{ pending + passed }
+  scope :to_auto_reject, ->{ pending.merge(passed) }
 
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, ->{ for_state state.to_s }
