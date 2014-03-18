@@ -7,19 +7,18 @@ Review.CommitsTableComponent = Ember.Component.extend
   hideAccepted: true
 
   filteredContent: (->
-    content = @get('commits.content')
+    content = @get('commits')
     return content if !content or !@get('hideAccepted')
     content.filter((item)-> item.get('state') != 'accepted')
-  ).property('content.[]', 'hideAccepted')
+  ).property('commits.[]', 'hideAccepted')
 
   paginatedContent: (->
     page    = @get('page')
     perPage = @get('perPage')
     start   = (page - 1) * perPage
     end     = page * perPage
-
-    @get('filteredContent').slice(start, end)
-  ).property('arrangedContent.[]', 'page', 'perPage', 'hideAccepted')
+    @get('filteredContent')
+  ).property('commits.[]', 'page', 'perPage', 'hideAccepted')
 
   pages: (->
     result = parseInt(@get('filteredContent.length') / @get('perPage'))
