@@ -61,6 +61,14 @@ describe Commit do
     let!(:commit){ Commit.create(commit_attributes) }
     let!(:commit_2){ Commit.create(fixing_attributes) }
 
+    before do
+      Timecop.freeze(Time.local(1990))
+    end
+
+    after do
+      Timecop.return
+    end
+
     it 'ensures initial state is `pending`' do
       expect(commit).to be_pending
     end
@@ -87,7 +95,7 @@ describe Commit do
 
     it 'sets expires_at when passing commit' do
       commit.pass
-      expect(commit.reload.expires_at.round).to eq(Commit::AUTOREJECT_TIME.from_now.round)
+      expect(commit.reload.expires_at).to eq(Commit::AUTOREJECT_TIME.from_now)
     end
   end
 
