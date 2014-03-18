@@ -50,6 +50,9 @@ class Commit < ActiveRecord::Base
       transition all => :fixed
     end
 
+    after_transition any => :passed do |commit, transition|
+      commit.update_attribute(:expires_at, AUTOREJECT_TIME.from_now)
+    end
   end
 
   def self.add_remote(remote_commit)
