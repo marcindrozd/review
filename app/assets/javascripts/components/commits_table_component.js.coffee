@@ -17,7 +17,7 @@ Review.CommitsTableComponent = Ember.Component.extend
     perPage = @get('perPage')
     start   = (page - 1) * perPage
     end     = page * perPage
-    @get('filteredContent')
+    @get('filteredContent').slice(start, end)
   ).property('commits.[]', 'page', 'perPage', 'hideAccepted')
 
   pages: (->
