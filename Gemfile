@@ -61,6 +61,7 @@ group :development do
 end
 
 group :test do
+  gem 'timecop'
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
