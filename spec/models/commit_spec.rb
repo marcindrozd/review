@@ -84,6 +84,11 @@ describe Commit do
     it 'changes commit spec when proper message passed' do
       expect(commit.reload.state).to eq('fixed')
     end
+
+    it 'sets expires_at when passing commit' do
+      commit.pass
+      expect(commit.reload.expires_at.round).to eq(Commit::AUTOREJECT_TIME.from_now.round)
+    end
   end
 
   describe 'commit fixation' do
