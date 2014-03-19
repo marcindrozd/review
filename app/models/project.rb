@@ -18,4 +18,16 @@ class Project < ActiveRecord::Base
   def first_commit
     commits.by_expire_date.first || Commit.new(expires_at: nil)
   end
+
+  def self.for_user user
+    if user.admin?
+      get_unreviewed all
+    else
+      get_unreviewed user.permissions.map(&:project)
+    end
+  end
+
+  def self.get_unreviewed projects
+    projects.select{ |p| p.commits.unreviewed.present? }
+  end
 end
