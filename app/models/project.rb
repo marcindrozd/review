@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   validates :token, uniqueness: true
   validates :trade_details, inclusion: { in: KINDS }, allow_nil: true
 
+  after_create :create_token
 
   def deadline
     first_commit.expires_at
@@ -29,5 +30,10 @@ class Project < ActiveRecord::Base
 
   def self.get_unreviewed projects
     projects.select{ |p| p.commits.unreviewed.present? }
+  end
+
+  private
+  def create_token
+    self.tokens.create
   end
 end
