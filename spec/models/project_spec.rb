@@ -8,7 +8,6 @@ describe Project do
   it { should validate_presence_of(:name) }
   it { should validate_uniqueness_of(:name) }
   it { should validate_uniqueness_of(:url) }
-  it { should validate_uniqueness_of(:token) }
 
   describe "with project named something" do
 
@@ -21,7 +20,7 @@ describe Project do
     end
 
     it "has uniq token generated" do
-      expect(project.token).not_to be_nil
+      expect(project.tokens.first).not_to be_nil
     end
 
   end
