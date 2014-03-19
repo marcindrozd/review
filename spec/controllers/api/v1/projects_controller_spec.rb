@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Api::V1::ProjectsController do
 
   let(:project){ Project.create(name: 'something', url: 'http://test.com') }
-
+  let(:token){ project.tokens.first.value }
   describe "when auth fails" do
     before do
       get :index, token: 'wrong_token'
@@ -15,7 +15,7 @@ describe Api::V1::ProjectsController do
 
   describe "when auth fails" do
     before do
-      get :index, token: project.token
+      get :index, token: token
     end
 
     it { expect(response.status).to eq(200) }
