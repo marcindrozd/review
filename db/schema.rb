@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318155448) do
+ActiveRecord::Schema.define(version: 20140319092616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,15 @@ ActiveRecord::Schema.define(version: 20140318155448) do
     t.string "url"
     t.string "source"
   end
+
+  create_table "tokens", force: true do |t|
+    t.string  "value"
+    t.string  "tokenable_type"
+    t.integer "tokenable_id"
+  end
+
+  add_index "tokens", ["tokenable_id", "tokenable_type"], name: "index_tokens_on_tokenable_id_and_tokenable_type", unique: true, using: :btree
+  add_index "tokens", ["value"], name: "index_tokens_on_value", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string  "nickname"
