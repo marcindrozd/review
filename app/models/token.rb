@@ -11,4 +11,13 @@ class Token < ActiveRecord::Base
       self.value = SecureRandom.hex
     end while self.class.from_value(self.value).exists?
   end
+
+  def self.get_tokenable token
+    item = first_tokenable(token)
+    item ? item.tokenable : nil
+  end
+
+  def self.first_tokenable token
+    from_value(token).first
+  end
 end
