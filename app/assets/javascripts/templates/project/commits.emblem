@@ -1,1 +1,5 @@
-= commits-table commits=this
+label
+  view Ember.Checkbox name="hideAccepted" checkedBinding="hideAccepted"
+  | Hide accepted commits
+
+= commits-table commits=filteredContent

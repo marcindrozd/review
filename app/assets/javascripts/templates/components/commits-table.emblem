@@ -1,9 +1,5 @@
-label
-  view Ember.Checkbox name="hideAccepted" checkedBinding="hideAccepted"
-  | Hide accepted commits
-
 table.table.table-bordered.table-hover
-  each filteredContent
+  each commits
     tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger isFixed:active"}
       td
         = gravatar-image person=author
