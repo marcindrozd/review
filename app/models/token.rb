@@ -5,6 +5,8 @@ class Token < ActiveRecord::Base
 
   before_create :generate_token!
 
+  validates :value, uniqueness: true
+
   private
   def generate_token!
     begin
