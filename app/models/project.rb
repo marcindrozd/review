@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.get_unreviewed projects
-    projects.select{ |p| p.commits.unreviewed.present? }
+    projects.select{ |p| p.commits.unreviewed.exists? }
   end
 
   private
