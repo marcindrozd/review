@@ -7,7 +7,6 @@ class Project < ActiveRecord::Base
 
   validates :name,  uniqueness: true, presence: true
   validates :url,   uniqueness: true
-  validates :token, uniqueness: true
   validates :trade_details, inclusion: { in: KINDS }, allow_nil: true
 
   after_create :create_token
