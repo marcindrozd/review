@@ -43,7 +43,7 @@ class Commit < ActiveRecord::Base
     end
 
     event :auto_reject do
-      transition :pending => :auto_rejected
+      transition [:pending, :passed] => :auto_rejected
     end
 
     event :fix do
