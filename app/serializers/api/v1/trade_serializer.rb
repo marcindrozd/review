@@ -5,6 +5,8 @@ class Api::V1::TradeSerializer < ActiveModel::Serializer
   def attributes
     {
       name: object.name,
+      owner: object.owner_name,
+      type: object.trade_details,
       url: review_url,
       expiration_date: object.deadline,
       unreviewed_commits: commits_as_json,
