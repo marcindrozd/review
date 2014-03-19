@@ -1,6 +1,4 @@
 en:
   api:
     v1:
-      projects:
-        index:
-          no_access: 'You do not have access to this area.'
+      no_access: 'You do not have access to this area.'
