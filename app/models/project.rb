@@ -3,14 +3,13 @@ class Project < ActiveRecord::Base
 
   has_many :commits
   has_many :permissions
+  has_many :tokens, as: :tokenable
 
   validates :name,  uniqueness: true, presence: true
   validates :url,   uniqueness: true
   validates :token, uniqueness: true
   validates :trade_details, inclusion: { in: KINDS }, allow_nil: true
 
-  before_create :generate_token!
-  scope :from_token, ->(token){ where(token: token) }
 
   def deadline
     first_commit.expires_at
@@ -18,13 +17,5 @@ class Project < ActiveRecord::Base
 
   def first_commit
     commits.by_expire_date.first || Commit.new(expires_at: nil)
-  end
-
-  private
-
-  def generate_token!
-    begin
-      self.token = SecureRandom.hex
-    end while self.class.from_token(self.token).exists?
   end
 end
