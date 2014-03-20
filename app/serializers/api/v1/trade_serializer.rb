@@ -5,7 +5,7 @@ class Api::V1::TradeSerializer < ActiveModel::Serializer
   def attributes
     {
       name: object.name,
-      owner: object.owner_name,
+      owner: project_owner,
       type: object.trade_details,
       url: review_url,
       expiration_date: object.deadline,
@@ -14,6 +14,10 @@ class Api::V1::TradeSerializer < ActiveModel::Serializer
   end
 
   private
+
+  def project_owner
+    object.project_owner.try(:name)
+  end
 
   def review_url
     "http://#{ENV['REVIEW_DOMAIN']}/projects/#{object.id}"
