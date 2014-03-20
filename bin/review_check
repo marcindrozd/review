@@ -7,11 +7,10 @@ require 'json'
 class ReviewCheck
   def validate! body
     parsed        = JSON.parse(body)['commits']['by_state']
-    auto_rejected = parsed['auto_rejected']
     rejected      = parsed['rejected']
 
-    if (wrong_commits = auto_rejected + rejected) > 0
-      self.raise_exception wrong_commits
+    if rejected > 0
+      self.raise_exception rejected
     end
   end
 
