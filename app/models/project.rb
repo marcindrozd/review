@@ -1,13 +1,14 @@
 class Project < ActiveRecord::Base
-  KINDS = %w( internal global none )
+  enum trade_details: [ :internal, :limited, :global, :no_trade ]
 
   has_many :commits
   has_many :permissions
   has_many :tokens, as: :tokenable
+  belongs_to :project_owner
 
   validates :name,  uniqueness: true, presence: true
   validates :url,   uniqueness: true
-  validates :trade_details, inclusion: { in: KINDS }, allow_nil: true
+  validates :trade_details, presence: true
 
   after_create :create_token
 
