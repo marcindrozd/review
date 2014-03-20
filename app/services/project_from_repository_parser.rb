@@ -7,10 +7,20 @@ class ProjectFromRepositoryParser
   end
 
   def find_or_create
-    Project.find_or_create_by(attributes)
+    p_owner = get_project_owner
+    p = Project.find_or_create_by(attributes)
+    p.update_attribute(:project_owner, p_owner)
+  end
+
+  def get_project_owner
+    ProjectOwner.find_or_create_by(owner_attributes)
   end
 
   private
+
+  def owner_attributes
+    repository_parser.owner.attributes
+  end
 
   def attributes
     repository_parser.attributes
