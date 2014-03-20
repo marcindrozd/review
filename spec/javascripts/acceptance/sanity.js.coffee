@@ -1,7 +1,7 @@
 module 'rendering main template',
   setup: -> Review.reset()
 
-test "if it works", ->
+test "main template is rendered", ->
   visit '/'
 
   andThen ->
