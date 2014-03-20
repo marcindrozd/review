@@ -5,17 +5,17 @@ class Commit < ActiveRecord::Base
   before_create :get_associated_project, :set_expires_at
   after_create  :get_associated_commits, :fix_commits
 
-  scope :stale_pending,  ->{ pending.where{created_at.lteq AUTOREJECT_TIME.ago} }
-  scope :stale_passed,   ->{ passed.where{passed_at.lteq AUTOREJECT_TIME.ago} }
-  scope :soon_to_expire, ->{ pending.where{expires_at.lt SOON_TO_EXPIRE.from_now} }
+  scope :stale_pending,  ->{ pending.where('created_at <= ?', AUTOREJECT_TIME.ago) }
+  scope :stale_passed,   ->{ passed.where('passed_at <= ?', AUTOREJECT_TIME.ago) }
+  scope :soon_to_expire, ->{ pending.where('expires_at < ?', SOON_TO_EXPIRE.from_now) }
   scope :by_expire_date, ->{ order(:expires_at) }
-  scope :by_remote,      ->(remote){ where{remote_id.eq remote} }
+  scope :by_remote,      ->(remote) { where(:remote_id => remote) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
-  scope :for_state,      ->(state){ where(state: state) }
-  scope :to_auto_reject, ->{ where{ (state.eq 'pending') | (state.eq 'passed') } }
-  scope :unreviewed,     ->{ where{ (state.eq 'pending') | (state.eq 'auto_rejected') } }
+  scope :for_state,      ->(state) { where(state: state) }
+  scope :to_auto_reject, -> { where(state: ['pending', 'passed']) }
+  scope :unreviewed,     -> { where(state: ['pending', 'auto_rejected']) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
-    scope state, ->{ for_state state.to_s }
+    scope state, -> { for_state state.to_s }
   end
 
   has_many  :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
@@ -93,7 +93,7 @@ class Commit < ActiveRecord::Base
   def self.by_state_hash
     {
       "pending"         => pending.count,
-      "not_reviewed"    => (pending + auto_rejected).size,
+      "not_reviewed"    => unreviewed.size,
       "passed"          => passed.count,
       "soon_to_expire"  => pending.soon_to_expire.count,
       "auto_rejected"   => auto_rejected.count,
