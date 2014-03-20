@@ -1,6 +1,6 @@
 dependencies:
   pre:
-    - 'npm install testem'
+    - 'npm install testem@0.6.5'
 test:
   post:
     - './node_modules/.bin/testem ci'
