@@ -5,7 +5,17 @@ Review.ProjectCommitsController = Ember.ArrayController.extend
   hideAccepted: true
 
   filteredContent: (->
-    content = @get('model')
+    content = @
+
     return content if !content or !@get('hideAccepted')
-    content.filter((item)-> !item.get('isAccepted'))
-  ).property('model.[]', 'hideAccepted')
+
+    return Ember.ArrayProxy.createWithMixins Ember.SortableMixin,
+      sortProperties: self.sortProperties
+      content: content.filter((item)-> !item.get('isAccepted'))
+  ).property('model.[]', 'hideAccepted', 'sortBy')
+
+  sortNow: (parameter)->
+    this.set('sortProperties', [parameter])
+
+  actions:
+    sortBy: (parameter)-> @sortNow(parameter)
