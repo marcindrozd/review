@@ -1,5 +1,11 @@
-label
-  view Ember.Checkbox name="hideAccepted" checkedBinding="hideAccepted"
-  | Hide accepted commits
-
+.btn-group
+  button.btn.btn-default
+    view Ember.Checkbox name="hideAccepted" checkedBinding="hideAccepted"
+    | Hide accepted commits
+  button.btn.btn-default{action "sortBy" 'author' on="click"} sort by author
+  button.btn.btn-default{action "sortBy" 'message' on="click"} sort by message
+  button.btn.btn-default{action "sortBy" 'state' on="click"} sort by state
+  button.btn.btn-default{action "sortBy" 'expiresAt' on="click"} sort by expiration date
+br
+br
 = commits-table commits=filteredContent
