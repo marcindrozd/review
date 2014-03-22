@@ -1,17 +1,17 @@
 Review.ProjectCommitsController = Ember.ArrayController.extend
-  sortProperties: ["AuthoredAt"]
+  sortProperties: ['authoredAt']
   sortAscending: true
 
   hideAccepted: true
 
-  searchResults: Ember.computed.defaultTo("arrangedContent")
+  searchResults: Ember.computed.defaultTo('arrangedContent')
 
   filteredContent: (->
-    searchInput = @get("model")
+    searchInput = @get('model')
     if !searchInput or !@get('hideAccepted')
-      @set "searchResults", @get("arrangedContent")
+      @set 'searchResults', @get("arrangedContent")
     else
-      @set "searchResults", @get("arrangedContent").filter((item)-> !item.get('isAccepted'))
+      @set 'searchResults', @get("arrangedContent").filter((item)-> !item.get('isAccepted'))
     return
   ).observes('hideAccepted')
 
