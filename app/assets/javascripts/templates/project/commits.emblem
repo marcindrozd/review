@@ -8,4 +8,4 @@
   button.btn.btn-default{action "sortBy" 'expiresAt' on="click"} sort by expiration date
 br
 br
-= commits-table commits=filteredContent
+= commits-table commits=searchResults
