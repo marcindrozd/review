@@ -1,21 +1,24 @@
 Review.ProjectCommitsController = Ember.ArrayController.extend
-  sortProperties: ['authoredAt']
+  sortProperties: ["AuthoredAt"]
   sortAscending: true
 
   hideAccepted: true
 
+  searchResults: Ember.computed.defaultTo("arrangedContent")
+
   filteredContent: (->
-    content = @
+    searchInput = @get("model")
+    if !searchInput or !@get('hideAccepted')
+      @set "searchResults", @get("arrangedContent")
+    else
+      @set "searchResults", @get("arrangedContent").filter((item)-> !item.get('isAccepted'))
+    return
+  ).observes('hideAccepted')
 
-    return content if !content or !@get('hideAccepted')
-
-    return Ember.ArrayProxy.createWithMixins Ember.SortableMixin,
-      sortProperties: self.sortProperties
-      content: content.filter((item)-> !item.get('isAccepted'))
-  ).property('model.[]', 'hideAccepted', 'sortBy')
 
   sortNow: (parameter)->
     this.set('sortProperties', [parameter])
+    @filteredContent()
 
   actions:
     sortBy: (parameter)-> @sortNow(parameter)
