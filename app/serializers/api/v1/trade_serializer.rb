@@ -20,7 +20,7 @@ class Api::V1::TradeSerializer < ActiveModel::Serializer
   end
 
   def review_url
-    "#{ENV['REVIEW_DOMAIN']}#projects/#{object.id}"
+    "#{ENV['REVIEW_DOMAIN']}#/projects/#{object.id}"
   end
 
   def commits_as_json
