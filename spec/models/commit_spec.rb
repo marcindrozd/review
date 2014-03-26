@@ -59,7 +59,6 @@ describe Commit do
 
   describe 'state machine' do
     let!(:commit){ Commit.create(commit_attributes) }
-    let!(:commit_2){ Commit.create(fixing_attributes) }
 
     before do
       Timecop.freeze(Time.local(1990))
@@ -90,6 +89,7 @@ describe Commit do
     end
 
     it 'changes commit spec when proper message passed' do
+      Commit.create(fixing_attributes)
       expect(commit.reload.state).to eq('fixed')
     end
 
