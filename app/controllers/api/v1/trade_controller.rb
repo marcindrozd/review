@@ -1,8 +1,8 @@
 class Api::V1::TradeController < Api::V1::BaseController
   before_filter :auth_token
 
-  expose(:user){ Token.get_tokenable(token) }
-  expose(:projects){ Project.for_user user }
+  expose(:user) { Token.get_tokenable(token) }
+  expose(:projects) { Project.for_user(user) }
 
   def index
     render json: projects, each_serializer: Api::V1::TradeSerializer, root: 'projects'
