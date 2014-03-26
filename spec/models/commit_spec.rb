@@ -101,18 +101,18 @@ describe Commit do
 
   describe 'commit fixation' do
     let!(:commit){ Commit.create(commit_attributes) }
-    let!(:commit_2){ Commit.create(fixing_attributes) }
+    let!(:fixing_commit){ Commit.create(fixing_attributes) }
 
     it 'creates commit fix' do
       expect(CommitFix.count).to eq(1)
     end
 
     it 'can access its fixing commit' do
-      expect(commit.fixes.first).to eq(commit_2)
+      expect(commit.fixes.first).to eq(fixing_commit)
     end
 
     it 'can access fixed commit' do
-      expect(commit_2.fixed.first).to eq(commit)
+      expect(fixing_commit.fixed.first).to eq(commit)
     end
   end
 end
