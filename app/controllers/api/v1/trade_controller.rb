@@ -13,10 +13,6 @@ class Api::V1::TradeController < Api::V1::BaseController
     deny_access unless token && user.present? && user.instance_of?(User)
   end
 
-  def deny_access
-    render json: { message: t('api.v1.no_access') }, status: 401
-  end
-
   def token
     params[:token]
   end
