@@ -25,15 +25,15 @@ class Api::V1::TradeSerializer < ActiveModel::Serializer
 
   def commits_as_json
     {
-      'by_user'  => commits_by_user,
-      'by_state' => commits_by_state,
+      by_user: commits_by_user,
+      by_state: commits_by_state,
     }
   end
 
   def commits_by_state
     {
-      "pending"         => object.commits.pending.count,
-      "auto_rejected"   => object.commits.auto_rejected.count,
+      pending: object.commits.pending.count,
+      auto_rejected: object.commits.auto_rejected.count,
     }
   end
 
