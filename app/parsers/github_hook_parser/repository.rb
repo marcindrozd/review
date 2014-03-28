@@ -7,11 +7,7 @@ class GithubHookParser::Repository
   end
 
   def owner
-    parse_owner
-  end
-
-  def owner_raw
-    lookup_key 'owner'
+    @owner ||= GithubHookParser::ProjectOwner.new(owner_raw)
   end
 
   def attributes
@@ -22,11 +18,11 @@ class GithubHookParser::Repository
   end
 
   def name
-    @raw.fetch('name')
+    lookup_key 'name'
   end
 
   def url
-    @raw.fetch('url')
+    lookup_key 'url'
   end
 
   private
@@ -35,9 +31,8 @@ class GithubHookParser::Repository
     raw.fetch(key)
   end
 
-  def parse_owner
-    GithubHookParser::ProjectOwner.new owner_raw
+  def owner_raw
+    lookup_key 'owner'
   end
-
 end
 
