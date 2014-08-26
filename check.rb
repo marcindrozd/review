@@ -1,7 +1,9 @@
+#!/usr/bin/env ruby
+# script for easily checking the review process
+# source code here: https://github.com/netguru/review/blob/master/check.rb
+
 require 'net/http'
 require 'json'
-
-#script for easily checking the review process
 
 raise "usage: REVIEW_API=review.api.url/path REVIEW_TOKEN=review_token ruby check.rb" unless ENV['REVIEW_API'] && ENV["REVIEW_TOKEN"]
 
