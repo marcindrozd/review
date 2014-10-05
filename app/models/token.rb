@@ -8,10 +8,11 @@ class Token < ActiveRecord::Base
   validates :value, uniqueness: true
 
   private
+
   def generate_token!
     begin
       self.value = SecureRandom.hex
-    end while self.class.from_value(self.value).exists?
+    end while self.class.from_value(value).exists?
   end
 
   def self.get_tokenable(token)

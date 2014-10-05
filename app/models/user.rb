@@ -7,11 +7,12 @@ class User < ActiveRecord::Base
   after_create :create_token
 
   private
+
   def assign_person
-    self.person = Person.find_by(email: self.email)
+    self.person = Person.find_by(email: email)
   end
 
   def create_token
-    self.tokens.create
+    tokens.create
   end
 end

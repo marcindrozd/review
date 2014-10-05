@@ -1,5 +1,4 @@
 class ProjectFromRepositoryParser
-
   attr_reader :repository_parser
 
   def initialize(repository_parser)

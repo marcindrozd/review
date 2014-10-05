@@ -1,5 +1,4 @@
 class GithubHookParser::ProjectOwner
-
   def initialize(raw)
     @raw = raw.with_indifferent_access
   end
@@ -18,6 +17,4 @@ class GithubHookParser::ProjectOwner
   def email
     @raw.fetch('email')
   end
-
 end
-

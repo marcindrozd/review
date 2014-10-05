@@ -11,12 +11,12 @@ describe Project do
 
   describe "with project named something" do
 
-    let!(:project){ Project.create(name: 'something', url: 'http://test.com') }
+    let!(:project){ described_class.create(name: 'something', url: 'http://test.com') }
 
     it "doesnt let me create new project with the same name" do
       expect do
-        Project.create(name: project.name)
-      end.not_to change{ Project.all.count }
+        described_class.create(name: project.name)
+      end.not_to change{ described_class.all.count }
     end
 
     it "has uniq token generated" do

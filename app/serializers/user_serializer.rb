@@ -4,6 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :permissions
 
   private
+
   def token
     object.tokens.first.try(:value)
   end

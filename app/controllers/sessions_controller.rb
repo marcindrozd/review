@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   skip_before_filter :authentication_check
 
   layout 'static'

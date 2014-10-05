@@ -18,12 +18,12 @@ describe SessionsController do
 
   describe '#session' do
     let(:callback) { post :create, provider: 'twitter' }
-    let(:user)     { }
+    let(:user)     {}
 
     before(:all) { OmniAuth.config.test_mode = true }
 
     before do
-      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+      OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(
         provider: 'twitter',
         uid:      '123456',
         info: {
@@ -31,7 +31,6 @@ describe SessionsController do
           name:         'John Q Public',
           email:        'sdfsdf@sdfsdf.de',
           image:        'http://example.com/picture.jpg',
-        }
       })
       request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
     end

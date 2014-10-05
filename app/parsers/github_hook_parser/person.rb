@@ -1,5 +1,4 @@
 class GithubHookParser::Person
-
   def initialize(raw)
     @raw = raw.with_indifferent_access
   end
@@ -23,6 +22,4 @@ class GithubHookParser::Person
   def name
     @raw.fetch('name')
   end
-
 end
-

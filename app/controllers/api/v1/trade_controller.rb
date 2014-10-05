@@ -9,6 +9,7 @@ class Api::V1::TradeController < Api::V1::BaseController
   end
 
   private
+
   def auth_token
     deny_access unless token && user.present? && user.instance_of?(User)
   end

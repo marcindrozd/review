@@ -1,5 +1,4 @@
 class GithubHookParser::Repository
-
   attr_reader :raw
 
   def initialize(raw)
@@ -35,4 +34,3 @@ class GithubHookParser::Repository
     lookup_key 'owner'
   end
 end
-

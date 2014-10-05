@@ -1,5 +1,4 @@
 class ProjectStatistics
-
   attr_reader :project
 
   def initialize(project)

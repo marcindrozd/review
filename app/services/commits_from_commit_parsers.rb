@@ -1,5 +1,4 @@
 class CommitsFromCommitParsers
-
   attr_reader :commit_parsers
 
   def initialize(commit_parsers)

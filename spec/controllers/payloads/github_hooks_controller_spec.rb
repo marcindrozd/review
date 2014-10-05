@@ -9,7 +9,7 @@ describe Payloads::GithubHooksController do
     expect(CommitsFromCommitParsers).not_to receive(:new)
 
     request.headers['X-GitHub-Event'] = 'ping'
-    post :create, { payload: '{"zen":"Always write unit tests."}' }
+    post :create, payload: '{"zen":"Always write unit tests."}'
   end
 
   it 'renders ok' do

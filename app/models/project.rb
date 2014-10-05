@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  enum trade_details: [ :internal, :limited, :global, :no_trade ]
+  enum trade_details: [:internal, :limited, :global, :no_trade]
 
   has_many :commits
   has_many :permissions
@@ -33,7 +33,8 @@ class Project < ActiveRecord::Base
   end
 
   private
+
   def create_token
-    self.tokens.create
+    tokens.create
   end
 end

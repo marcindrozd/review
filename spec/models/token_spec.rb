@@ -10,15 +10,15 @@ describe Token do
     let!(:token){ project.tokens.first }
 
     it 'returns nil if no token given' do
-      expect(Token.get_tokenable nil).to be_nil
+      expect(described_class.get_tokenable nil).to be_nil
     end
 
     it 'returns nil if wrong token given' do
-      expect(Token.get_tokenable 'wrong_token').to be_nil
+      expect(described_class.get_tokenable 'wrong_token').to be_nil
     end
 
     it 'returns project if correct token given' do
-      expect(Token.get_tokenable token.value).to eq(project)
+      expect(described_class.get_tokenable token.value).to eq(project)
     end
   end
 end

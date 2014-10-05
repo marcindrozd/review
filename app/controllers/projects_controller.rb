@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   include Support::FakeSlowResponse
 
   expose(:project)
@@ -21,7 +20,7 @@ class ProjectsController < ApplicationController
     if current_user.admin?
       Project.all
     else
-      Project.joins(:permissions).where(permissions: {user_id: current_user.id, allowed: true})
+      Project.joins(:permissions).where(permissions: { user_id: current_user.id, allowed: true })
     end
   end
 end

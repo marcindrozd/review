@@ -1,7 +1,6 @@
 require 'digest/sha1'
 
 class StringColorizer
-
   def initialize(string)
     @string = string
   end

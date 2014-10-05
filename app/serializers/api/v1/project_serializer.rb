@@ -1,5 +1,4 @@
 class Api::V1::ProjectSerializer < ActiveModel::Serializer
-
   root false
 
   def attributes

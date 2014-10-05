@@ -1,6 +1,5 @@
 module Payloads
   class GithubHooksController < ActionController::Base
-
     before_filter :check_if_push_event
 
     expose(:parser) { GithubHookParser::Main.new params[:payload] }
