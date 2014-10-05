@@ -3,32 +3,32 @@ class Commit < ActiveRecord::Base
   AUTOREJECT_TIME = 48.hours
 
   before_create :get_associated_project, :set_expires_at
-  after_create  :get_associated_commits, :fix_commits
+  after_create :get_associated_commits, :fix_commits
 
   scope :stale_pending,  ->{ pending.where('created_at <= ?', AUTOREJECT_TIME.ago) }
   scope :stale_passed,   ->{ passed.where('passed_at <= ?', AUTOREJECT_TIME.ago) }
   scope :soon_to_expire, ->{ pending.where('expires_at < ?', SOON_TO_EXPIRE.from_now) }
   scope :by_expire_date, ->{ order(:expires_at) }
-  scope :by_remote,      ->(remote) { where(:remote_id => remote) }
+  scope :by_remote,      ->(remote) { where(remote_id: remote) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
   scope :for_state,      ->(state) { where(state: state) }
-  scope :to_auto_reject, -> { where(state: ['pending', 'passed']) }
-  scope :unreviewed,     -> { where(state: ['pending', 'auto_rejected']) }
+  scope :to_auto_reject, -> { where(state: %w(pending passed)) }
+  scope :unreviewed,     -> { where(state: %w(pending auto_rejected)) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, -> { for_state state.to_s }
   end
 
-  has_many  :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
-  has_many  :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
-  has_many  :fixes, class_name: 'Commit', through: :fixing_commits
-  has_many  :fixed, class_name: 'Commit', through: :fixed_commits
+  has_many :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
+  has_many :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
+  has_many :fixes, class_name: 'Commit', through: :fixing_commits
+  has_many :fixed, class_name: 'Commit', through: :fixed_commits
 
   belongs_to :project
   belongs_to :author, class_name: 'Person'
 
   has_and_belongs_to_many :tickets
 
-  state_machine :state, :initial => :pending do
+  state_machine :state, initial: :pending do
 
     event :accept do
       transition all - :accepted => :accepted
@@ -50,7 +50,7 @@ class Commit < ActiveRecord::Base
       transition all => :fixed
     end
 
-    after_transition any => :passed do |commit, transition|
+    after_transition any => :passed do |commit, _transition|
       commit.update_attribute(:expires_at, AUTOREJECT_TIME.from_now)
     end
   end
@@ -79,7 +79,7 @@ class Commit < ActiveRecord::Base
   def add_remote_ticket(remote_ticket)
     ticket = Ticket.where(remote_id: remote_ticket.ticket_id, source: remote_ticket.ticket_type).first
     ticket ||= Ticket.create remote_ticket.attributes
-    self.tickets << ticket
+    tickets << ticket
   end
 
   def self.add_batch_remote(commits)
@@ -122,7 +122,7 @@ class Commit < ActiveRecord::Base
   end
 
   def get_associated_project
-    if url.present? and (parts = url.split('/'))[4].present?
+    if url.present? && (parts = url.split('/'))[4].present?
       self.project = Project.find_or_create_by(name: parts[4])
     end
   end
@@ -138,7 +138,7 @@ class Commit < ActiveRecord::Base
   end
 
   def fix_commits
-    commit_list.each {|c| c.fix }
+    commit_list.each(&:fix)
   end
 
   def commit_list

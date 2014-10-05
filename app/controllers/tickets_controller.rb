@@ -1,5 +1,4 @@
 class TicketsController < ApplicationController
-
   include Support::FakeSlowResponse
 
   expose(:ticket)

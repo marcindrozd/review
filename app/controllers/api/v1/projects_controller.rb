@@ -7,6 +7,7 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   end
 
   private
+
   def auth_token
     deny_access unless token && project.present? && project.instance_of?(Project)
   end

@@ -1,5 +1,4 @@
 class GithubHookParser::PivotalTicket < GithubHookParser::Ticket
-
   def ticket_type
     'pivotal'
   end

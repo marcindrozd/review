@@ -1,7 +1,6 @@
 require 'net/http'
 
 class SeedPoster
-
   attr_reader :url, :fixture_name
 
   def initialize(url, fixture_name)
@@ -24,7 +23,7 @@ class SeedPoster
   end
 
   def request
-    Net::HTTP::Post.new(uri.request_uri, initheader = { 'X-GitHub-Event'=> 'push' }).tap do |req|
+    Net::HTTP::Post.new(uri.request_uri, initheader = { 'X-GitHub-Event' => 'push' }).tap do |req|
       req.set_form_data(payload: read_fixture)
     end
   end
@@ -44,10 +43,9 @@ end
 
 namespace :hook do
   desc "Send test payload to your app running in dev env"
-  task :test do |t|
+  task :test do |_t|
     url = "http://#{AppConfig.hostname}/payloads/github_hooks"
     fixture = 'payload.json'
     SeedPoster.new(url, fixture).call
   end
 end
-

@@ -31,7 +31,7 @@ describe Commit do
 
   describe "#get_associated_project" do
 
-    let(:commit_creation){ -> { Commit.create(commit_attributes) } }
+    let(:commit_creation){ -> { described_class.create(commit_attributes) } }
 
     it "creates new project for new commit" do
       expect(commit_creation).to change{ Project.count }
@@ -58,7 +58,7 @@ describe Commit do
   end
 
   describe 'state machine' do
-    let!(:commit){ Commit.create(commit_attributes) }
+    let!(:commit){ described_class.create(commit_attributes) }
 
     before do
       Timecop.freeze(Time.local(1990))
@@ -89,7 +89,7 @@ describe Commit do
     end
 
     it 'changes commit spec when proper message passed' do
-      Commit.create(fixing_attributes)
+      described_class.create(fixing_attributes)
       expect(commit.reload.state).to eq('fixed')
     end
 
@@ -100,8 +100,8 @@ describe Commit do
   end
 
   describe 'commit fixation' do
-    let!(:commit){ Commit.create(commit_attributes) }
-    let!(:fixing_commit){ Commit.create(fixing_attributes) }
+    let!(:commit){ described_class.create(commit_attributes) }
+    let!(:fixing_commit){ described_class.create(fixing_attributes) }
 
     it 'creates commit fix' do
       expect(CommitFix.count).to eq(1)

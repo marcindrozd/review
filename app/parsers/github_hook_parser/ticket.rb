@@ -1,5 +1,4 @@
 class GithubHookParser::Ticket
-
   attr_reader :ticket_id
 
   def initialize(ticket_id)
@@ -22,14 +21,13 @@ class GithubHookParser::Ticket
     implement_this!
   end
 
-  def self.from_message(message)
+  def self.from_message(_message)
     implement_this!
   end
 
   private
 
   def implement_this!
-    raise "implement in child class"
+    fail "implement in child class"
   end
 end
-

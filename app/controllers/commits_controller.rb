@@ -1,5 +1,4 @@
 class CommitsController < ApplicationController
-
   include Support::FakeSlowResponse
 
   before_filter :ensure_permission, only: :update

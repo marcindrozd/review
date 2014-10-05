@@ -7,22 +7,22 @@ describe Permission do
   it { should respond_to(:allowed) }
 
   describe "create" do
-    let!(:project){ Project.create() }
-    let!(:user){ User.create() }
+    let!(:project){ Project.create }
+    let!(:user){ User.create }
 
     it "sets correct allowed" do
-      premission = Permission.create(user: user, project: project)
+      premission = described_class.create(user: user, project: project)
       premission.allowed.should be_false
     end
 
     context "new permission" do
       it 'doesnt create with the same project and user' do
-        Permission.create(user: user, project: project)
-        -> { Permission.create(user: user, project: project) }.should_not change{ Permission.count }
+        described_class.create(user: user, project: project)
+        -> { described_class.create(user: user, project: project) }.should_not change{ described_class.count }
       end
 
       it 'doesnt create without project' do
-        -> { Permission.create(user: user) }.should_not change{ Permission.count }
+        -> { described_class.create(user: user) }.should_not change{ described_class.count }
       end
 
     end

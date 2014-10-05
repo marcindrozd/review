@@ -1,5 +1,4 @@
 class GithubHookParser::Main
-
   attr_reader :payload
 
   def initialize(payload)

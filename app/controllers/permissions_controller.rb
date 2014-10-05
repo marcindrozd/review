@@ -1,5 +1,4 @@
 class PermissionsController < ApplicationController
-
   include Support::FakeSlowResponse
 
   expose(:permission, attributes: :permission_params)
@@ -30,5 +29,4 @@ class PermissionsController < ApplicationController
   def permission_params
     params.require(:permission).permit(:user_id, :project_id, :allowed)
   end
-
 end

@@ -1,5 +1,4 @@
 class GithubHookParser::Commit
-
   attr_reader :raw
 
   def initialize(raw)

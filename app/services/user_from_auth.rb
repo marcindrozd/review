@@ -1,5 +1,4 @@
 class UserFromAuth
-
   attr_reader :auth
 
   def initialize(auth)

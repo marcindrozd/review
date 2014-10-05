@@ -1,5 +1,4 @@
 class Api::V1::TradeSerializer < ActiveModel::Serializer
-
   root false
 
   def attributes
@@ -40,5 +39,4 @@ class Api::V1::TradeSerializer < ActiveModel::Serializer
   def commits_by_user
     object.commits.unreviewed.joins(:author).group('people.email').count
   end
-
 end
