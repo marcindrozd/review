@@ -3,8 +3,8 @@ defaults: &defaults
   ticket_trackers:
     pivotal_story_url: "https://www.pivotaltracker.com/story/show/"
   github:
-    appkey: <%= ENV['GITHUB_SECRET'] %>
-    secret: <%= ENV['GITHUB_APPKEY'] %>
+    appkey: <%= ENV['GITHUB_APPKEY'] %>
+    secret: <%= ENV['GITHUB_SECRET'] %>
 development:
   <<: *defaults
   hostname: 'review.dev'
