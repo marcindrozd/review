@@ -1,30 +1,20 @@
 class ProjectSerializer < ActiveModel::Serializer
   attributes :id, :name, :rejected, :pending, :accepted, :total, :grade, :token
 
-  def rejected
-    stats.rejected
-  end
+  delegate :rejected, to: :stats
 
-  def pending
-    stats.pending
-  end
+  delegate :pending, to: :stats
 
-  def accepted
-    stats.accepted
-  end
+  delegate :accepted, to: :stats
 
-  def total
-    stats.total
-  end
+  delegate :total, to: :stats
 
-  def grade
-    stats.grade
-  end
+  delegate :grade, to: :stats
 
   private
 
   def stats
-    ProjectStatistics.new(object)
+    @project_statistics ||= ProjectStatistics.new(object)
   end
 
   def token

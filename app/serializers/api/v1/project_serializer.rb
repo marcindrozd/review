@@ -9,9 +9,7 @@ class Api::V1::ProjectSerializer < ActiveModel::Serializer
     }
   end
 
-  def deadline
-    object.deadline
-  end
+  delegate :deadline, to: :object
 
   def commits
     commits_as_json
