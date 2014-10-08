@@ -63,7 +63,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
-  gem 'simplecov', require: false
+  gem 'simplecov', '~> 0.9.0', require: false
 end
 
 group :development, :test do
