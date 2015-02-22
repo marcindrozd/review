@@ -1,74 +1,24 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1.6'
-# Use SCSS for stylesheets
-gem "sass-rails", '~> 4.0.2'
+gem 'rails', '~> 4.2'
+gem 'pg', '~> 0.18'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-gem 'pg'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-gem 'decent_exposure'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-gem 'active_model_serializers'
-
-gem 'state_machine', github: 'JobV/state_machine'
-
-gem 'bootstrap-sass'
-
-gem 'haml'
-
+gem 'grape', '~> 0.10'
+gem 'hashie_rails'
 gem 'konf'
-
-gem 'ember-rails'
-gem 'emblem-rails'
-
-gem 'momentjs-rails'
-gem 'omniauth'
-gem 'omniauth-github'
-
-gem 'thin'
-gem 'rollbar'
-gem 'google-analytics-rails'
-
-gem 'zeroclipboard-rails'
-gem 'gravatar-ultimate'
+gem 'rollbar', '~> 1.4'
 
 group :development do
-  gem 'proxylocal'
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.1'
+  gem 'thin', '~> 1.6'
 end
 
 group :test do
-  gem 'minitest'
-  gem 'timecop'
-  gem 'rspec-rails'
-  gem 'database_cleaner'
-  gem 'shoulda-matchers'
-  gem 'codeclimate-test-reporter', require: false
-  gem 'simplecov', '~> 0.9.0', require: false
+  gem 'rspec-rails', '~> 3.2'
+  gem 'database_cleaner', '~> 1.4'
+  gem 'shoulda-matchers', '~> 2.8'
 end
 
 group :development, :test do
-  gem 'pry-rails'
-  gem 'binding_of_caller'
+  gem 'pry-rails', '~> 0.3'
 end
-
-gem 'rails_12factor', group: :production

@@ -2,11 +2,25 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require File.expand_path('../preinitializer', __FILE__)
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+
+require 'konf'
+
+pub_config = begin
+  Konf.new(File.expand_path('config.yml', File.dirname(__FILE__)), Rails.env)
+rescue Konf::Invalid || Konf::NotFound
+  {}
+end
+
+sec_config = begin
+  Konf.new(File.expand_path('sec_config.yml', File.dirname(__FILE__)), Rails.env)
+rescue Konf::Invalid || Konf::NotFound
+  {}
+end
+
+AppConfig = Konf.new(pub_config.deep_merge(sec_config))
 
 module Review
   class Application < Rails::Application
