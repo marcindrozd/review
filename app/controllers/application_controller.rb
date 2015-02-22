@@ -1,20 +1,5 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
-
-  decent_configuration do
-    strategy DecentExposure::StrongParametersStrategy
-  end
-
-  helper_method :current_user, :authenticated?, :sign_in, :sign_out
-
-  before_filter :authentication_check
-
-  expose(:current_user) { get_current_user }
-
-  def index
-  end
 
   private
 
