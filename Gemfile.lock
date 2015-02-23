@@ -77,7 +77,6 @@ GEM
     i18n (0.7.0)
     ice_nine (0.11.1)
     json (1.8.2)
-    konf (0.0.2)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -183,7 +182,6 @@ DEPENDENCIES
   database_cleaner (~> 1.4)
   grape (~> 0.10)
   hashie_rails
-  konf
   pg (~> 0.18)
   pry-rails (~> 0.3)
   rails (~> 4.2)
