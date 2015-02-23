@@ -5,7 +5,6 @@ gem 'pg', '~> 0.18'
 
 gem 'grape', '~> 0.10'
 gem 'hashie_rails'
-gem 'konf'
 gem 'rollbar', '~> 1.4'
 
 group :development do
