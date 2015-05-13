@@ -1,4 +1,12 @@
 Review::Application.routes.draw do
+
+  root to: "application#index"
+
+  get '/auth' => 'sessions#index'
+  get '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/failure' => 'sessions#failure'
+  delete '/auth/signout' => 'sessions#destroy'
+
   namespace :api do
     namespace :v1 do
       resources :review_check, controller: 'projects', only: [:index]
