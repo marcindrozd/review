@@ -9,7 +9,8 @@ development:
   <<: *defaults
   hostname: 'review.dev'
   seconds_to_delay_response: 2
-test:
-  <<: *defaults
 production:
+  <<: *defaults
+  ga_id: '<%= ENV['GOOGLE_A_ID'] %>'
+test:
   <<: *defaults
