@@ -9,32 +9,48 @@ Pull the repository from github:
 `git clone git@github.com:netguru/review.git`
 
 Install required gems:
-```bundle install```
+```
+bundle install
+```
 
 ## Database
 Make sure you have postgress installed and running on your machine.
 Copy the sample database.yml to your main folder by:
-```cp database.yml.sample database.yml```
+```
+cp database.yml.sample database.yml
+```
 
 Edit the user name in the copied file to adjust it to your database setup.
 Setup the database by:
-```rake db:setup```
+```
+rake db:setup
+```
 Then migrate your db schema from rails:
-```rake db:migrate```
+```
+rake db:migrate
+```
 
 ## Setting up secrets
 Copy the secret sample file to your config directory:
-```config/secrets.yml.sample config/secrets.yml```
+```
+config/secrets.yml.sample config/secrets.yml
+```
 Generate a secret token:
-```rake secret```
+```
+rake secret
+```
 Paste it in the secrets file for the development enviroment and do the
 same for the test enviroment with a different key.
+
+Remeber to add the `secrets.yml` file to your gitignore.
 
 ## Troubleshooting
 Should you have problems with installing `therubyracer` gem
 try running the following:
-```gem install libv8 -v 3.16.14.3  -- --with-system-v8
-gem install therubyracer```
+```
+gem install libv8 -v 3.16.14.3  -- --with-system-v8
+gem install therubyracer
+```
 
 ## Deploying app on Heroku
 You can read how to deploy the app on heroku [here](https://devcenter.heroku.com/articles/git)
