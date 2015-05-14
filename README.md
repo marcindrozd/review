@@ -58,7 +58,9 @@ follow the steps outlined in the tutorial below:
 [proxy settings](https://netguru.atlassian.net/wiki/display/DT2015/Proxy.pac)
 
 ## Example data
-Run a dedicated task for creating a sample project: `bundle exec rake hook:test` (make sure your local server is running)
+This app is heavily using github webhooks. Everytime someone pushes commit, Review will receive a payload - json data with relevant event information. Check out an example payload in `db/fixtures/payload.json`. Based on this data, projects and commits are created. If this concept is new to you - head over to [github api documentation](https://developer.github.com/webhooks/).
+
+Run a dedicated task to see this in action: `bundle exec rake hook:test` (make sure your local server is running)
 
 ## Troubleshooting
 Should you have problems with installing `therubyracer` gem
