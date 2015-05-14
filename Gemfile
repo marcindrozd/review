@@ -69,6 +69,11 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'binding_of_caller'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'byebug'
+  gem 'pry-byebug'
 end
 
 gem 'rails_12factor', group: :production
