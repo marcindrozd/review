@@ -7,7 +7,7 @@ defaults: &defaults
     secret: <%= ENV['GITHUB_SECRET'] %>
 development:
   <<: *defaults
-  hostname: 'review.dev'
+  hostname: 'localhost:3000'
   seconds_to_delay_response: 2
 production:
   <<: *defaults
