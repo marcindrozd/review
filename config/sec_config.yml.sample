@@ -1,6 +1,12 @@
 defaults: &defaults
   some_secret_config: false
+  github_appkey: false
+  github_secret: false
 production:
   <<: *defaults
 beta:
+  <<: *defaults
+development:
+  <<: *defaults
+test:
   <<: *defaults
