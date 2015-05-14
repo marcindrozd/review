@@ -48,6 +48,7 @@ Remeber to add the `secrets.yml` file to your gitignore.
 Should you have problems with installing `therubyracer` gem
 try running the following:
 ```
+brew install v8
 gem install libv8 -v 3.16.14.3  -- --with-system-v8
 gem install therubyracer
 ```
