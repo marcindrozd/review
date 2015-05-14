@@ -1,7 +1,8 @@
 defaults: &defaults
   some_secret_config: false
-  github_appkey: false
-  github_secret: false
+  github:
+    appkey:    
+    secret: 
 production:
   <<: *defaults
 beta:

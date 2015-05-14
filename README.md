@@ -44,6 +44,19 @@ same for the test enviroment with a different key.
 
 Remeber to add the `secrets.yml` file to your gitignore.
 
+Copy the sec_config sample file to sec confign
+```
+cp config/sec_confing.yml.sample config/sec_config.yml
+```
+And paste your cradatiansl for github in their respectiv places pointed
+out in the file.
+
+## Proxy settings
+To have a working app with github in your development enviroment please
+follow the steps outlined in the tutorial below:
+
+[proxy settings](https://netguru.atlassian.net/wiki/display/DT2015/Proxy.pac)
+
 ## Troubleshooting
 Should you have problems with installing `therubyracer` gem
 try running the following:
