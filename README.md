@@ -57,6 +57,9 @@ follow the steps outlined in the tutorial below:
 
 [proxy settings](https://netguru.atlassian.net/wiki/display/DT2015/Proxy.pac)
 
+## Example data
+Run a dedicated task for creating a sample project: `bundle exec rake hook:test` (make sure your local server is running)
+
 ## Troubleshooting
 Should you have problems with installing `therubyracer` gem
 try running the following:
