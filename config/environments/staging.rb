@@ -76,5 +76,4 @@ Review::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.ember.variant = :staging
-  GA.tracker = AppConfig.ga_id
 end
