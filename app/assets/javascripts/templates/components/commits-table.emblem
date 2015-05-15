@@ -1,31 +1,32 @@
 table.table.table-bordered.table-hover
-  each commits
-    tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger isFixed:active"}
-      td
-        = gravatar-image person=author
-      td
-        message
-      td
-        strong Fixes for:
-        '
-        each fix
-          commit-github-button commit=this
-      td
-        strong Fixed by:
-        '
-        each fixed
-          commit-github-button commit=this
-      td
-        strong Expiration:
-        '
-        = timeRelative expiresAt
-      td
-        each tickets
-          = ticket-tag ticket=this
-      td
-        = commit-state-label reviewState=state
-      td
-        = commit-action-buttons commit=this
-      td
-        = copy-to-clipboard text=remoteId
-          'Copy SHA
+  tbody
+    each commits
+      tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger isFixed:active"}
+        td
+          = gravatar-image person=author
+        td
+          message
+        td
+          strong Fixes for:
+          '
+          each fix
+            commit-github-button commit=this
+        td
+          strong Fixed by:
+          '
+          each fixed
+            commit-github-button commit=this
+        td
+          strong Expiration:
+          '
+          = timeRelative expiresAt
+        td
+          each tickets
+            = ticket-tag ticket=this
+        td
+          = commit-state-label reviewState=state
+        td
+          = commit-action-buttons commit=this
+        td
+          = copy-to-clipboard text=remoteId
+            'Copy SHA
