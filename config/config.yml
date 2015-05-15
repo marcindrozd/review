@@ -1,4 +1,5 @@
 defaults: &defaults
+  secret_key_base: 'lorem'
   seconds_to_delay_response: 0
   ticket_trackers:
     pivotal_story_url: "https://www.pivotaltracker.com/story/show/"
@@ -13,4 +14,6 @@ production:
   <<: *defaults
   ga_id: '<%= ENV['GOOGLE_A_ID'] %>'
 test:
+  <<: *defaults
+staging:
   <<: *defaults
