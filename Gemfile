@@ -39,6 +39,7 @@ gem 'konf'
 
 gem 'ember-rails'
 gem 'emblem-rails'
+gem 'ember-source', '~> 1.6.0'
 
 gem 'momentjs-rails'
 gem 'omniauth'
