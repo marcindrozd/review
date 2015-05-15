@@ -5,6 +5,8 @@ defaults: &defaults
     secret:
 production:
   <<: *defaults
+staging:
+  <<: *defaults
 beta:
   <<: *defaults
 development:
