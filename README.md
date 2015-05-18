@@ -31,25 +31,12 @@ rake db:migrate
 ```
 
 ## Setting up secrets
-Copy the secret sample file to your config directory:
-```
-config/secrets.yml.sample config/secrets.yml
-```
 Generate a secret token:
 ```
 rake secret
 ```
-Paste it in the secrets file for the development enviroment and do the
+Paste it in the sec_config.yml file for the development enviroment and do the
 same for the test enviroment with a different key.
-
-Remeber to add the `secrets.yml` file to your gitignore.
-
-Copy the sec_config sample file to sec confign
-```
-cp config/sec_confing.yml.sample config/sec_config.yml
-```
-And paste your cradatiansl for github in their respectiv places pointed
-out in the file.
 
 ## Proxy settings
 To have a working app with github in your development enviroment please
