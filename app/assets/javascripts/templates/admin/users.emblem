@@ -2,7 +2,7 @@ table.table.table-bordered
   tr
     th User name
     th.text-center Admin
-    each projects
+    each model
       th.project.text-center= name
     th.text-center Token
   each user in users
@@ -10,7 +10,7 @@ table.table.table-bordered
       tr.user
         th= user.nickname
         = admin-cell user=user
-        each project in projects
+        each project in model
           = permission-cell user=user project=project
         th= copy-to-clipboard text=user.token
           'Copy API
