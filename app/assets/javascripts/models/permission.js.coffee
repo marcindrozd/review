@@ -1,7 +1,7 @@
 Review.Permission = DS.Model.extend
   allowed: DS.attr('boolean')
-  user: DS.belongsTo('Review.User')
-  project: DS.belongsTo('Review.Project')
+  user: DS.belongsTo('user')
+  project: DS.belongsTo('project')
 
   isAllowed: (()->
     @get('allowed') == true
