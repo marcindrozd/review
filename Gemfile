@@ -38,8 +38,8 @@ gem 'haml'
 gem 'konf'
 
 gem 'ember-rails'
-gem 'emblem-rails'
-gem 'ember-source', '~> 1.6.0'
+gem 'emblem-rails', '~> 0.2.2'
+gem 'ember-source', '~> 1.7.0'
 
 gem 'momentjs-rails'
 gem 'omniauth'
