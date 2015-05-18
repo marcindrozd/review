@@ -38,12 +38,6 @@ rake secret
 Paste it in the sec_config.yml file for the development enviroment and do the
 same for the test enviroment with a different key.
 
-## Proxy settings
-To have a working app with github in your development enviroment please
-follow the steps outlined in the tutorial below:
-
-[proxy settings](https://netguru.atlassian.net/wiki/display/DT2015/Proxy.pac)
-
 ## Example data
 This app is heavily using github webhooks. Everytime someone pushes commit, Review will receive a payload - json data with relevant event information. Check out an example payload in `db/fixtures/payload.json`. Based on this data, projects and commits are created. If this concept is new to you - head over to [github api documentation](https://developer.github.com/webhooks/).
 
