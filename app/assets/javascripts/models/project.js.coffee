@@ -6,4 +6,4 @@ Review.Project = DS.Model.extend
   total: DS.attr('number')
   grade: DS.attr('string')
   token: DS.attr('string')
-  permission: DS.hasMany('Review.Permission', { async: true} )
+  permission: DS.hasMany('permission', { async: true} )
