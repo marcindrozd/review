@@ -1,3 +1,2 @@
-Review.Store = DS.Store.extend
-  revision: 11
-  adapter: DS.RESTAdapter.create()
+Review.ApplicationStore = DS.Store.extend
+  adapter: DS.RESTAdapter
