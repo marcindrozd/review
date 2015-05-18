@@ -9,8 +9,8 @@ Review.Commit = DS.Model.extend
   authoredAt: DS.attr('date')
   author: DS.belongsTo('author')
   tickets: DS.hasMany('ticket')
-  fix: DS.hasMany('commit')
-  fixed: DS.hasMany('commit')
+  fix: DS.hasMany('commit', {inverse: 'fix'})
+  fixed: DS.hasMany('commit', {inverse: 'fixed'})
 
   shortHash: (()->
     @get('remoteId').substr(0,6)
