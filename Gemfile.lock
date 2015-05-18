@@ -285,6 +285,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   decent_exposure
+  ember-data-source (~> 1.0.0.beta.15)
   ember-rails
   ember-source (~> 1.8.0)
   emblem-rails (~> 0.2.2)
