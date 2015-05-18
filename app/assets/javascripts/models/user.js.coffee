@@ -3,8 +3,8 @@ Review.User = DS.Model.extend
   name: DS.attr('string')
   nickname: DS.attr('string')
   admin: DS.attr('boolean')
-  permissions: DS.hasMany('Review.Permission' )
-  person: DS.belongsTo('Review.Author')
+  permissions: DS.hasMany('permission' )
+  person: DS.belongsTo('author')
   token: DS.attr('string')
 
   isMe: (()->
