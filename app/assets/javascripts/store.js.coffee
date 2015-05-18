@@ -1,2 +1,2 @@
 Review.ApplicationStore = DS.Store.extend
-  adapter: DS.RESTAdapter
+  adapter: DS.ActiveModelAdapter
