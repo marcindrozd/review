@@ -2,7 +2,7 @@ Review.PermissionCellComponent = Ember.Component.extend
   tagName: 'th'
   classNames: ['permissions', 'text-center']
   classNameBindings: ['permission.isAllowed:success:danger']
-  store = this.get('targetObject.store')
+  store = @get('targetObject.store')
 
   permission: (() ->
     user = @get('user')
