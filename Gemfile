@@ -41,10 +41,10 @@ gem 'haml'
 gem 'konf'
 
 gem 'ember-rails'
-gem 'emblem-source', github: 'machty/emblem.js'
+gem 'emblem-source'
 gem 'emblem-rails'
-gem 'ember-source', '~> 1.9.1'
-gem 'ember-data-source', '~> 1.0.0.beta.15'
+gem 'ember-source'
+gem 'ember-data-source'
 gem 'ember-emblem-template'
 
 gem 'momentjs-rails'
