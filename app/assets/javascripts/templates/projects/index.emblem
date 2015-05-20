@@ -7,7 +7,7 @@ table.table.table-bordered
     th Total
     th Review status
     th Token
-  each
+  each model
     tr
       td= link-to 'project.commits' this: name
       td= rejected
