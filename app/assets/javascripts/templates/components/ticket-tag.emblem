@@ -1,2 +1,2 @@
 div.ticket-color{bind-attr style="ticket.style"}
-= link-to 'ticket.commits' ticket classNames='ticket-id': ticket.remoteId
+/= link-to 'ticket.commits' ticket classNames='ticket-id': ticket.remoteId
