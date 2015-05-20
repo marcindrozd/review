@@ -1,6 +1,6 @@
 table.table.table-bordered.table-hover
   tbody
-    each commits
+    each commit in commits
       tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger isFixed:active"}
         td
           = gravatar-image person=author

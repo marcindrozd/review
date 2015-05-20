@@ -2,7 +2,7 @@ table.table.table-bordered
   tr
     th User name
     th.text-center Admin
-    each model
+    each model in model
       th.project.text-center= name
     th.text-center Token
   each user in users
