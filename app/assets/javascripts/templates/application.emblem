@@ -5,7 +5,7 @@ nav.navbar.navbar-fixed-top.navbar-inverse
     = view "nav"
       = link-to 'projects' | Projects
     if current_user.admin
-      = view "nav" 
+      = view Review.NavView
         = link-to 'admin' | Admin
   ul.nav.navbar-nav.navbar-right.logout
     li
