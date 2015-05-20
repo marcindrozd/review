@@ -8,7 +8,9 @@ gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
-gem 'sprockets'
+gem 'sprockets', '~> 2.11.3'
+gem 'sprockets-rails', '~> 3.0.0.beta1'
+gem 'hike'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails'
@@ -39,9 +41,11 @@ gem 'haml'
 gem 'konf'
 
 gem 'ember-rails'
-gem 'emblem-rails', '~> 0.2.2'
+gem 'emblem-source', github: 'machty/emblem.js'
+gem 'emblem-rails'
 gem 'ember-source', '~> 1.9.1'
 gem 'ember-data-source', '~> 1.0.0.beta.15'
+gem 'ember-emblem-template'
 
 gem 'momentjs-rails'
 gem 'omniauth'
