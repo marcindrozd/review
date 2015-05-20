@@ -11,7 +11,7 @@ Review.PermissionCellComponent = Ember.Component.extend
   ).property('project', 'user')
 
   createPermission: (user, project) ->
-    permission = @store.createRecord({
+    permission = @store.createRecord('permission', {
         allowed: false
         user: user
         project: project
