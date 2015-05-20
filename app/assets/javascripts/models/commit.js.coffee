@@ -33,5 +33,5 @@ Review.Commit = DS.Model.extend
   ).property('state')
 
   belongsToMe: (()->
-    Review.User.find('me').get('person') is @get('author')
+    @store.find('user', 'me').get('person') is @get('author')
   ).property()
