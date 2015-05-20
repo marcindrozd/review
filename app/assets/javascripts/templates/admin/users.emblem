@@ -9,8 +9,8 @@ table.table.table-bordered
     unless user.isMe
       tr.user
         th= user.nickname
-        = admin-cell user=user
+        = admin-cell user=user store=store
         each project in model
-          = permission-cell user=user project=project
+          = permission-cell user=user project=project store=store
         th= copy-to-clipboard text=user.token
           'Copy API
