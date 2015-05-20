@@ -1,4 +1,4 @@
-Review.LogoutButton = Ember.View.extend
+Review.LogoutButtonView = Ember.View.extend
   tagName: 'button'
   click: ->
     $.post '/auth/signout', _method: 'delete', (data, status, xhr)->
