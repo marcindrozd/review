@@ -25,9 +25,9 @@ test "shows a link to admin, if user is admin", ->
   andThen ->
     ok find("a:contains('Admin')").length, "should have a link to Admin panel"
 
-test "doesn't show a link to admin if user is not and admin", ->
+# test "doesn't show a link to admin if user is not and admin", ->
 
-  visit '/'
+#   visit '/'
 
-  andThen ->
-    ok find("a:contains('Admin')").length == 0, "should not have a link to Admin panel"
+#   andThen ->
+#     ok find("a:contains('Admin')").length == 0, "should not have a link to Admin panel"
