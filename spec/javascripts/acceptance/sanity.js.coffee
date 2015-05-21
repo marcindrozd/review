@@ -1,6 +1,6 @@
 module 'rendering main template',
   setup: ->
-    Review.registry = Review.buildRegistry()
+    Review.buildRegistry()
     Review.reset()
 
 test "main template is rendered", ->

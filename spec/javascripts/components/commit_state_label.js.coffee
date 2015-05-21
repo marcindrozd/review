@@ -1,5 +1,8 @@
 module 'commit state label component',
-  setup: -> @component = new Review.CommitStateLabelComponent()
+  setup: ->
+    @component = new Review.CommitStateLabelComponent()
+    Review.buildRegistry()
+    Review.reset()
 
 test "'reviewState' has a default value", ->
   ok @component.get('reviewState') == 'unknown', "should have a value of 'unknown'"
