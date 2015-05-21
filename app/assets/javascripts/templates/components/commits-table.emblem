@@ -9,19 +9,19 @@ table.table.table-bordered.table-hover
         td
           strong Fixes for:
           '
-          each fix
+          each fix in fixed
             commit-github-button commit=this
         td
           strong Fixed by:
           '
-          each fixed
+          each fix in fixed
             commit-github-button commit=this
         td
           strong Expiration:
           '
           = timeRelative expiresAt
         td
-          each tickets
+          each ticket in tickets
             = ticket-tag ticket=this
         td
           = commit-state-label reviewState=state
