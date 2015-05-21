@@ -2,6 +2,15 @@ module 'navigation bar',
   setup: ->
     Review.buildRegistry()
     Review.reset()
+    Ember.run ->
+      Review.User.reopenClass({
+        FIXTURES: [
+          {
+            admin: true
+            id: "me"
+          }
+        ]
+      })
 
 test "shows a link to Projects", ->
   visit '/'
@@ -11,12 +20,6 @@ test "shows a link to Projects", ->
 
 test "shows a link to admin, if user is admin", ->
 
-  Ember.run ->
-    Review.User.FIXTURES = [
-        {
-          admin: true, id: 'me'
-        }
-    ]
   visit '/'
 
   andThen ->
@@ -24,12 +27,6 @@ test "shows a link to admin, if user is admin", ->
 
 test "doesn't show a link to admin if user is not and admin", ->
 
-  Ember.run ->
-    Review.User.FIXTURES = [
-      {
-        admin: true, id: 'me'
-      }
-    ]
   visit '/'
 
   andThen ->
