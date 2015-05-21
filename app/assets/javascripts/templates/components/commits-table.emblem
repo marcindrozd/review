@@ -1,32 +1,32 @@
 table.table.table-bordered.table-hover
   tbody
     each commit in commits
-      tr{bind-attr class="isAccepted:success isPassed:warning isRejected:danger isFixed:active"}
+      tr{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejected:danger commit.isFixed:active"}
         td
-          = gravatar-image person=author
+          = gravatar-image person=commit.author
         td
           message
         td
           strong Fixes for:
           '
           each fix in fixed
-            commit-github-button commit=this
+            commit-github-button commit=commit
         td
           strong Fixed by:
           '
           each fix in fixed
-            commit-github-button commit=this
+            commit-github-button commit=commit
         td
           strong Expiration:
           '
           = timeRelative expiresAt
         td
           each ticket in tickets
-            = ticket-tag ticket=this
+            = ticket-tag ticket=ticket
         td
           = commit-state-label reviewState=state
         td
-          = commit-action-buttons commit=this
+          = commit-action-buttons commit=commit
         td
           = copy-to-clipboard text=remoteId
             'Copy SHA
