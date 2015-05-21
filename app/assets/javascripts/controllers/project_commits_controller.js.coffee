@@ -4,7 +4,7 @@ Review.ProjectCommitsController = Ember.ArrayController.extend
 
   hideAccepted: true
 
-  searchResults: Ember.computed.defaultTo('arrangedContent')
+  searchResults: Ember.computed.oneWay('arrangedContent')
 
   filteredContent: (->
     searchInput = @get('model')
