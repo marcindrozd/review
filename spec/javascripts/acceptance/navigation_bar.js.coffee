@@ -10,7 +10,7 @@ test "shows a link to Projects", ->
 test "shows a link to admin, if user is admin", ->
 
   Ember.run ->
-    Review.User.createRecord(admin: true, id: 'me')
+    store.createRecord(admin: true, id: 'me')
 
   visit '/'
 
@@ -20,7 +20,7 @@ test "shows a link to admin, if user is admin", ->
 test "doesn't show a link to admin if user is not and admin", ->
 
   Ember.run ->
-    Review.User.createRecord(admin: false, id: 'me')
+    store.createRecord(admin: false, id: 'me')
 
   visit '/'
 

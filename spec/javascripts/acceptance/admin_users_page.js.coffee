@@ -3,8 +3,8 @@ module 'admin users page',
     Review.reset()
 
     Ember.run ->
-      Review.User.createRecord(admin: true, id: 'me')
-      Review.User.createRecord(
+      store.createRecord(admin: true, id: 'me')
+      store.createRecord(
         id: 5
         image_url: "adas1.jpg"
         name: "mariusz"
