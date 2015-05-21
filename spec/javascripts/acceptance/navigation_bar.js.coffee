@@ -12,8 +12,11 @@ test "shows a link to Projects", ->
 test "shows a link to admin, if user is admin", ->
 
   Ember.run ->
-    store.createRecord(admin: true, id: 'me')
-
+    Review.User.FIXTURES = [
+        {
+          admin: true, id: 'me'
+        }
+    ]
   visit '/'
 
   andThen ->
@@ -22,8 +25,11 @@ test "shows a link to admin, if user is admin", ->
 test "doesn't show a link to admin if user is not and admin", ->
 
   Ember.run ->
-    store.createRecord(admin: false, id: 'me')
-
+    Review.User.FIXTURES = [
+      {
+        admin: true, id: 'me'
+      }
+    ]
   visit '/'
 
   andThen ->
