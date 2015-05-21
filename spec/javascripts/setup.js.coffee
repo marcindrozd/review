@@ -1,6 +1,4 @@
-Review.Store = DS.Store.extend
-    revision: 11
-    adapter: DS.FixtureAdapter.create(simulateRemoteResponse: false)
+Review.ApplicationAdapter = DS.FixtureAdapter
 
 Review.User.FIXTURES = []
 
