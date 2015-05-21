@@ -5,7 +5,7 @@ table.table.table-bordered.table-hover
         td
           = gravatar-image person=commit.author
         td
-          message
+          commit.message
         td
           strong Fixes for:
           '
