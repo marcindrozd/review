@@ -1,5 +1,7 @@
 module 'rendering main template',
-  setup: -> Review.reset()
+  setup: ->
+    Review.registry = Review.buildRegistry()
+    Review.reset()
 
 test "main template is rendered", ->
   visit '/'
