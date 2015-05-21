@@ -1,6 +1,6 @@
 module 'navigation bar',
   setup: ->
-    Review.registry = Review.buildRegistry()
+    Review.buildRegistry()
     Review.reset()
 
 test "shows a link to Projects", ->
