@@ -8,4 +8,3 @@ Review.Permission.FIXTURES = []
 
 Review.setupForTesting()
 Review.injectTestHelpers()
-})
