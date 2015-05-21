@@ -20,14 +20,27 @@ test "shows a link to Projects", ->
 
 test "shows a link to admin, if user is admin", ->
 
+  Ember.run ->
+    Review.User.FIXTURES = [
+      {
+        admin: true, id: 'me'
+      }
+    ]
   visit '/'
 
   andThen ->
     ok find("a:contains('Admin')").length, "should have a link to Admin panel"
 
-# test "doesn't show a link to admin if user is not and admin", ->
+test "doesn't show a link to admin if user is not and admin", ->
 
-#   visit '/'
+  visit '/'
+  Ember.run ->
+    Review.User.FIXTURES = [
+      {
+        admin: false, id: 'me'
+      }
+    ]
+  visit '/'
 
-#   andThen ->
-#     ok find("a:contains('Admin')").length == 0, "should not have a link to Admin panel"
+  andThen ->
+    ok find("a:contains('Admin')").length == 0, "should not have a link to Admin panel"
