@@ -1,6 +1,6 @@
 module 'admin users page',
   setup: ->
-    Review.registry = Review.buildRegistry()
+    Review.buildRegistry()
     Review.reset()
 
     Ember.run ->
