@@ -2,6 +2,6 @@ if user.isSaving
   span Saving…
 else
   unless user.isAdmin
-    a.allow{action 'setAdmin' user} Enable
+    a{action 'setAdmin' user} Enable
   else
-    a.deny{action 'removeAdmin' user} Disable
+    a{action 'removeAdmin' user} Disable
