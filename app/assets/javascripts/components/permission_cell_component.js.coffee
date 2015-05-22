@@ -19,9 +19,7 @@ Review.PermissionCellComponent = Ember.Component.extend
 
   actions:
     grantAccess: (permission)->
-      permission.set('allowed', true)
-      permission.get('store').commit()
+      permission.set('allowed', true).save()
 
     revokeAccess: (permission)->
-      permission.set('allowed', false)
-      permission.get('store').commit()
+      permission.set('allowed', false).save()
