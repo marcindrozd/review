@@ -7,10 +7,10 @@ Review.User = DS.Model.extend
   person: DS.belongsTo('author')
   token: DS.attr('string')
 
-  isMe: (()->
-    @.get('id') == 'me'
-  ).property('id')
+  isMe: Ember.computed('id', ->
+    @get('id') == 'me'
+  )
 
-  isAdmin: (()->
+  isAdmin: Ember.computed('admin', ->
     @get('admin') == true
-  ).property('admin')
+  )
