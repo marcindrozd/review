@@ -19,7 +19,7 @@ table.table.table-bordered.table-hover
         td
           strong Expiration:
           '
-          = timeRelative expiresAt
+          = timeRelative commit.expiresAt
         td
           each ticket in tickets
             = ticket-tag ticket=ticket
