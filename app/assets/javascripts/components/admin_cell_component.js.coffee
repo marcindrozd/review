@@ -6,8 +6,8 @@ Review.AdminCellComponent = Ember.Component.extend
   actions:
     setAdmin: (user)->
       user.set('admin', true)
-      user.get('store').commit()
+      user.save()
 
     removeAdmin: (user)->
       user.set('admin', false)
-      user.get('store').commit()
+      user.save()
