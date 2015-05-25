@@ -124,3 +124,8 @@ test "checks correct values for project", ->
     equal(findFirstProjectAccepted(), '1')
     equal(findFirstProjectTotal(), '6')
     equal(findFirstProjectStatus(), 'good')
+
+test "find API key buttons", ->
+  visit '/projects'
+  andThen ->
+    equal(find(".copy-to-clipboard").length, 2)
