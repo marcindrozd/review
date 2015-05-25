@@ -38,10 +38,6 @@ gem 'thin'
 gem 'uglifier'
 gem 'zeroclipboard-rails'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
 group :development do
   gem 'proxylocal'
   gem 'better_errors'
