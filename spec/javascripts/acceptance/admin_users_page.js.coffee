@@ -77,3 +77,12 @@ test "doesn't show a link to deny access", ->
   visit '/admin/users'
   andThen ->
     ok find("a:contains('Deny')").length == 0, "Deny access"
+
+test "after clicking on projects, drects to projects", ->
+  visit '/admin/users'
+  andThen ->
+    click(".navbar-left a:eq(0)")
+    andThen ->
+      equal(currentPath(), 'projects.index')
+
+
