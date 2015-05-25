@@ -46,6 +46,7 @@ gem 'emblem-rails'
 gem 'ember-source'
 gem 'ember-data-source'
 gem 'ember-emblem-template'
+gem 'ember-cli-rails'
 
 gem 'momentjs-rails'
 gem 'omniauth'
