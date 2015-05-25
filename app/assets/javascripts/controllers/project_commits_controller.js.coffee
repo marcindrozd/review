@@ -5,15 +5,14 @@ Review.ProjectCommitsController = Ember.ArrayController.extend
 
   searchResults: Ember.computed.oneWay('arrangedContent')
 
-  filteredContent: (->
+  filteredContent: Ember.observer('hideAccepted', ->
     searchInput = @get('model')
     if !searchInput or !@get('hideAccepted')
       @set 'searchResults', @get("arrangedContent")
     else
       @set 'searchResults', @get("arrangedContent").filter((item)-> !item.get('isAccepted'))
     return
-  ).observes('hideAccepted')
-
+  )
 
   sortNow: (parameter)->
     @set('sortProperties', [parameter])
