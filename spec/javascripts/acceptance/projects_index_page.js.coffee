@@ -100,3 +100,27 @@ test "click on Admin in nav bar directs to admin", ->
   click('.navbar-left a:last')
   andThen ->
     equal(currentPath(), 'admin.users')
+
+test "checks correct values for project", ->
+  findFirstProjectRejected = ->
+    find(".table-bordered tr:eq(1) td:eq(1)").text()
+
+  findFirstProjectPending = ->
+    find(".table-bordered tr:eq(1) td:eq(2)").text()
+
+  findFirstProjectAccepted = ->
+    find(".table-bordered tr:eq(1) td:eq(3)").text()
+
+  findFirstProjectTotal = ->
+    find(".table-bordered tr:eq(1) td:eq(4)").text()
+
+  findFirstProjectStatus = ->
+    find(".table-bordered tr:eq(1) td:eq(5)").text()
+
+  visit '/projects'
+  andThen ->
+    equal(findFirstProjectRejected(), '2')
+    equal(findFirstProjectPending(), '3')
+    equal(findFirstProjectAccepted(), '1')
+    equal(findFirstProjectTotal(), '6')
+    equal(findFirstProjectStatus(), 'good')
