@@ -1,5 +1,5 @@
 .btn-group
-  button.btn.btn-default
+  button.btn.btn-default{action "toggleAccepted" on="click"}
     = input type="checkbox" name="hideAccepted" checked=hideAccepted
     | Hide accepted commits
   button.btn.btn-default{action "sortBy" 'author' on="click"} sort by author
