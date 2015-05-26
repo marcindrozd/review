@@ -1,0 +1,19 @@
+table.table.table-bordered
+  tr
+    th Name
+    th Rejected
+    th Pending
+    th Accepted
+    th Total
+    th Review status
+    th Token
+  each project in model 
+    tr
+      /td= link-to 'project.commits' project: project.name
+      td= project.rejected
+      td= project.pending
+      td= project.accepted
+      td= project.total
+      td= project.grade
+      /td= copy-to-clipboard text=project.token
+        'Copy API token
