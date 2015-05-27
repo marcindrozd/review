@@ -3,7 +3,7 @@ table.table.table-bordered.table-hover
     each commit in commits
       tr
         /{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejected:danger commit.isFixed:active"}
-        /td
+        td
           = gravatar-image person=commit.author
         td
           p
