@@ -14,6 +14,4 @@ Router.map ->
   @resource 'admin', ->
     @route 'users'
 
-
 `export default Router`
-
