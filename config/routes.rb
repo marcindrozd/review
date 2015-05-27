@@ -1,6 +1,6 @@
 Review::Application.routes.draw do
 
-  root to: "application#index"
+  root to: 'ember#bootstrap'
 
   get '/auth' => 'sessions#index'
   get '/auth/:provider/callback' => 'sessions#create'
