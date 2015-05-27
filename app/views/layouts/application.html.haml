@@ -3,9 +3,7 @@
   %head
     %title Review app
     = stylesheet_link_tag    "application", :media => "all"
-    /= javascript_include_tag "application"
-    = include_ember_script_tags :review_front
-    /= include_ember_stylesheet_tags :review_front
+    = javascript_include_tag "application"
     = analytics_init if Rails.env.production? || Rails.env.staging?
     = csrf_meta_tags
   %body
