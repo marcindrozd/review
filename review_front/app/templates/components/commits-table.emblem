@@ -1,0 +1,34 @@
+table.table.table-bordered.table-hover
+  tbody
+    each commit in commits
+      tr
+        /{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejected:danger commit.isFixed:active"}
+        /td
+          = gravatar-image person=commit.author
+        td
+          p
+            commit.message
+        /td
+          strong Fixes for:
+          '
+          each fix in fixed
+            commit-github-button commit=commit
+        /td
+          strong Fixed by:
+          '
+          each fix in fixed
+            commit-github-button commit=commit
+        /td
+          strong Expiration:
+          '
+          = timeRelative commit.expiresAt
+        /td
+          each ticket in tickets
+            = ticket-tag ticket=ticket
+        /td
+          = commit-state-label reviewState=state
+        /td
+          = commit-action-buttons commit=commit
+        /td
+          = copy-to-clipboard text=remoteId
+            'Copy SHA
