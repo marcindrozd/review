@@ -5,9 +5,8 @@ Ticket = DS.Model.extend
   remoteUrl: DS.attr('string')
   color: DS.attr('string')
 
-  style: (()->
+  style: Ember.computed('color', ->
     "background-color: #{@get('color')}"
-  ).property('color')
-
+  )
 
 `export default Ticket`

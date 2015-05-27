@@ -14,28 +14,27 @@ Commit = DS.Model.extend
   fix: DS.hasMany('commit', {inverse: 'fix'})
   fixed: DS.hasMany('commit', {inverse: 'fixed'})
 
-  shortHash: (()->
+  shortHash: Ember.computed('remoteId', ->
     @get('remoteId').substr(0,6)
-  ).property('remoteId')
+  )
 
-  isRejected: (()->
+  isRejected: Ember.computed('state', ->
     ['rejected', 'auto_rejected'].contains(@get('state'))
-  ).property('state')
+  )
 
-  isPassed: (()->
+  isPassed: Ember.computed('state', ->
     @get('state') == 'passed'
-  ).property('state')
+  )
 
-  isFixed: (()->
+  isFixed: Ember.computed('state', ->
     @get('state') == 'fixed'
-  ).property('state')
+  )
 
-  isAccepted: (()->
+  isAccepted: Ember.computed('state', ->
     @get('state') == 'accepted'
-  ).property('state')
+  )
 
-  belongsToMe: (()->
+  belongsToMe: Ember.computed ->
     @store.find('user', 'me').get('person') is @get('author')
-  ).property()
 
 `export default Commit`
