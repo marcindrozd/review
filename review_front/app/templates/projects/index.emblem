@@ -9,7 +9,7 @@ table.table.table-bordered
     th Token
   each project in model 
     tr
-      /td= link-to 'project.commits' project: project.name
+      td= link-to 'project.commits' project: project.name
       td= project.rejected
       td= project.pending
       td= project.accepted
