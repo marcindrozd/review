@@ -1,0 +1,9 @@
+!!!
+%html{dir: 'ltr', lang: I18n.locale}
+  %head
+    %meta{charset: 'UTF-8'}/
+    %title Review app
+    = stylesheet_link_tag 'application'
+    = include_ember_script_tags :review_front
+  %body
+    = yield
