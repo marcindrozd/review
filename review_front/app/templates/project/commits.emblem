@@ -1,0 +1,12 @@
+.btn-group
+  button.btn.btn-default{action "toggleAccepted" on="click"}
+    = input type="checkbox" name="hideAccepted" checked=hideAccepted
+    | Hide accepted commits
+  button.btn.btn-default{action "sortBy" 'author' on="click"} sort by author
+  button.btn.btn-default{action "sortBy" 'message' on="click"} sort by message
+  button.btn.btn-default{action "sortBy" 'state' on="click"} sort by state
+  button.btn.btn-default{action "sortBy" 'authoredAt' on="click"} sort by creation date
+  button.btn.btn-default{action "sortBy" 'expiresAt' on="click"} sort by expiration date
+br
+br
+= commits-table commits=searchResults
