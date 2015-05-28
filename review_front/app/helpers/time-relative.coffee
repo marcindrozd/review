@@ -1,9 +1,8 @@
 `import Ember from 'ember'`
 
-# This function receives the params `params, hash`
 timeRelative = (value, options) ->
-  return moment(value).fromNow()
+  moment(value).fromNow()
 
-TimeRelativeHelper = Ember.HTMLBars.makeBoundHelper timeRelative
+TimeRelativeHelper = Ember.Handlebars.makeBoundHelper timeRelative
 
 `export default TimeRelativeHelper`
