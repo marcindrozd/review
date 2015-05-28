@@ -1,6 +1,6 @@
 `import { test, moduleFor } from 'ember-qunit'`
 
-moduleFor 'controller:project-commits', {
+moduleFor 'controller:project/commits', {
   # Specify the other units that are required for this test.
   # needs: ['controller:foo']
 }
@@ -9,3 +9,4 @@ moduleFor 'controller:project-commits', {
 test 'it exists', (assert) ->
   controller = @subject()
   assert.ok controller
+
