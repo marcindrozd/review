@@ -1,7 +1,7 @@
-`import Ember from 'ember';`
+`import Ember from 'ember'`
 
-Component = Ember.Component.extend
+CommitsTable = Ember.Component.extend
   tagName:    'article'
   classNames: ['commits']
 
-`export default Component;`
+`export default CommitsTable`
