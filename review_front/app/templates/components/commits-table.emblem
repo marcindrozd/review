@@ -20,7 +20,7 @@ table.table.table-bordered.table-hover
         td
           strong Expiration:
           '
-          /= timeRelative commit.expiresAt
+          = time-relative commit.expiresAt 
         td
           each ticket in tickets
             = ticket-tag ticket=ticket
@@ -28,6 +28,6 @@ table.table.table-bordered.table-hover
           = commit-state-label reviewState=state
         td
           = commit-action-buttons commit=commit
-        /td
+        td
           = copy-to-clipboard text=remoteId
             'Copy SHA
