@@ -1,4 +1,5 @@
 `import Ember from 'ember'`
+`import ZeroClipboard from './zero-clipboard'`
 
 CopyToClipboard = Ember.Component.extend
   tagName: 'button'
