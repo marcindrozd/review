@@ -1,0 +1,7 @@
+if permission.isSaving
+  span Saving…
+else
+  unless permission.isAllowed
+    a{action 'grantAccess' permission} Allow
+  else
+    a{action 'revokeAccess' permission} Deny
