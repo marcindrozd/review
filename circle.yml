@@ -1,11 +1,13 @@
 dependencies:
-  pre:
-    - 'npm install testem@0.6.5'
-test:
   post:
-    - './node_modules/.bin/testem ci'
+    - cd review_front && bower install && npm install
+test:
+  override:
+    - ./bin/rake spec
+    - ./bin/rake ember:test
 deployment:
   master:
     branch: master
     commands:
+      - curl -L https://raw.githubusercontent.com/netguru/review/master/check.rb | ruby
       - bundle exec cap staging deploy
