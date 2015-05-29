@@ -1,10 +1,8 @@
-class UsersController < ApplicationController
+class Api::V2::UsersController < Api::V2::BaseController
   before_filter :change_admin_flag, only: :update
 
   expose(:user) { find_user }
   expose(:users)
-
-  respond_to :json
 
   def index
     respond_with(users)

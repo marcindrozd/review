@@ -1,17 +1,13 @@
-class ProjectsController < ApplicationController
-  include Support::FakeSlowResponse
-
+class Api::V2::ProjectsController < Api::V2::BaseController
   expose(:project)
   expose(:projects) { find_projects }
 
-  respond_to :json
-
   def index
-    respond_with(projects)
+    renspond_with(projects)
   end
 
   def show
-    respond_with(project)
+    renspond_with(project)
   end
 
   private
