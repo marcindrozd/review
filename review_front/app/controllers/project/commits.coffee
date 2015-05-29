@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-ProjectCommitsController = Ember.Controller.extend
+ProjectCommitsController = Ember.ArrayController.extend
   sortProperties: ['authoredAt']
 
   hideAccepted: true
@@ -22,6 +22,7 @@ ProjectCommitsController = Ember.Controller.extend
 
   actions:
     sortBy: (parameter)-> @sortNow(parameter)
-    toggleAccepted: -> @toggleProperty('hideAccepted')
+    toggleAccepted: ->
+      @set 'hideAccepted', !(@get('hideAccepted'))
 
 `export default ProjectCommitsController`
