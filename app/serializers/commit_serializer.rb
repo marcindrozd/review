@@ -1,5 +1,4 @@
-class CommitSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class CommitSerializer < ApplicationSerializer
   attributes :id, :remote_id, :message, :state, :remote_url, :expires_at, :created_at, :authored_at
   has_one :project
   has_one :author

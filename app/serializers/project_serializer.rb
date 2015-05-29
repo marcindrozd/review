@@ -1,4 +1,4 @@
-class ProjectSerializer < ActiveModel::Serializer
+class ProjectSerializer < ApplicationSerializer
   attributes :id, :name, :rejected, :pending, :accepted, :total, :grade, :token
 
   delegate :rejected, to: :stats

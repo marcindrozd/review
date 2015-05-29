@@ -1,4 +1,4 @@
-class TicketSerializer < ActiveModel::Serializer
+class TicketSerializer < ApplicationSerializer
   attributes :id, :remote_id, :remote_url, :color
 
   def remote_url
