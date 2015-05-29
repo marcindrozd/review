@@ -3,11 +3,11 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   expose(:projects) { find_projects }
 
   def index
-    renspond_with(projects)
+    respond_with(projects)
   end
 
   def show
-    renspond_with(project)
+    respond_with(project)
   end
 
   private
