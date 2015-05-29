@@ -1,5 +1,4 @@
 Review::Application.routes.draw do
-
   root to: 'ember#bootstrap'
 
   get '/auth' => 'sessions#index'
@@ -12,13 +11,16 @@ Review::Application.routes.draw do
       resources :review_check, controller: 'projects', only: [:index]
       resources :trade_check, controller: 'trade', only: [:index]
     end
+
+    namespace :v2 do
+      resources :users, only: [:show, :index, :update]
+      resources :commits, only: [:index, :update]
+      resources :projects, only: [:index, :show]
+      resources :permissions, only: [:index, :show, :create, :update]
+      resources :tickets, only: [:show]
+    end
   end
 
-  resources :users, only: [:show, :index, :update]
-  resources :commits, only: [:index, :update]
-  resources :projects, only: [:index, :show]
-  resources :permissions, only: [:index, :show, :create, :update]
-  resources :tickets, only: [:show]
   namespace :payloads do
     resource :github_hooks, only: [:create]
   end
