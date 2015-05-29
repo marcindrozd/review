@@ -1,10 +1,6 @@
-class PermissionsController < ApplicationController
-  include Support::FakeSlowResponse
-
+class Api::V2::PermissionsController < Api::V2::BaseController
   expose(:permission, attributes: :permission_params)
   expose(:permissions) { Permission.all }
-
-  respond_to :json
 
   def index
     respond_with(permissions)

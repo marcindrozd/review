@@ -1,14 +1,10 @@
-class CommitsController < ApplicationController
-  include Support::FakeSlowResponse
-
+class Api::V2::CommitsController < Api::V2::BaseController
   before_filter :ensure_permission, only: :update
 
   expose(:commit)
   expose(:project)
   expose(:ticket)
   expose(:commits) { find_commits }
-
-  respond_to :json
 
   def index
     respond_with(commits)
