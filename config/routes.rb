@@ -1,4 +1,6 @@
 Review::Application.routes.draw do
+  mount EmberCLI::Engine => 'ember-tests' if Rails.env.development?
+
   root to: 'ember#bootstrap'
 
   get '/auth' => 'sessions#index'
