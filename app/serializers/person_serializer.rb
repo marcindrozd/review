@@ -1,5 +1,4 @@
-class PersonSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class PersonSerializer < ApplicationSerializer
   attributes :id, :name, :image_url
 
   def image_url

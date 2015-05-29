@@ -1,5 +1,4 @@
-class UserSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+class UserSerializer < ApplicationSerializer
   attributes :id, :image_url, :nickname, :name, :admin, :person_id, :token
   has_many :permissions
 
