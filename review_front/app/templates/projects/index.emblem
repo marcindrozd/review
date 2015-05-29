@@ -15,5 +15,5 @@ table.table.table-bordered
       td= project.accepted
       td= project.total
       td= project.grade
-      /td= copy-to-clipboard text=project.token
+      td= copy-to-clipboard text=project.token
         'Copy API token

@@ -1,33 +1,20 @@
-`import Ember from 'ember'`
-`import ZeroClipboard from './zero-clipboard'`
+`import Ember from 'ember';`
+`import ZeroClipboard from 'ember-cli-zero-clipboard/components/zero-clipboard'; `
 
-CopyToClipboard = Ember.Component.extend
+CopyToClipboard = ZeroClipboard.extend
   tagName: 'button'
   classNames: ['btn', 'btn-default', 'btn-xs', 'copy-to-clipboard']
-
   justCopied: false
-  notificationClearDelay: 1500
 
-  text: ''
+  justCopiedToggle: ->
+    @set 'justCopied', !@justCopied
 
-  bindCopyButton: (()->
-    @setupClipboard()
-    @get('clip').on 'dataRequested', (client, args)=>
-      client.setText(@get('text'))
-      @triggerCopiedNotification()
-  ).on('didInsertElement')
+  actions:
+    afterCopy: ->
+      @justCopiedToggle()
+      Ember.run.later @, (->
+        @justCopiedToggle()
+      ), 1500
 
-  unbindCopyButton: (()->
-    @get('clip').destroy()
-  ).on('willClearRender')
 
-  setupClipboard: ()->
-    clip = new ZeroClipboard(@get('element'))
-    @set('clip', clip)
-
-  triggerCopiedNotification: ()->
-    @set('justCopied', true)
-    callback = (=> @set('justCopied', false))
-    setTimeout callback, @get('notificationClearDelay')
-
-`export default CopyToClipboard`
+`export default CopyToClipboard;`
