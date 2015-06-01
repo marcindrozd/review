@@ -4,6 +4,7 @@ dependencies:
 test:
   override:
     - ./bin/rake spec
+    - ./node_modules/.bin/testem ci
     - ./bin/rake ember:test
 deployment:
   master:
