@@ -2,7 +2,7 @@
 
 moduleForComponent 'permission-cell', {
   # Specify the other units that are required for this test
-  needs: ['model:user', 'model:project']
+  needs: ['model:user', 'model:project', 'model:permission']
 }
 
 test 'it renders', (assert) ->
