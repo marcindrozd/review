@@ -3,6 +3,7 @@
 moduleForComponent 'commit-action-buttons', {
   # Specify the other units that are required for this test
   # needs: ['component:foo', 'helper:bar']
+  needs: ['component:commit-github-button']
 }
 
 test 'it renders', (assert) ->

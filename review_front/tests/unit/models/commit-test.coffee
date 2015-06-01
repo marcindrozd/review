@@ -2,10 +2,10 @@
 
 moduleForModel 'commit', {
   # Specify the other units that are required for this test.
-  needs: []
+  needs: ['project']
 }
 
 test 'it exists', (assert) ->
   model = @subject()
-  # store = @store()
+  #  store = @store()
   assert.ok !!model
