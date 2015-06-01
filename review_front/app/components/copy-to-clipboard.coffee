@@ -1,4 +1,4 @@
-`import Ember from 'ember';`
+`import Ember from 'ember'`
 `import ZeroClipboard from 'ember-cli-zero-clipboard/components/zero-clipboard';`
 
 CopyToClipboard = ZeroClipboard.extend
@@ -17,4 +17,4 @@ CopyToClipboard = ZeroClipboard.extend
       ), 1500
 
 
-`export default CopyToClipboard;`
+`export default CopyToClipboard`
