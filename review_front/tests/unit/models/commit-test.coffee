@@ -2,7 +2,7 @@
 
 moduleForModel 'commit', {
   # Specify the other units that are required for this test.
-  needs: ['project']
+  needs: ['model:project', 'model:author', 'model:ticket', 'model:permission']
 }
 
 test 'it exists', (assert) ->
