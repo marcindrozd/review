@@ -8,16 +8,17 @@ PermissionCell = Ember.Component.extend
   permission: (() ->
     user = @get('user')
     project = @get('project')
-    permission = user.get('permissions').find((item) -> item.get('project.id') == project.get('id'))
+    permission = user.get('permission').find (item) ->
+      item.get('project.id') == project.get('id')
     permission ||= @createPermission(user, project)
   ).property('project', 'user')
 
   createPermission: (user, project) ->
     permission = @store.createRecord('permission', {
-        allowed: false
-        user: user
-        project: project
-      })
+      allowed: false
+      user: user
+      project: project
+    })
 
   actions:
     grantAccess: (permission)->
