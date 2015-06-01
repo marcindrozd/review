@@ -5,4 +5,5 @@ timeRelative = (value, options) ->
 
 TimeRelativeHelper = Ember.Handlebars.makeBoundHelper timeRelative
 
+`export { timeRelative }`
 `export default TimeRelativeHelper`
