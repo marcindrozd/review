@@ -12,14 +12,5 @@
 
 #= require jquery
 #= require jquery_ujs
-#= require ember
-#= require ember-data
-#= require csrf
-#= require zeroclipboard
-#= require moment
 #= require_self
-#= require review
-
-# for more details see: http://emberjs.com/guides/application/
-window.Review = Ember.Application.create(LOG_TRANSITIONS: true)
 #= require_tree .
