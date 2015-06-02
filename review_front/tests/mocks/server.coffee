@@ -17,16 +17,18 @@ Server = Ember.Object.extend
               { 
                 id: 1
                 accepted: 1
-                rejcected: 2
+                rejected: 2
                 pending: 6
-                name: 'fristProject'
+                total: 10
+                name: 'firstProject'
                 grade: 'good'
                 permission: [1]
               },{
                 id: 2
                 accepted: 0
-                rejcected: 2
+                rejected: 2
                 pending: 4 
+                total: 10
                 name: 'secondProject'
                 grade: 'good'
                 permission: [1]
@@ -34,14 +36,38 @@ Server = Ember.Object.extend
             ]
           ) 
         ]
-       @get '/api/v2/users/me', ->
-         [
-           200, { "Content-type": "application/json" }, JSON.stringify(
-             user:
-               {
-                 id: 1
-                 admin: true
-               }
-            )
-         ]
+      @get 'api/v2/users', ->
+        [
+          200, { "Content-type": "application/json" }, JSON.stringify(
+            users:[
+              {
+                id: 1
+                admin: true
+                permissions: [1]
+              },
+              {
+                id: 2
+                admin: true
+                permissions: [1]
+              }
+            ]
+          )
+        ]
+      @get '/api/v2/users/me', ->
+        [
+          200, { "Content-type": "application/json" }, JSON.stringify(
+            user:
+              {
+                id: 1
+                admin: true
+                permissions:[1] 
+              }
+          )
+        ]
+      @get 'api/v2/permissions', ->
+        [
+          200, { "Content-type": "application/json"}, JSON.stringify(
+            permissions:[1]
+          )
+        ]
 `export default Server`
