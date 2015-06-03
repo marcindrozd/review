@@ -50,7 +50,3 @@ test "checks correct values for project", (assert) ->
 test "find API key buttons", (assert) ->
   assert.equal find(".copy-to-clipboard").length, 2
 
-test "click on Admin in nav bar directs to admin", ->
-  click('.navbar-left a:last')
-  andThen ->
-    equal(currentPath(), 'admin.users')
