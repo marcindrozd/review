@@ -12,9 +12,11 @@ CopyToClipboard = ZeroClipboard.extend
   actions:
     afterCopy: ->
       @justCopiedToggle()
-      Ember.run.later @, (->
+      setTimeout(
+        Ember.run.bind @, (->
         @justCopiedToggle()
-      ), 1500
+        ), 1500
+      )
 
 
 `export default CopyToClipboard`
