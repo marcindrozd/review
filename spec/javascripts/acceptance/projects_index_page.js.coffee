@@ -95,12 +95,6 @@ test "click on project name directs to commits", ->
     andThen ->
       equal(currentPath(), 'projects.project.commits')
 
-test "click on Admin in nav bar directs to admin", ->
-  visit '/projects'
-  click('.navbar-left a:last')
-  andThen ->
-    equal(currentPath(), 'admin.users')
-
 test "checks correct values for project", ->
   findFirstProjectRejected = ->
     find(".table-bordered tr:eq(1) td:eq(1)").text()
