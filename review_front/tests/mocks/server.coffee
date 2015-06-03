@@ -43,12 +43,12 @@ Server = Ember.Object.extend
               {
                 id: 1
                 admin: true
-                permissions: [1]
+                permissions: []
               },
               {
                 id: 2
                 admin: true
-                permissions: [1]
+                permissions: []
               }
             ]
           )
@@ -60,14 +60,19 @@ Server = Ember.Object.extend
               {
                 id: 1
                 admin: true
-                permissions:[1] 
+                permissions: []
               }
           )
         ]
       @get 'api/v2/permissions', ->
         [
           200, { "Content-type": "application/json"}, JSON.stringify(
-            permissions:[1]
+            permissions: [
+              {
+                id: 1
+                permissions:[1]
+              }
+            ]
           )
         ]
 `export default Server`
