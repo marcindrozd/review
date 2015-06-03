@@ -20,12 +20,12 @@ table.table.table-bordered.table-hover
         td
           strong Expiration:
           '
-          = time-relative commit.expiresAt 
+          = time-relative commit.expiresAt
         td
           each ticket in tickets
             = ticket-tag ticket=ticket
         td
-          = commit-state-label reviewState=state
+          = commit-state-label reviewState=commit.state
         td
           = commit-action-buttons commit=commit
         td
