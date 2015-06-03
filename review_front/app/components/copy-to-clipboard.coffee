@@ -12,7 +12,7 @@ CopyToClipboard = ZeroClipboard.extend
   actions:
     afterCopy: ->
       @justCopiedToggle()
-      Ember.run.later (->
+      Ember.run.later @, (->
         @justCopiedToggle()
       ), 1500
 
