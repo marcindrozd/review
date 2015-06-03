@@ -1,5 +1,5 @@
 `import Ember from 'ember'`
-`import ZeroClipboard from 'ember-cli-zero-clipboard/components/zero-clipboard'`
+`import ZeroClipboard from 'ember-cli-zero-clipboard/components/zero-clipboard';`
 
 CopyToClipboard = ZeroClipboard.extend
   tagName: 'button'
@@ -12,7 +12,7 @@ CopyToClipboard = ZeroClipboard.extend
   actions:
     afterCopy: ->
       @justCopiedToggle()
-      Ember.setTimeout @, (->
+      Ember.run.later @, (->
         @justCopiedToggle()
       ), 1500
 
