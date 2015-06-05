@@ -2,6 +2,7 @@
 `import { module, test } from 'qunit'`
 `import startApp from '../helpers/start-app'`
 `import Server from '../mocks/server'`
+`import ServerNoAdmin from '../mocks/server-no-admin'`
 
 application = null
 server = null
@@ -31,11 +32,16 @@ test 'after click on admin it trnsfers to admin page', (assert) ->
   andThen ->
     assert.equal currentPath(), 'admin.users'
 
-test 'from adming page it transfers to projects after click on projects', (assert) ->
+test 'from admin page, it transfers to projects after click on projects', (assert) ->
   click("a:contains('Admin')")
   andThen ->
     click("a:contains('Projects')")
     andThen ->
       assert.equal currentPath(), 'projects.index'
 
-
+test 'if user is not admin no admin link is shown', (assert) ->
+  Ember.run application, 'destroy'
+  server.shutdown()
+  application = startApp()
+  server = ServerNoAdmin.create()
+  assert.equal find("a:contains('Admin')").length, 0
