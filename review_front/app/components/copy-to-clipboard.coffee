@@ -1,5 +1,5 @@
-`import Ember from 'ember';`
-`import ZeroClipboard from 'ember-cli-zero-clipboard/components/zero-clipboard'; `
+`import Ember from 'ember'`
+`import ZeroClipboard from 'ember-cli-zero-clipboard/components/zero-clipboard'`
 
 CopyToClipboard = ZeroClipboard.extend
   tagName: 'button'
@@ -16,4 +16,4 @@ CopyToClipboard = ZeroClipboard.extend
         @justCopiedToggle()
       ), 1500
 
-`export default CopyToClipboard;`
+`export default CopyToClipboard`
