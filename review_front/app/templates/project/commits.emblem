@@ -10,3 +10,4 @@
 br
 br
 = commits-table commits=searchResults
+= page-numbers content=content
