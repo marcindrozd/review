@@ -19,7 +19,7 @@ module 'Acceptance: Projects',
     return
 
 test 'visiting /projects', (assert) ->
-    assert.equal currentURL(), '/projects'
+  assert.equal currentPath(), 'projects.index'
 
 test 'displays table with projects', (assert) ->
   assert.equal find('.table-bordered a:first').text(), 'firstProject'
