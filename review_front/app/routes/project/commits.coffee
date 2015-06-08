@@ -1,8 +1,10 @@
-`import Ember from 'ember';`
+`import Ember from 'ember'`
+`import RouteMixin from 'ember-cli-pagination/remote/route-mixin'`
 
-Route = Ember.Route.extend
-  model: ->
+Route = Ember.Route.extend RouteMixin,
+  model: (params) ->
     project = @modelFor('project')
     @store.find('commit', project_id: project.get('id'))
+    @findPaged 'commit', params
 
 `export default Route;`
