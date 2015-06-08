@@ -25,4 +25,8 @@ ProjectCommitsController = Ember.ArrayController.extend
     toggleAccepted: ->
       @set 'hideAccepted', !(@get('hideAccepted'))
 
+  queryParams: ['page', 'pageNumber']
+  pageBinding: 'content.page'
+  page: 1
+
 `export default ProjectCommitsController`
