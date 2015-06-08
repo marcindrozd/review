@@ -5,13 +5,12 @@ PermissionCell = Ember.Component.extend
   classNames: ['permissions', 'text-center']
   classNameBindings: ['permission.isAllowed:success:danger']
 
-  permission: Ember.computed('project', 'user', ->
+  permission: Ember.computed 'project', 'user', ->
     user = @get('user')
     project = @get('project')
     permission = user.get('permissions').find (item) ->
       item.get('project.id') == project.get('id')
     permission ||= @createPermission(user, project)
-  )
 
   createPermission: (user, project) ->
     permission = @store.createRecord('permission', {
