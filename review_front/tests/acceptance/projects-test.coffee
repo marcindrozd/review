@@ -10,7 +10,7 @@ module 'Acceptance: Projects',
   beforeEach: ->
     application = startApp()
     server = Server.create()
-    visit '/'
+    visit '/projects'
     return
 
   afterEach: ->
