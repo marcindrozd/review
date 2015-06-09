@@ -2,7 +2,7 @@
 `import Pretender from 'pretender'`
 
 Server = Ember.Object.extend
-  init: ->
+  init:->
     @set('server', @_makePretender())
 
   shutdown: ->
@@ -74,5 +74,28 @@ Server = Ember.Object.extend
               }
             ]
           )
+        ]
+      @get '/api/v2/commits', ->
+        [
+          200, { "Content-type": "application/json" }, JSON.stringify(
+            commits: [
+              {
+                id: 1
+                project_id: 1
+                authors: [
+                  {
+                    id:1
+                    name: "John Kovalsky"
+                  }
+                ]
+                meta: {total_pages: 1}
+                tickets: []
+              },
+              {
+                id: 2
+                project_id: 2
+              }
+            ]
+          ) 
         ]
 `export default Server`
