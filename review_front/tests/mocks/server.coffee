@@ -2,7 +2,7 @@
 `import Pretender from 'pretender'`
 
 Server = Ember.Object.extend
-  init:->
+  init: ->
     @set('server', @_makePretender())
 
   shutdown: ->
