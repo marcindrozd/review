@@ -82,6 +82,7 @@ Server = Ember.Object.extend
               {
                 id: 1
                 project_id: 1
+                state: "passed"
                 authors: [
                   {
                     id:1
@@ -94,8 +95,17 @@ Server = Ember.Object.extend
               {
                 id: 2
                 project_id: 2
+                author_id: 2
               }
             ]
           ) 
         ]
+      @put '/api/v2/commits/2', ->
+        [ 
+          200, { "Content-type": "application/json" }, JSON.stringify(
+            commit: {
+              state: "accepted"
+            }
+          )
+        ] 
 `export default Server`
