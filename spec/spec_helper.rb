@@ -15,7 +15,7 @@ end
 
 if ENV['CIRCLE_ARTIFACTS']
     require 'simplecov'
-    dir = File.join("../spec", "../review_front/tests", ENV['CIRCLE_ARTIFACTS'], "coverage")
+    dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
     SimpleCov.coverage_dir(dir)
 end
 
