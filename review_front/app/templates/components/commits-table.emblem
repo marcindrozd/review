@@ -29,5 +29,5 @@ table.table.table-bordered.table-hover
         td
           = commit-action-buttons commit=commit
         td
-          = copy-to-clipboard text=remoteId
+          = copy-to-clipboard text=commit.remoteId
             'Copy SHA
