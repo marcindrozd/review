@@ -13,12 +13,6 @@ else
   SimpleCov.start 'rails'
 end
 
-if ENV['CIRCLE_ARTIFACTS']
-    require 'simplecov'
-    dir = File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
-    SimpleCov.coverage_dir(dir)
-end
-
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
