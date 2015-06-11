@@ -5,10 +5,10 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:project)
   expose(:ticket)
   expose(:commits) { find_commits }
+  expose(:paginated_commits) { commits.order(:created_at).page params[:page] }
 
   def index
-    paginated_commits = commits.order(:created_at).page params[:page]
-    render json: paginated_commits, meta: {total_pages: total_pages(paginated_commits)}
+    respond_with paginated_commits, meta: { total_pages: commit_pages_count }
   end
 
   def update
@@ -45,7 +45,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
     end
   end
 
-  def total_pages (paginated_commits)
-    paginated_commits.default_per_page % commits.count
+  def commit_pages_count
+    (commits.count / paginated_commits.default_per_page.to_f).ceil
   end
 end
