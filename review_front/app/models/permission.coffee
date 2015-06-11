@@ -5,8 +5,7 @@ Permission = DS.Model.extend
   user: DS.belongsTo('user')
   project: DS.belongsTo('project')
 
-  isAllowed: Ember.computed('admin', ->
+  isAllowed: Ember.computed 'allowed', ->
     @get('allowed') == true
-  )
 
 `export default Permission`
