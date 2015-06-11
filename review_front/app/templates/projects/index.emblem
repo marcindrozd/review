@@ -7,7 +7,7 @@ table.table.table-bordered
     th Total
     th Review status
     th Token
-  each project in model 
+  each project in model
     tr
       td= link-to 'project.commits' project: project.name
       td= project.rejected
@@ -17,3 +17,5 @@ table.table.table-bordered
       td= project.grade
       td= copy-to-clipboard text=project.token
         'Copy API token
+
+=page-numbers content=content
