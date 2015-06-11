@@ -3,9 +3,10 @@ class Api::V2::UsersController < Api::V2::BaseController
 
   expose(:user) { find_user }
   expose(:users)
+  expose(:paginated_users) { users.order(nickname: :asc).page params[:page] }
 
   def index
-    respond_with(users)
+    respond_with paginated_users, meta: { total_pages: user_pages_count }
   end
 
   def show
@@ -35,5 +36,9 @@ class Api::V2::UsersController < Api::V2::BaseController
 
   def admin_parameters
     params.require(:user).permit(:admin)
+  end
+
+  def user_pages_count
+    (users.count / paginated_users.default_per_page.to_f).ceil
   end
 end
