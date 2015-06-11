@@ -4,7 +4,7 @@
 Route = Ember.Route.extend RouteMixin,
   model: (params) ->
     project = @modelFor('project')
-    @store.find('commit', project_id: project.get('id'))
+    params.project_id = project.get('id')
     @findPaged 'commit', params
 
-`export default Route;`
+`export default Route`
