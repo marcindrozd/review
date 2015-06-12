@@ -11,4 +11,8 @@ describe GithubHookParser::PivotalTicket do
   it 'extracts ticket id from message' do
     expect(described_class.from_message(message).first.ticket_id).to eq("54321")
   end
+
+  it 'returns ticket type' do
+    expect(pivotal_ticket.ticket_type).to eq('pivotal')
+  end
 end
