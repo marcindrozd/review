@@ -10,7 +10,7 @@ module 'Acceptance: ProjectCommits',
   beforeEach: ->
     application = startApp()
     server = Server.create()
-    visit = '/project/1/commits'
+    visit 'projects/1/commits'
     return
 
   afterEach: ->
