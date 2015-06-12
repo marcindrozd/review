@@ -1,6 +1,3 @@
-machine:
-  phantomjs:
-    version: 2.0.0
 dependencies:
   post:
     - cd review_front && bower install && npm install
