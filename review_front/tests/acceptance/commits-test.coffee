@@ -18,9 +18,12 @@ module 'Acceptance: ProjectCommits',
     server.shutdown()
     return
 
+test 'goes to commits page', (assert) ->
+  assert.equal currentPath(), "projects.project.commits"
+
 test 'find pagination button', (assert) ->
   assert.ok find('.pagination')
 
 test 'find correct page nameber', (assert) ->
-  assert.ok find('.pagination li:class("Active")')
+  assert.ok find('.pagination .page-number:active')
   assert.ok find('.pagination a:contains("1")')

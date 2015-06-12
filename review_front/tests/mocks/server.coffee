@@ -82,22 +82,23 @@ Server = Ember.Object.extend
               {
                 id: 1
                 project_id: 1
+                author_id: 1
                 state: "passed"
-                authors: [
-                  {
-                    id:1
-                    name: "John Kovalsky"
-                  }
-                ]
-                meta: {total_pages: 1}
                 tickets: []
               },
               {
                 id: 2
                 project_id: 2
-                author_id: 2
+                author_id: 1
               }
             ]
+            authors: [
+              {
+                id: 1
+                name: "John Doe"
+              }
+            ]
+            meta: { total_pages: 1 }
           ) 
         ]
       @put '/api/v2/commits/2', ->
@@ -107,5 +108,5 @@ Server = Ember.Object.extend
               state: "accepted"
             }
           )
-        ] 
+        ]
 `export default Server`
