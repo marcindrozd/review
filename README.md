@@ -1,6 +1,7 @@
 # Review
 
-[![Code Climate](https://codeclimate.com/github/netguru/review.png)](https://codeclimate.com/github/netguru/review)
+[![Code Climate](https://codeclimate.com/github/netguru/review/badges/gpa.svg)](https://codeclimate.com/github/netguru/review)
+[![Test Coverage](https://codeclimate.com/github/netguru/review/badges/coverage.svg)](https://codeclimate.com/github/netguru/review/coverage)
 
 ![Circle CI](https://circleci.com/gh/netguru/review/tree/master.png?circle-token=f05c3dd432a61a6c0fe4fc4b20d5f7b6468868c9)
 
@@ -42,14 +43,3 @@ same for the test enviroment with a different key.
 This app is heavily using github webhooks. Everytime someone pushes commit, Review will receive a payload - json data with relevant event information. Check out an example payload in `db/fixtures/payload.json`. Based on this data, projects and commits are created. If this concept is new to you - head over to [github api documentation](https://developer.github.com/webhooks/).
 
 Run a dedicated task to see this in action: `bundle exec rake hook:test` (make sure your local server is running)
-
-## Troubleshooting
-Should you have problems with installing `therubyracer` gem
-try running the following:
-```
-brew install v8
-gem install libv8 -v 3.16.14.3  -- --with-system-v8
-gem install therubyracer
-```
-
-## Testing
