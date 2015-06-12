@@ -1,4 +1,18 @@
-class GithubHookParser::PivotalTicket < GithubHookParser::Ticket
+class GithubHookParser::PivotalTicket
+  attr_reader :ticket_id
+
+  def initialize(ticket_id)
+    @ticket_id = ticket_id
+  end
+
+  def attributes
+    {
+      remote_id: ticket_id,
+      source: ticket_type,
+      url: url,
+    }
+  end
+
   def ticket_type
     'pivotal'
   end
