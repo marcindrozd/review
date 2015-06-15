@@ -5,7 +5,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:project)
   expose(:ticket)
   expose(:commits) { find_commits }
-  expose(:paginated_commits) { commits.order(:created_at).page params[:page] }
+  expose(:paginated_commits) { commits.order('created_at DESC').page params[:page] }
 
   def index
     respond_with paginated_commits, meta: { total_pages: commit_pages_count }
