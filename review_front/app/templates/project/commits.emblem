@@ -9,5 +9,5 @@
   button.btn.btn-default{action "sortBy" 'expiresAt' on="click"} sort by expiration date
 br
 br
-= commits-table commits=searchResults
+= commits-table commits=searchResults current_user=current_user
 = page-numbers content=content

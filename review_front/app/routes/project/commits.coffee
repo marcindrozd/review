@@ -7,4 +7,8 @@ Route = Ember.Route.extend RouteMixin,
     params.project_id = project.get('id')
     @findPaged 'commit', params
 
+  setupController: (controller, model)->
+    controller.set('current_user', @store.find('user', 'me'))
+    controller.set('model', model)
+
 `export default Route`
