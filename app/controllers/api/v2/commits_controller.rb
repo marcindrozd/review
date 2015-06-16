@@ -13,6 +13,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
 
   def update
     commit.attempt_transition_to commit_params[:state]
+    commit.reviewer_id = params[:commit][:reviewer_id]
     commit.save
     respond_with(commit)
   end
