@@ -5,7 +5,9 @@ CommitActionButtons = Ember.Component.extend
 
   changeCommitStateTo: (state)->
     commit = @get('commit')
-    commit.set('state', state).save()
+    currentUser = @get('current_user')
+    commit.set('state', state)
+    commit.set('reviewer', currentUser).save()
 
   actions:
     acceptCommit: ()-> @changeCommitStateTo('accepted')
