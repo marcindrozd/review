@@ -1,0 +1,87 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'ember',
+1 verbose cli   '@1.13.0' ]
+2 info using npm@2.10.1
+3 info using node@v0.12.4
+4 verbose node symlink /usr/local/bin/node
+5 verbose install initial load of /Users/guest/projects/review_app/review/package.json
+6 verbose installManyTop reading scoped package data from /Users/guest/projects/review_app/review/node_modules/emblem/package.json
+7 info package.json emblem@0.5.1 No license field.
+8 verbose readDependencies loading dependencies from /Users/guest/projects/review_app/review/package.json
+9 silly cache add args [ 'ember', null ]
+10 verbose cache add spec ember
+11 silly cache add args [ '@1.13.0', null ]
+12 verbose cache add spec @1.13.0
+13 silly cache add parsed spec { raw: 'ember',
+13 silly cache add   scope: null,
+13 silly cache add   name: 'ember',
+13 silly cache add   rawSpec: '',
+13 silly cache add   spec: '*',
+13 silly cache add   type: 'range' }
+14 silly addNamed ember@*
+15 verbose addNamed "*" is a valid semver range for ember
+16 silly addNameRange { name: 'ember', range: '*', hasData: false }
+17 silly mapToRegistry name ember
+18 silly mapToRegistry using default registry
+19 silly mapToRegistry registry https://registry.npmjs.org/
+20 silly mapToRegistry uri https://registry.npmjs.org/ember
+21 verbose addNameRange registry:https://registry.npmjs.org/ember not in flight; fetching
+22 silly cache add parsed spec { raw: '@1.13.0',
+22 silly cache add   scope: null,
+22 silly cache add   name: null,
+22 silly cache add   rawSpec: '@1.13.0',
+22 silly cache add   spec: '/Users/guest/projects/review_app/review/@1.13.0',
+22 silly cache add   type: 'local' }
+23 error addLocal Could not install /Users/guest/projects/review_app/review/@1.13.0
+24 verbose request uri https://registry.npmjs.org/ember
+25 verbose request no auth needed
+26 info attempt registry request try #1 at 11:51:37
+27 verbose request id d99ba53eee25a99b
+28 verbose etag "792UTV361CGT24L60CNJFWI2O"
+29 http request GET https://registry.npmjs.org/ember
+30 http 304 https://registry.npmjs.org/ember
+31 silly get cb [ 304,
+31 silly get   { date: 'Mon, 15 Jun 2015 09:51:37 GMT',
+31 silly get     via: '1.1 varnish',
+31 silly get     'cache-control': 'max-age=60',
+31 silly get     etag: '"792UTV361CGT24L60CNJFWI2O"',
+31 silly get     age: '13',
+31 silly get     connection: 'keep-alive',
+31 silly get     'x-served-by': 'cache-fra1225-FRA',
+31 silly get     'x-cache': 'HIT',
+31 silly get     'x-cache-hits': '1',
+31 silly get     'x-timer': 'S1434361897.384282,VS0,VE0',
+31 silly get     vary: 'Accept' } ]
+32 verbose etag https://registry.npmjs.org/ember from cache
+33 verbose get saving ember to /Users/guest/.npm/registry.npmjs.org/ember/.cache.json
+34 silly addNameRange number 2 { name: 'ember', range: '*', hasData: true }
+35 silly addNameRange versions [ 'ember',
+35 silly addNameRange   [ '0.9.7-1',
+35 silly addNameRange     '0.9.8',
+35 silly addNameRange     '0.9.8-1',
+35 silly addNameRange     '1.0.0-pre',
+35 silly addNameRange     '1.0.0-pre.m1',
+35 silly addNameRange     '1.0.0-pre.m2',
+35 silly addNameRange     '1.0.0-pre.2' ] ]
+36 silly addNamed ember@1.0.0-pre.2
+37 verbose addNamed "1.0.0-pre.2" is a plain semver version for ember
+38 silly cache afterAdd ember@1.0.0-pre.2
+39 verbose afterAdd /Users/guest/.npm/ember/1.0.0-pre.2/package/package.json not in flight; writing
+40 verbose afterAdd /Users/guest/.npm/ember/1.0.0-pre.2/package/package.json written
+41 verbose stack Error: ENOENT, open '/Users/guest/projects/review_app/review/@1.13.0'
+41 verbose stack     at Error (native)
+42 verbose cwd /Users/guest/projects/review_app/review
+43 error Darwin 14.3.0
+44 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "ember" "@1.13.0"
+45 error node v0.12.4
+46 error npm  v2.10.1
+47 error path /Users/guest/projects/review_app/review/@1.13.0
+48 error code ENOENT
+49 error errno -2
+50 error enoent ENOENT, open '/Users/guest/projects/review_app/review/@1.13.0'
+50 error enoent This is most likely not a problem with npm itself
+50 error enoent and is related to npm not being able to find a file.
+51 verbose exit [ -2, true ]
