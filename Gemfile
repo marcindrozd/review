@@ -25,6 +25,7 @@ gem 'pg'
 gem 'rollbar'
 gem 'state_machine', github: 'JobV/state_machine'
 gem 'thin'
+gem 'whenever'
 
 group :development do
   gem 'capistrano', '~> 3.2.1'
