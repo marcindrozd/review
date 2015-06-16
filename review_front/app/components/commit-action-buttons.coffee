@@ -6,6 +6,10 @@ CommitActionButtons = Ember.Component.extend
   changeCommitStateTo: (state)->
     commit = @get('commit')
     currentUser = @get('current_user')
+    commitAuthor = @get('commit.author')
+
+    return if commitAuthor.get('name') == currentUser.get('name')
+
     commit.set('state', state)
     commit.set('reviewer', currentUser).save()
 
