@@ -11,6 +11,7 @@ Commit = DS.Model.extend
   authoredAt: DS.attr('date')
   author: DS.belongsTo('author')
   tickets: DS.hasMany('ticket')
+  reviewer: DS.belongsTo('user', {async: true})
   fix: DS.hasMany('commit', {inverse: 'fix'})
   fixed: DS.hasMany('commit', {inverse: 'fixed'})
 
@@ -36,5 +37,7 @@ Commit = DS.Model.extend
 
   belongsToMe: Ember.computed ->
     @store.find('user', 'me').get('person') is @get('author')
+
+  hasReviewer: Ember.computed.notEmpty('reviewer.id')
 
 `export default Commit`
