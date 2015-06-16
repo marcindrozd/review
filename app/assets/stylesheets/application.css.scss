@@ -71,6 +71,12 @@ img.avatar {
   }
 }
 
+.reviewer {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
 .btn-default.copy-to-clipboard {
   &.zeroclipboard-is-hover {
     @extend .btn:hover;
