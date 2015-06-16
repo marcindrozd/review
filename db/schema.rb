@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616103316) do
+ActiveRecord::Schema.define(version: 20150616130827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150616103316) do
 
   add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
   add_index "commits", ["project_id"], name: "index_commits_on_project_id", using: :btree
+  add_index "commits", ["reviewer_id"], name: "index_commits_on_reviewer_id", using: :btree
 
   create_table "commits_tickets", id: false, force: true do |t|
     t.integer "commit_id"
