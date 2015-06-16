@@ -25,6 +25,7 @@ class Commit < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :author, class_name: 'Person'
+  belongs_to :reviewer, class_name: 'User'
 
   has_and_belongs_to_many :tickets
 
