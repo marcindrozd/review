@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320142453) do
+ActiveRecord::Schema.define(version: 20150616103316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140320142453) do
     t.integer  "author_id"
     t.datetime "expires_at"
     t.datetime "authored_at"
+    t.integer  "reviewer_id"
   end
 
   add_index "commits", ["author_id"], name: "index_commits_on_author_id", using: :btree
