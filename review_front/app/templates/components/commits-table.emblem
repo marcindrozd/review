@@ -7,6 +7,7 @@ table.table.table-bordered.table-hover
         td
           p
             commit.message
+          = commit-reviewer commit=commit
         td
           strong Fixes for:
           '
@@ -27,7 +28,7 @@ table.table.table-bordered.table-hover
         td
           = commit-state-label reviewState=commit.state
         td
-          = commit-action-buttons commit=commit
+          = commit-action-buttons commit=commit current_user=current_user
         td
           = copy-to-clipboard text=commit.remoteId
             'Copy SHA
