@@ -7,7 +7,7 @@ ProjectCommitsController = Ember.ArrayController.extend
 
   searchResults: Ember.computed.oneWay('arrangedContent')
 
-  filteredContent: Ember.observer('hideAccepted', ->
+  filteredContent: Ember.observer('model', 'hideAccepted', ->
     searchInput = @get('model')
     if !searchInput or !@get('hideAccepted')
       @set 'searchResults', @get("arrangedContent")
