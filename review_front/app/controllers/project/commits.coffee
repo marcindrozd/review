@@ -16,12 +16,7 @@ ProjectCommitsController = Ember.ArrayController.extend
     return
   )
 
-  sortNow: (parameter)->
-    @set('sortProperties', [parameter])
-    @filteredContent()
-
   actions:
-    sortBy: (parameter)-> @sortNow(parameter)
     toggleAccepted: ->
       @set 'hideAccepted', !(@get('hideAccepted'))
 
