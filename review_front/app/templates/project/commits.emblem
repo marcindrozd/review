@@ -1,6 +1,9 @@
 .btn-group
   button.btn.btn-default{action "toggleAccepted" on="click"}
-    | Hide accepted commits
+    if hideAccepted
+      | Show accepted commits
+    else
+      | Hide accepted commits
 br
 br
 = commits-table commits=searchResults current_user=current_user
