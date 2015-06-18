@@ -14,7 +14,7 @@ CopyToClipboard = Ember.Component.extend
   justCopiedToggle: ->
     @set 'justCopied', !@justCopied
   didInsertElement: ->
-    client = new ZeroClipboard(@get('element'), moviePath: "http://coderberry.me/assets/ZeroClipboard/ZeroClipboard.swf")
+    client = new ZeroClipboard(@get('element'))
     #bind aftercopy to an ember event
     client.on 'aftercopy', ((event) ->
       @justCopiedToggle()
