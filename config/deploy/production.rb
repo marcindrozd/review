@@ -1,3 +1,5 @@
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"  }
+
 require 'net/ssh/proxy/command'
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}"  }
 
