@@ -12,5 +12,6 @@ table.table.table-bordered
         = admin-cell user=user store=store
         each project in projects
           = permission-cell user=user project=project store=store
+        th.text-center= auto-select-input value=user.token mouse-up="focus"
 
 = page-numbers content=users
