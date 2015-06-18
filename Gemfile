@@ -11,7 +11,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 
 gem 'active_model_serializers'
-gem 'bootstrap-sass'
+gem 'netguru_theme'
 gem 'decent_exposure'
 gem 'ember-cli-rails'
 gem 'google-analytics-rails'
