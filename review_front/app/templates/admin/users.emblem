@@ -12,7 +12,5 @@ table.table.table-bordered
         = admin-cell user=user store=store
         each project in projects
           = permission-cell user=user project=project store=store
-        th.text-center= copy-to-clipboard text=user.token
-          'Copy API
 
 = page-numbers content=users
