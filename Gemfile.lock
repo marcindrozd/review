@@ -47,6 +47,9 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bourbon (3.2.4)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -123,6 +126,11 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
+    netguru_theme (0.2.1)
+      bootstrap-sass (~> 3.3.0)
+      bourbon (~> 3.2.3)
+      sass (~> 3.2)
+      thor
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
       jwt (~> 0.1.8)
@@ -239,7 +247,6 @@ DEPENDENCIES
   active_model_serializers
   better_errors
   binding_of_caller
-  bootstrap-sass
   byebug
   capistrano (~> 3.2.1)
   capistrano-bower
@@ -259,6 +266,7 @@ DEPENDENCIES
   kaminari
   konf
   minitest
+  netguru_theme
   omniauth
   omniauth-github
   pg

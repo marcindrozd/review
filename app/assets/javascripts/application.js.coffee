@@ -12,5 +12,6 @@
 
 #= require jquery
 #= require jquery_ujs
+#= require netguru_theme
 #= require_self
 #= require_tree .
