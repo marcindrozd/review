@@ -48,5 +48,5 @@ test "checks correct values for project", (assert) ->
   assert.equal(findFirstProjectStatus(), 'good')
 
 test "find API key buttons", (assert) ->
-  assert.equal find(".copy-to-clipboard").length, 2
+  assert.equal find(".ember-text-field").length, 2
 
