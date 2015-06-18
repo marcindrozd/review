@@ -15,5 +15,6 @@ table.table.table-bordered
       td= project.accepted
       td= project.total
       td= project.grade
+      td= auto-select-input value=project.token mouse-up="focus"
 
 =page-numbers content=content

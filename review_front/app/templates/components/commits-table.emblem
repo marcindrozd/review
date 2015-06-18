@@ -30,3 +30,4 @@ table.table.table-bordered.table-hover
         td
           = commit-action-buttons commit=commit current_user=current_user
         td
+          = auto-select-input value=commit.remoteId mouse-up="focus"
