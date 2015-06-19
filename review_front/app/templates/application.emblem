@@ -1,12 +1,8 @@
 nav.navbar.navbar-fixed-top.navbar-inverse
   .navbar-header
     = link-to 'projects.index' classNames='navbar-brand' | Review
-  ul.nav.navbar-nav.navbar-left
-    = view 'nav'
-      = link-to 'projects' | Projects
-    if current_user.admin
-      = view 'nav'
-        = link-to 'admin' | Admin
+    ul.nav.navbar-nav.navbar-left
+      = nav-bar admin=current_user.admin
   ul.nav.navbar-nav.navbar-right.logout
     li
       = view 'logout-button' classNames='btn btn-danger navbar-btn'
