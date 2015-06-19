@@ -1,8 +1,8 @@
 `import Ember from 'ember'`
 
-Nav = Ember.View.extend
+NavBar = Ember.Component.extend
   tagName: 'li'
   classNameBindings: ['active']
   active: Ember.computed.alias('childViews.firstObject.active')
 
-`export default Nav`
+`export default NavBar `

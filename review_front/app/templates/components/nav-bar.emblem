@@ -1,0 +1,5 @@
+= link-to 'projects' | Projects
+if admin
+  = link-to 'admin' | Admin 
+
+
