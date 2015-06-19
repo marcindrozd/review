@@ -5,8 +5,7 @@ nav.navbar.navbar-fixed-top.navbar-inverse
       = nav-bar admin=current_user.admin
   ul.nav.navbar-nav.navbar-right.logout
     li
-      = view 'logout-button' classNames='btn btn-danger navbar-btn'
-        'Log out
+      = logout-button 
   ul.nav.navbar-nav.navbar-img.navbar-right
     li
       img.img-circle.avatar src=current_user.image_url alt=current_user.nickname
