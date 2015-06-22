@@ -8,7 +8,12 @@ Project = DS.Model.extend {
   total: DS.attr('number')
   grade: DS.attr('string')
   token: DS.attr('string')
-  permission: DS.hasMany('permission', { async: true} ) 
+  url: DS.attr('string')
+  permission: DS.hasMany('permission', { async: true} )
+
+  reviewIsGood: Ember.computed('grade', ->
+    @get('grade') == 'good'
+  )
 }
 
 `export default Project`
