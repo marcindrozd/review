@@ -1,8 +1,9 @@
 `import Ember from 'ember'`
 
 AutoSelectInput = Ember.TextField.extend
-  attributeBindings: ['readonly']
+  attributeBindings: ['readonly', 'size']
   readonly: true
+  size: 40
 
   mouseUp: ->
     @$().select()
