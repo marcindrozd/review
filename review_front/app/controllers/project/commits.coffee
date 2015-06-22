@@ -7,7 +7,7 @@ ProjectCommitsController = Ember.ArrayController.extend
 
   searchResults: Ember.computed.oneWay('arrangedContent')
 
-  filteredContent: Ember.observer('model', 'hideAccepted', ->
+  filteredContent: Ember.observer('model', 'hideAccepted', 'page', ->
     searchInput = @get('model')
     if !searchInput or !@get('hideAccepted')
       @set 'searchResults', @get("arrangedContent")
@@ -23,5 +23,6 @@ ProjectCommitsController = Ember.ArrayController.extend
   queryParams: ['page']
   pageBinding: 'content.page'
   page: 1
+
 
 `export default ProjectCommitsController`
