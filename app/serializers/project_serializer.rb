@@ -1,5 +1,5 @@
 class ProjectSerializer < ApplicationSerializer
-  attributes :id, :name, :rejected, :pending, :accepted, :total, :grade, :token
+  attributes :id, :name, :rejected, :pending, :accepted, :total, :grade, :token, :url
 
   delegate :rejected, to: :stats
 
