@@ -22,8 +22,8 @@ test 'visiting /projects', (assert) ->
   assert.equal currentPath(), 'projects.index'
 
 test 'displays table with projects', (assert) ->
-  assert.equal find('.table-bordered a:first').text(), 'firstProject'
-  assert.equal find('.table-bordered a:last').text(), 'secondProject'
+  assert.equal find('.table-bordered tr:eq(1) a:first').text(), 'firstProject'
+  assert.equal find('.table-bordered tr:eq(2) a:first').text(), 'secondProject'
 
 test "checks correct values for project", (assert) ->
   findFirstProjectRejected = ->
@@ -39,14 +39,13 @@ test "checks correct values for project", (assert) ->
     find(".table-bordered tr:eq(1) td:eq(4)").text()
 
   findFirstProjectStatus = ->
-    find(".table-bordered tr:eq(1) td:eq(5)").text()
+    find(".table-bordered tr:eq(1) td:eq(5) .glyphicon.glyphicon-ok.text-success")
 
-  assert.equal(findFirstProjectRejected(), '2')
-  assert.equal(findFirstProjectPending(), '6')
-  assert.equal(findFirstProjectAccepted(), '1')
-  assert.equal(findFirstProjectTotal(), '10')
-  assert.equal(findFirstProjectStatus(), 'good')
+  assert.equal findFirstProjectRejected(), '2'
+  assert.equal findFirstProjectPending(), '6'
+  assert.equal findFirstProjectAccepted(), '1'
+  assert.equal findFirstProjectTotal(), '10'
+  assert.equal findFirstProjectStatus().length, 1
 
-test "find API key buttons", (assert) ->
-  assert.equal find(".ember-text-field").length, 2
-
+test "find github links", (assert) ->
+  assert.equal find(".glyphicon.glyphicon-link").length, 2
