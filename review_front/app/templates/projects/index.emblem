@@ -1,20 +1,28 @@
-table.table.table-bordered
-  tr
-    th Name
-    th Rejected
-    th Pending
-    th Accepted
-    th Total
-    th Review status
-    th Token
-  each project in model
+table.table.table-bordered.table-striped
+  thead
     tr
-      td= link-to 'project.commits' project: project.name
-      td= project.rejected
-      td= project.pending
-      td= project.accepted
-      td= project.total
-      td= project.grade
-      td= auto-select-input value=project.token mouse-up="focus"
+      th Name
+      th Rejected
+      th Pending
+      th Accepted
+      th Total
+      th Review status
+      th Github link
+  tbody
+    each project in model
+      tr
+        td= link-to 'project.commits' project: project.name
+        td= project.rejected
+        td= project.pending
+        td= project.accepted
+        td= project.total
+        td
+          if project.reviewIsGood
+            i.glyphicon.glyphicon-ok.text-success
+          else
+            i.glyphicon.glyphicon-remove.text-danger
+        td
+          a target='_blank' href=project.url
+            span.glyphicon.glyphicon-link
 
 =page-numbers content=content
