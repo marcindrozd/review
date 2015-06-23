@@ -1,11 +1,13 @@
 `import Ember from 'ember'`
+`import pagedArray from 'ember-cli-pagination/computed/paged-array'`
 
 ProjectCommitsController = Ember.ArrayController.extend
   sortProperties: ['authoredAt']
 
   hideAccepted: true
 
-  searchResults: Ember.computed 'page', 'hideAccepted', ->
+
+  searchFilter: Ember.computed 'model', 'hideAccepted', 'page', ->
     if @get('hideAccepted') == false
       @get('model')
     else
@@ -15,8 +17,12 @@ ProjectCommitsController = Ember.ArrayController.extend
     toggleAccepted: ->
       @set 'hideAccepted', !(@get('hideAccepted'))
 
+  pagedContent: pagedArray('searchFilter')
+
   queryParams: ['page']
-  pageBinding: 'content.page'
+  pageBinding: 'pagedContent.page'
+  perPageBinding: 'pagedContent.perPage'
+  totalPageBinding: 'pagedContent.totalPages'
   page: 1
 
 
