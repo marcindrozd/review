@@ -1,1 +1,1 @@
-img.img-circle.avatar src=person.imageUrl alt=person.name
+img.img-square.avatar.picture src=person.imageUrl alt=person.nick
