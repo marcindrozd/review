@@ -11,7 +11,10 @@ table.table.table-striped.commits-table
           = gravatar-image person=commit.author
           .commits-table__commit-info
             .commits-table__commit-info--author-name
-              commit.author.name
+              strong #{commit.author.name}
+              |  - expiration:
+              '
+              = time-relative commit.expiresAt
             .commits-table__commit-info--message
               commit.message
           .pull-right
@@ -22,3 +25,4 @@ table.table.table-striped.commits-table
           = commit-state-label reviewState=commit.state
         td.commits-table__review
           = commit-github-button commit=commit current_user=current_user
+
