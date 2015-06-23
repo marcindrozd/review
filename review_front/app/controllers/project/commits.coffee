@@ -22,7 +22,7 @@ ProjectCommitsController = Ember.ArrayController.extend
   queryParams: ['page']
   pageBinding: 'pagedContent.page'
   perPageBinding: 'pagedContent.perPage'
-  totalPageBinding: 'pagedContent.totalPages'
+  totalPagesBinding: 'pagedContent.totalPages'
   page: 1
 
 
