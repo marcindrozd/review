@@ -15,7 +15,7 @@ ProjectCommitsController = Ember.ArrayController.extend
 
   actions:
     toggleAccepted: ->
-      @set 'hideAccepted', !(@get('hideAccepted'))
+      @toggleProperty('hideAccepted')
 
   pagedContent: pagedArray('searchFilter')
 
