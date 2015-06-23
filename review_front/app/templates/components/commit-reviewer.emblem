@@ -1,4 +1,4 @@
 if commit.hasReviewer
-  | reviewed by
+  | Reviewer:
   .reviewer
     commit.reviewer.name
