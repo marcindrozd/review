@@ -88,9 +88,12 @@ img.avatar {
   }
 }
 ul.nav.navbar-nav.navbar-left {
+  li {
+  }
   a {
     display: inline;
     line-height: 50px;
+    background-color: #222;
   }
   a.active {
     color: #f5a122;
