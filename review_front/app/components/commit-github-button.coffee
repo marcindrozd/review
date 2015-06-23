@@ -15,7 +15,21 @@ CommitGithubButton = Ember.Component.extend
       height=#{COMMIT_PREVIEW.height}, top=#{top}, left=#{left}")
     commit_prev.focus()
 
+  changeCommitStateTo: (state)->
+    commit = @get('commit')
+    currentUser = @get('current_user')
+    commitAuthor = @get('commit.author')
+
+    return if commitAuthor.get('name') == currentUser.get('name')
+
+    commit.set('state', state)
+    commit.set('reviewer', currentUser).save()
+
+
   actions:
     viewCommit: ()-> @showCommitInModal()
+    acceptCommit: ()-> @changeCommitStateTo('accepted')
+    passCommit: ()-> @changeCommitStateTo('passed')
+    rejectCommit: ()-> @changeCommitStateTo('rejected')
 
 `export default CommitGithubButton`
