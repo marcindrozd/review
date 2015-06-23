@@ -1,0 +1,29 @@
+.commits-table {
+
+  &__commit-info {
+    float: left;
+
+    &--author-name {
+      font-weight: $fw-bold;
+    }
+
+    &--message {
+      margin-top: 4px;
+    }
+  }
+
+  &__commit-reviewer {
+    float: left;
+    margin-right: 15px;
+  }
+}
+
+.author-avatar {
+  float: left;
+  margin-right: 5px;
+
+  .picture {
+    width: 50px;
+    height: auto;
+  }
+}
