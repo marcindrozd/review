@@ -9,6 +9,7 @@ gem 'sprockets-rails', '~> 3.0.0.beta1'
 gem 'hike'
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'ransack'
 
 gem 'active_model_serializers'
 gem 'netguru_theme'
