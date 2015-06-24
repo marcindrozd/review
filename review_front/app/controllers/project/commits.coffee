@@ -5,25 +5,19 @@ ProjectCommitsController = Ember.ArrayController.extend
   sortProperties: ['authoredAt']
 
   hideAccepted: true
-
-
-  searchFilter: Ember.computed 'model', 'hideAccepted', 'page', ->
-    if @get('hideAccepted') == false
-      @get('model')
-    else
-      @get('model').filterProperty('isAccepted', false)
+  queryParams: ['page', 'q']
+  pageBinding: 'content.page'
+  perPageBinding: 'content.perPage'
+  totalPagesBinding: 'content.totalPages'
+  page: 1
+  q: { state_not_cont: 'accepted' }
 
   actions:
     toggleAccepted: ->
       @toggleProperty('hideAccepted')
-
-  pagedContent: pagedArray('searchFilter', perPage: 25)
-
-  queryParams: ['page']
-  pageBinding: 'pagedContent.page'
-  perPageBinding: 'pagedContent.perPage'
-  totalPagesBinding: 'pagedContent.totalPages'
-  page: 1
-
+      if @get('hideAccepted') == false
+        @transitionTo(queryParams:{q: null, page: @page })
+      else
+        @transitionTo(queryParams:{q: state_not_cont: 'accepted', page: @page})
 
 `export default ProjectCommitsController`

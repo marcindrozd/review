@@ -6,5 +6,5 @@
       | Hide accepted commits
 br
 br
-= commits-table commits=pagedContent current_user=current_user 
-= page-numbers content=pagedContent
+= commits-table commits=content current_user=current_user
+= page-numbers content=content
