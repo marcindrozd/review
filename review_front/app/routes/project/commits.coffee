@@ -2,6 +2,11 @@
 `import RouteMixin from 'ember-cli-pagination/remote/route-mixin'`
 
 Route = Ember.Route.extend RouteMixin,
+  queryParams:
+    q:
+      refreshModel: true
+      state_not_cont: 'accepted'
+
   model: (params) ->
     project = @modelFor('project')
     params.project_id = project.get('id')
