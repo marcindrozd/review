@@ -24,18 +24,18 @@ table.table.table-striped.commits-table
           .commits-table__fixes.pull-right
             if commit.fix
               p
-                | Fixes for:
-                '
+                ul Fixes for:
                 each fix in commit.fix
-                  a{bind-attr href="fix.remoteUrl"} target="_blank"
-                    fix.remoteId
+                  li
+                    a{bind-attr href="fix.remoteUrl"} target="_blank"
+                      fix.remoteId
             if commit.fixed
               p
-                | Fixed by:
-                '
+                ul Fixed by:
                 each fix in commit.fixed
-                  a{bind-attr href="fix.remoteUrl"} target="_blank"
-                    fix.remoteId
+                  li
+                    a{bind-attr href="fix.remoteUrl"} target="_blank"
+                      fix.remoteId
         td
           = commit-state-label reviewState=commit.state
         td.commits-table__review
