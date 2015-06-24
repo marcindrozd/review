@@ -24,14 +24,14 @@ table.table.table-striped.commits-table
           .commits-table__fixes.pull-right
             if commit.fix
               p
-                ul Fixes for:
+                ul Fixed by:
                 each fix in commit.fix
                   li
                     a{bind-attr href="fix.remoteUrl"} target="_blank"
                       fix.remoteId
             if commit.fixed
               p
-                ul Fixed by:
+                ul Fixes for:
                 each fix in commit.fixed
                   li
                     a{bind-attr href="fix.remoteUrl"} target="_blank"
