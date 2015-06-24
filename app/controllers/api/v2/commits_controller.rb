@@ -5,10 +5,11 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:project)
   expose(:ticket)
   expose(:commits) { find_commits }
-  expose(:paginated_commits) { commits.order('expires_at DESC').page params[:page] }
+  expose(:filtered_commits) { commits.ransack(params[:q]).result }
+  expose(:filtered_paginated_commits) { filtered_commits.order('expires_at DESC').page params[:page] }
 
   def index
-    respond_with commits, meta: { total_pages: commit_pages_count }
+    respond_with filtered_paginated_commits, meta: { total_pages: commit_pages_count }
   end
 
   def update
@@ -47,6 +48,6 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   def commit_pages_count
-    (commits.count / paginated_commits.default_per_page.to_f).ceil
+    (filtered_commits.count / filtered_paginated_commits.default_per_page.to_f).ceil
   end
 end
