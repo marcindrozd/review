@@ -8,7 +8,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:paginated_commits) { commits.order('expires_at DESC').page params[:page] }
 
   def index
-    respond_with paginated_commits, meta: { total_pages: commit_pages_count }
+    respond_with commits, meta: { total_pages: commit_pages_count }
   end
 
   def update
