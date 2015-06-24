@@ -10,8 +10,9 @@
   }
 
   &__fixes {
-    clear: both;
-    width: 320px;
+    clear: right;
+    width: 318px;
+    margin-top: 10px;
   }
 
   &__commit-reviewer {
