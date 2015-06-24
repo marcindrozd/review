@@ -11,11 +11,20 @@
 
   &__fixes {
     clear: both;
+    width: 320px;
   }
 
   &__commit-reviewer {
     float: left;
     margin-right: 15px;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
   }
 }
 
