@@ -1,13 +1,13 @@
 class Commit < ActiveRecord::Base
-  SOON_TO_EXPIRE = 6.hours
-  AUTOREJECT_TIME = 48.hours
+  SOON_TO_EXPIRE = 6
+  AUTOREJECT_TIME = 48
 
   before_create :get_associated_project, :set_expires_at
   after_create :get_associated_commits, :fix_commits
 
-  scope :stale_pending,  ->{ pending.where('created_at <= ?', AUTOREJECT_TIME.ago) }
-  scope :stale_passed,   ->{ passed.where('passed_at <= ?', AUTOREJECT_TIME.ago) }
-  scope :soon_to_expire, ->{ pending.where('expires_at < ?', SOON_TO_EXPIRE.from_now) }
+  scope :stale_pending,  ->{ pending.where('created_at <= ?', AUTOREJECT_TIME.business_hours.ago) }
+  scope :stale_passed,   ->{ passed.where('passed_at <= ?', AUTOREJECT_TIME.business_hours.ago) }
+  scope :soon_to_expire, ->{ pending.where('expires_at < ?', SOON_TO_EXPIRE.business_hours.from_now) }
   scope :by_expire_date, ->{ order(:expires_at) }
   scope :by_remote,      ->(remote) { where(remote_id: remote) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
@@ -52,7 +52,7 @@ class Commit < ActiveRecord::Base
     end
 
     after_transition any => :passed do |commit, _transition|
-      commit.update_attribute(:expires_at, AUTOREJECT_TIME.from_now)
+      commit.update_attribute(:expires_at, AUTOREJECT_TIME.business_hours.from_now)
     end
   end
 
@@ -129,7 +129,7 @@ class Commit < ActiveRecord::Base
   end
 
   def set_expires_at
-    self.expires_at = AUTOREJECT_TIME.from_now
+    self.expires_at = AUTOREJECT_TIME.business_hours.from_now
   end
 
   def get_associated_commits
