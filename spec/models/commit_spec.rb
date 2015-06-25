@@ -95,7 +95,7 @@ describe Commit do
 
     it 'sets expires_at when passing commit' do
       commit.pass
-      expect(commit.reload.expires_at).to eq(Commit::AUTOREJECT_TIME.from_now)
+      expect(commit.reload.expires_at).to eq(Commit::AUTOREJECT_TIME.business_hours.from_now)
     end
   end
 
