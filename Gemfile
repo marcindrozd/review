@@ -13,6 +13,8 @@ gem 'ransack'
 
 gem 'active_model_serializers'
 gem 'netguru_theme'
+gem 'business_time'
+gem 'holidays'
 gem 'decent_exposure'
 gem 'ember-cli-rails'
 gem 'google-analytics-rails'
