@@ -5,7 +5,7 @@ Route = Ember.Route.extend RouteMixin,
   queryParams:
     q:
       refreshModel: true
-      state_not_cont: 'accepted'
+      state_not_in: ['accepted', 'fixed']
 
   model: (params) ->
     project = @modelFor('project')
