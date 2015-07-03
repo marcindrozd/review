@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   has_many :permissions
   has_many :tokens, as: :tokenable
 
