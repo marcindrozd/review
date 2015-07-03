@@ -30,6 +30,8 @@ gem 'rollbar'
 gem 'state_machine', github: 'JobV/state_machine'
 gem 'thin'
 gem 'whenever'
+gem 'rolify'
+gem 'cancancan'
 
 group :development, :production do
   gem 'capistrano', '~> 3.2.1'
