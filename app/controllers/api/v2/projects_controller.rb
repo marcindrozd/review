@@ -14,10 +14,10 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   private
 
   def find_projects
-    if current_user.admin?
+    if current_user.has_role? :admin || :developer
       Project.all
     else
-      Project.joins(:permissions).where(permissions: { user_id: current_user.id, allowed: true })
+      Project.user_resources(current_user)
     end
   end
 

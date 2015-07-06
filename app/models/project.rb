@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  resourcify
   enum trade_details: [:internal, :limited, :global, :no_trade]
 
   has_many :commits
@@ -20,15 +21,20 @@ class Project < ActiveRecord::Base
   end
 
   def self.for_user user
-    if user.admin?
+    if user.has_role? :admin || :developer
       get_unreviewed all
     else
-      get_unreviewed user.permissions.map(&:project)
+      get_unreviewed user_resources(user)
     end
   end
 
   def self.get_unreviewed projects
     projects.select{ |p| p.commits.unreviewed.exists? }
+  end
+
+  def self.user_resources(user)
+    ids = user.roles.where(name: :contractor).includes(:resource).map { |role| role.resource.id }
+    Project.where(id: ids)
   end
 
   private
