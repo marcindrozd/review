@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Project do
 
   it { should respond_to(:commits) }
-  it { should respond_to(:permissions) }
   it { should respond_to(:tokens) }
   it { should validate_presence_of(:name) }
   it { should validate_uniqueness_of(:name) }

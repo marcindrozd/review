@@ -3,8 +3,10 @@ require 'spec_helper'
 describe Api::V1::TradeController do
 
   let(:project) { Project.create(name: 'something', url: 'http://test.com') }
-  let(:admin) { User.create(admin: true) }
+  let(:admin) { User.create }
   let(:admin_token) { admin.tokens.first.value }
+
+  before { admin.add_role :admin }
 
   describe 'get #index' do
     context 'wrong token given' do
