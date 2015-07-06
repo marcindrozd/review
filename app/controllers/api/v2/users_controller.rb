@@ -31,7 +31,7 @@ class Api::V2::UsersController < Api::V2::BaseController
   private
 
   def change_admin_flag
-    render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.admin?
+    render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.has_role? :admin
   end
 
   def admin_parameters
