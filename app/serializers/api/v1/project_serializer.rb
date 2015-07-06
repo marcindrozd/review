@@ -6,6 +6,7 @@ class Api::V1::ProjectSerializer < ActiveModel::Serializer
       deadline: deadline,
       commits: commits_as_json,
       project: project_as_json,
+      commits_by_state: object.commits.by_state_hash,
     }
   end
 
@@ -23,8 +24,8 @@ class Api::V1::ProjectSerializer < ActiveModel::Serializer
 
   def commits_as_json
     {
-      'by_user'  => object.commits.by_user_hash,
-      'by_state' => object.commits.by_state_hash,
+      'commits_by_user'  => object.commits.by_user_hash,
+      'commits_by_state'  => object.commits.by_state_hash,
     }
   end
 
