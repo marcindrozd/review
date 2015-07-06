@@ -2,7 +2,6 @@ class Project < ActiveRecord::Base
   enum trade_details: [:internal, :limited, :global, :no_trade]
 
   has_many :commits
-  has_many :permissions
   has_many :tokens, as: :tokenable
   belongs_to :project_owner
 
