@@ -32,7 +32,7 @@ class Project < ActiveRecord::Base
     projects.select{ |p| p.commits.unreviewed.exists? }
   end
 
-  def self.user_resources(user)
+  def self.user_resources user
     ids = user.roles.where(name: :contractor).includes(:resource).map { |role| role.resource.id }
     Project.where(id: ids)
   end
