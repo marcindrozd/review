@@ -6,7 +6,7 @@ Router = Ember.Router.extend
 
 Router.map ->
   @resource 'projects', ->
-    @resource 'project', path: '/:project_id', ->
+    @resource 'project', path: '/:name', ->
       @route 'commits'
   @resource 'tickets', ->
     @resource 'ticket', path: '/:ticket_id', ->
