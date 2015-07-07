@@ -18,7 +18,6 @@ Review::Application.routes.draw do
       resources :users, only: [:show, :index, :update]
       resources :commits, only: [:index, :update]
       resources :projects, only: [:index, :show]
-      resources :permissions, only: [:index, :show, :create, :update]
       resources :tickets, only: [:show]
     end
   end
