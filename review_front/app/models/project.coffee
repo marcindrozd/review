@@ -9,7 +9,6 @@ Project = DS.Model.extend {
   grade: DS.attr('string')
   token: DS.attr('string')
   url: DS.attr('string')
-  permission: DS.hasMany('permission', { async: true} )
 
   reviewIsGood: Ember.computed('grade', ->
     @get('grade') == 'good'
