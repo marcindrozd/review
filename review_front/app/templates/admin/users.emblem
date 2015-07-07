@@ -2,15 +2,13 @@ table.table.table-bordered
   thead
     tr
       th User name
-      th.text-center Admin
-      each project in projects
-        th.project.text-center= project.name
+      th Admin
+      th Developer
+      th Contractor
   tbody
     each user in users
       tr.user
         th= user.nickname
         = admin-cell user=user store=store currentUserId=currentUserId
-        each project in projects
-          = permission-cell user=user project=project store=store
 
 = page-numbers content=users
