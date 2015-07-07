@@ -8,7 +8,6 @@ AdminUsers = Ember.Route.extend RouteMixin,
     Ember.RSVP.hash
       projects: @store.find('project')
       users: @findPaged 'user', params
-      permissions: @store.find('permission')
       currentUserId: @store.find('user', 'me').then (result) -> result.get('id')
 
 `export default AdminUsers`
