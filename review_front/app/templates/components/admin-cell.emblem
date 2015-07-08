@@ -1,8 +1,0 @@
-if user.isSaving
-  span Saving…
-else
-  if user.isAdmin
-    a{action 'removeAdmin' user currentUserId} Disable
-  else
-    a{action 'setAdmin' user} Enable
-
