@@ -1,14 +1,16 @@
-table.table.table-bordered
+table.table.table-bordered.table-striped
   thead
     tr
+      th User nick
       th User name
-      th Admin
-      th Developer
-      th Contractor
+      th User email
+      th Role
   tbody
     each user in users
       tr.user
-        th= user.nickname
-        = admin-cell user=user store=store currentUserId=currentUserId
+        td= user.nickname
+        td= user.name
+        td= user.email
+        td
 
 = page-numbers content=users
