@@ -30,7 +30,7 @@ test 'shows linkt to admin page if user is admin', (assert) ->
 test 'after click on admin it trnsfers to admin page', (assert) ->
   click("a:contains('Admin')")
   andThen ->
-    assert.equal currentPath(), 'admin.users'
+    assert.equal currentPath(), 'admin.users.index'
 
 test 'from admin page, it transfers to projects after click on projects', (assert) ->
   click("a:contains('Admin')")
