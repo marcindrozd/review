@@ -12,6 +12,7 @@ Router.map ->
     @resource 'ticket', path: '/:ticket_id', ->
       @route 'commits'
   @resource 'admin', ->
-    @route 'users'
+    @resource 'users', ->
+      @route 'user', path: '/:nickname'
 
 `export default Router`
