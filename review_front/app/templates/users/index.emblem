@@ -4,7 +4,8 @@ table.table.table-bordered.table-striped
       th User nick
       th User name
       th User email
-      th Role
+      th User role
+      th Actions
   tbody
     each user in users
       tr.user
@@ -12,5 +13,6 @@ table.table.table-bordered.table-striped
         td= user.name
         td= user.email
         td
+        td= link-to "users.user" user class="btn btn-primary" | Edit user
 
 = page-numbers content=users
