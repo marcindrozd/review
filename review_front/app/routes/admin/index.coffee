@@ -2,6 +2,6 @@
 
 AdminIndex = Ember.Route.extend
   redirect: ->
-    @transitionTo('admin.users')
+    @transitionTo('users')
 
 `export default AdminIndex`
