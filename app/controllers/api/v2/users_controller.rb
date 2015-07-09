@@ -14,7 +14,7 @@ class Api::V2::UsersController < Api::V2::BaseController
   end
 
   def update
-    user.update_attributes(admin_parameters)
+    user.update_attributes(user_params)
     respond_with(user)
   end
 
@@ -34,8 +34,8 @@ class Api::V2::UsersController < Api::V2::BaseController
     render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.has_role? :admin
   end
 
-  def admin_parameters
-    params.require(:user).permit(:admin)
+  def user_params
+    params.require(:user).permit(:name, :nickname, :email)
   end
 
   def user_pages_count
