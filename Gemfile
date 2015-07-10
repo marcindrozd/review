@@ -31,6 +31,7 @@ gem 'state_machine', github: 'JobV/state_machine'
 gem 'thin'
 gem 'whenever'
 gem 'rolify'
+gem 'friendly_id'
 
 group :development, :production do
   gem 'capistrano', '~> 3.2.1'
