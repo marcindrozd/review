@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
   rolify
+  friendly_id :nickname
   has_many :tokens, as: :tokenable
 
   belongs_to :person
