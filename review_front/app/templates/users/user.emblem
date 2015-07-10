@@ -1,0 +1,22 @@
+.row
+  .col-md-4.col-md-offset-4
+    h1.text-center User profile
+    .inner-form
+      .form-group
+        label for="nickname" Nickname:
+        = input id="nickname" placeholder="User nickname" value=user.nickname class="form-control"
+      .form-group
+        label for="name" Name:
+        = input id="name" placeholder="User name" value=user.name class="form-control"
+      .form-group
+        label for="email" Email:
+        = input id="email" placeholder="User email" value=user.email type="text" class="form-control"
+      button class="btn btn-primary pull-right" data-toggle="modal" data-target="#deleteAccountModal" Delete Account
+      #deleteAccountModal.modal.fade
+        .modal-dialog
+          .modal-content
+            .modal-body Are you sure you want to delete your account?
+            .modal-footer
+              button class="btn btn-default" data-dismiss="modal" Cancel
+              button class="btn btn-primary" click="destroy" Delete
+      button type="submit" class="btn btn-primary" click="update" save profile
