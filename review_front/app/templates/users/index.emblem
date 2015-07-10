@@ -12,7 +12,7 @@ table.table.table-bordered.table-striped
         td= user.nickname
         td= user.name
         td= user.email
-        td
-        td= link-to "users.user" user class="btn btn-primary" | Edit user
+        td= user.userRole
+        td= link-to "users.user" user.nickname class="btn btn-primary" | Edit user
 
 = page-numbers content=users

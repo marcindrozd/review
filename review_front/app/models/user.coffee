@@ -13,6 +13,12 @@ User = DS.Model.extend {
   isAdmin: Ember.computed('admin', ->
     @get('admin') == true
   )
+
+  allRoles: Ember.computed('roles', ->
+    @get('roles').getEach('name');
+  )
+
+  userRole: Ember.computed.uniq('allRoles')
 }
 
 `export default User`
