@@ -21,7 +21,7 @@ class Api::V2::UsersController < Api::V2::BaseController
   private
 
   def find_user
-    for_current_user? ? current_user : User.find(params[:id])
+    for_current_user? ? current_user : User.friendly.find(params[:id])
   end
 
   def for_current_user?
