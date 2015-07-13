@@ -11,6 +11,12 @@
       .form-group
         label for="email" Email:
         = input id="email" placeholder="User email" value=user.email type="text" class="form-control"
+      .form-group
+        label Role:
+        select-2 content=roles searchEnabled=false optionValuePath="id" optionLabelPath="name"
+      .form-group
+        label Project:
+        select-2 content=projects optionLabelPath="name" multiple=true
       button class="btn btn-primary pull-right" data-toggle="modal" data-target="#deleteAccountModal" Delete Account
       #deleteAccountModal.modal.fade
         .modal-dialog
