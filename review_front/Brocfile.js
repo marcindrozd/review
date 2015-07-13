@@ -6,6 +6,7 @@ var app = new EmberApp({
 });
 
 app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
+app.import('bower_components/select2/select2-bootstrap.css');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
