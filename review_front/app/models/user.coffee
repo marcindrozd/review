@@ -15,7 +15,7 @@ User = DS.Model.extend {
   )
 
   allRoles: Ember.computed('roles', ->
-    @get('roles').getEach('name');
+    @get('roles').getEach('name')
   )
 
   userRole: Ember.computed.uniq('allRoles')
