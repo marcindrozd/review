@@ -9,6 +9,8 @@ User = DS.Model.extend {
   person: DS.belongsTo('author')
   token: DS.attr('string')
   roles: DS.hasMany('role')
+  role: DS.attr('string')
+  projectIds: DS.attr('object')
 
   isAdmin: Ember.computed('admin', ->
     @get('admin') == true
