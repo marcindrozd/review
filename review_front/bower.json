@@ -15,6 +15,6 @@
     "qunit": "~1.17.1",
     "pretender": "^0.6.0",
     "es5-shim": "^4.0.5",
-    "select2": "3.5.2"
+    "selectize": "~0.12.1"
   }
 }
