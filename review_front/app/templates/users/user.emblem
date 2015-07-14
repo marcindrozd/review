@@ -4,25 +4,18 @@
     .inner-form
       .form-group
         label for="nickname" Nickname:
-        = input id="nickname" placeholder="User nickname" value=user.nickname class="form-control"
+        = input id="nickname" placeholder="User nickname" value=userForm.nickname class="form-control"
       .form-group
         label for="name" Name:
-        = input id="name" placeholder="User name" value=user.name class="form-control"
+        = input id="name" placeholder="User name" value=userForm.name class="form-control"
       .form-group
         label for="email" Email:
-        = input id="email" placeholder="User email" value=user.email type="text" class="form-control"
-      .form-group
+        = input id="email" placeholder="User email" value=userForm.email type="text" class="form-control"
+      .form-groupuser
         label Role:
-        select-2 content=roles searchEnabled=false optionValuePath="id" optionLabelPath="name"
-      .form-group
-        label Project:
-        select-2 content=projects optionLabelPath="name" multiple=true
-      button class="btn btn-primary pull-right" data-toggle="modal" data-target="#deleteAccountModal" Delete Account
-      #deleteAccountModal.modal.fade
-        .modal-dialog
-          .modal-content
-            .modal-body Are you sure you want to delete your account?
-            .modal-footer
-              button class="btn btn-default" data-dismiss="modal" Cancel
-              button class="btn btn-primary" click="destroy" Delete
+        ember-selectize content=roleOptions optionValuePath="name" optionLabelPath="name" selection=selectedRole placeholder="Select role"
+      if isContractor
+        .form-group
+          label Project:
+          ember-selectize content=projects optionValuePath="id" multiple=true optionLabelPath="name" selection=selectedProjects placeholder="Select project"
       button type="submit" class="btn btn-primary" click="update" save profile
