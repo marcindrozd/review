@@ -2,8 +2,8 @@
 
 User = Ember.Route.extend
   model: (params) ->
-    user: @store.find('user', params.nickname)
-    projects: @store.find('project')
-    roles: @store.find('role')
+    Ember.RSVP.hash
+      user: @store.find('user', params.nickname)
+      projects: @store.find('project')
 
 `export default User`
