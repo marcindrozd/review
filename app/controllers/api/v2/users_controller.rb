@@ -15,6 +15,7 @@ class Api::V2::UsersController < Api::V2::BaseController
 
   def update
     user.update_attributes(user_params)
+    update_roles
     respond_with(user)
   end
 
@@ -29,6 +30,24 @@ class Api::V2::UsersController < Api::V2::BaseController
   end
 
   private
+
+  def update_roles
+    role = params['user']['role']
+    projectIds = params['user']['project_ids']
+    return unless role
+    remove_user_roles
+    add_user_roles(role, projectIds)
+  end
+
+  def add_user_roles(role, projectIds)
+    projectIds ? projectIds.each { |id| user.add_role role, Project.find(id) } : user.add_role(role)
+  end
+
+  def remove_user_roles
+    user.roles.each do |role|
+      user.remove_role role.name
+    end
+  end
 
   def change_admin_flag
     render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.has_role? :admin
