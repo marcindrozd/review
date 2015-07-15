@@ -47,7 +47,9 @@ UserController = Ember.Controller.extend
 
   actions:
     update: ->
+      flashMessages = Ember.get(this, 'flashMessages')
       @get('model.user').setProperties(@get('userForm'))
-        .setProperties({projectIds: @get('projectIds'), role: @get('roleName')}).save()
+        .setProperties({projectIds: @get('projectIds'), role: @get('roleName')}).save().then ->
+          flashMessages.success('Successfully saved!')
 
 `export default UserController`
