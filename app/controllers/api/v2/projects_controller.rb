@@ -14,7 +14,7 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   private
 
   def find_projects
-    if current_user.has_role? :admin || :developer
+    if current_user.has_role?(:admin) || current_user.has_role?(:developer)
       Project.all
     else
       Project.user_resources(current_user)
