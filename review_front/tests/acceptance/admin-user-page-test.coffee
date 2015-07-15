@@ -22,7 +22,7 @@ test 'visiting /admin-user-page', (assert) ->
   assert.equal currentURL(), '/admin/users'
 
 test "displays a table with user", (assert) ->
-  assert.equal find("tr.user").length, 2
+  assert.equal find(".admin-users__row").length, 2
 
 test "after clicking on projects, drects to projects", (assert) ->
   click(".navbar-left a:eq(0)")
