@@ -1,21 +1,19 @@
 .row
   .col-md-4.col-md-offset-4
-    h1.text-center User profile
-    .inner-form
-      .form-group
-        label for="nickname" Nickname:
-        = input id="nickname" placeholder="User nickname" value=userForm.nickname class="form-control"
+    h1.text-center
+      user.nickname
+    form submit='update' on='submit' role='form' class='form-vertical'
       .form-group
         label for="name" Name:
         = input id="name" placeholder="User name" value=userForm.name class="form-control"
       .form-group
         label for="email" Email:
         = input id="email" placeholder="User email" value=userForm.email type="text" class="form-control"
-      .form-groupuser
+      .form-group
         label Role:
         ember-selectize content=roleOptions optionValuePath="name" optionLabelPath="name" selection=selectedRole placeholder="Select role"
       if isContractor
         .form-group
           label Project:
           ember-selectize content=projects optionValuePath="id" multiple=true optionLabelPath="name" selection=selectedProjects placeholder="Select project"
-      button type="submit" class="btn btn-primary" click="update" save profile
+      button type="submit" class="btn btn-primary" Save profile
