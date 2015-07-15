@@ -1,4 +1,4 @@
-table.table.table-bordered.table-striped
+table.table.table-bordered.table-striped.admin-users
   thead
     tr
       th User nick
@@ -8,11 +8,11 @@ table.table.table-bordered.table-striped
       th Actions
   tbody
     each user in users
-      tr.user
+      tr.admin-users__row
         td= user.nickname
         td= user.name
         td= user.email
         td= user.userRole
-        td= link-to "users.user" user.nickname class="btn btn-primary" | Edit user
+        = admin-actions user=user currentUserId=currentUserId
 
 = page-numbers content=users
