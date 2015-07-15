@@ -1,0 +1,2 @@
+if notMyProfile
+  link-to "users.user" user.nickname class="btn btn-primary" | Edit user
