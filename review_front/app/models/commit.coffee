@@ -12,6 +12,8 @@ Commit = DS.Model.extend
   author: DS.belongsTo('author')
   tickets: DS.hasMany('ticket')
   reviewer: DS.belongsTo('user', {async: true})
+  fixesFor: DS.attr('object')
+  fixedBy: DS.attr('object')
   fix: DS.hasMany('commit', {inverse: 'fixed'}, {async: true})
   fixed: DS.hasMany('commit', {inverse: 'fix'}, {async: true})
 
