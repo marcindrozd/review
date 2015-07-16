@@ -111,6 +111,10 @@ describe Commit do
       expect(CommitFix.count).to eq(1)
     end
 
+    it 'creates correctly formatted data' do
+      expect(commit.fixes_data).to eq({ remoteId: remote_id, url: commit_attributes['url'] })
+    end
+
     it 'can access its fixing commit' do
       expect(commit.fixes.first).to eq(fixing_commit)
     end
