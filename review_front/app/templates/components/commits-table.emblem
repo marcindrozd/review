@@ -23,21 +23,10 @@ table.table.table-striped.commits-table
             .commits-table__commit-reviewer
               = commit-reviewer commit=commit
           .commits-table__commit-fixes.pull-right
-            unless hideAccepted
-              if commit.fixed
-                p
-                  ul Fixes for:
-                  each fix in commit.fixed
-                    li
-                      a{bind-attr href="fix.remoteUrl"} target="_blank"
-                        fix.remoteId
-              if commit.fix
-                p
-                  ul Fixed by:
-                  each fix in commit.fix
-                    li
-                      a{bind-attr href="fix.remoteUrl"} target="_blank"
-                        fix.remoteId
+            if commit.fixesFor
+              commit-fix commits=commit.fixesFor
+            if commit.fixedBy
+              commit-fix commits=commit.fixedBy
         td
           = commit-state-label reviewState=commit.state
         td.commits-table__review
