@@ -18,6 +18,12 @@
   &__commit-reviewer {
     float: left;
     margin-right: 15px;
+
+    .reviewer-name {
+      display: inline-block;
+      margin-left: 5px;
+      font-weight: bold;
+    }
   }
 
   ul {
