@@ -110,6 +110,10 @@ class Commit < ActiveRecord::Base
     Time.now > expires_at
   end
 
+  def fixes_data
+    { remoteId: remote_id, url: url }
+  end
+
   private
 
   def external_transitions
