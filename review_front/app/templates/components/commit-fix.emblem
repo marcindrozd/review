@@ -1,0 +1,5 @@
+ul Fixes for:
+each fix in commits
+  li
+    a{bind-attr href="fix.url"} target="_blank"
+      fix.remoteId
