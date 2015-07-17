@@ -14,6 +14,7 @@ class Commit < ActiveRecord::Base
   scope :for_state,      ->(state) { where(state: state) }
   scope :to_auto_reject, -> { where(state: %w(pending passed)) }
   scope :unreviewed,     -> { where(state: %w(pending auto_rejected)) }
+  scope :order_by_priority, -> { order(order_by_state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, -> { for_state state.to_s }
   end
@@ -63,6 +64,14 @@ class Commit < ActiveRecord::Base
         commit.set_commit_author remote_commit.author
       end
     end
+  end
+
+  def self.order_by_state
+    statement = "CASE"
+    [:rejected, :auto_rejected, :passed].each_with_index do |state, i|
+      statement << " WHEN state = '#{state}' THEN #{i}"
+    end
+    statement << " END"
   end
 
   def attempt_transition_to(state)
