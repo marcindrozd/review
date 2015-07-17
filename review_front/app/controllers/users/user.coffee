@@ -36,7 +36,7 @@ UserController = Ember.Controller.extend
   projectIds: Ember.computed('selectedProjects', 'roleName', ->
     return null unless @get('roleName') == 'contractor'
     @get('selectedProjects').map (role) ->
-        role.id if role
+      role.id if role
   )
 
   roleOptions: [
