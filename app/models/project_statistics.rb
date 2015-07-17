@@ -6,7 +6,7 @@ class ProjectStatistics
   end
 
   def rejected
-    commits.rejected.count
+    commits.rejected.count + commits.auto_rejected.count
   end
 
   def pending
