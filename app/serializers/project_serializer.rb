@@ -1,15 +1,6 @@
 class ProjectSerializer < ApplicationSerializer
   attributes :id, :name, :rejected, :pending, :accepted, :total, :grade, :token, :url
-
-  delegate :rejected, to: :stats
-
-  delegate :pending, to: :stats
-
-  delegate :accepted, to: :stats
-
-  delegate :total, to: :stats
-
-  delegate :grade, to: :stats
+  delegate :grade, :total, :accepted, :pending, :rejected, to: :stats
 
   private
 
