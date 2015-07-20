@@ -29,8 +29,6 @@ class Api::V2::UsersController < Api::V2::BaseController
     params[:id] == 'me'
   end
 
-  private
-
   def update_roles
     role = params['user']['role']
     projectIds = params['user']['project_ids']
