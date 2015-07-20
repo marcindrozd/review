@@ -1,5 +1,5 @@
 class Api::V2::UsersController < Api::V2::BaseController
-  before_filter :change_admin_flag, only: :update
+  before_filter :update_user, only: :update
 
   expose(:user) { find_user }
   expose(:users)
@@ -49,7 +49,7 @@ class Api::V2::UsersController < Api::V2::BaseController
     end
   end
 
-  def change_admin_flag
+  def update_user
     render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.has_role? :admin
   end
 
