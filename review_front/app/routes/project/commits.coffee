@@ -9,6 +9,7 @@ Route = Ember.Route.extend RouteMixin,
 
   model: (params) ->
     project = @modelFor('project')
+    params.project_name = project.get('name')
     @findPaged 'commit', params
 
   setupController: (controller, model)->
