@@ -12,7 +12,7 @@ nav.navbar.navbar-fixed-top.navbar-inverse.main-navbar
 
       ul.nav.navbar-nav.navbar-right
         li.main-navbar__logout
-          img.img-circle.avatar src=current_user.image_url alt=current_user.nickname
+          = gravatar-image person=current_user
           = logout-button
 .container
   .content

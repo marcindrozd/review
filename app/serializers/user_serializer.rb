@@ -1,5 +1,6 @@
 class UserSerializer < ApplicationSerializer
-  attributes :id, :email, :image_url, :nickname, :name, :admin, :person_id, :token
+  attributes :id, :email, :nickname, :name, :admin, :person_id, :token
+  attribute :image_url, :key => :imageUrl
   has_many :roles
 
   private

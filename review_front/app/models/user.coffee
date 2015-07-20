@@ -1,7 +1,7 @@
 `import DS from 'ember-data'`
 
 User = DS.Model.extend {
-  image_url: DS.attr('string')
+  imageUrl: DS.attr('string')
   name: DS.attr('string')
   nickname: DS.attr('string')
   email: DS.attr('string')
