@@ -12,6 +12,8 @@ Router.map ->
     @resource 'ticket', path: '/:ticket_id', ->
       @route 'commits'
   @resource 'admin', ->
+    @resource 'invitations', ->
+      @route 'new'
     @resource 'users', ->
       @route 'user', path: '/:nickname'
 
