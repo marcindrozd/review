@@ -68,7 +68,7 @@ class Commit < ActiveRecord::Base
 
   def self.order_by_state
     statement = "CASE"
-    [:rejected, :auto_rejected, :passed].each_with_index do |state, i|
+    [:rejected, :auto_rejected, :passed, :pending].each_with_index do |state, i|
       statement << " WHEN state = '#{state}' THEN #{i}"
     end
     statement << " END"
