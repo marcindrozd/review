@@ -13,10 +13,10 @@ class CommitSerializer < ApplicationSerializer
   end
 
   def fixed_by
-    object.fixes.map { |commit| commit.fixes_data}
+    object.fixes.map { |commit| commit.fixes_data }
   end
 
   def fixes_for
-     object.fixed.map { |commit| commit.fixes_data}
+     object.fixed.map { |commit| commit.fixes_data }
   end
 end
