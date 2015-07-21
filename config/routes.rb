@@ -15,6 +15,7 @@ Review::Application.routes.draw do
     end
 
     namespace :v2 do
+      resources :invitations, only: [:index, :show, :create]
       resources :users, only: [:show, :index, :update]
       resources :commits, only: [:index, :update]
       resources :projects, only: [:index, :show]
