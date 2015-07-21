@@ -1,5 +1,12 @@
 li
-  = link-to "projects" | Projects
+  link-to "projects" | Projects
 if admin
-  li
-    = link-to "admin" | Admin
+  dropdown-item classNames="dropdown"
+    a.dropdown-toggle data-toggle="dropdown" href="#"
+      ' Admin
+      span.caret
+    ul.dropdown-menu role="menu"
+      dropdown-item
+        link-to "users"| Users
+      dropdown-item
+        link-to "invitations" | Invitations
