@@ -11,7 +11,7 @@ module 'Acceptance: AdminUserPage',
     application = startApp()
     server = Server.create()
     visit '/'
-    click('.navbar-left a:last')
+    click('.navbar-left a:eq(2)')
     return
 
   afterEach: ->

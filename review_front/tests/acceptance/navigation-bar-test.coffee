@@ -27,10 +27,15 @@ test 'shows link to projects page', (assert) ->
 test 'shows linkt to admin page if user is admin', (assert) ->
   assert.equal find("a:contains('Admin')").length, 1
 
-test 'after click on admin it trnsfers to admin page', (assert) ->
-  click("a:contains('Admin')")
+test 'after click on users it trnsfers to admin users page', (assert) ->
+  click("a:contains('Users')")
   andThen ->
     assert.equal currentPath(), 'admin.users.index'
+
+test 'after click on invitations it trnsfers to admin invitations page', (assert) ->
+  click("a:contains('Invitations')")
+  andThen ->
+    assert.equal currentPath(), 'admin.invitations.index'
 
 test 'from admin page, it transfers to projects after click on projects', (assert) ->
   click("a:contains('Admin')")
