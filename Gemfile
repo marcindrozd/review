@@ -45,7 +45,6 @@ group :development, :production do
 group :test do
   gem 'minitest'
   gem 'timecop'
-  gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'codeclimate-test-reporter', require: false
@@ -53,6 +52,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-rails'
   gem 'binding_of_caller'
   gem 'pry'
