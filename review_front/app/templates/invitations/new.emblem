@@ -1,0 +1,17 @@
+.row
+  .col-md-4.col-md-offset-4
+    h1.text-center New invitation
+    each flashMessages.queue as |flash|
+      flash-message flash=flash
+    form submit="create" on="submit" role="form" class="form-vertical"
+      .form-group
+        label for="email" Email:
+        = input id="email" placeholder="User email" value=email class="form-control"
+      .form-group
+        label Role:
+        ember-selectize content=roleOptions optionValuePath="name" optionLabelPath="name" selection=selectedRole placeholder="Select role"
+      if isContractor
+        .form-group
+          label Project:
+          ember-selectize content=projects optionValuePath="id" multiple=true optionLabelPath="name" selection=selectedProjects placeholder="Select project"
+      button type="submit" class="btn btn-primary" Send invitation
