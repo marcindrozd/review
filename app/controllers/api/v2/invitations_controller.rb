@@ -1,9 +1,9 @@
-class Api::V2::TicketsController < Api::V2::BaseController
+class Api::V2::InvitationsController < Api::V2::BaseController
   expose(:invitations)
   expose(:paginated_invitations) { invitations.order(created_at: :desc).page params[:page] }
 
   def index
-    respond_with paginated_invitations), meta: { total_pages: invitation_pages_count }
+    respond_with paginated_invitations, meta: { total_pages: invitation_pages_count }
   end
 
   private
