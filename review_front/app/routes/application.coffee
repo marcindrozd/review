@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 
-Application = Ember.Route.extend
+ApplicationRoute = Ember.Route.extend
   setupController: (controller, model)->
     controller.set('current_user', @store.find('user', 'me'))
 
-`export default Application`
+`export default ApplicationRoute`

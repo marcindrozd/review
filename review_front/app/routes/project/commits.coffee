@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 `import RouteMixin from 'ember-cli-pagination/remote/route-mixin'`
 
-Route = Ember.Route.extend RouteMixin,
+ProjectCommitsRoute = Ember.Route.extend RouteMixin,
   queryParams:
     q:
       refreshModel: true
@@ -16,4 +16,4 @@ Route = Ember.Route.extend RouteMixin,
     controller.set('current_user', @store.find('user', 'me'))
     controller.set('model', model)
 
-`export default Route`
+`export default ProjectCommitsRoute`

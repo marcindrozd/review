@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 
-ProjectsIndex = Ember.Route.extend
+ProjectsIndexRoute = Ember.Route.extend
   model: ->
     @modelFor('projects')
 
-`export default ProjectsIndex`
+`export default ProjectsIndexRoute`

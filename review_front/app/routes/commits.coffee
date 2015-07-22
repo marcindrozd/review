@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 
-Commits = Ember.Route.extend
+CommitsRoute = Ember.Route.extend
   model: ->
     @store.find('commit')
 
-`export default Commits`
+`export default CommitsRoute`

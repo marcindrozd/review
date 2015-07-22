@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 `import RouteMixin from 'ember-cli-pagination/remote/route-mixin'`
 
-Users = Ember.Route.extend RouteMixin,
+UsersRoute = Ember.Route.extend RouteMixin,
   perPage: 25
 
   model: (params)->
@@ -10,4 +10,4 @@ Users = Ember.Route.extend RouteMixin,
       users: @findPaged 'user', params
       currentUserId: @store.find('user', 'me').then (result) -> result.get('id')
 
-`export default Users`
+`export default UsersRoute`

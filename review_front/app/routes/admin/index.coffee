@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 
-AdminIndex = Ember.Route.extend
+AdminIndexRoute = Ember.Route.extend
   redirect: ->
     @transitionTo('users')
 
-`export default AdminIndex`
+`export default AdminIndexRoute`
