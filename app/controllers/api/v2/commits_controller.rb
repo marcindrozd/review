@@ -2,7 +2,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   before_filter :ensure_permission, only: :update
 
   expose(:commit)
-  expose(:project) { Project.find_by_name params[:project_name] }
+  expose(:project) { Project.find_by_name params[:name] }
   expose(:ticket)
   expose(:commits) { find_commits }
   expose(:filtered_commits) { commits.ransack(params[:q]).result }
@@ -32,7 +32,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   def project_name
-    params[:project_name].presence
+    params[:name].presence
   end
 
   def ticket_id
@@ -40,7 +40,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   def find_commits
-    if project_name.present?
+    if project_name
       project.commits.order_by_priority
     elsif ticket_id.present?
       ticket.commits
