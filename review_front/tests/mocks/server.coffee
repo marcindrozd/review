@@ -12,9 +12,9 @@ Server = Ember.Object.extend
     new Pretender ->
       @get '/api/v2/projects', ->
         [
-          200, { "Content-type": "application/json" }, JSON.stringify( 
-            projects: [ 
-              { 
+          200, { "Content-type": "application/json" }, JSON.stringify(
+            projects: [
+              {
                 id: 1
                 accepted: 1
                 rejected: 2
@@ -27,14 +27,14 @@ Server = Ember.Object.extend
                 id: 2
                 accepted: 0
                 rejected: 2
-                pending: 4 
+                pending: 4
                 total: 10
                 name: 'secondProject'
                 grade: 'good'
                 permission: [1]
               }
             ]
-          ) 
+          )
         ]
       @get 'api/v2/users', ->
         [
@@ -49,6 +49,25 @@ Server = Ember.Object.extend
                 id: 2
                 admin: true
                 permissions: []
+              }
+            ]
+          )
+        ]
+      @get 'api/v2/invitations', ->
+        [
+          200, { "Content-type": "application/json" }, JSON.stringify(
+            invitations:[
+              {
+                id: 1
+                email: 'test@test.com'
+                role: 'admin'
+                status: 'pending'
+              },
+              {
+                id: 2
+                email: 'meh@bleh.com'
+                role: 'developer'
+                status: 'accepted'
               }
             ]
           )
@@ -99,10 +118,10 @@ Server = Ember.Object.extend
               }
             ]
             meta: { total_pages: 1 }
-          ) 
+          )
         ]
       @put '/api/v2/commits/2', ->
-        [ 
+        [
           200, { "Content-type": "application/json" }, JSON.stringify(
             commit: {
               state: "accepted"
