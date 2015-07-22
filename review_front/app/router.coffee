@@ -15,6 +15,6 @@ Router.map ->
     @resource 'invitations', ->
       @route 'new'
     @resource 'users', ->
-      @route 'user', path: '/:nickname'
+      @route 'edit', path: '/:nickname'
 
 `export default Router`

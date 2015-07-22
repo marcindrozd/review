@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-UserController = Ember.Controller.extend
+UsersEditController = Ember.Controller.extend
 
   user: Ember.computed.alias('model.user')
   userRoles: Ember.computed.alias('model.user.roles')
@@ -52,4 +52,4 @@ UserController = Ember.Controller.extend
         .setProperties({projectIds: @get('projectIds'), role: @get('roleName')}).save().then ->
           flashMessages.success('Successfully saved!')
 
-`export default UserController`
+`export default UsersEditController`

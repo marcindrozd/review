@@ -1,6 +1,6 @@
 `import Ember from 'ember'`
 
-User = Ember.Route.extend
+UsersEditRoute = Ember.Route.extend
   model: (params) ->
     Ember.RSVP.hash
       user: @store.find('user', params.nickname)
@@ -9,4 +9,4 @@ User = Ember.Route.extend
   deactivate: ->
     @currentModel.user.rollback() if @currentModel.user.get('isDirty')
 
-`export default User`
+`export default UsersEditRoute`

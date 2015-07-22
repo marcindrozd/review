@@ -1,2 +1,2 @@
 if notMyProfile
-  link-to "users.user" user.nickname class="btn btn-primary" | Edit user
+  link-to "users.edit" user.nickname class="btn btn-primary" | Edit user
