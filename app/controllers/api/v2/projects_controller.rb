@@ -4,7 +4,12 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   expose(:paginated_projects) { projects.order(name: :asc).page params[:page] }
 
   def index
-    respond_with paginated_projects, meta: { total_pages: project_pages_count }
+    if params[:name].present?
+      project_by_name = Project.find_by_name params[:name]
+      respond_with [project_by_name]
+    else
+      respond_with paginated_projects, meta: { total_pages: project_pages_count }
+    end
   end
 
   def show
