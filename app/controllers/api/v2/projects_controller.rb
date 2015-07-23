@@ -1,18 +1,18 @@
 class Api::V2::ProjectsController < Api::V2::BaseController
-  expose(:project) { Project.find_by_name params[:name] }
+  expose(:project_by_name) { Project.find_by(name: params[:name]) }
   expose(:projects) { find_projects }
   expose(:paginated_projects) { projects.order(name: :asc).page params[:page] }
 
   def index
-    if project.present?
-      respond_with [project]
+    if project_by_name.present?
+      respond_with [project_by_name]
     else
       respond_with paginated_projects, meta: { total_pages: project_pages_count }
     end
   end
 
   def show
-    respond_with project
+    respond_with project_by_name
   end
 
   private
