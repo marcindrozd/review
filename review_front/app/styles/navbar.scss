@@ -22,4 +22,15 @@
       }
     }
   }
+
+  .admin-dropdown {
+
+    &__menu {
+      background-color: $navbar-color;
+    }
+
+    &__link {
+      color: $white-color;
+    }
+  }
 }
