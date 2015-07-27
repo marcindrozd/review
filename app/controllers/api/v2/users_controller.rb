@@ -1,5 +1,5 @@
 class Api::V2::UsersController < Api::V2::BaseController
-  before_filter :update_user, only: :update
+  before_action :check_permission, only: :update
 
   expose(:user) { find_user }
   expose(:users)
@@ -45,10 +45,6 @@ class Api::V2::UsersController < Api::V2::BaseController
     user.roles.each do |role|
       user.remove_role role.name
     end
-  end
-
-  def update_user
-    render json: { message: "You are not authorized to do it." }, status: 401 unless current_user.has_role? :admin
   end
 
   def user_params
