@@ -19,6 +19,7 @@ config/sec_config.yml
 .powenv
 .rvmrc
 .ruby-gemset
+.env
 
 # Vim
 *.swp
