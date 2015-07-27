@@ -1,4 +1,5 @@
 class Invitation < ActiveRecord::Base
+  serialize :project_ids
   validates :email, presence: true
   before_create :generate_token
   belongs_to :sender, class_name: 'User'
