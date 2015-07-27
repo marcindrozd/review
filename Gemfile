@@ -52,6 +52,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'binding_of_caller'
