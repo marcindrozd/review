@@ -27,6 +27,12 @@ InvitationsNewController = Ember.Controller.extend
       project.id if project
   )
 
+  invitationDidChange: (->
+    @set('email', null)
+    @set('selectedRole', null)
+    @set('selectedProjects', [])
+  ).observes('model')
+
   actions:
     create: ->
       flashMessages = Ember.get(this, 'flashMessages')
