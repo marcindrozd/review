@@ -1,12 +1,12 @@
 li
   link-to "projects" | Projects
 if admin
-  dropdown-item classNames="dropdown admin-dropdown"
-    a.dropdown-toggle data-toggle="dropdown" href="#"
+  dropdown-item class="dropdown admin-dropdown"
+    link-to "" class="dropdown-toggle" id="admin-dropdown" data-toggle="dropdown"
       ' Admin
       span.caret
     ul.dropdown-menu.admin-dropdown__menu role="menu"
       dropdown-item
-        link-to "users" classNames="admin-dropdown__link"| Users
+        link-to "users" class="admin-dropdown__link" | Users
       dropdown-item
-        link-to "invitations" classNames="admin-dropdown__link"| Invitations
+        link-to "invitations" class="admin-dropdown__link" | Invitations
