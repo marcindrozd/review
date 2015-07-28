@@ -23,10 +23,17 @@
     }
   }
 
+  .active {
+
+    #admin-dropdown {
+      color: $text-active;
+    }
+  }
+
   .admin-dropdown {
 
     &__menu {
-      background-color: $navbar-color;
+      background-color: $dark-gray
     }
 
     &__link {
