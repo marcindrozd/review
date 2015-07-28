@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
     projects = invitation.project_ids
     role = invitation.role
     projects ? projects.each { |id| user.add_role role, Project.find(id) } : user.add_role(role)
-    invitation.update_attributes(accepted: true)
+    invitation.update_attributes(accepted: true, recipient_id: user.id)
   end
 
   def auth_hash
