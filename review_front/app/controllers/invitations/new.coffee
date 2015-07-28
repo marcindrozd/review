@@ -31,8 +31,10 @@ InvitationsNewController = Ember.Controller.extend
     create: ->
       flashMessages = Ember.get(this, 'flashMessages')
       @get('model.invitation').setProperties(
-        { email: @get('email'), role: @get('roleName'), projectIds: @get('projectIds') }
-      ).save().then ->
-        flashMessages.success('Your message was sent!')
+        { email: @get('email'), role: @get('roleName'), projectIds: @get('projectIds') }).save()
+        .then ->
+          flashMessages.success('Your message was sent!')
+        .catch ->
+          flashMessages.danger('Incorrect email address!')
 
 `export default InvitationsNewController`
