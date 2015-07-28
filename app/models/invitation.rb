@@ -2,8 +2,8 @@ class Invitation < ActiveRecord::Base
   serialize :project_ids
   validates :email, presence: true
   before_create :generate_token
-  belongs_to :sender, class_name: 'User'
-  belongs_to :recipient, class_name: 'User'
+  belongs_to :sender, class_name: 'User', inverse_of: :sent_invitations
+  belongs_to :recipient, class_name: 'User', inverse_of: :invitation
 
   private
 
