@@ -2,7 +2,8 @@
 
 InvitationsNewRoute = Ember.Route.extend
   model: ->
-    invitation: @store.createRecord 'invitation'
-    projects: @store.find('project')
+    Ember.RSVP.hash
+      invitation: @store.createRecord 'invitation'
+      projects: @store.find('project')
 
 `export default InvitationsNewRoute`
