@@ -8,6 +8,6 @@ class Invitation < ActiveRecord::Base
   private
 
   def generate_token
-    self.token = Digest::SHA1.hexdigest([email, sender_id, Time.now, rand].join)
+    self.token = SecureRandom.hex(13)
   end
 end
