@@ -9,8 +9,9 @@ class Api::V2::InvitationsController < Api::V2::BaseController
   end
 
   def create
-    invitation.save
-    InvitationMailer.invitation_email(invitation, auth_url).deliver
+    if invitation.save
+      InvitationMailer.invitation_email(invitation, auth_url).deliver
+    end
     respond_with invitation, location: false
   end
 
