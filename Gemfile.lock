@@ -35,6 +35,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (5.1.11)
       execjs
@@ -127,6 +128,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     konf (0.0.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     log4r (1.1.10)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
@@ -313,6 +318,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   konf
+  letter_opener
   minitest
   mosql
   netguru_theme
