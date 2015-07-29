@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Invitation do
   let(:invitation) { described_class.create(email: 'test@test.com') }

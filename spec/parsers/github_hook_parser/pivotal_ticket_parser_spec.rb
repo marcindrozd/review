@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe GithubHookParser::PivotalTicket do
   let(:pivotal_ticket) { described_class.new('12345') }
