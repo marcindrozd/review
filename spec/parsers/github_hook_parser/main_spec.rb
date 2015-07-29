@@ -9,6 +9,6 @@ describe GithubHookParser::Main do
   let(:hook_parser) { described_class.new payload }
 
   it "returns list of parsed commits" do
-    expect(hook_parser.commits).to have(2).commits
+    expect(hook_parser.commits.count).to eq 2
   end
 end

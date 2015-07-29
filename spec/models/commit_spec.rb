@@ -77,17 +77,15 @@ describe Commit do
 
     [:reject, :pass, :accept, :fixed].permutation(2).to_a.each do |from, to|
       it "allows to change states between #{from} and #{to}" do
-        expect do
-          commit.public_send(from)
-          commit.public_send(to)
-        end.to be_true
+        expect(commit.public_send(from)).to be_truthy
+        expect(commit.public_send(to)).to be_truthy
       end
     end
 
     it 'disallows to change state to the same we are in' do
       [:reject, :pass, :accept].each do |action|
-        expect(commit.public_send(action)).to be_true
-        expect(commit.public_send(action)).to be_false
+        expect(commit.public_send(action)).to be_truthy
+        expect(commit.public_send(action)).to be_falsey
       end
     end
 
