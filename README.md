@@ -18,7 +18,7 @@ bundle install
 Make sure you have postgress installed and running on your machine.
 Copy the sample database.yml to your main folder by:
 ```
-cp database.yml.sample database.yml
+cp config/database.yml.sample config/database.yml
 ```
 
 Edit the user name in the copied file to adjust it to your database setup.
