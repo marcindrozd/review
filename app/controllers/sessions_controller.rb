@@ -46,9 +46,9 @@ class SessionsController < ApplicationController
   end
 
   def add_invitation_roles(invitation, user)
-    projects = invitation.project_ids
+    ids = invitation.project_ids
     role = invitation.role
-    projects ? projects.each { |id| user.add_role role, Project.find(id) } : user.add_role(role)
+    ids.empty? ? user.add_role(role) : ids.each { |id| user.add_role role, Project.find(id) }
     invitation.update_attributes(accepted: true, recipient_id: user.id)
   end
 
