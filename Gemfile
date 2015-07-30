@@ -32,6 +32,7 @@ gem 'thin'
 gem 'whenever'
 gem 'rolify'
 gem 'friendly_id'
+gem 'sendgrid'
 
 group :development, :production do
   gem 'capistrano', '~> 3.2.1'
@@ -40,7 +41,7 @@ group :development, :production do
   gem 'capistrano-bower'
   gem 'capistrano-passenger', '0.0.2'
   gem 'rvm1-capistrano3', require: false
-  end
+end
 
 group :test do
   gem 'minitest'
