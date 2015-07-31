@@ -79,9 +79,9 @@ Review::Application.configure do
   config.action_mailer.smtp_settings = {
     :address => 'smtp.sendgrid.net',
     :port => 25,
-    :domain => 'netguru.co',
+    :domain => AppConfig.sendgrid.domain,
     :authentication => :plain,
-    :user_name => ENV['sendgrd_username'],
-    :password => ENV['sendgrid_password']
+    :user_name => AppConfig.sendgrid.sendgrd_username,
+    :password => AppConfig.sendgrid.sendgrid_password
   }
 end
