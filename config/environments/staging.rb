@@ -81,7 +81,7 @@ Review::Application.configure do
     :port => 25,
     :domain => AppConfig.sendgrid.domain,
     :authentication => :plain,
-    :user_name => AppConfig.sendgrid.sendgrd_username,
-    :password => AppConfig.sendgrid.sendgrid_password
+    :user_name => AppConfig.sendgrid.username,
+    :password => AppConfig.sendgrid.password
   }
 end
