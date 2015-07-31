@@ -34,13 +34,8 @@ gem 'rolify'
 gem 'friendly_id'
 gem 'sendgrid'
 
-group :development, :production do
-  gem 'capistrano', '~> 3.2.1'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
-  gem 'capistrano-bower'
-  gem 'capistrano-passenger', '0.0.2'
-  gem 'rvm1-capistrano3', require: false
+group :development do
+  gem "letter_opener"
 end
 
 group :test do
@@ -53,8 +48,6 @@ group :test do
 end
 
 group :development, :test do
-  gem "letter_opener"
-  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'binding_of_caller'
@@ -65,3 +58,13 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'better_errors'
 end
+
+group :development, :production do
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-bower'
+  gem 'capistrano-passenger', '0.0.2'
+  gem 'rvm1-capistrano3', require: false
+end
+
