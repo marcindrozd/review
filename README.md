@@ -43,3 +43,4 @@ same for the test enviroment with a different key.
 This app is heavily using github webhooks. Everytime someone pushes commit, Review will receive a payload - json data with relevant event information. Check out an example payload in `db/fixtures/payload.json`. Based on this data, projects and commits are created. If this concept is new to you - head over to [github api documentation](https://developer.github.com/webhooks/).
 
 Run a dedicated task to see this in action: `bundle exec rake hook:test` (make sure your local server is running)
+test
