@@ -11,7 +11,7 @@ class Api::V1::TradeController < Api::V1::BaseController
   private
 
   def auth_token
-    deny_access unless token && user.present? && user.instance_of?(User)
+    deny_access unless token && user.present? 
   end
 
   def token
