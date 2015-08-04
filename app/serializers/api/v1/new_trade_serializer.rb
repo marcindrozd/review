@@ -8,7 +8,7 @@ class Api::V1::NewTradeSerializer < ActiveModel::Serializer
   end
 
   def url
-    "#{AppConfig.app_host}/projects/#{object.name}/commits"
+    "#{AppConfig.hostname}/projects/#{object.name}/commits"
   end
 
   def commits

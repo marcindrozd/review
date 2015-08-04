@@ -15,6 +15,7 @@ production:
   <<: *defaults
   ga_id: '<%= ENV['GOOGLE_A_ID'] %>'
 test:
+  hostname: "http://review.test"
   <<: *defaults
 staging:
   <<: *defaults
