@@ -8,7 +8,7 @@ class Api::V1::NewTradeSerializer < ActiveModel::Serializer
   end
 
   def url
-    "#{ENV['REVIEW_DOMAIN']}/projects/#{object.name}"
+    "#{AppConfig.app_host}/projects/#{object.name}/commits"
   end
 
   def commits
@@ -23,6 +23,11 @@ class Api::V1::NewTradeSerializer < ActiveModel::Serializer
   end
 
   def deadline
-    object.commits.last.created_at
+    last_commit = object.commits.last
+    if last_commit.present?
+      last_commit.created_at
+    else
+      DateTime.current
+    end
   end
 end
