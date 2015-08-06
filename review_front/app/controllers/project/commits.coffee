@@ -18,6 +18,6 @@ ProjectCommitsController = Ember.ArrayController.extend
       if @get('hideAccepted') == false
         @transitionTo(queryParams:{q: null, page: @page })
       else
-        @transitionTo(queryParams:{q: state_not_in: ['accepted', 'fixed'], page: @page})
+        @transitionTo(queryParams:{q: state_not_in: ['accepted'], page: @page})
 
 `export default ProjectCommitsController`
