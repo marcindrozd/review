@@ -10,7 +10,7 @@ ProjectCommitsController = Ember.ArrayController.extend
   perPageBinding: 'content.perPage'
   totalPagesBinding: 'content.totalPages'
   page: 1
-  q: { state_not_in: ['accepted', 'fixed'] }
+  q: { state_not_in: ['accepted'] }
 
   actions:
     toggleAccepted: ->
