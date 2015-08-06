@@ -54,7 +54,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
     if params[:q] == "null"
       filtered_commits.order(authored_at: :desc).page params[:page]
     else
-      filtered_commits.order(expires_at: :desc).page params[:page]
+      filtered_commits.order(expires_at: :asc).page params[:page]
     end
   end
 end
