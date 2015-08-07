@@ -8,7 +8,7 @@ class ProjectFromRepositoryParser
   def find_or_create
     p_owner = get_project_owner
     p = Project.find_or_create_by(name: attributes[:name])
-    p.update_attributes(url: attributes[url], project_owner: p_owner)
+    p.update_attributes(url: attributes[:url], project_owner: p_owner)
   end
 
   def get_project_owner
