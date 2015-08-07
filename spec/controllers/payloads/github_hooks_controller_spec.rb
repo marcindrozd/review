@@ -11,4 +11,9 @@ describe Payloads::GithubHooksController do
     request.headers['X-GitHub-Event'] = 'ping'
     post :create, zen_msg, format: :json
   end
+  it 'renders ok' do
+    request.headers['X-GitHub-Event'] = 'push'
+    post :create, payload, format: :json
+    expect(response.body).to match /ok/
+  end 
 end
