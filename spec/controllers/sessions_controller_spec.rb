@@ -37,6 +37,33 @@ describe SessionsController do
       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
     end
 
+    describe '#index' do
+      context 'the token is valid' do
+        let(:params) { {invitation_token: '123456'} }
+
+        it 'returns 200 if token check ok' do
+          get :index, params
+          expect(response.status).to be(200)
+        end
+
+        it 'it adds invitation token to session' do
+          get :index, params
+          expect(session[:invitation_token]).to eq('123456')
+        end
+
+      end
+      context 'the token is not in params' do
+        it 'returns status 404'  do
+          get :index
+          expect(response.status).to be(200)
+        end
+
+        it 'is not lading any params to session' do
+          get :index
+          expect(session).to be_empty
+        end
+      end
+    end
     describe '#session' do
       it 'signs up user' do
         expect { callback }.to change { User.count }.by(1)
