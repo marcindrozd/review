@@ -21,10 +21,10 @@ class Project < ActiveRecord::Base
   end
 
   def self.for_user user
-    if user.has_role? :admin || :developer
-      get_unreviewed all
+    if user.has_role?(:developer) ||  user.has_role?(:admin)
+      get_unreviewed(all)
     else
-      get_unreviewed user_resources(user)
+      get_unreviewed(user_resources(user))
     end
   end
 
@@ -33,13 +33,21 @@ class Project < ActiveRecord::Base
   end
 
   def self.user_resources user
-    ids = user.roles.where(name: :contractor).includes(:resource).map { |role| role.resource.id }
-    Project.where(id: ids)
+    if Project.has_contractor?(user)
+      ids = user.roles.where(name: :contractor).includes(:resource).map { |role| role.resource.id }
+      Project.where(id: ids)
+    else
+      return []
+    end
   end
 
   private
 
   def create_token
     tokens.create
+  end
+
+  def self.has_contractor?(user)
+    Project.find_roles(:contractor, user).present?
   end
 end
