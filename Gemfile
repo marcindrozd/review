@@ -33,6 +33,8 @@ gem 'whenever'
 gem 'rolify'
 gem 'friendly_id'
 gem 'sendgrid'
+gem 'factory_girl_rails'
+gem 'faker'
 
 group :development do
   gem "letter_opener"
