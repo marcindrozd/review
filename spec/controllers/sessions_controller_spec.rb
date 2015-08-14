@@ -53,7 +53,7 @@ describe SessionsController do
 
       end
       context 'the token is not in params' do
-        it 'returns status 404'  do
+        it 'returns status 200'  do
           get :index
           expect(response.status).to be(200)
         end
