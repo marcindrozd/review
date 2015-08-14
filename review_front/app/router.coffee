@@ -16,5 +16,7 @@ Router.map ->
       @route 'new'
     @resource 'users', ->
       @route 'edit', path: '/:nickname'
+  @route 'catchall', path: '/*wildcard'
+  @route 'error'
 
 `export default Router`
