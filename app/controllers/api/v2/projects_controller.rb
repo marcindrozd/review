@@ -4,7 +4,9 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   expose(:paginated_projects) { projects.order(name: :asc).page params[:page] }
 
   def index
-    if project_by_name.present?
+    if project_by_name.empty? && params[:name]
+      respond_with "{'error': 'not_found'}", status: 404
+    elsif project_by_name.present?
       respond_with project_by_name
     else
       respond_with paginated_projects, meta: { total_pages: project_pages_count }
