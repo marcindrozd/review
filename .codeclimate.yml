@@ -1,0 +1,16 @@
+engines:
+  rubocop:
+    enabled: true
+  eslint:
+    enabled: true
+  coffeelint:
+    enabled: true
+  watson:
+    enabled: true
+  csslint:
+    enabled: true
+  bundler-audit:
+    enabled: true
+exclude_paths:
+- spec/**/*
+- review_front/tests/**/*
