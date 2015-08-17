@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150729070157) do
     t.integer  "fixed_commit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "fixes_mongo_id"
     t.string   "fixed_mongo_id"
   end
 
@@ -85,8 +86,6 @@ ActiveRecord::Schema.define(version: 20150729070157) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
 
   create_table "project_owners", force: true do |t|
     t.string   "name",       null: false
