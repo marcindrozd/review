@@ -37,7 +37,7 @@ class Project < ActiveRecord::Base
       ids = user.roles.where(name: :contractor).includes(:resource).map { |role| role.resource.id }
       Project.where(id: ids)
     else
-      return []
+      Project.none
     end
   end
 
