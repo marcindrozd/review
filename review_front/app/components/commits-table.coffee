@@ -2,6 +2,6 @@
 
 CommitsTable = Ember.Component.extend
   tagName:    'article'
-  classNames: ['commits']
+  classNames: ['commits-table']
 
 `export default CommitsTable`

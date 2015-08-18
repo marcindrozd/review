@@ -1,18 +1,19 @@
 p
   link-to "invitations.new" class="btn btn-primary" | New invitation
-table.table.table-bordered.table-striped.admin-invitations
-  thead
-    tr
-      th Email
-      th Role
-      th Status
-      th Date
-  tbody
-    each invitation in model
+.admin-invitations
+  table.table.table-bordered.table-striped.admin-invitations
+    thead
       tr
-        td= invitation.email
-        td= invitation.role
-        td= invitation.status
-        td= invitation.date
+        th Email
+        th Role
+        th Status
+        th Date
+    tbody
+      each invitation in model
+        tr
+          td= invitation.email
+          td= invitation.role
+          td= invitation.status
+          td= invitation.date
 
 page-numbers content=model
