@@ -1,7 +1,7 @@
 table.table.table-striped.commits-table
   thead
     tr
-      th Description
+      th colspan="2" Description
       th State
       th Review
   tbody
@@ -9,6 +9,7 @@ table.table.table-striped.commits-table
       tr{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejected:danger commit.isFixed:active"}
         td
           = gravatar-image person=commit.author
+        td
           .commits-table__commit-info
             .commits-table__commit-info--author-name
               strong #{commit.author.name}

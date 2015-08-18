@@ -2,7 +2,7 @@ li
   link-to "projects" | Projects
 if admin
   dropdown-item class="dropdown admin-dropdown"
-    a.dropdown-toggle#admin-dropdown data-toggle="dropdown" href="#"
+    a.dropdown-toggle data-toggle="dropdown" href="#"
       ' Admin
       span.caret
     ul.dropdown-menu.admin-dropdown__menu role="menu"

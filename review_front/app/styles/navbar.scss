@@ -1,13 +1,13 @@
 .main-navbar {
 
-  &__logout {
-    padding: 0 15px;
+  .avatar {
+    height: 32px;
+    width: auto;
+    border-radius: 3px;
   }
 
-  .avatar {
-    margin: 2px 20px 0 0;
-    width: 40px;
-    height: auto;
+  &__logout {
+    margin-bottom: 0;
   }
 
   ul.nav.navbar-nav.navbar-left {

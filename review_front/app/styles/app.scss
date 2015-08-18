@@ -3,8 +3,4 @@
 @import "project/commits";
 @import "admin/users-table";
 @import "navbar";
-
-.content {
-  margin-right: auto;
-  width: 90%;
-}
+@import "components/commit-action-buttons";
