@@ -11,6 +11,6 @@ class AddUniqueIndexOnPeopleEmail < ActiveRecord::Migration
 
   def down
     return unless index_exists? :people, :email, unique: true
-    remove_index :people, :email, unique: true
+    remove_index :people, :email
   end
 end
