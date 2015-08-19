@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817141725) do
+ActiveRecord::Schema.define(version: 20150819143147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20150817141725) do
     t.integer  "fixed_commit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "fixes_mongo_id"
     t.string   "fixed_mongo_id"
+    t.string   "fixes_mongo_id",   limit: 100
   end
 
   add_index "commit_fixes", ["fixed_commit_id"], name: "index_commit_fixes_on_fixed_commit_id", using: :btree
@@ -86,8 +86,6 @@ ActiveRecord::Schema.define(version: 20150817141725) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
 
   create_table "project_owners", force: true do |t|
     t.string   "name",       null: false
