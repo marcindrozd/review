@@ -10,7 +10,6 @@ gem 'hike'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'ransack'
-gem 'mosql'
 
 gem 'active_model_serializers'
 gem 'netguru_theme'
