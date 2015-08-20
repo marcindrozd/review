@@ -1,6 +1,7 @@
 defaults: &defaults
   secret_key_base: 'lorem'
   seconds_to_delay_response: 0
+  enable_notifications: false
   ticket_trackers:
     pivotal_story_url: "https://www.pivotaltracker.com/story/show/"
   github:
