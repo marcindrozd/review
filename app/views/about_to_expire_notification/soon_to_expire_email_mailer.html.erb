@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello <%= @email %>,</h1>
+    <p> The following commits are about to expire:
+      <%= @commits.each do |commit| %>
+        <p> Url: <% commit.url %> at <%= commit.expires_at %> </P>
+      <% end %>
+    </p>
+  </body>
+</html>
