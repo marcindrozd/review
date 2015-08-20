@@ -108,7 +108,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    google-analytics-rails (0.0.5)
     gravatar-ultimate (2.0.0)
       activesupport (>= 2.3.14)
       rack
@@ -295,7 +294,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   friendly_id
-  google-analytics-rails
   gravatar-ultimate
   haml
   hike

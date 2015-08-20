@@ -3,7 +3,6 @@
   %head
     %title Review app
     = stylesheet_link_tag    "application", :media => "all"
-    = analytics_init if Rails.env.production? || Rails.env.staging?
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-fixed-top.navbar-inverse
