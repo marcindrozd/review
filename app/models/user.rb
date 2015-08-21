@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   before_create :assign_person
   after_create :create_token
 
+  scope :fuzzy, ->(query) { query.present? ? where("email LIKE ?", "%#{ query }%") : all }
+
   private
 
   def assign_person

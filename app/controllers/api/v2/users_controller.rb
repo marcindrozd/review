@@ -2,7 +2,7 @@ class Api::V2::UsersController < Api::V2::BaseController
   before_action :check_permission, only: :update
 
   expose(:user) { find_user }
-  expose(:users)
+  expose(:users) { |default| default.fuzzy(params[:query]) }
   expose(:paginated_users) { users.order(nickname: :asc).page params[:page] }
 
   def index
