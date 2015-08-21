@@ -33,6 +33,7 @@ gem 'friendly_id'
 gem 'sendgrid'
 gem 'factory_girl_rails'
 gem 'faker'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem "letter_opener"
