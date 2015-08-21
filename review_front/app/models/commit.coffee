@@ -6,7 +6,7 @@ Commit = DS.Model.extend
   state: DS.attr('string')
   remoteUrl: DS.attr('string')
   project: DS.belongsTo('project')
-  tag: DS.attr('array')
+  tags: DS.attr('array')
   expiresAt: DS.attr('date')
   createdAt: DS.attr('date')
   authoredAt: DS.attr('date')
