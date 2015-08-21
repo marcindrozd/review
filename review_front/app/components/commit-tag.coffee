@@ -1,11 +1,8 @@
 `import Ember from 'ember'`
 
-CommitTag = Ember.Component.extend
-  tagName:    'div'
-  displayForm: false
+CommitLanguageTag = Ember.Component.extend
+  tagName: 'span'
+  classNames: ['label', 'label-info']
+  classNameBindings: ['labelClass']
 
-  actions:
-    displayTagsForm: ->
-      @toggleProperty('displayForm')
-
-`export default CommitTag`
+`export default CommitLanguageTag`

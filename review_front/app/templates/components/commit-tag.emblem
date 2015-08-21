@@ -1,7 +1,2 @@
-if displayForm
-  form submit="create" on="submit" role="form" class="tags-form"
-    .form-group
-      = input placeholder="e.g. Kudos" value=name
-else
-  button.btn.dropdown-toggle.btn-default{action "displayTagsForm" on="click"}
-    i.glyphicon.glyphicon-tag
+each tag in tags
+  tag
