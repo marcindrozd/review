@@ -1,2 +1,10 @@
 each tag in tags
   = tag
+
+if displayForm
+  form{action "createTag" on="submit"} role="form" class="tags-form"
+    .form-group
+      = input placeholder="e.g. Kudos" value=tagNames
+else
+  button.btn.dropdown-toggle.btn-default{action "displayTagsForm" on="click"}
+    i.glyphicon.glyphicon-tag

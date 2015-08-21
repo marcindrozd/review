@@ -37,4 +37,4 @@ table.table.table-striped.table-responsive
           unless commit.isFixed
             = commit-github-button commit=commit current_user=current_user
         td
-          commit-tag
+          commit-tag commit=commit
