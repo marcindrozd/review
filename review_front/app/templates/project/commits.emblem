@@ -1,3 +1,29 @@
+table.table.table-bordered.table-striped
+  thead
+    tr
+      th Name
+      th Rejected
+      th Pending
+      th Accepted
+      th Total
+      th Review status
+      th Github link
+  tbody
+    tr
+      td= link-to 'project.commits' project: project.name
+      td= project.rejected
+      td= project.pending
+      td= project.accepted
+      td= project.total
+      td
+        if project.reviewIsGood
+          i.glyphicon.glyphicon-ok.text-success
+        else
+          i.glyphicon.glyphicon-remove.text-danger
+      td
+        a target='_blank' href=project.url
+          span.glyphicon.glyphicon-link
+
 .btn-group
   button.btn.btn-default{action "toggleAccepted" on="click"}
     if hideAccepted

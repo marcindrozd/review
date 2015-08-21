@@ -15,6 +15,7 @@ ProjectCommitsRoute = Ember.Route.extend RouteMixin,
   setupController: (controller, model)->
     controller.set('current_user', @store.find('user', 'me'))
     controller.set('model', model)
+    controller.set('project', @modelFor('project'))
 
 `export default ProjectCommitsRoute`
 
