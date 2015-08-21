@@ -29,6 +29,8 @@ class Commit < ActiveRecord::Base
   belongs_to :reviewer, class_name: 'User'
 
   has_and_belongs_to_many :tickets
+  acts_as_taggable
+  acts_as_taggable_on :languages
 
   state_machine :state, initial: :pending do
 
