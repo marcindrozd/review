@@ -1,16 +1,17 @@
 `import Ember from 'ember'`
 
 ProjectsIndexController = Ember.Controller.extend
-  queryParams: ['page']
-  pageBinding: 'content.page'
-  perPageBinding: 'content.perPage'
-  totalPagesBinding: 'content.totalPages'
+  queryParams: ['page', 'query']
+  pageBinding: 'model.page'
+  perPageBinding: 'model.perPage'
+  totalPagesBinding: 'model.totalPages'
 
   page: 1
   perPage: 25
+  query: ""
 
   actions:
     searchInputChanged: (value)->
-      console.log(value)
+      @set("query", value)
 
 `export default ProjectsIndexController`
