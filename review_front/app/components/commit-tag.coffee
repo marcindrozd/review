@@ -13,10 +13,10 @@ CommitTag = Ember.Component.extend
 
       return if tagNames == undefined || tagNames == ''
 
-      commit.set('tag', @createTagsArray(tagNames)).save()
+      commit.set('tag', @createTagsArray(commit, tagNames)).save()
       @toggleProperty('displayForm')
 
-  createTagsArray: (tags)->
-    tags.split(',')
+  createTagsArray: (commit, tags)->
+    commit.get('tag').contact(tags.split(','))
 
 `export default CommitTag`
