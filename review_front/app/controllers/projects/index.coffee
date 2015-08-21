@@ -12,6 +12,7 @@ ProjectsIndexController = Ember.Controller.extend
 
   actions:
     searchInputChanged: (value)->
+      @set("page", 1)
       @set("query", value)
 
 `export default ProjectsIndexController`
