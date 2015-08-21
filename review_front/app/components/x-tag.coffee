@@ -2,7 +2,7 @@
 
 Component = Ember.Component.extend
   tagName: 'span'
-  classNames: ['label']
+  classNames: ['label', 'commit-tag']
   attributeBindings: ['style']
 
   style: Ember.computed "name", ->
