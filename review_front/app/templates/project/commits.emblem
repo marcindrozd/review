@@ -32,5 +32,5 @@ table.table.table-bordered.table-striped
       | Hide accepted commits
 br
 br
-= commits-table commits=content current_user=current_user hideAccepted=hideAccepted
+= commits-table commits=content current_user=current_user hideAccepted=hideAccepted filterByTag="filterByTag"
 = page-numbers content=content
