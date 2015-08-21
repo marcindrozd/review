@@ -1,4 +1,3 @@
 each tag in orderedTags
-  span.label.label-info
-   = tag
+  = x-tag name=tag
   '
