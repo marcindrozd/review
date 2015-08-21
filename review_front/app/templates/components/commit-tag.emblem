@@ -4,7 +4,7 @@ each tag in tags
 if displayForm
   form{action "createTag" on="submit"} role="form" class="tags-form"
     .form-group
-      = input placeholder="e.g. Kudos" value=tagNames
+      = input placeholder="e.g. Kudos" value=tagNames autofocus=true
 else
   button.btn.dropdown-toggle.btn-default{action "displayTagsForm" on="click"}
     i.glyphicon.glyphicon-tag

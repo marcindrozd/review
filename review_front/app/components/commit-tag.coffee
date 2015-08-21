@@ -15,6 +15,7 @@ CommitTag = Ember.Component.extend
 
       commit.set('tag', @createTagsArray(commit, tagNames)).save()
       @toggleProperty('displayForm')
+      @set('tagNames', '')
 
   createTagsArray: (commit, tags)->
     commit.get('tag').concat(tags.split(','))
