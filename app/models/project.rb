@@ -12,6 +12,8 @@ class Project < ActiveRecord::Base
 
   after_create :create_token
 
+  scope :fuzzy, ->(query) { query.present? ? where("name LIKE ?", "%#{ query }%") : all }
+
   def deadline
     first_commit.expires_at
   end

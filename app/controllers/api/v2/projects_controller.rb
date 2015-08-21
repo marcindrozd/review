@@ -1,7 +1,9 @@
 class Api::V2::ProjectsController < Api::V2::BaseController
   expose(:project_by_name) { Project.where(name: params[:name]) }
-  expose(:projects) { find_projects }
-  expose(:paginated_projects) { projects.order(name: :asc).page params[:page] }
+  expose(:projects) { find_projects.fuzzy(params[:query]) }
+  expose(:paginated_projects) do
+    projects.order(name: :asc).page params[:page]
+  end
 
   def index
     if project_by_name.empty? && params[:name]
