@@ -30,6 +30,7 @@ table.table.table-bordered.table-striped
       | Show accepted commits
     else
       | Hide accepted commits
+  = link-to 'project.commits' (query-params tag="") class="btn btn-default" | Clear tags
 br
 br
 = commits-table commits=content current_user=current_user hideAccepted=hideAccepted filterByTag="filterByTag"

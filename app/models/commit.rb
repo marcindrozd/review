@@ -18,6 +18,7 @@ class Commit < ActiveRecord::Base
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, -> { for_state state.to_s }
   end
+  scope :tagged, ->(tag){ tag.present? ? tagged_with(tag) : all }
 
   has_many :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
   has_many :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'

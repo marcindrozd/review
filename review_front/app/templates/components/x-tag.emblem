@@ -1,2 +1,2 @@
-= name
-
+= link-to 'project.commits' (query-params tag=name)
+  = name

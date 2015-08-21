@@ -5,11 +5,12 @@ ProjectCommitsController = Ember.ArrayController.extend
   sortProperties: ['authoredAt']
 
   hideAccepted: true
-  queryParams: ['page', 'q']
+  queryParams: ['page', 'q', 'tag']
   pageBinding: 'content.page'
   perPageBinding: 'content.perPage'
   totalPagesBinding: 'content.totalPages'
   page: 1
+  tag: ""
   q: { state_not_in: ['accepted','fixed'] }
 
   actions:

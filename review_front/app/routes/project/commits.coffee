@@ -6,6 +6,8 @@ ProjectCommitsRoute = Ember.Route.extend RouteMixin,
     q:
       refreshModel: true
       state_not_in: ['accepted', 'fixed']
+    tag:
+      refreshModel: true
 
   model: (params) ->
     project = @modelFor('project')

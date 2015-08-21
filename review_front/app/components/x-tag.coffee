@@ -22,7 +22,4 @@ Component = Ember.Component.extend
   color: Ember.computed "name", ->
     @toColor(@toHash(@get("name")))
 
-  click: ->
-    @sendAction("action", @get('name'))
-
 `export default Component`

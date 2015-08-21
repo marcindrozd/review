@@ -4,7 +4,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:commit)
   expose(:project) { Project.find_by_name params[:name] }
   expose(:ticket)
-  expose(:commits) { find_commits }
+  expose(:commits) { find_commits.tagged(params[:tag]) }
   expose(:filtered_commits) { commits.ransack(params[:q]).result }
   expose(:filtered_paginated_commits) { order_commits_if_expires_at_present }
 
