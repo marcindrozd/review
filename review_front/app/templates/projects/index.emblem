@@ -1,3 +1,5 @@
+= search-input action="searchInputChanged"
+
 .projects-table
   table.table.table-bordered.table-striped
     thead
