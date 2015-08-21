@@ -13,7 +13,7 @@ CommitTag = Ember.Component.extend
 
       return if tagNames == undefined || tagNames == ''
 
-      commit.set('tags', @createTagsArray(tagNames)).save()
+      commit.set('tag', @createTagsArray(tagNames)).save()
       @toggleProperty('displayForm')
 
   createTagsArray: (tags)->

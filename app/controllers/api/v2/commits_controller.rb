@@ -13,13 +13,21 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   def update
-    commit.attempt_transition_to commit_params[:state]
-    commit.reviewer_id = commit_params[:reviewer_id]
+    unless equal_states?
+      commit.attempt_transition_to commit_params[:state]
+      commit.reviewer_id = commit_params[:reviewer_id]
+    end
+
+    commit.tag_list.add(params[:commit][:tag]) if params[:commit][:tag]
     commit.save
     respond_with(commit)
   end
 
   private
+
+  def equal_states?
+    commit.state == commit_params[:state]
+  end
 
   def ensure_permission
     render json: { message: "You are not authorized to do it." }, status: 401 if commit.author == current_user.person
