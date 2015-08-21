@@ -18,6 +18,21 @@ CommitTag = Ember.Component.extend
       @set('tagNames', '')
 
   createTagsArray: (commit, tags)->
-    commit.get('tag').concat(tags.split(','))
+    currentTags = commit.get('tag')
+    addedTags = tags.split(',')
+
+    @uniqueTags(currentTags.concat(addedTags))
+
+  uniqueTags: (tags) ->
+    unique = []
+    i = 0
+
+    console.log(i);
+    while i < tags.length
+      if unique.indexOf(tags[i]) == -1
+        unique.push tags[i]
+      i++
+
+    unique
 
 `export default CommitTag`
