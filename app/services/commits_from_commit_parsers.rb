@@ -9,8 +9,6 @@ class CommitsFromCommitParsers
     add_batch_remote
   end
 
-  private
-
   def add_batch_remote
     commit_parsers.map{ |commit_parser| add_remote commit_parser }.compact
   end
@@ -20,6 +18,7 @@ class CommitsFromCommitParsers
       Commit.create(commit_parser.attributes) do |commit|
         commit.add_remote_tickets commit_parser.tickets
         commit.set_commit_author commit_parser.author
+        commit.tag_list.add(commit_parser.file_extenssions)
       end
     end
   end

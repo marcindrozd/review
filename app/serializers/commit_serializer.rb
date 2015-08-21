@@ -1,6 +1,6 @@
 class CommitSerializer < ApplicationSerializer
   attributes :id, :remote_id, :message, :state, :remote_url, :expires_at, :created_at, :authored_at,
-    :fixed_by, :fixes_for
+    :fixed_by, :fixes_for, :languages
   has_one :project
   has_one :reviewer
   has_one :author
@@ -18,5 +18,8 @@ class CommitSerializer < ApplicationSerializer
 
   def fixes_for
      object.fixed.map { |commit| commit.fixes_data }
+  end
+  def languages
+    object.tags
   end
 end

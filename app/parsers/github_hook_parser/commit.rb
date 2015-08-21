@@ -13,6 +13,14 @@ class GithubHookParser::Commit
     lookup_key 'url'
   end
 
+  def added_files
+    lookup_key 'added'
+  end
+
+  def modified_files
+    lookup_key 'modified'
+  end
+
   def message
     lookup_key 'message'
   end
@@ -44,6 +52,13 @@ class GithubHookParser::Commit
       message: message,
       authored_at: authored_at,
     }
+  end
+
+  def file_extenssions
+    all_files = self.added_files + self.modified_files
+    all_files.map do |file|
+      file.slice!(/[^.]*$/)
+    end.uniq
   end
 
   private
