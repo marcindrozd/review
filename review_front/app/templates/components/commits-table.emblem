@@ -4,6 +4,7 @@ table.table.table-striped.table-responsive
       th colspan="2" Description
       th State
       th Review
+      th Tag it!
   tbody
     each commit in commits
       tr{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejected:danger commit.isFixed:active"}
@@ -31,5 +32,7 @@ table.table.table-striped.table-responsive
         td
           = commit-state-label reviewState=commit.state
         td.commits-table__review
-          unless commit.isFixed 
+          unless commit.isFixed
             = commit-github-button commit=commit current_user=current_user
+        td
+          commit-tag
