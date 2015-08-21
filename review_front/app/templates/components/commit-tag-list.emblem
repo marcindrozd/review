@@ -1,2 +1,4 @@
 each tag in tags
-  = tag
+  span.label.label-info
+   = tag
+  '
