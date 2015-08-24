@@ -20,6 +20,6 @@ class CommitSerializer < ApplicationSerializer
      object.fixed.map { |commit| commit.fixes_data }
   end
   def tag
-    object.tags.map { |o| o.name }.to_a
+    object.tags.map { |o| o.name }
   end
 end
