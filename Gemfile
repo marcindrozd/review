@@ -34,6 +34,9 @@ gem 'sendgrid'
 gem 'factory_girl_rails'
 gem 'faker'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'sidekiq'
+gem 'slim'
+gem 'capistrano-sidekiq'
 
 group :development do
   gem "letter_opener"
