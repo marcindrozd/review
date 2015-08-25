@@ -27,7 +27,6 @@ CommitTag = Ember.Component.extend
     unique = []
     i = 0
 
-    console.log(i);
     while i < tags.length
       if unique.indexOf(tags[i]) == -1
         unique.push tags[i]
