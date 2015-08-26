@@ -21,6 +21,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
     commit.tag_list.add(params[:commit][:tag]) if params[:commit][:tag]
     commit.save
     respond_with(commit)
+    send_state_notification(commit)
   end
 
   private
@@ -58,11 +59,17 @@ class Api::V2::CommitsController < Api::V2::BaseController
   def commit_pages_count
     (filtered_commits.count / filtered_paginated_commits.default_per_page.to_f).ceil
   end
+
   def order_commits_if_expires_at_present
     if params[:q] == "null"
       filtered_commits.order(authored_at: :desc).page params[:page]
     else
       filtered_commits.order(expires_at: :asc).page params[:page]
     end
+  end
+
+  def send_state_notification commit
+    return unless commit.state == "passed" || commit.state == "rejected"
+    PassRejectNotificationWorker.perform_async(commit.id)
   end
 end
