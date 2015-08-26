@@ -1,0 +1,6 @@
+Hello <%= @email %>,
+
+The following commits are about to expire:
+<%= @commits.each do |commit| %>
+Url: <% commit.url %> at <%= commit.expires_at %>
+<% end %>
