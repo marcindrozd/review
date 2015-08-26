@@ -3,7 +3,7 @@ desc 'It sends an email notyfing about commits to be expired'
     unless AppConfig.enable_notifications
       emails = CommitsAboutToExpire.new().commits_for_authors
       emails.each_pair do |pair|
-        AboutToExpireNotification.soon_to_expire_email(pair)
+        AboutToExpireNotification.soon_to_expire_email(pair).deliver
       end
     end
   end
