@@ -1,6 +1,6 @@
 class AboutToExpireNotification < ActionMailer::Base
   include SendGrid
-  default from: 'review@app.com'
+  default from: AppConfig.sendgrid.from_email
 
   def soon_to_expire_email(email_data)
     sendgrid_disable :ganalytics

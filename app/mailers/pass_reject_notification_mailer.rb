@@ -1,6 +1,6 @@
 class PassRejectNotificationMailer < ActionMailer::Base
   include SendGrid
-  default from: 'review@app.com'
+  default from: AppConfig.sendgrid.from_email
 
   def state_notification(commit)
     sendgrid_disable :ganalytics
