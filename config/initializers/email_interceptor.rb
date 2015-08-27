@@ -1,3 +1,3 @@
 if Rails.env.staging?
-  ActionMailer::Base.register_interceptor(SandboxEmailInterceptor)
+  ActionMailer::Base.register_interceptor(EmailInterceptor)
 end
