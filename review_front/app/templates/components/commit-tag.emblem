@@ -1,7 +1,7 @@
 if isEditing
   .form-inline
-    = input insert-newline="createTag" escape-press="dropEdits" placeholder="divide tags with a comma" value=tagNames autofocus=true class="form-control"
-    .btn-group
+    = input insert-newline="createTag" escape-press="dropEdits" placeholder="divide tags with a comma" value=tagNames autofocus="autofocus" class="input-sm form-control"
+    .btn-group.btn-group-sm
       button.btn.btn-default click="createTag"
         i.glyphicon.glyphicon-ok
         span.sr-only Save
@@ -10,6 +10,6 @@ if isEditing
         span.sr-only Cancel
 else
   = commit-tag-list tags=commit.tag action="clickTag"
-  button.btn.btn-default click="displayTagsForm"
+  button.btn.btn-default.btn-sm click="displayTagsForm"
     i.glyphicon.glyphicon-tag
     span.sr-only Add a tag
