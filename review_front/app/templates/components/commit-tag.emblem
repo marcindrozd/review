@@ -1,10 +1,6 @@
-each tag in tags
-  = tag
-
 if displayForm
-  form{action "createTag" on="submit"} role="form" class="tags-form"
-    .form-group
-      = input placeholder="e.g. Kudos" value=tagNames autofocus=true
+  = input insert-newline="createTag" placeholder="divide tags with a comma" value=tagNames autofocus=true
 else
-  button.btn.dropdown-toggle.btn-default{action "displayTagsForm" on="click"}
+  button.btn.dropdown-toggle.btn-default click="displayTagsForm"
     i.glyphicon.glyphicon-tag
+    span.sr-only Add a tag

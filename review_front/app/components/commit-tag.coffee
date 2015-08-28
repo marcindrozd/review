@@ -1,8 +1,6 @@
 `import Ember from 'ember'`
 
 CommitTag = Ember.Component.extend
-  tagName: 'div'
-
   actions:
     displayTagsForm: ->
       @toggleProperty('displayForm')
