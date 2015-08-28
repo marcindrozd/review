@@ -1,6 +1,13 @@
 if isEditing
-  = input insert-newline="createTag" escape-press="dropEdits" placeholder="divide tags with a comma" value=tagNames autofocus=true
-  button.btn.btn-default click="dropEdits" Cancel
+  .form-inline
+    = input insert-newline="createTag" escape-press="dropEdits" placeholder="divide tags with a comma" value=tagNames autofocus=true class="form-control"
+    .btn-group
+      button.btn.btn-default click="createTag"
+        i.glyphicon.glyphicon-ok
+        span.sr-only Save
+      button.btn.btn-default click="dropEdits"
+        i.glyphicon.glyphicon-remove
+        span.sr-only Cancel
 else
   = commit-tag-list tags=commit.tag action="clickTag"
   button.btn.btn-default click="displayTagsForm"
