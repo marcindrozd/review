@@ -1,9 +1,11 @@
 `import Ember from 'ember'`
 
 CommitTag = Ember.Component.extend
+  idEditing: false
+
   actions:
     displayTagsForm: ->
-      @toggleProperty('displayForm')
+      @set('isEditing', true)
 
     createTag: ->
       tagNames = @get('tagNames')
@@ -12,7 +14,11 @@ CommitTag = Ember.Component.extend
       return if tagNames == undefined || tagNames == ''
 
       commit.set('tag', @createTagsArray(commit, tagNames)).save()
-      @toggleProperty('displayForm')
+      @set('isEditing', false)
+      @set('tagNames', '')
+
+    dropEdits: ->
+      @set("isEditing", false)
       @set('tagNames', '')
 
   createTagsArray: (commit, tags)->

@@ -20,8 +20,7 @@ table.table.table-striped.table-responsive
             .commits-table__commit-message
               commit.message
               .commits-table_commit-language-tag
-                = commit-tag-list tags=commit.tag action="filterByTag"
-                = commit-tag commit=commit
+                = commit-tag commit=commit clickTag="filterByTag"
           .pull-right
             = auto-select-input value=commit.remoteId mouse-up="focus"
             .commits-table__commit-reviewer

@@ -1,6 +1,8 @@
-if displayForm
-  = input insert-newline="createTag" placeholder="divide tags with a comma" value=tagNames autofocus=true
+if isEditing
+  = input insert-newline="createTag" escape-press="dropEdits" placeholder="divide tags with a comma" value=tagNames autofocus=true
+  button.btn.btn-default click="dropEdits" Cancel
 else
-  button.btn.dropdown-toggle.btn-default click="displayTagsForm"
+  = commit-tag-list tags=commit.tag action="clickTag"
+  button.btn.btn-default click="displayTagsForm"
     i.glyphicon.glyphicon-tag
     span.sr-only Add a tag
