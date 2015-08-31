@@ -69,4 +69,5 @@ describe Api::V2::CommitsController do
         expect(JSON.parse(response.body).fetch('commits').first['state']).to eq('pending')
       end
     end
+  end
 end
