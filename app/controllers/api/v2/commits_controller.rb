@@ -1,5 +1,6 @@
 class Api::V2::CommitsController < Api::V2::BaseController
   before_filter :ensure_permission, only: :update
+  before_action :check_user_roles
 
   expose(:commit)
   expose(:project) { Project.find_by_name params[:name] }
@@ -25,6 +26,13 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   private
+
+  def check_user_roles
+    project ||= Project.find(commit.project_id)
+    return if current_user.has_role?(:developer) || current_user.has_role?(:admin) ||
+      current_user.has_role?(:contractor, project)
+    render json: { message: "You don't have permission to access this resource." }, status: 403
+  end
 
   def equal_states?
     commit.state == commit_params[:state]
