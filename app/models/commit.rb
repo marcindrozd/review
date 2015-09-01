@@ -1,5 +1,5 @@
 class Commit < ActiveRecord::Base
-  SOON_TO_EXPIRE = 6
+  SOON_TO_EXPIRE = 2 
   AUTOREJECT_TIME = 48
 
   before_create :get_associated_project, :set_expires_at
