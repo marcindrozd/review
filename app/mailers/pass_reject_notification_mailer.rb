@@ -7,6 +7,6 @@ class PassRejectNotificationMailer < ActionMailer::Base
     @email = commit.author.email
     @url = commit.url
     @state = commit.state
-    mail(to: @email, subject: "One of yur commits has been #{@state}")
+    mail(to: @email, subject: "One of your commits has been #{@state}")
   end
 end
