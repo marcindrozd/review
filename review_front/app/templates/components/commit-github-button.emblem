@@ -1,17 +1,16 @@
 .dropdown
-  button.btn.dropdown-toggle.btn-default{action "viewCommit" on="click"}{{bind-attr id="commit.id"}} type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+  button.btn.dropdown-toggle.btn-default{action "viewCommit" on="click"}{bind-attr id="commit.id"} type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
     i.glyphicon.glyphicon-eye-open
-  ul.dropdown-menu{{bind-attr aria-labelledby="commit.id"}}
-    unless commit.belongsToMe
-      li
-        a{bind-attr disabled="commit.isAccepted"}{action "acceptCommit" on="click"}
-          span.glyphicon.glyphicon-ok
-          |  accept
-      li
-        a{bind-attr disabled="commit.isPassed"}{action "passCommit" on="click"}
-          i.glyphicon.glyphicon-time
-          |  pass
-      li
-        a{bind-attr disabled="commit.isRejected"}{action "rejectCommit" on="click"}
-          i.glyphicon.glyphicon-remove
-          |  reject
+  ul.dropdown-menu{bind-attr aria-labelledby="commit.id"}
+    li{bind-attr hidden="commit.isAccepted"}
+      a{action "acceptCommit" on="click"}
+        span.glyphicon.glyphicon-ok
+        |  accept
+    li{bind-attr hidden="commit.isPassed"}
+      a{action "passCommit" on="click"}
+        i.glyphicon.glyphicon-time
+        |  pass
+    li{bind-attr hidden="commit.isRejected"}
+      a{action "rejectCommit" on="click"}
+        i.glyphicon.glyphicon-remove
+        |  reject
