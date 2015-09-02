@@ -28,6 +28,13 @@
     }
   }
 
+  .current-users-commit {
+    a, a:hover {
+      color: $disabled;
+      cursor: not-allowed;
+    }
+  }
+
   ul {
     padding: 0;
   }
