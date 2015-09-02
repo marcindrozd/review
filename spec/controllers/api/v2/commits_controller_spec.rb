@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Api::V2::CommitsController do
-  let(:project) { create(:project, name: 'project1') }
+  let!(:project) { create(:project, name: 'project1') }
   let!(:commit) do
     create(:commit,
            project_id: project.id,
@@ -10,7 +10,7 @@ describe Api::V2::CommitsController do
            expires_at: Date.parse - 1.day,
            state: 'pending')
   end
-  let!(:author) { create(:user, email: 'test@test.co') }
+  let!(:author) { create(:person, email: 'test@test.co') }
   let(:token) { reviewer.tokens.first.value }
   let(:reviewer) { create(:user, email: 'test2@test.co', person_id: reviewer_person.id) }
   let(:reviewer_person) { create(:person, email: 'test2@test.co') }
@@ -19,7 +19,7 @@ describe Api::V2::CommitsController do
   end
 
   describe '#update' do
-   let(:valid_params) { {state: 'rejected',  tag: ['test_tag'] }  }
+    let(:valid_params) { {state: 'rejected',  tag: ['test_tag']}  }
 
     context 'there is a valid user' do
 
@@ -62,7 +62,7 @@ describe Api::V2::CommitsController do
 
       before :each do
         session[:user_id] = reviewer.id
-        get :index, params: params, format: :json
+        get :index, q: 'null', name: project.name, format: :json
       end
 
       it 'responsd with 200 status' do
@@ -94,7 +94,7 @@ describe Api::V2::CommitsController do
 
       before :each do
         session[:user_id] = reviewer.id
-        get :index, q: {state_not_in: ['accepted', 'fixed']}, format:  :json
+        get :index, q: {state_not_in: ['accepted', 'fixed']}, name: project.name, format:  :json
       end
 
       it 'responsd with 200 status' do
@@ -112,9 +112,9 @@ describe Api::V2::CommitsController do
       end
     end
     context 'with valid user and tags' do
-      let(:commit_tag1) { create(:commit) }
-      let(:commit_tag2) { create(:commit) }
-      let(:commit_tag3) { create(:commit) }
+      let(:commit_tag1) { create(:commit, project_id: project.id) }
+      let(:commit_tag2) { create(:commit, project_id: project.id) }
+      let(:commit_tag3) { create(:commit, project_id: project.id) }
 
       before do
         commit_tag1.tag_list.add('test_tag')
@@ -127,7 +127,7 @@ describe Api::V2::CommitsController do
 
       before :each do
         session[:user_id] = reviewer.id
-        get :index, tag: 'test_tag', format:  :json
+        get :index, tag: 'test_tag', name: project.name, format:  :json
       end
 
       it 'returns 200 status' do
