@@ -33,5 +33,5 @@ table.table.table-bordered.table-striped
   = link-to 'project.commits' (query-params tag="") class="btn btn-default" | Clear tags
 br
 br
-= commits-table commits=content current_user=current_user hideAccepted=hideAccepted filterByTag="filterByTag"
-= page-numbers content=content
+= commits-table commits=commits currentUser=currentUser hideAccepted=hideAccepted filterByTag="filterByTag"
+= page-numbers content=commits
