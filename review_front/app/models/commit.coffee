@@ -23,6 +23,10 @@ Commit = DS.Model.extend
   )
 
   isRejected: Ember.computed('state', ->
+    @get('state') == 'rejected'
+  )
+
+  isRejectedOrAutoRejected: Ember.computed('state', ->
     ['rejected', 'auto_rejected'].contains(@get('state'))
   )
 
