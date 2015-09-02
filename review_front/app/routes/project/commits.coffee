@@ -12,12 +12,10 @@ ProjectCommitsRoute = Ember.Route.extend RouteMixin,
   model: (params) ->
     project = @modelFor('project')
     params = Ember.merge(params, {name: project.get("name")})
-    @findPaged 'commit', params
-
-  setupController: (controller, model)->
-    controller.set('current_user', @store.find('user', 'me'))
-    controller.set('model', model)
-    controller.set('project', @modelFor('project'))
+    modelsHash =
+      currentUser: @store.find('user', 'me')
+      project: @modelFor('project')
+      commits: @findPaged 'commit', params
+    Ember.RSVP.hash(modelsHash)
 
 `export default ProjectCommitsRoute`
-
