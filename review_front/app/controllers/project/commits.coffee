@@ -1,14 +1,17 @@
 `import Ember from 'ember'`
 `import pagedArray from 'ember-cli-pagination/computed/paged-array'`
 
-ProjectCommitsController = Ember.ArrayController.extend
+ProjectCommitsController = Ember.Controller.extend
   sortProperties: ['authoredAt']
+  commits: Ember.computed.alias('model.commits')
+  currentUser: Ember.computed.alias('model.currentUser')
+  project: Ember.computed.alias('model.project')
 
   hideAccepted: true
   queryParams: ['page', 'q', 'tag']
-  pageBinding: 'content.page'
-  perPageBinding: 'content.perPage'
-  totalPagesBinding: 'content.totalPages'
+  pageBinding: 'commits.page'
+  perPageBinding: 'commits.perPage'
+  totalPagesBinding: 'commits.totalPages'
   page: 1
   tag: ""
   q: { state_not_in: ['accepted','fixed'] }
