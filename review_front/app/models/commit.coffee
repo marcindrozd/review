@@ -42,9 +42,6 @@ Commit = DS.Model.extend
     @get('state') != 'fixed' and @get('state') != 'accepted'
   )
 
-  belongsToMe: Ember.computed ->
-    @store.find('user', 'me').get('person') is @get('author')
-
   hasReviewer: Ember.computed.notEmpty('reviewer.id')
 
 `export default Commit`
