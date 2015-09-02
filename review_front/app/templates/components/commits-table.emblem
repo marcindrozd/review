@@ -6,7 +6,7 @@ table.table.table-striped.table-responsive
       th Review
   tbody
     each commit in commits
-      tr{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejected:danger commit.isFixed:active"}
+      tr{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejectedOrAutoRejected:danger commit.isFixed:active"}
         td
           = gravatar-image person=commit.author
         td
@@ -34,4 +34,4 @@ table.table.table-striped.table-responsive
           = commit-state-label reviewState=commit.state
         td.commits-table__review
           unless commit.isFixed
-            = commit-github-button commit=commit current_user=current_user
+            = commit-github-button commit=commit currentUser=currentUser
