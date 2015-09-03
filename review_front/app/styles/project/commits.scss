@@ -1,6 +1,7 @@
 .commits-table {
 
-  overflow-y: scroll;
+  overflow-y: hidden;
+  padding-bottom: 15px;
 
   &__commit-info {
     float: left;
