@@ -14,12 +14,12 @@ class Api::V1::NewTradeSerializer < ActiveModel::Serializer
   def commits
     {
       pending: object.commits.pending.count,
-      rejected: object.commits.rejected.count,
+      auto_rejected: object.commits.auto_rejected.count
     }
   end
 
   def project
-    return {name: object.name, url: url, commits_to_review: object.commits.unreviewed }
+    return { name: object.name, url: url, commits_to_review: object.commits.unreviewed }
   end
 
   def deadline
