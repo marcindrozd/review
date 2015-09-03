@@ -16,7 +16,7 @@ CommitGithubButton = Ember.Component.extend
     top = screen.height / 2 - COMMIT_PREVIEW.height / 2 + screen.availTop
 
     commit_prev = window.open(url, 'commit_preview', "width=#{COMMIT_PREVIEW.width},
-      height=#{COMMIT_PREVIEW.height}, top=#{top}, left=#{left}")
+      height=#{COMMIT_PREVIEW.height}, top=#{top}, left=#{left}, scrollbars=yes")
     commit_prev.focus()
 
   currentUserIsCommitAuthor: ->
