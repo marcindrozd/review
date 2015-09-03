@@ -18,7 +18,7 @@ Review::Application.routes.draw do
       resources :invitations, only: [:index, :show, :create]
       resources :users, only: [:show, :index, :update]
       resources :commits, only: [:index, :update]
-      resources :projects, only: [:index, :show]
+      resources :projects, param: :name, only: [:index, :show]
       resources :tickets, only: [:show]
     end
   end
