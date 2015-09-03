@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
   scope :fuzzy, ->(query) { query.present? ? where("email LIKE ?", "%#{ query }%") : all }
 
+  def permitted_in_project?(project)
+    has_role?(:developer) || has_role?(:admin) || has_role?(:contractor, project)
+  end
+
   private
 
   def assign_person

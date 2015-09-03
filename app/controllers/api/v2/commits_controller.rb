@@ -29,8 +29,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
 
   def check_user_roles
     project ||= Project.find(commit.project_id)
-    return if current_user.has_role?(:developer) || current_user.has_role?(:admin) ||
-      current_user.has_role?(:contractor, project)
+    return if current_user.permitted_in_project?(project)
     render json: { message: "You don't have permission to access this resource." }, status: 403
   end
 
