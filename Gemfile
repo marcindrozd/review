@@ -71,4 +71,3 @@ group :development, :production do
   gem 'capistrano-passenger', '0.0.2'
   gem 'rvm1-capistrano3', require: false
 end
-
