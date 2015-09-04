@@ -77,7 +77,13 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   def send_state_notification commit
-    return unless commit.state == "passed" || commit.state == "rejected"
+    return unless passed?(commit) || rejected?(commit)
     PassRejectNotificationWorker.perform_async(commit.id)
+  end
+  def passed? commit
+    commit.state == "passed"
+  end
+  def rejected? commit
+    commit.state == "rejected"
   end
 end
