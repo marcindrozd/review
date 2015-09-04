@@ -1,5 +1,5 @@
 class Commit < ActiveRecord::Base
-  SOON_TO_EXPIRE = 2 
+  SOON_TO_EXPIRE = 2
   AUTOREJECT_TIME = 48
 
   before_create :get_associated_project, :set_expires_at
@@ -12,7 +12,8 @@ class Commit < ActiveRecord::Base
   scope :by_remote,      ->(remote) { where(remote_id: remote) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
   scope :for_state,      ->(state) { where(state: state) }
-  scope :to_auto_reject, -> { where(state: %w(pending passed)) }
+  scope :to_auto_reject, -> { where(state: :pending) }
+  scope :to_reject, -> { where(state: :passed) }
   scope :unreviewed,     -> { where(state: %w(pending auto_rejected)) }
   scope :order_by_priority, -> { order(order_by_state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
@@ -114,8 +115,9 @@ class Commit < ActiveRecord::Base
     }
   end
 
-  def check_outdate
-    auto_reject! if outdated?
+  def overdue_actions
+    return unless outdated?
+    pending? ? auto_reject! : reject!
   end
 
   def outdated?
