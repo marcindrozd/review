@@ -21,6 +21,13 @@ CommitTag = Ember.Component.extend
       @set("isEditing", false)
       @set('tagNames', '')
 
+    removeTag: (name) ->
+      commit = @get('commit')
+      currentTags = commit.get('tag')
+      index = currentTags.indexOf(name)
+      currentTags.splice(index)
+      commit.set('tag', currentTags).save()
+
   createTagsArray: (commit, tags)->
     currentTags = commit.get('tag')
     addedTags = tags.split(',')

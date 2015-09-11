@@ -22,4 +22,8 @@ Component = Ember.Component.extend
   color: Ember.computed "name", ->
     @toColor(@toHash(@get("name")))
 
+  actions:
+    removeTag: ->
+      @sendAction("action", @get("name"))
+
 `export default Component`
