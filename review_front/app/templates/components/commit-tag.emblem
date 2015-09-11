@@ -9,7 +9,7 @@ if isEditing
         i.glyphicon.glyphicon-remove
         span.sr-only Cancel
 else
-  = commit-tag-list tags=commit.tag action="clickTag"
+  = commit-tag-list tags=commit.tag action="removeTag"
   button.btn.btn-default.btn-sm click="displayTagsForm"
     i.glyphicon.glyphicon-tag
     span.sr-only Add a tag

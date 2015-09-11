@@ -19,8 +19,8 @@ table.table.table-striped.table-responsive
                 = time-relative commit.expiresAt
             .commits-table__commit-message
               commit.message
-              .commits-table_commit-language-tag
-                = commit-tag commit=commit clickTag="filterByTag"
+              .commits-table__commit-tag
+                = commit-tag commit=commit
           .pull-right
             = auto-select-input value=commit.remoteId mouse-up="focus"
             .commits-table__commit-reviewer
