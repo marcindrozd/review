@@ -23,7 +23,6 @@ ProjectCommitsController = Ember.Controller.extend
         @transitionTo(queryParams:{q: null, page: @page })
       else
         @transitionTo(queryParams:{q: state_not_in: ['accepted','fixed'], page: @page})
-    filterByTag: (name) ->
-      console.log name
+
 
 `export default ProjectCommitsController`
