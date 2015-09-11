@@ -18,10 +18,13 @@ class Api::V2::CommitsController < Api::V2::BaseController
       commit.attempt_transition_to commit_params[:state]
       commit.reviewer_id = commit_params[:reviewer_id]
     end
+    if tags_removed? && !removed_tags.empty?
+      commit.tag_list.remove(removed_tags)
+    end
 
     commit.tag_list.add(params[:commit][:tag]) if params[:commit][:tag]
     commit.save
-    respond_with(commit)
+    respond_with commit
     send_state_notification(commit)
   end
 
@@ -84,5 +87,15 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
   def rejected? commit
     commit.state == "rejected"
+  end
+  def tags_removed?
+    if params[:commit][:tag].nil?
+      []
+    else
+      params[:commit][:tag].count < commit.tag_list.count
+    end
+  end
+  def removed_tags
+    commit.tag_list - params[:commit][:tag]
   end
 end
