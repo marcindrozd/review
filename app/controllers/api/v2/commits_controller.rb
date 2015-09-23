@@ -8,6 +8,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:commits) { find_commits.tagged(params[:tag]) }
   expose(:filtered_commits) { commits.ransack(params[:q]).result }
   expose(:filtered_paginated_commits) { order_commits_if_expires_at_present }
+  expose(:updated_tags) { params[:commit][:tag] || [] }
 
   def index
     respond_with filtered_paginated_commits, meta: { total_pages: commit_pages_count }
@@ -89,13 +90,9 @@ class Api::V2::CommitsController < Api::V2::BaseController
     commit.state == "rejected"
   end
   def tags_removed?
-    if params[:commit][:tag].nil?
-      []
-    else
-      params[:commit][:tag].count < commit.tag_list.count
-    end
+      updated_tags.count < commit.tag_list.count
   end
   def removed_tags
-    commit.tag_list - params[:commit][:tag]
+    commit.tag_list - updated_tags
   end
 end
