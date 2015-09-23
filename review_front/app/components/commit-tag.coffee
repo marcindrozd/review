@@ -27,6 +27,7 @@ CommitTag = Ember.Component.extend
       index = currentTags.indexOf(name)
       currentTags.splice(index)
       commit.set('tag', currentTags).save()
+      @rerender()
 
   createTagsArray: (commit, tags)->
     currentTags = commit.get('tag')
