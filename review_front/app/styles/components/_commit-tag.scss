@@ -4,10 +4,9 @@
     color: #fff;
     text-shadow: 0 0 1px #000;
   }
-  i {
-    color: black;
-    margin-left: 1px;
-    margin-right: 1px;
+  i.glyphicon.glyphicon-remove {
+    color: #677581;
+    margin: auto 1px;
     line-height: 1px;
     cursor: pointer;
   }
