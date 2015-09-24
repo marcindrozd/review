@@ -19,7 +19,7 @@ describe Api::V2::CommitsController do
   end
 
   describe '#update' do
-    let(:valid_params) { {state: 'rejected',  tag: ['test_tag']}  }
+    let(:valid_params) { {state: 'rejected', tag: ['test_tag']}  }
 
     context 'there is a valid user' do
 
@@ -36,6 +36,23 @@ describe Api::V2::CommitsController do
       end
       it 'adds a tag to a given commit' do
         expect(commit.tag_list).to eq(['test_tag'])
+      end
+      it 'reomves a tag' do
+        put :update, id: commit.id, commit: { tag: ['test_tag']} , format:  :json
+        expect(commit.tag_list).to eq(['test_tag'])
+      end
+    end
+    context 'removes tags with valid user' do
+      before do
+        session[:user_id] = reviewer.id
+        commit.tag_list = ['test_tag']
+        put :update, id: commit.id,  commit: {tag: [], state: 'pending'}, format:  :json
+      end
+      it 'returns status 204' do
+        expect(response.status).to eq(204)
+      end
+      it 'reomves a tag' do
+        expect(commit.reload.tag_list).to eq([])
       end
     end
     context 'there is no valid user' do
