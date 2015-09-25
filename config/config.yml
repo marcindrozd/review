@@ -8,6 +8,9 @@ defaults: &defaults
     appkey: <%= ENV['GITHUB_APPKEY'] %>
     secret: <%= ENV['GITHUB_SECRET'] %>
   rollbar_access_token: <%= ENV['ROLLBAR_ACCESS_TOKEN'] %>
+  tag_blacklist: [
+    "lock"
+  ]
 development:
   <<: *defaults
   hostname: 'localhost:3000'

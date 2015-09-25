@@ -53,12 +53,12 @@ class GithubHookParser::Commit
       authored_at: authored_at,
     }
   end
-
   def file_extenssions
     all_files = self.added_files + self.modified_files
-    all_files.map do |file|
-      file.slice!(/[^.]*$/)
-    end.uniq
+    raw_list = all_files.map do |file|
+                 file.slice!(/[^.]*$/)
+               end.uniq
+    filter_blacklisted_extenssions(raw_list)
   end
 
   private
@@ -73,5 +73,8 @@ class GithubHookParser::Commit
 
   def lookup_key(key)
     raw.fetch(key)
+  end
+  def filter_blacklisted_extenssions(raw_list)
+    raw_list - AppConfig.tag_blacklist
   end
 end
