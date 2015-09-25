@@ -4,7 +4,7 @@ describe GithubHookParser::Commit do
 
   describe "parsing basic values" do
 
-    let(:commit_parser) { described_class.new id: 'deadbeef', url: 'http://example.com/commit', message: 'fixed a bug', modified: ['test.coffee, test.lock, test.js'], added: ['test.lock'] }
+    let(:commit_parser) { described_class.new id: 'deadbeef', url: 'http://example.com/commit', message: 'fixed a bug', modified: ['test.coffee', 'test.lock', 'test.js'], added: ['test.lock'] }
 
     it "returns remote_id" do
       expect(commit_parser.remote_id).to eq 'deadbeef'
