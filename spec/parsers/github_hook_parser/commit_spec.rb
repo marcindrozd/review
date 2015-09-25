@@ -4,7 +4,7 @@ describe GithubHookParser::Commit do
 
   describe "parsing basic values" do
 
-    let(:commit_parser) { described_class.new id: 'deadbeef', url: 'http://example.com/commit', message: 'fixed a bug' }
+    let(:commit_parser) { described_class.new id: 'deadbeef', url: 'http://example.com/commit', message: 'fixed a bug', modified: ['test.coffee, test.lock, test.js'], added: ['test.lock'] }
 
     it "returns remote_id" do
       expect(commit_parser.remote_id).to eq 'deadbeef'
@@ -17,6 +17,11 @@ describe GithubHookParser::Commit do
     it "returns commit message" do
       expect(commit_parser.message).to eq 'fixed a bug'
     end
+
+    it "returns file extenssions that are not in the blacklist" do
+      expect(commit_parser.file_extenssions).to eq(['coffee', 'js'].sort)
+    end
+
   end
 
   describe "parsing referenced commits from message" do
