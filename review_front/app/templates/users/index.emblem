@@ -1,4 +1,4 @@
-= search-input action="searchInputChanged" query=query
+= search-input action="searchInputChanged" query=query placeholder="Search by email…"
 
 .admin-users
   table.table.table-bordered.table-striped

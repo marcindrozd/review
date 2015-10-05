@@ -1,2 +1,2 @@
 .form-group
-  = input type="search" class="form-control" placeholder="Search…" autofocus=true value=search
+  = input type="search" class="form-control" placeholder=placeholder autofocus=true value=search
