@@ -10,6 +10,9 @@ class Api::V2::ProjectsController < Api::V2::BaseController
       respond_with "{'error': 'not_found'}", status: 404
     elsif project_by_name.present?
       respond_with project_by_name
+    elsif params[:all]
+      binding.pry
+      respond_with projects
     else
       respond_with paginated_projects, meta: { total_pages: project_pages_count }
     end
