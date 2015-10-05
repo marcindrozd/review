@@ -5,9 +5,13 @@
     text-shadow: 0 0 1px #000;
   }
   i.glyphicon.glyphicon-remove {
-    color: #677581;
+    color: #fff;
     margin: auto 1px;
-    line-height: 1px;
     cursor: pointer;
+    text-shadow: 0 0 1px #000;
+
+    &:hover {
+      color: darken(#fff, 30%);
+    }
   }
 }
