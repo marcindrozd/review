@@ -23,6 +23,25 @@ describe Api::V2::ProjectsController do
         expect(JSON.parse(response.body).fetch('projects').count).to eq(2)
       end
     end
+    context 'user has role devloper and fetches projects without pagination' do
+      let!(:project_list) { FactoryGirl.create_list(:project, 27) }
+      let!(:add_role) do
+        user.add_role :developer
+      end
+
+      before :each do
+        session[:user_id] = user.id
+        get :index, all: "true", format: :json
+      end
+
+      it 'returns 200 response code' do
+        expect(response.status).to be(200)
+      end
+      it 'responds with a list with two projects' do
+        expect(JSON.parse(response.body).fetch('projects').count).to eq(29)
+      end
+    end
+
     context 'user has role admin' do
       let!(:add_role) do
         user.add_role :developer
