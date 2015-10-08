@@ -14,7 +14,7 @@ ProjectCommitsController = Ember.Controller.extend
   totalPagesBinding: 'commits.totalPages'
   page: 1
   tag: ""
-  q: { state_not_in: ['accepted','fixed'] }
+  q: { state_not_in: ['accepted'] }
 
   actions:
     toggleAccepted: ->
@@ -22,7 +22,7 @@ ProjectCommitsController = Ember.Controller.extend
       if @get('hideAccepted') == false
         @transitionTo(queryParams:{q: null, page: @page })
       else
-        @transitionTo(queryParams:{q: state_not_in: ['accepted','fixed'], page: @page})
+        @transitionTo(queryParams:{q: state_not_in: ['accepted'], page: @page})
 
 
 `export default ProjectCommitsController`
