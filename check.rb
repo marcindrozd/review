@@ -6,9 +6,8 @@ require 'net/http'
 require 'json'
 
 def look_for_error_message(standup_response)
-  if standup_response.has_key?('message')
-    puts standup_response.fetch('message')
-  end
+  return unless standup_response.has_key?('message')
+  puts standup_response.fetch('message')
 end
 
 raise "usage: REVIEW_API=review.api.url/path REVIEW_TOKEN=review_token ruby check.rb" unless ENV['REVIEW_API'] && ENV["REVIEW_TOKEN"]
