@@ -15,12 +15,12 @@
       "url":"https://github.com/netguru/review/commit/2222222222222222222222222222222222222222",
       "author":{
         "name":"John Kovalsky",
-        "email":"commiter@github.com",
+        "email":"commiter@example.com",
         "username":"commiter"
       },
       "committer":{
         "name":"John Kovalsky",
-        "email":"commiter@github.com",
+        "email":"commiter@example.com",
         "username":"commiter"
       },
       "added":[
@@ -42,12 +42,12 @@
       "url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd6",
       "author":{
         "name":"John Kovalsky",
-        "email":"commiter@github.com",
+        "email":"commiter@example.com",
         "username":"commiter"
       },
       "committer":{
         "name":"John Kovalsky",
-        "email":"commiter@github.com",
+        "email":"commiter@example.com",
         "username":"commiter"
       },
       "added":[
@@ -68,12 +68,12 @@
       "url":"https://github.com/netguru/review/commit/55e5a7b12d413ea605dda91b5911d5a27cafdfd7",
       "author":{
         "name":"John Kovalsky",
-        "email":"commiter@github.com",
+        "email":"commiter@example.com",
         "username":"commiter"
       },
       "committer":{
         "name":"John Kovalsky",
-        "email":"commiter@github.com",
+        "email":"commiter@example.com",
         "username":"commiter"
       },
       "added":[
@@ -99,7 +99,7 @@
     "size":308,
     "owner":{
       "name":"netguru",
-      "email":"commiter@some.email.pl"
+      "email":"commiter@example.pl"
     },
     "private":true,
     "open_issues":0,
@@ -114,6 +114,6 @@
   },
   "pusher":{
     "name":"commiter",
-    "email":"commiter@github.com"
+    "email":"commiter@example.com"
   }
 }
