@@ -6,7 +6,7 @@ require 'net/http'
 require 'json'
 
 def look_for_error_message(standup_response)
-  return unless standup_response.has_key?('message')
+  if standup_response.has_key?('message')
     puts standup_response.fetch('message')
   end
 end
