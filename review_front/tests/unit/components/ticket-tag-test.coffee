@@ -1,6 +1,6 @@
 `import { test, moduleForComponent } from 'ember-qunit'`
 
-moduleForComponent 'ticket-tag', {
+moduleForComponent 'TicketTag', {
   # Specify the other units that are required for this test
   # needs: ['component:foo', 'helper:bar']
 }
