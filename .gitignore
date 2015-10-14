@@ -7,10 +7,15 @@
 
 dump.rdb
 
+# Ignore local assets
+/bower_components/*
+app/assets/workers/*
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 /coverage
+npm-debug.log
 
 # Ignore secrets
 config/database.yml
