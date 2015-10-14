@@ -9,7 +9,7 @@ p
         th Status
         th Date
     tbody
-      each invitation in model
+      each model key="id" as |invitation|
         tr
           td= invitation.email
           td= invitation.role

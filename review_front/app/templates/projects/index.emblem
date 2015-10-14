@@ -12,7 +12,7 @@
         th Review status
         th Github link
     tbody
-      each project in content
+      each content key="id" as |project|
         tr
           td= link-to 'project.commits' project: project.name
           td= project.rejected

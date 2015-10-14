@@ -10,7 +10,7 @@
         th User role
         th Actions
     tbody
-      each user in users
+      each users key="id" as |user|
         tr.admin-users__row
           td= user.nickname
           td= user.name

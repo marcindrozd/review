@@ -5,7 +5,7 @@ table.table.table-striped.table-responsive
       th State
       th Review
   tbody
-    each commit in commits
+    each commits key="id" as |commit|
       tr{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejectedOrAutoRejected:danger commit.isFixed:active"}
         td
           = gravatar-image person=commit.author
