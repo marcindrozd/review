@@ -70,16 +70,18 @@ class Api::V2::CommitsController < Api::V2::BaseController
   end
 
   def order_commits_by_authored_at
-    filtered_commits.order(authored_at: :desc).page params[:page]
+    filtered_commits.order(authored_at: :desc, create_at: :desc).page params[:page]
   end
 
   def send_state_notification commit
     return unless passed?(commit) || rejected?(commit)
     PassRejectNotificationWorker.perform_async(commit.id)
   end
+
   def passed? commit
     commit.state == "passed"
   end
+
   def rejected? commit
     commit.state == "rejected"
   end
