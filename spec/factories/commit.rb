@@ -1,16 +1,15 @@
 FactoryGirl.define do
   factory :commit do
     message Faker::Lorem.sentence
-  end
+    project
 
-  factory :pending_commit, class: Commit do
-    message Faker::Lorem.sentence
-    state 'pending'
-  end
+    factory :pending_commit do
+      state 'pending'
+    end
 
-  factory :accepted_commit, class: Commit  do
-    message Faker::Lorem.sentence
-    state 'accepted'
+    factory :accepted_commit  do
+      state 'accepted'
+    end
   end
 end
 
