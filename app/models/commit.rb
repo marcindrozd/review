@@ -30,7 +30,9 @@ class Commit < ActiveRecord::Base
   belongs_to :author, class_name: 'Person'
   belongs_to :reviewer, class_name: 'User'
 
-  has_and_belongs_to_many :tickets
+  has_many :commits_tickets
+  has_many :tickets, through: :commits_tickets
+
   acts_as_taggable
   acts_as_taggable_on :languages
 
