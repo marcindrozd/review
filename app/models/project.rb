@@ -2,8 +2,9 @@ class Project < ActiveRecord::Base
   resourcify
   enum trade_details: [:internal, :limited, :global, :no_trade]
 
-  has_many :commits
-  has_many :tokens, as: :tokenable
+  has_many :commits, dependent: :destroy
+  has_many :tokens, as: :tokenable, dependent: :destroy
+  has_many :roles, as: :resource, dependent: :destroy
   belongs_to :project_owner
 
   validates :name,  uniqueness: true, presence: true
@@ -11,6 +12,7 @@ class Project < ActiveRecord::Base
   validates :trade_details, presence: true
 
   after_create :create_token
+  after_destroy :destroy_project_owner
 
   scope :fuzzy, ->(query) { query.present? ? where("name LIKE ?", "%#{ query }%") : all }
 
@@ -47,6 +49,10 @@ class Project < ActiveRecord::Base
 
   def create_token
     tokens.create
+  end
+
+  def destroy_project_owner
+    project_owner.destroy
   end
 
   def self.has_contractor?(user)
