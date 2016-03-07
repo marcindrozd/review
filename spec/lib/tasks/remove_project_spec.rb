@@ -36,6 +36,12 @@ shared_examples 'destroys projects with given name and all associations' do
       .to change{ UsersRole.count }.from(project_number[:before]).to(project_number[:after])
   end
 
+  it 'destroys project tokens' do
+    expect{ subject.invoke(project.name) }
+      .to change{ Token.where(tokenable_type: 'Project').count }
+      .from(project_number[:before]).to(project_number[:after])
+  end
+
   it 'does not destroy any users' do
     expect{ subject.invoke(project.name) }.not_to change{ User.count }
   end
