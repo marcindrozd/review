@@ -8,4 +8,3 @@ FactoryGirl.define do
     fixed_commit { create(:commit, project: project) }
   end
 end
-

@@ -3,11 +3,11 @@ class ProjectOwner < ActiveRecord::Base
 
   validates :name, presence: true
 
-  before_destroy :projects_empty?
+  before_destroy :ensure_no_projects
 
   private
 
-  def projects_empty?
+  def ensure_no_projects
     projects.empty?
   end
 end
