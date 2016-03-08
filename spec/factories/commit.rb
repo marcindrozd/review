@@ -1,7 +1,10 @@
 FactoryGirl.define do
   factory :commit do
     message Faker::Lorem.sentence
-    project
+
+    trait :with_project do
+      project
+    end
 
     factory :pending_commit do
       state 'pending'
