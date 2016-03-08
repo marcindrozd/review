@@ -7,12 +7,10 @@ end
 
 def fetch_projects(name)
   projects_with_name = Project.where(name: name)
-  if projects_with_name.count == 0
-    fail(ArgumentError, "The project '#{name}' doesn't exist. #{wrong_params_hint_message}")
-  end
+  fail ArgumentError, wrong_params_hint_message(name) if projects_with_name.count == 0
   projects_with_name
 end
 
-def wrong_params_hint_message
-  "Try to pass parameters as follows: rake 'remove_project[facebook]'"
+def wrong_params_hint_message(name)
+  "The project '#{name}' doesn't exist. Try to pass parameters as follows: rake 'remove_project[facebook]'"
 end
