@@ -4,6 +4,7 @@ class Commit < ActiveRecord::Base
 
   before_create :get_associated_project, :set_expires_at
   after_create :get_associated_commits, :fix_commits
+  before_destroy :destroy_tickets
 
   scope :stale_pending,  ->{ pending.where('created_at <= ?', AUTOREJECT_TIME.business_hours.ago) }
   scope :stale_passed,   ->{ passed.where('passed_at <= ?', AUTOREJECT_TIME.business_hours.ago) }
@@ -21,8 +22,8 @@ class Commit < ActiveRecord::Base
   end
   scope :tagged, ->(tag){ tag.present? ? tagged_with(tag) : all }
 
-  has_many :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id'
-  has_many :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id'
+  has_many :fixing_commits, class_name: 'CommitFix', foreign_key: 'fixed_commit_id', dependent: :destroy
+  has_many :fixed_commits,  class_name: 'CommitFix', foreign_key: 'fixing_commit_id', dependent: :destroy
   has_many :fixes, class_name: 'Commit', through: :fixing_commits
   has_many :fixed, class_name: 'Commit', through: :fixed_commits
 
@@ -30,7 +31,9 @@ class Commit < ActiveRecord::Base
   belongs_to :author, class_name: 'Person'
   belongs_to :reviewer, class_name: 'User'
 
-  has_and_belongs_to_many :tickets
+  has_many :commits_tickets
+  has_many :tickets, through: :commits_tickets
+
   acts_as_taggable
   acts_as_taggable_on :languages
 
@@ -138,6 +141,10 @@ class Commit < ActiveRecord::Base
       "auto_rejected" => "auto_reject",
       "fixed" => "fix",
     }
+  end
+
+  def destroy_tickets
+    tickets.each(&:destroy)
   end
 
   def get_associated_project
