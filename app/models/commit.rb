@@ -144,7 +144,7 @@ class Commit < ActiveRecord::Base
   end
 
   def destroy_tickets
-    tickets.each(&:destroy)
+    tickets.each(&:destroy!)
   end
 
   def get_associated_project
