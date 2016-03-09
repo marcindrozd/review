@@ -1,6 +1,7 @@
 class CommitFix < ActiveRecord::Base
   before_destroy :ensure_project_consistency
 
+  validate :ensure_project_consistency
   validates :fixing_commit_id, presence: true
   validates :fixed_commit_id,  presence: true
 
@@ -13,8 +14,8 @@ class CommitFix < ActiveRecord::Base
 
   def ensure_project_consistency
     if fixed_commit.project != fixing_commit.project
-      fail ActiveRecord::RecordNotDestroyed,
-        'Commit from one project fixed commit from another project!'
+      errors[:base] << 'Commit from one project fixed commit from another project!'
+      false
     end
   end
 end

@@ -82,7 +82,7 @@ describe 'remove_project' do
   context 'when some commit fixes commit from another project' do
     let(:project_number) { { before: 3, after: 3 } }
     let(:another_project) { create :project, :with_project_owner, :with_role, :with_ticket }
-    let(:commit_fix) { create :commit_fix, project: another_project }
+    let(:commit_fix) { create :commit_fix, :with_commits, project: another_project }
 
     before { commit_fix.fixed_commit.update_attribute :project, project }
 
@@ -106,7 +106,7 @@ describe 'remove_project' do
   context 'when commits in ticket have different projects' do
     let(:project_number) { { before: 3, after: 3 } }
     let(:another_project) { create :project, :with_project_owner, :with_role, :with_commit_fix }
-    let(:ticket) { create :ticket, project: another_project }
+    let(:ticket) { create :ticket, :with_commits, project: another_project }
 
     before { ticket.commits.first.update_attribute :project, project }
 

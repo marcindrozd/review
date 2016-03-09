@@ -9,19 +9,19 @@ FactoryGirl.define do
 
     trait :with_role do
       after :create do |project|
-        create(:role, project: project)
+        create(:role, :project_role, :with_user, project: project)
       end
     end
 
     trait :with_commit_fix do
       after :create do |project|
-        create(:commit_fix, project: project)
+        create(:commit_fix, :with_commits, project: project)
       end
     end
 
     trait :with_ticket do
       after :create do |project|
-        create(:ticket, project: project)
+        create(:ticket, :with_commits, project: project)
       end
     end
 
