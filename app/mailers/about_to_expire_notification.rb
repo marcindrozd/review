@@ -6,6 +6,6 @@ class AboutToExpireNotification < ActionMailer::Base
     sendgrid_disable :ganalytics
     @email = email_data.first
     @commits = email_data.last
-    # mail(to: @email, subject: 'Some of your commits are about to expire')
+    mail(to: @email, subject: 'Some of your commits are about to expire')
   end
 end
