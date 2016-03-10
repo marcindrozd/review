@@ -7,7 +7,7 @@ describe Api::V2::CommitsController do
            project_id: project.id,
            author_id: author.id,
            authored_at: Date.parse,
-           expires_at: Date.parse - 1.day,
+           expires_at: Date.tomorrow,
            state: 'pending')
   end
   let!(:author) { create(:person, email: 'test@test.co') }
@@ -67,15 +67,32 @@ describe Api::V2::CommitsController do
   end
 
   describe '#index' do
-    let!(:commit_accepted) do
-      create(:commit,
-             project_id: project.id,
-             author_id: author.id,
-             authored_at: Date.parse - 2.days,
-             state: 'accepted')
-    end
     context 'with valid user returns all commits' do
       let(:params) { {q: 'null', name: project.name} }
+      let!(:pending_commit_expiring_tomorrow) { commit }
+      let!(:pending_commit_expiring_today) do
+        create(:commit,
+               project_id: project.id,
+               author_id: author.id,
+               expires_at: Date.today,
+               state: 'pending')
+      end
+      %w(rejected auto_rejected passed fixed accepted).each do |state|
+        let!("new_#{state}_commit") do
+          create(:commit,
+                 project_id: project.id,
+                 author_id: author.id,
+                 authored_at: Date.today,
+                 state: state)
+        end
+        let!("old_#{state}_commit") do
+          create(:commit,
+                 project_id: project.id,
+                 author_id: author.id,
+                 authored_at: Date.yesterday,
+                 state: state)
+        end
+      end
 
       before :each do
         session[:user_id] = reviewer.id
@@ -86,15 +103,37 @@ describe Api::V2::CommitsController do
         expect(response.status).to eq(200)
       end
 
-      it 'returns two commits' do
-        expect(JSON.parse(response.body).fetch('commits').count).to eq(2)
+      it 'returns twelve commits' do
+        expect(JSON.parse(response.body).fetch('commits').count).to eq(12)
       end
-      it 'returns commits in order authored_at desc' do
+
+      it 'returns properly ordered commits' do
         commits = JSON.parse(response.body).fetch('commits')
-        expect(commits.first.fetch('authored_at') < commits.last.fetch('authored_at'))
+        expect(commits.map { |c| c['id'] }).to eq [
+                                                    old_rejected_commit.id,
+                                                    new_rejected_commit.id,
+                                                    old_auto_rejected_commit.id,
+                                                    new_auto_rejected_commit.id,
+                                                    old_passed_commit.id,
+                                                    new_passed_commit.id,
+                                                    pending_commit_expiring_today.id,
+                                                    pending_commit_expiring_tomorrow.id,
+                                                    new_fixed_commit.id,
+                                                    old_fixed_commit.id,
+                                                    new_accepted_commit.id,
+                                                    old_accepted_commit.id
+                                                  ]
       end
     end
-   context 'with valid user teruns all but accepted and fixed' do
+
+    context 'with valid user returns all but accepted and fixed' do
+      let!(:commit_accepted) do
+        create(:commit,
+               project_id: project.id,
+               author_id: author.id,
+               authored_at: Date.parse - 2.days,
+               state: 'accepted')
+      end
       let!(:commit_fixed) do
         create(:commit,
                project_id: project.id,
@@ -114,7 +153,7 @@ describe Api::V2::CommitsController do
         get :index, q: {state_not_in: ['accepted', 'fixed']}, name: project.name, format:  :json
       end
 
-      it 'responsd with 200 status' do
+      it 'responds with 200 status' do
         expect(response.status).to eq(200)
       end
       it 'returns two commits' do
