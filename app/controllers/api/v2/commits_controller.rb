@@ -83,11 +83,11 @@ class Api::V2::CommitsController < Api::V2::BaseController
   def compare_same_priority_commits(x, y)
     case x.state.to_sym
     when :accepted, :fixed
-      y.authored_at <=> x.authored_at
+      y.created_at <=> x.created_at
     when :pending
       y.expires_at <=> x.expires_at
     else
-      x.authored_at <=> y.authored_at
+      x.created_at <=> y.created_at
     end
   end
 

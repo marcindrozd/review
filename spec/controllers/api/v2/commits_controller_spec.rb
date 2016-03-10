@@ -82,14 +82,14 @@ describe Api::V2::CommitsController do
           create(:commit,
                  project_id: project.id,
                  author_id: author.id,
-                 authored_at: Date.today,
+                 created_at: Date.today,
                  state: state)
         end
         let!("old_#{state}_commit") do
           create(:commit,
                  project_id: project.id,
                  author_id: author.id,
-                 authored_at: Date.yesterday,
+                 created_at: Date.yesterday,
                  state: state)
         end
       end
