@@ -73,7 +73,8 @@ class Commit < ActiveRecord::Base
   end
 
   def priority
-    [:rejected, :auto_rejected, :passed, :pending, :fixed, :accepted].index state.to_sym
+    return 4 if [:accepted, :fixed].include?(state.to_sym)
+    [:rejected, :auto_rejected, :passed, :pending].index(state.to_sym)
   end
 
   def attempt_transition_to(state)
