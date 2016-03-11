@@ -6,8 +6,6 @@ describe Api::V2::CommitsController do
     create(:commit,
            project_id: project.id,
            author_id: author.id,
-           authored_at: Date.parse,
-           expires_at: Date.tomorrow,
            state: 'pending')
   end
   let!(:author) { create(:person, email: 'test@test.co') }
@@ -18,11 +16,14 @@ describe Api::V2::CommitsController do
     reviewer.add_role(:contractor, project)
   end
 
+  before(:all) { Timecop.freeze Time.local(1985) }
+
+  after(:all) { Timecop.return }
+
   describe '#update' do
-    let(:valid_params) { {state: 'rejected', tag: ['test_tag']}  }
+    let(:valid_params) { { state: 'rejected', tag: ['test_tag'] } }
 
     context 'there is a valid user' do
-
       before do
         session[:user_id] = reviewer.id
         put :update, id: commit.id, commit: valid_params, format:  :json
@@ -31,34 +32,42 @@ describe Api::V2::CommitsController do
       it 'checks the response status' do
         expect(response.status).to eq(204)
       end
+
       it 'checks if the status has changed' do
         expect(commit.reload.state).to eq('rejected')
       end
+
       it 'adds a tag to a given commit' do
         expect(commit.tag_list).to eq(['test_tag'])
       end
-      it 'reomves a tag' do
+
+      it 'removes a tag' do
         put :update, id: commit.id, commit: { tag: ['test_tag']} , format:  :json
         expect(commit.tag_list).to eq(['test_tag'])
       end
     end
+
     context 'removes tags with valid user' do
       before do
         session[:user_id] = reviewer.id
         commit.tag_list = ['test_tag']
         put :update, id: commit.id,  commit: {tag: [], state: 'pending'}, format:  :json
       end
+
       it 'returns status 204' do
         expect(response.status).to eq(204)
       end
-      it 'reomves a tag' do
+
+      it 'removes a tag' do
         expect(commit.reload.tag_list).to eq([])
       end
     end
+
     context 'there is no valid user' do
       before do
         put :update, id: commit.id, commit: valid_params, format:  :json
       end
+
       it 'checks the response status' do
         put :update, id: commit.id, commit: valid_params, format: :json
         expect(response.status).to eq(302)
@@ -67,22 +76,26 @@ describe Api::V2::CommitsController do
   end
 
   describe '#index' do
+    let!(:pending_commit_expiring_tomorrow) { commit }
+    let!(:pending_commit_expiring_today) do
+      create(:commit,
+             project_id: project.id,
+             author_id: author.id,
+             state: 'pending')
+    end
+
+    before do
+      pending_commit_expiring_today.update_attribute(:expires_at, Date.today)
+      pending_commit_expiring_tomorrow.update_attribute(:expires_at, Date.tomorrow)
+    end
+
     context 'with valid user returns all commits' do
-      let(:params) { {q: 'null', name: project.name} }
-      let!(:pending_commit_expiring_tomorrow) { commit }
-      let!(:pending_commit_expiring_today) do
-        create(:commit,
-               project_id: project.id,
-               author_id: author.id,
-               expires_at: Date.today,
-               state: 'pending')
-      end
+      let(:params) { { q: 'null', name: project.name } }
       %w(rejected auto_rejected passed fixed accepted).each do |state|
         let!("new_#{state}_commit") do
           create(:commit,
                  project_id: project.id,
                  author_id: author.id,
-                 created_at: Date.today,
                  state: state)
         end
         let!("old_#{state}_commit") do
@@ -94,12 +107,12 @@ describe Api::V2::CommitsController do
         end
       end
 
-      before :each do
+      before do
         session[:user_id] = reviewer.id
         get :index, q: 'null', name: project.name, format: :json
       end
 
-      it 'responsd with 200 status' do
+      it 'responds with 200 status' do
         expect(response.status).to eq(200)
       end
 
@@ -119,8 +132,8 @@ describe Api::V2::CommitsController do
                                                     pending_commit_expiring_today.id,
                                                     pending_commit_expiring_tomorrow.id,
                                                     new_fixed_commit.id,
-                                                    old_fixed_commit.id,
                                                     new_accepted_commit.id,
+                                                    old_fixed_commit.id,
                                                     old_accepted_commit.id
                                                   ]
       end
@@ -131,7 +144,7 @@ describe Api::V2::CommitsController do
         create(:commit,
                project_id: project.id,
                author_id: author.id,
-               authored_at: Date.parse - 2.days,
+               authored_at: Date.yesterday,
                state: 'accepted')
       end
       let!(:commit_fixed) do
@@ -140,15 +153,8 @@ describe Api::V2::CommitsController do
                author_id: author.id,
                state: 'fixed')
       end
-      let!(:commit_pending) do
-        create(:commit,
-               project_id: project.id,
-               author_id: author.id,
-               expires_at: Date.parse - 1.day,
-               state: 'pending')
-      end
 
-      before :each do
+      before do
         session[:user_id] = reviewer.id
         get :index, q: {state_not_in: ['accepted', 'fixed']}, name: project.name, format:  :json
       end
@@ -156,17 +162,21 @@ describe Api::V2::CommitsController do
       it 'responds with 200 status' do
         expect(response.status).to eq(200)
       end
+
       it 'returns two commits' do
         expect(JSON.parse(response.body).fetch('commits').count).to eq(2)
       end
+
       it 'returns only the pending commit' do
         expect(JSON.parse(response.body).fetch('commits').first['state']).to eq('pending')
       end
+
       it 'returns commits in order expires_at asc' do
         commits = JSON.parse(response.body).fetch('commits')
         expect(commits.first.fetch('expires_at') < commits.last.fetch('expires_at'))
       end
     end
+
     context 'with valid user and tags' do
       let(:commit_tag1) { create(:commit, project_id: project.id) }
       let(:commit_tag2) { create(:commit, project_id: project.id) }
@@ -179,9 +189,6 @@ describe Api::V2::CommitsController do
         commit_tag2.save
         commit_tag3.tag_list.add('test_tag2')
         commit_tag3.save
-      end
-
-      before :each do
         session[:user_id] = reviewer.id
         get :index, tag: 'test_tag', name: project.name, format:  :json
       end
@@ -189,9 +196,11 @@ describe Api::V2::CommitsController do
       it 'returns 200 status' do
         expect(response.status).to eq(200)
       end
+
       it 'returns two commits that match the params' do
         expect(JSON.parse(response.body).fetch('commits').count).to eq(2)
       end
+
       it 'checks if the commits have the requested tags' do
         commits = JSON.parse(response.body).fetch('commits')
         expect(commits.map { |c| c.fetch('tag') }).to eq([['test_tag'], ['test_tag']])
