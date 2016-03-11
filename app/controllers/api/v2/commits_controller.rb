@@ -7,7 +7,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
   expose(:ticket)
   expose(:commits) { find_commits.tagged(params[:tag]) }
   expose(:filtered_commits) { commits.ransack(params[:q]).result }
-  expose(:filtered_paginated_commits) { order_commits_by_authored_at }
+  expose(:filtered_paginated_commits) { sort_commits_by_priority_then_date }
   expose(:updated_tags) { params[:commit][:tag] || [] }
 
   def index
@@ -57,7 +57,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
 
   def find_commits
     if project_name
-      project.commits.order_by_priority
+      project.commits
     elsif ticket_id.present?
       ticket.commits
     else
@@ -69,8 +69,26 @@ class Api::V2::CommitsController < Api::V2::BaseController
     (filtered_commits.count / filtered_paginated_commits.default_per_page.to_f).ceil
   end
 
-  def order_commits_by_authored_at
-    filtered_commits.order(authored_at: :desc, created_at: :desc).page params[:page]
+  def sort_commits_by_priority_then_date
+    sorted_commits = filtered_commits.sort do |x, y|
+      if x.priority != y.priority
+        x.priority <=> y.priority
+      else
+        compare_same_priority_commits(x, y)
+      end
+    end
+    Kaminari.paginate_array(sorted_commits).page params[:page]
+  end
+
+  def compare_same_priority_commits(x, y)
+    case x.state.to_sym
+    when :accepted, :fixed
+      y.created_at <=> x.created_at
+    when :pending
+      x.expires_at <=> y.expires_at
+    else
+      x.created_at <=> y.created_at
+    end
   end
 
   def send_state_notification commit

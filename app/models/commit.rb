@@ -16,7 +16,6 @@ class Commit < ActiveRecord::Base
   scope :to_auto_reject, -> { where(state: :pending) }
   scope :to_reject, -> { where(state: :passed) }
   scope :unreviewed,     -> { where(state: %w(pending auto_rejected)) }
-  scope :order_by_priority, -> { order(order_by_state) }
   [:accepted, :pending, :rejected, :passed, :auto_rejected, :fixed].each do |state|
     scope state, -> { for_state state.to_s }
   end
@@ -73,12 +72,9 @@ class Commit < ActiveRecord::Base
     end
   end
 
-  def self.order_by_state
-    statement = "CASE"
-    [:rejected, :auto_rejected, :passed, :pending].each_with_index do |state, i|
-      statement << " WHEN state = '#{state}' THEN #{i}"
-    end
-    statement << " END"
+  def priority
+    return 4 if [:accepted, :fixed].include?(state.to_sym)
+    [:rejected, :auto_rejected, :passed, :pending].index(state.to_sym)
   end
 
   def attempt_transition_to(state)
