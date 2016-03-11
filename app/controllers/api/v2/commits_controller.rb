@@ -85,7 +85,7 @@ class Api::V2::CommitsController < Api::V2::BaseController
     when :accepted, :fixed
       y.created_at <=> x.created_at
     when :pending
-      y.expires_at <=> x.expires_at
+      x.expires_at <=> y.expires_at
     else
       x.created_at <=> y.created_at
     end

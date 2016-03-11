@@ -86,7 +86,7 @@ describe Api::V2::CommitsController do
 
     before do
       pending_commit_expiring_today.update_attribute(:expires_at, Date.today)
-      pending_commit_expiring_tomorrow.update_attribute(:expires_at, Date.tomorrow)
+      pending_commit_expiring_tomorrow.update_attribute(:expires_at, Date.today + 1.day)
     end
 
     context 'with valid user returns all commits' do
