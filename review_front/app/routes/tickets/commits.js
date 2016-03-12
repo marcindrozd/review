@@ -6,7 +6,7 @@ TicketsCommitsRoute = Ember.Route.extend({
     var commits, ticket;
     ticket = this.modelFor('ticket');
     controller.set('ticket', ticket);
-    commits = this.store.find('commit', {
+    commits = this.store.query('commit', {
       ticket_id: ticket.get('id')
     });
     return controller.set('commits', commits);

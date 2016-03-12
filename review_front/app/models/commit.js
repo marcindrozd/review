@@ -12,7 +12,9 @@ Commit = DS.Model.extend({
   expiresAt: DS.attr('date'),
   createdAt: DS.attr('date'),
   authoredAt: DS.attr('date'),
-  author: DS.belongsTo('author'),
+  author: DS.belongsTo('author', {
+    async: false
+  }),
   tickets: DS.hasMany('ticket'),
   reviewer: DS.belongsTo('user', {
     async: true

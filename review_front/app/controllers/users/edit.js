@@ -28,7 +28,7 @@ UsersEditController = Ember.Controller.extend({
   selectedProjects: Ember.computed('userRoles', function() {
     return this.get('userRoles').map((function(_this) {
       return function(role) {
-        return _this.store.getById('project', role.get('resourceId'));
+        return _this.store.peekRecord('project', role.get('resourceId'));
       };
     })(this));
   }),

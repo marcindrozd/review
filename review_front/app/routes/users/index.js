@@ -10,7 +10,7 @@ Route = Ember.Route.extend(RouteMixin, {
   },
   model: function(params) {
     return Ember.RSVP.hash({
-      projects: this.store.find('project'),
+      projects: this.store.findAll('project'),
       users: this.findPaged('user', params),
       currentUserId: this.store.find('user', 'me').then(function(result) {
         return result.get('id');

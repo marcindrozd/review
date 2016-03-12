@@ -5,7 +5,7 @@ timeRelative = function(value) {
   return moment(value).fromNow();
 };
 
-TimeRelativeHelper = Ember.Handlebars.makeBoundHelper(timeRelative);
+TimeRelativeHelper = Ember.Helper.helper(timeRelative);
 
 export { timeRelative };
 

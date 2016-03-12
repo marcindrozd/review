@@ -4,7 +4,7 @@ var Project;
 
 Project = Ember.Route.extend(RouteMixin, {
   model: function(params) {
-    return this.store.find('project', {
+    return this.store.query('project', {
       name: params.name
     }).then(function(project) {
       return project.get("firstObject");

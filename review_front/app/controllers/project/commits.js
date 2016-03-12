@@ -20,14 +20,14 @@ ProjectCommitsController = Ember.Controller.extend({
     toggleAccepted: function() {
       this.toggleProperty('hideAccepted');
       if (this.get('hideAccepted') === false) {
-        return this.transitionTo({
+        return this.transitionToRoute({
           queryParams: {
             q: null,
             page: this.page
           }
         });
       } else {
-        return this.transitionTo({
+        return this.transitionToRoute({
           queryParams: {
             q: {
               state_not_in: ['accepted', 'fixed'],

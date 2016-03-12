@@ -5,7 +5,7 @@ InvitationsNewRoute = Ember.Route.extend({
   model: function() {
     return Ember.RSVP.hash({
       invitation: this.store.createRecord('invitation'),
-      projects: this.store.find('project', {
+      projects: this.store.query('project', {
         'all': 'true'
       })
     });
