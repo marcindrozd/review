@@ -1,0 +1,5 @@
+<div {{bind-attr style="ticket.style"}} class="ticket-color">
+</div>
+{{#link-to 'ticket.commits' ticket classNames='ticket-id'}}
+  {{ticket.remoteId}}
+{{/link-to}}

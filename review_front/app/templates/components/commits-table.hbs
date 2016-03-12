@@ -1,0 +1,65 @@
+<table class="table table-striped table-responsive">
+  <thead>
+    <tr>
+      <th colspan="2">
+        Description
+      </th>
+      <th>
+        State
+      </th>
+      <th>
+        Review
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each commits key="id" as |commit|}}
+      <tr {{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejectedOrAutoRejected:danger commit.isFixed:active"}}>
+        <td>
+          {{gravatar-image person=commit.author}}
+        </td>
+        <td>
+          <div class="commits-table__commit-info">
+            <div class="commits-table__commit-info--author-name">
+              <strong>
+                {{commit.author.name}}
+              </strong>
+              {{#if commit.hasExpiration}}
+                 - expiration: 
+                {{time-relative commit.expiresAt}}
+              {{/if}}
+            </div>
+            <div class="commits-table__commit-message">
+              {{commit.message}}
+              <div class="commits-table__commit-tag">
+                {{commit-tag commit=commit}}
+              </div>
+            </div>
+          </div>
+          <div class="pull-right">
+            {{auto-select-input value=commit.remoteId mouse-up="focus"}}
+            <div class="commits-table__commit-reviewer">
+              {{commit-reviewer commit=commit}}
+            </div>
+          </div>
+          <div class="commits-table__commit-fixes pull-right">
+            {{#if commit.fixesFor}}
+              {{commit-fix commits=commit.fixesFor}}
+            {{/if}}
+            {{#if commit.fixedBy}}
+              {{commit-fix commits=commit.fixedBy}}
+            {{/if}}
+          </div>
+        </td>
+        <td>
+          {{commit-state-label reviewState=commit.state}}
+        </td>
+        <td class="commits-table__review">
+          {{#unless commit.isFixed}}
+            {{commit-github-button commit=commit currentUser=currentUser}}
+          {{/unless}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

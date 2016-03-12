@@ -1,0 +1,10 @@
+Fixes for:
+<ul>
+  {{#each commits key="remoteId" as |fix|}}
+    <li>
+      <a {{bind-attr href="fix.url"}} target="_blank">
+        {{fix.remoteId}}
+      </a>
+    </li>
+  {{/each}}
+</ul>

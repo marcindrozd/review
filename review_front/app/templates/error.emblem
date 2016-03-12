@@ -1,3 +1,0 @@
-.jumbotron
-  p Encountered an error
-  pre= errorMessage

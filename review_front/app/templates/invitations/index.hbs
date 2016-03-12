@@ -1,0 +1,44 @@
+<p>
+  {{#link-to "invitations.new" class="btn btn-primary"}}
+    New invitation
+  {{/link-to}}
+</p>
+<div class="admin-invitations">
+  <table class="table table-bordered table-striped admin-invitations">
+    <thead>
+      <tr>
+        <th>
+          Email
+        </th>
+        <th>
+          Role
+        </th>
+        <th>
+          Status
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model key="id" as |invitation|}}
+        <tr>
+          <td>
+            {{invitation.email}}
+          </td>
+          <td>
+            {{invitation.role}}
+          </td>
+          <td>
+            {{invitation.status}}
+          </td>
+          <td>
+            {{invitation.date}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{page-numbers content=model}}

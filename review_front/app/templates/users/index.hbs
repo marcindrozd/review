@@ -1,0 +1,44 @@
+{{search-input action="searchInputChanged" query=query placeholder="Search by email…"}}
+<div class="admin-users">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>
+          User nick
+        </th>
+        <th>
+          User name
+        </th>
+        <th>
+          User email
+        </th>
+        <th>
+          User role
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each users key="id" as |user|}}
+        <tr class="admin-users__row">
+          <td>
+            {{user.nickname}}
+          </td>
+          <td>
+            {{user.name}}
+          </td>
+          <td>
+            {{user.email}}
+          </td>
+          <td>
+            {{user.userRole}}
+          </td>
+          {{admin-actions user=user currentUserId=currentUserId}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+{{page-numbers content=users}}
