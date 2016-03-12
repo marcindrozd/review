@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     {{#each commits key="id" as |commit|}}
-      <tr {{bind-attr class="commit.isAccepted:success commit.isPassed:warning commit.isRejectedOrAutoRejected:danger commit.isFixed:active"}}>
+    <tr class="{{if commit.isAccepted "success"}} {{if commit.isPassed "warning"}} {{if commit.isRejectedOrAutoRejected "danger"}} {{if commit.isFixed "active"}}">
         <td>
           {{gravatar-image person=commit.author}}
         </td>
@@ -25,7 +25,7 @@
                 {{commit.author.name}}
               </strong>
               {{#if commit.hasExpiration}}
-                 - expiration: 
+                 - expiration:
                 {{time-relative commit.expiresAt}}
               {{/if}}
             </div>

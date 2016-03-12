@@ -1,24 +1,24 @@
 <div class="dropdown">
-  <button {{action "viewCommit" on="click"}} {{bind-attr id="commit.id"}} type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn dropdown-toggle btn-default">
+  <button {{action "viewCommit" on="click"}} id={{commit.id}} type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="btn dropdown-toggle btn-default">
     <i class="glyphicon glyphicon-eye-open">
     </i>
   </button>
-  <ul {{bind-attr aria-labelledby="commit.id"}} class="dropdown-menu">
-    <li {{bind-attr hidden="commit.isAccepted"}}>
+  <ul aria-labelledby={{commit.id}} class="dropdown-menu">
+    <li hidden={{commit.isAccepted}}>
       <a {{action "acceptCommit" on="click"}}>
         <span class="glyphicon glyphicon-ok">
         </span>
          accept
       </a>
     </li>
-    <li {{bind-attr hidden="commit.isPassed"}}>
+    <li hidden={{commit.isPassed}}>
       <a {{action "passCommit" on="click"}}>
         <i class="glyphicon glyphicon-time">
         </i>
          pass
       </a>
     </li>
-    <li {{bind-attr hidden="commit.isRejected"}}>
+    <li hidden={{commit.isRejected}}>
       <a {{action "rejectCommit" on="click"}}>
         <i class="glyphicon glyphicon-remove">
         </i>
