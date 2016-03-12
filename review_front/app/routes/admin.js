@@ -5,7 +5,7 @@ AdminRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('user', 'me');
   },
-  afterModel: function(model, transition) {
+  afterModel: function(model) {
     if (!model.get('admin')) {
       return this.transitionTo('index');
     }

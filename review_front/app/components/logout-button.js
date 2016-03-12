@@ -5,7 +5,7 @@ LogoutButton = Ember.Component.extend({
   tagName: 'button',
   classNames: 'btn btn-danger',
   click: function() {
-    return $.post('/auth/signout', {
+    return Ember.$.post('/auth/signout', {
       _method: 'delete'
     }, function(data, status, xhr) {
       var location;

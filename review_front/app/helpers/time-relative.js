@@ -1,7 +1,7 @@
 import Ember from 'ember';
 var TimeRelativeHelper, timeRelative;
 
-timeRelative = function(value, options) {
+timeRelative = function(value) {
   return moment(value).fromNow();
 };
 

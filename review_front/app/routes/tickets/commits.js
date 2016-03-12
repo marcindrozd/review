@@ -2,7 +2,7 @@ import Ember from 'ember';
 var TicketsCommitsRoute;
 
 TicketsCommitsRoute = Ember.Route.extend({
-  setupController: function(controller, model) {
+  setupController: function(controller) {
     var commits, ticket;
     ticket = this.modelFor('ticket');
     controller.set('ticket', ticket);
