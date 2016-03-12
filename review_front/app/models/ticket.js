@@ -7,7 +7,8 @@ Ticket = DS.Model.extend({
   remoteUrl: DS.attr('string'),
   color: DS.attr('string'),
   style: Ember.computed('color', function() {
-    return "background-color: " + (this.get('color'));
+    const style = "background-color: " + (this.get('color'));
+    return new Ember.Handlebars.SafeString(style);
   })
 });
 

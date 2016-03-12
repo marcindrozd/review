@@ -6,7 +6,8 @@ Component = Ember.Component.extend({
   classNames: ['label', 'commit-tag'],
   attributeBindings: ['style'],
   style: Ember.computed("name", function() {
-    return "background-color: " + (this.get("color")) + ";";
+    const style = "background-color: " + (this.get("color")) + ";";
+    return new Ember.Handlebars.SafeString(style);
   }),
   toHash: function(string) {
     var hash, i, idx, ref;
