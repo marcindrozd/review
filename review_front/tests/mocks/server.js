@@ -127,11 +127,13 @@ Server = Ember.Object.extend({
                 project_id: 1,
                 author_id: 1,
                 state: "passed",
-                tickets: []
+                tickets: [],
+                expires_at: "2010-11-12T13:14:15.000Z"
               }, {
                 id: 2,
                 project_id: 2,
-                author_id: 1
+                author_id: 1,
+                expires_at: "2010-11-12T13:14:15.000Z"
               }
             ],
             authors: [
