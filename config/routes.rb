@@ -1,12 +1,10 @@
 Review::Application.routes.draw do
-  mount EmberCLI::Engine => 'ember-tests' if Rails.env.development?
-
-  root to: 'ember#bootstrap'
-
   get '/auth' => 'sessions#index'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/auth/failure' => 'sessions#failure'
   delete '/auth/signout' => 'sessions#destroy'
+
+  mount_ember_app :review_front, to: "/", as: 'root'
 
   namespace :api do
     namespace :v1 do
@@ -26,6 +24,4 @@ Review::Application.routes.draw do
   namespace :payloads do
     resource :github_hooks, only: [:create]
   end
-
-  get '/*path' => 'ember#bootstrap'
 end
