@@ -1,5 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
-moduleForComponent('commit-github-button', {});
+moduleForComponent('commit-github-button', { unit: true });
 
 test('it renders', function(assert) {
   var component;

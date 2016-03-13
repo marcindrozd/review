@@ -1,5 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
-moduleForComponent('commits-table', {});
+moduleForComponent('commits-table', { unit: true });
 
 test('it renders', function(assert) {
   var component;

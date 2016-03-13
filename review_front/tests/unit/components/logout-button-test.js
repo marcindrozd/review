@@ -1,5 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
-moduleForComponent('logout-button', {});
+moduleForComponent('logout-button', { unit: true });
 
 test('it renders', function(assert) {
   var component;

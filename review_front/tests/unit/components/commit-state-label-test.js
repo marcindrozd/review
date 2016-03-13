@@ -1,5 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
-moduleForComponent('commit-state-label', {});
+moduleForComponent('commit-state-label', { unit: true });
 
 test('it renders', function(assert) {
   var component;

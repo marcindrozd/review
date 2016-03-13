@@ -1,5 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
-moduleForComponent('TicketTag', {});
+moduleForComponent('TicketTag', { unit: true });
 
 test('it renders', function(assert) {
   var component;
