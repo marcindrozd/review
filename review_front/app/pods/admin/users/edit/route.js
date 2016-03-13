@@ -1,10 +1,9 @@
 import Ember from 'ember';
-var UsersEditRoute;
 
-UsersEditRoute = Ember.Route.extend({
+export default Ember.Route.extend({
   model(params) {
     return Ember.RSVP.hash({
-      user: this.store.find('user', params.nickname),
+      user: this.store.findRecord('user', params.nickname),
       projects: this.store.findAll('project')
     });
   },
@@ -14,5 +13,3 @@ UsersEditRoute = Ember.Route.extend({
     }
   }
 });
-
-export default UsersEditRoute;

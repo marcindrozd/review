@@ -6,51 +6,37 @@ export default Ember.Controller.extend({
   userRoles: Ember.computed.alias('model.user.roles'),
   projects: Ember.computed.alias('model.projects'),
   selectedRole: Ember.computed('roleNameFromModel', function() {
-    return {
-      name: this.get('roleNameFromModel')
-    };
+    return { name: this.get('roleNameFromModel') };
   }),
   userForm: {},
   modelObserver: Ember.observer('model', function() {
     return this.set('userForm', this.get('model.user'));
   }),
   roleNameFromModel: Ember.computed('userRoles', function() {
-    var roles;
-    roles = this.get('userRoles').getEach('name');
+    const roles = this.get('userRoles').getEach('name');
     return roles.uniq().get('firstObject');
   }),
-  roleName: Ember.computed('selectedRole', function() {
-    return this.get('selectedRole').name;
-  }),
-  isContractor: Ember.computed('selectedRole', function() {
-    return this.get('selectedRole').name === 'contractor';
-  }),
+  roleName: Ember.computed.alias('selectedRole.name'),
+  isContractor: Ember.computed.equal('roleName', "contractor"),
   selectedProjects: Ember.computed('userRoles', function() {
-    return this.get('userRoles').map((function(_this) {
-      return function(role) {
-        return _this.store.peekRecord('project', role.get('resourceId'));
-      };
-    })(this));
-  }),
-  projectIds: Ember.computed('selectedProjects', 'roleName', function() {
-    if (this.get('roleName') !== 'contractor') {
-      return null;
-    }
-    return this.get('selectedProjects').map(function(role) {
-      if (role) {
-        return role.id;
-      }
+    const store = this.store;
+    return this.get('userRoles').map(function(role) {
+      return store.peekRecord('project', role.get('resourceId'));
     });
   }),
-  roleOptions: [
-    {
-      name: 'admin'
-    }, {
-      name: 'developer'
-    }, {
-      name: 'contractor'
+  projectIds: Ember.computed('selectedProjects.[]', 'isContractor', function() {
+    if (this.get('isContractor')) {
+      return this.get('selectedProjects').mapBy("id");
+    } else {
+      return null;
     }
+  }),
+  roleOptions: [
+    { name: 'admin' },
+    { name: 'developer' },
+    { name: 'contractor' }
   ],
+
   actions: {
     update() {
       const flashMessages = this.get("flashMessages");
