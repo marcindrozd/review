@@ -10,11 +10,11 @@
     "ember-qunit-notifications": "0.1.0",
     "ember-resolver": "~0.1.20",
     "jquery": "1.11.3",
-    "bootstrap-sass-official": "~3.3.4",
     "loader.js": "ember-cli/loader.js#3.4.0",
     "qunit": "~1.20.0",
     "pretender": "^0.6.0",
     "es5-shim": "^4.0.5",
-    "selectize": "~0.12.1"
+    "selectize": "~0.12.1",
+    "bootstrap-sass": "^3.3.6"
   }
 }
