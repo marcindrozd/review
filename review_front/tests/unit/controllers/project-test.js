@@ -1,5 +1,5 @@
 import { test, moduleFor } from 'ember-qunit';
-moduleFor('controller:project/commits', {});
+moduleFor('controller:project', {});
 
 test('it exists', function(assert) {
   var controller;

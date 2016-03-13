@@ -13,14 +13,9 @@ ProjectCommitsRoute = Ember.Route.extend(RouteMixin, {
     }
   },
   model(params) {
-    var modelsHash, project;
-    project = this.modelFor('project');
-    params = Ember.merge(params, {
-      name: project.get("name")
-    });
-    modelsHash = {
-      currentUser: this.store.find('user', 'me'),
-      project: this.modelFor('project'),
+    const modelsHash = {
+      currentUser: this.store.findRecord('user', 'me'),
+      project: this.store.findRecord('project', params.name),
       commits: this.findPaged('commit', params)
     };
     return Ember.RSVP.hash(modelsHash);

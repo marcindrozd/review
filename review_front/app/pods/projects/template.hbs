@@ -16,7 +16,7 @@
       {{#each content as |project|}}
         <tr>
           <td>
-            {{#link-to 'project.commits' project}}{{project.name}}{{/link-to}}
+            {{#link-to 'project' project.name}}{{project.name}}{{/link-to}}
           </td>
           <td>{{project.rejected}}</td>
           <td>{{project.pending}}</td>

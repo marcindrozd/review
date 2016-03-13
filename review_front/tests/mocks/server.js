@@ -43,6 +43,24 @@ Server = Ember.Object.extend({
           })
         ];
       });
+      this.get('/api/v2/projects/1', function() {
+        return [
+          200, {
+            "Content-type": "application/json"
+          }, JSON.stringify({
+            project: {
+              id: 1,
+              accepted: 1,
+              rejected: 2,
+              pending: 6,
+              total: 10,
+              name: 'firstProject',
+              grade: 'good',
+              permission: [1]
+            }
+          })
+        ];
+      });
       this.get('api/v2/users', function() {
         return [
           200, {
