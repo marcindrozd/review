@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    {{#each commits key="id" as |commit|}}
+    {{#each commits as |commit|}}
     <tr class="{{if commit.isAccepted "success"}} {{if commit.isPassed "warning"}} {{if commit.isRejectedOrAutoRejected "danger"}} {{if commit.isFixed "active"}}">
         <td>
           {{gravatar-image person=commit.author}}

@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each content key="id" as |project|}}
+      {{#each content as |project|}}
         <tr>
           <td>
             {{#link-to 'project.commits' project}}{{project.name}}{{/link-to}}
