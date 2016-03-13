@@ -1,25 +1,20 @@
 import Ember from 'ember';
 import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
-var ProjectCommitsRoute;
 
-ProjectCommitsRoute = Ember.Route.extend(RouteMixin, {
+export default Ember.Route.extend(RouteMixin, {
   queryParams: {
     q: {
-      refreshModel: true,
-      state_not_in: ['accepted', 'fixed']
+      refreshModel: true
     },
     tag: {
       refreshModel: true
     }
   },
   model(params) {
-    const modelsHash = {
+    return Ember.RSVP.hash({
       currentUser: this.store.findRecord('user', 'me'),
       project: this.store.findRecord('project', params.name),
       commits: this.findPaged('commit', params)
-    };
-    return Ember.RSVP.hash(modelsHash);
+    });
   }
 });
-
-export default ProjectCommitsRoute;
