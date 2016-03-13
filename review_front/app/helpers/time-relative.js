@@ -1,11 +1,12 @@
-import Ember from 'ember';
-var TimeRelativeHelper, timeRelative;
+import Ember from "ember";
+import moment from "moment";
 
-timeRelative = function(value) {
-  return moment(value).fromNow();
+const timeRelative = function(value) {
+  const [time, _] = value;
+  return moment(time).fromNow();
 };
 
-TimeRelativeHelper = Ember.Helper.helper(timeRelative);
+const TimeRelativeHelper = Ember.Helper.helper(timeRelative);
 
 export { timeRelative };
 
