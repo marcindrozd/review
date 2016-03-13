@@ -14,9 +14,9 @@
       {{/link-to}}
     </div>
     <div class="collapse navbar-collapse">
-      {{nav-links admin=current_user.admin}}
+      {{nav-links admin=model.admin}}
       <div class="nav navbar-nav navbar-right navbar-form main-navbar__logout">
-        {{gravatar-image person=current_user}}
+        {{gravatar-image person=model}}
         {{logout-button}}
       </div>
     </div>
