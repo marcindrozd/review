@@ -3,7 +3,6 @@ class CommitSerializer < ApplicationSerializer
     :fixed_by, :fixes_for, :tag, :reviewer_id
   has_one :project
   has_one :author
-  has_many :tickets
   has_many :fixes, include: true, root: :commits
   has_many :fixed, include: true, root: :commits
 

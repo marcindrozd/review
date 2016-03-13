@@ -1,6 +1,6 @@
 import { test, moduleForModel } from 'ember-qunit';
 moduleForModel('commit', {
-  needs: ['model:project', 'model:author', 'model:ticket', 'model:user', 'model:role']
+  needs: ['model:project', 'model:author', 'model:user', 'model:role']
 });
 
 test('it exists', function(assert) {

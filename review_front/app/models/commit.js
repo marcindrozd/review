@@ -17,9 +17,6 @@ Commit = DS.Model.extend({
   author: DS.belongsTo('author', {
     async: false
   }),
-  tickets: DS.hasMany('ticket', {
-    async: false
-  }),
   reviewer: DS.belongsTo('user', {
     async: true
   }),

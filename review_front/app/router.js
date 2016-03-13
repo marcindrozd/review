@@ -11,11 +11,6 @@ Router.map(function() {
       return this.route('commits');
     });
   });
-  this.route('tickets', function() {
-    return this.route('ticket', { path: '/:ticket_id' }, function() {
-      return this.route('commits');
-    });
-  });
   this.route('admin', function() {
     this.route('invitations', { resetNamespace: true }, function() {
       return this.route('new');
