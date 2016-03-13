@@ -1,35 +1,25 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <h1 class="text-center">
-      New invitation
-    </h1>
+    <h1 class="text-center">New invitation</h1>
     {{#each flashMessages.queue as |flash|}}
       {{flash-message flash=flash}}
     {{/each}}
     <form {{action "create" on="submit"}} on="submit" role="form" class="form-vertical">
       <div class="form-group">
-        <label for="email">
-          Email:
-        </label>
+        <label for="email">Email:</label>
         {{input id="email" placeholder="User email" value=email class="form-control"}}
       </div>
       <div class="form-group">
-        <label>
-          Role:
-        </label>
+        <label>Role:</label>
         {{ember-selectize content=roleOptions optionValuePath="name" optionLabelPath="name" selection=selectedRole placeholder="Select role"}}
       </div>
       {{#if isContractor}}
         <div class="form-group">
-          <label>
-            Project:
-          </label>
+          <label>Project:</label>
           {{ember-selectize content=projects optionValuePath="id" multiple=true optionLabelPath="name" selection=selectedProjects placeholder="Select project"}}
         </div>
       {{/if}}
-      <button type="submit" class="btn btn-primary">
-        Send invitation
-      </button>
+      <button type="submit" class="btn btn-primary">Send invitation</button>
     </form>
   </div>
 </div>

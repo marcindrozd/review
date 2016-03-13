@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var InvitationsNewRoute;
 
-InvitationsNewRoute = Ember.Route.extend({
+export default Ember.Route.extend({
   model() {
     return Ember.RSVP.hash({
       invitation: this.store.createRecord('invitation'),
@@ -9,5 +8,3 @@ InvitationsNewRoute = Ember.Route.extend({
     });
   }
 });
-
-export default InvitationsNewRoute;

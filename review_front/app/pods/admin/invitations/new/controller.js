@@ -7,29 +7,19 @@ export default Ember.Controller.extend({
   email: null,
   selectedProjects: [],
   roleOptions: [
-    {
-      name: 'admin'
-    }, {
-      name: 'developer'
-    }, {
-      name: 'contractor'
-    }
+    { name: 'admin' },
+    { name: 'developer' },
+    { name: 'contractor' }
   ],
-  isContractor: Ember.computed('selectedRole', function() {
-    if (this.get('selectedRole')) {
-      return this.get('selectedRole').name === 'contractor';
-    }
-  }),
+
   roleName: Ember.computed.alias('selectedRole.name'),
-  projectIds: Ember.computed('selectedProjects', 'roleName', function() {
-    if (this.get('roleName') !== 'contractor') {
+  isContractor: Ember.computed.equal('roleName', "contractor"),
+  projectIds: Ember.computed('selectedProjects.[]', 'isContractor', function() {
+    if (this.get('isContractor')) {
+      return this.get('selectedProjects').mapBy("id");
+    } else {
       return null;
-    }
-    return this.get('selectedProjects').map(function(project) {
-      if (project) {
-        return project.id;
-      }
-    });
+    };
   }),
   invitationDidChange: Ember.observer('model', function() {
     this.set('email', null);

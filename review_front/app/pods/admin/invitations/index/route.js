@@ -1,12 +1,7 @@
 import Ember from 'ember';
-import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
-var InvitationsRoute;
 
-InvitationsRoute = Ember.Route.extend(RouteMixin, {
-  perPage: 25,
+export default Ember.Route.extend({
   model(params) {
-    return this.findPaged('invitation', params);
+    return this.store.findAll('invitation');
   }
 });
-
-export default InvitationsRoute;
