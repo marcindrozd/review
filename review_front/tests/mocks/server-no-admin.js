@@ -21,7 +21,10 @@ ServerNoAdmin = Ember.Object.extend({
                 id: 1,
                 admin: false
               }
-            ]
+            ],
+            meta: {
+              total_pages: 1
+            }
           })
         ];
       });

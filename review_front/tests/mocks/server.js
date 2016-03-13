@@ -36,7 +36,10 @@ Server = Ember.Object.extend({
                 grade: 'good',
                 permission: [1]
               }
-            ]
+            ],
+            meta: {
+              total_pages: 1
+            }
           })
         ];
       });
@@ -55,7 +58,10 @@ Server = Ember.Object.extend({
                 admin: true,
                 permissions: []
               }
-            ]
+            ],
+            meta: {
+              total_pages: 1
+            }
           })
         ];
       });
@@ -76,7 +82,10 @@ Server = Ember.Object.extend({
                 role: 'developer',
                 status: 'accepted'
               }
-            ]
+            ],
+            meta: {
+              total_pages: 1
+            }
           })
         ];
       });
