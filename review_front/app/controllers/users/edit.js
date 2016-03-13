@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  flashMessages: Ember.inject.service(),
   user: Ember.computed.alias('model.user'),
   userRoles: Ember.computed.alias('model.user.roles'),
   projects: Ember.computed.alias('model.projects'),
@@ -52,7 +53,7 @@ export default Ember.Controller.extend({
   ],
   actions: {
     update() {
-      const flashMessages = Ember.get(this, "flashMessages");
+      const flashMessages = this.get("flashMessages");
       const user = this.get("model.user");
       user.setProperties(this.get('userForm'));
       user.setProperties({

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  flashMessages: Ember.inject.service(),
   projects: Ember.computed.alias('model.projects'),
   selectedRole: null,
   email: null,
@@ -37,7 +38,7 @@ export default Ember.Controller.extend({
   }),
   actions: {
     create() {
-      const flashMessages = Ember.get(this, 'flashMessages');
+      const flashMessages = this.get('flashMessages');
       const invitation = this.get("model.invitation");
       invitation.setProperties({
         email: this.get('email'),
