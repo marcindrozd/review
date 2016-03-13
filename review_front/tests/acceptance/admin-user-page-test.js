@@ -32,6 +32,6 @@ test("displays a table with user", function(assert) {
 test("after clicking on projects, drects to projects", function(assert) {
   click(".navbar-left a:eq(0)");
   return andThen(function() {
-    return assert.equal(currentPath(), 'projects.index');
+    return assert.equal(currentPath(), 'projects');
   });
 });

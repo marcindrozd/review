@@ -52,7 +52,7 @@ test('from admin page, it transfers to projects after click on projects', functi
   return andThen(function() {
     click("a:contains('Projects')");
     return andThen(function() {
-      return assert.equal(currentPath(), 'projects.index');
+      return assert.equal(currentPath(), 'projects');
     });
   });
 });

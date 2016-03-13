@@ -21,7 +21,7 @@ module("Acceptance: Projects", {
 });
 
 test("visiting /projects", function(assert) {
-  return assert.equal(currentPath(), "projects.index");
+  return assert.equal(currentPath(), "projects");
 });
 
 test("displays table with projects", function(assert) {

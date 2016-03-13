@@ -6,10 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('projects', function() {
-    return this.route('project', { resetNamespace: true, path: '/:name' }, function() {
-      return this.route('commits');
-    });
+  this.route('projects');
+  this.route('project', { path: 'projects/:name' }, function() {
+    this.route('commits');
   });
   this.route('admin', function() {
     this.route('invitations', { resetNamespace: true }, function() {

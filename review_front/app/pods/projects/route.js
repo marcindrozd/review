@@ -7,5 +7,10 @@ export default Ember.Route.extend(RouteMixin, {
   },
   model(params) {
     return this.findPaged("project", params);
+  },
+  actions: {
+    loading() {
+      // stop from propagating
+    }
   }
 });
