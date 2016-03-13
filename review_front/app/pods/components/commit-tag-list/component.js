@@ -3,7 +3,12 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: "commit-tag-list",
   orderedTags: Ember.computed('tags.[]', function() {
-    return this.get("tags").sort();
+    const tags = this.get("tags");
+    if (tags !== undefined) {
+      return this.get("tags").sort();
+    } else {
+      return Ember.A();
+    }
   }),
 
   actions: {

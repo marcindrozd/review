@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
       return this.get('selectedProjects').mapBy("id");
     } else {
       return null;
-    };
+    }
   }),
   invitationDidChange: Ember.observer('model', function() {
     this.set('email', null);
