@@ -16,7 +16,7 @@ Router.map(function() {
       this.route('edit', { path: '/:nickname' });
     });
   });
-  this.route('catchall', { path: '/*wildcard' });
+  this.route('404', { path: '/*path' });
 });
 
 export default Router;
