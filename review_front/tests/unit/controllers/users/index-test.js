@@ -1,5 +1,5 @@
 import { test, moduleFor } from 'ember-qunit';
-moduleFor('controller:users/index', {});
+moduleFor('controller:admin/users/index', {});
 
 test('it exists', function(assert) {
   var controller;

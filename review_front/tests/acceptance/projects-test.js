@@ -12,7 +12,7 @@ module("Acceptance: Projects", {
   beforeEach: function() {
     application = startApp();
     server = Server.create();
-    visit("/projects");
+    visit("/");
   },
   afterEach: function() {
     destroyApp(application);
@@ -20,7 +20,7 @@ module("Acceptance: Projects", {
   }
 });
 
-test("visiting /projects", function(assert) {
+test("visiting /", function(assert) {
   return assert.equal(currentPath(), "projects");
 });
 
