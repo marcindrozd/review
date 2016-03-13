@@ -127,7 +127,7 @@ describe Api::V2::ProjectsController do
           expect(response.status).to eq(200)
         end
         it 'returns the correct project' do
-          parsed_project = JSON.parse(response.body).fetch('projects').first
+          parsed_project = JSON.parse(response.body).fetch('project')
           expect(parsed_project.fetch('name')).to eq(project.name)
         end
     end
@@ -144,7 +144,7 @@ describe Api::V2::ProjectsController do
           expect(response.status).to eq(200)
         end
         it 'returns the correct project' do
-          parsed_project = JSON.parse(response.body).fetch('projects').first
+          parsed_project = JSON.parse(response.body).fetch('project')
           expect(parsed_project.fetch('name')).to eq(project.name)
         end
     end

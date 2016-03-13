@@ -1,5 +1,5 @@
 class Api::V2::ProjectsController < Api::V2::BaseController
-  expose(:project_by_name) { Project.where(name: params[:name]).first }
+  expose(:project_by_name) { Project.where(name: params[:name]) }
   expose(:projects) { find_projects.fuzzy(params[:query]) }
   expose(:paginated_projects) do
     projects.order(name: :asc).page params[:page]
@@ -20,9 +20,9 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   def show
     return unless params[:name]
       if admin_or_developer?
-        respond_with project_by_name
+        respond_with project_by_name.first
       elsif contractor?(project_by_name.first)
-        respond_with project_by_name
+        respond_with project_by_name.first
       else
         respond_with 'forbidden', status: 403, format: :json
       end
