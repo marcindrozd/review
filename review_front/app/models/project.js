@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-var Project;
 
-Project = DS.Model.extend({
+export default DS.Model.extend({
   name: DS.attr('string'),
   rejected: DS.attr('number'),
   pending: DS.attr('number'),
@@ -11,9 +10,6 @@ Project = DS.Model.extend({
   grade: DS.attr('string'),
   token: DS.attr('string'),
   url: DS.attr('string'),
-  reviewIsGood: Ember.computed('grade', function() {
-    return this.get('grade') === 'good';
-  })
-});
 
-export default Project;
+  reviewIsGood: Ember.computed.equal("grade", "good")
+});
