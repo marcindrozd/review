@@ -26,7 +26,7 @@
               </strong>
               {{#if commit.hasExpiration}}
                  - expiration:
-                {{time-relative commit.expiresAt}}
+                {{moment-from-now commit.expiresAt}}
               {{/if}}
             </div>
             <div class="commits-table__commit-message">
