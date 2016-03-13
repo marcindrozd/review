@@ -1,0 +1,11 @@
+$gray-darker:            #505b65;
+$gray-dark:              lighten($gray-darker, 10%);
+$gray:                   lighten($gray-darker, 20%);
+$gray-light:             lighten($gray-darker, 50%);
+$gray-lighter:           lighten($gray-darker, 60%);
+
+$brand-primary:         #f5a122;
+$brand-success:         #00ab2d;
+$brand-info:            #23a9db;
+$brand-warning:         #ffc805;
+$brand-danger:          #ff7851;
