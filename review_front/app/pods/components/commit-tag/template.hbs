@@ -3,28 +3,19 @@
     {{input insert-newline="createTag" escape-press="dropEdits" placeholder="divide tags with a comma" value=tagNames autofocus="autofocus" class="input-sm form-control"}}
     <div class="btn-group btn-group-sm">
       <button {{action "createTag" on="click"}} class="btn btn-default">
-        <i class="glyphicon glyphicon-ok">
-        </i>
-        <span class="sr-only">
-          Save
-        </span>
+        <i class="glyphicon glyphicon-ok"></i>
+        <span class="sr-only">Save</span>
       </button>
       <button {{action "dropEdits" on="click"}} class="btn btn-default">
-        <i class="glyphicon glyphicon-remove">
-        </i>
-        <span class="sr-only">
-          Cancel
-        </span>
+        <i class="glyphicon glyphicon-remove"></i>
+        <span class="sr-only">Cancel</span>
       </button>
     </div>
   </div>
 {{else}}
   {{commit-tag-list tags=commit.tag action="removeTag"}}
   <button {{action "displayTagsForm" on="click"}} class="btn btn-default btn-sm">
-    <i class="glyphicon glyphicon-tag">
-    </i>
-    <span class="sr-only">
-      Add a tag
-    </span>
+    <i class="glyphicon glyphicon-tag"></i>
+    <span class="sr-only">Add a tag</span>
   </button>
 {{/if}}

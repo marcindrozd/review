@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var Component;
 
-Component = Ember.Component.extend({
+export default Ember.Component.extend({
   tagName: 'span',
   classNames: ['label', 'commit-tag'],
   attributeBindings: ['style'],
@@ -32,5 +31,3 @@ Component = Ember.Component.extend({
     }
   }
 });
-
-export default Component;

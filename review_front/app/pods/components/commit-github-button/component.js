@@ -1,17 +1,18 @@
 import Ember from 'ember';
-var COMMIT_PREVIEW, CommitGithubButton;
 
-CommitGithubButton = Ember.Component.extend({
-  classNames: ['btn-group', 'btn-group-xs', 'commit-action-buttons'],
-  classNameBindings: ['currentUsersCommit']
-}, COMMIT_PREVIEW = {
+const COMMIT_PREVIEW = {
   width: 1024,
   height: 768
-}, {
+};
+
+export default Ember.Component.extend({
+  classNames: ['btn-group', 'btn-group-xs', 'commit-action-buttons'],
+  classNameBindings: ['currentUsersCommit'],
   url: Ember.computed.oneWay('commit.remoteUrl'),
   currentUsersCommit: Ember.computed('currentUser', function() {
     return this.currentUserIsCommitAuthor();
   }),
+
   showCommitInModal() {
     var commit_prev, left, top, url;
     url = this.get('url');
@@ -35,6 +36,7 @@ CommitGithubButton = Ember.Component.extend({
       reviewer: this.get('currentUser')
     }).save();
   },
+
   actions: {
     viewCommit() {
       return this.showCommitInModal();
@@ -50,5 +52,3 @@ CommitGithubButton = Ember.Component.extend({
     }
   }
 });
-
-export default CommitGithubButton;

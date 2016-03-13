@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var Component;
 
-Component = Ember.Component.extend({
+export default Ember.Component.extend({
   placeholder: "Search…",
   search: Ember.computed.oneWay("query"),
   onSearchChange: Ember.observer("search", function() {
@@ -11,5 +10,3 @@ Component = Ember.Component.extend({
     return this.sendAction("action", this.get("search"));
   }
 });
-
-export default Component;

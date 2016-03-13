@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var CommitStateLabel;
 
-CommitStateLabel = Ember.Component.extend({
+export default Ember.Component.extend({
   tagName: 'span',
   classNames: ['label'],
   classNameBindings: ['labelClass'],
@@ -22,5 +21,3 @@ CommitStateLabel = Ember.Component.extend({
     }
   })
 });
-
-export default CommitStateLabel;

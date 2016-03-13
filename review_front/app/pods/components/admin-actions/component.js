@@ -1,11 +1,8 @@
 import Ember from 'ember';
-var AdminActions;
 
-AdminActions = Ember.Component.extend({
+export default Ember.Component.extend({
   tagName: 'td',
-  notMyProfile: Ember.computed('currentUserId', 'user', function() {
-    return this.get('user').get('id') !== this.get('currentUserId');
+  notMyProfile: Ember.computed('currentUserId', 'user.id', function() {
+    return this.get('user.id') !== this.get('currentUserId');
   })
 });
-
-export default AdminActions;

@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var AutoSelectInput;
 
-AutoSelectInput = Ember.TextField.extend({
+export default Ember.TextField.extend({
   attributeBindings: ['readonly', 'size'],
   readonly: true,
   size: 44,
@@ -9,5 +8,3 @@ AutoSelectInput = Ember.TextField.extend({
     return this.$().select();
   }
 });
-
-export default AutoSelectInput;

@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var CommitTag;
 
-CommitTag = Ember.Component.extend({
+export default Ember.Component.extend({
   idEditing: false,
   actions: {
     displayTagsForm() {
@@ -51,5 +50,3 @@ CommitTag = Ember.Component.extend({
     return unique;
   }
 });
-
-export default CommitTag;

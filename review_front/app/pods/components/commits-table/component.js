@@ -1,9 +1,6 @@
 import Ember from 'ember';
-var CommitsTable;
 
-CommitsTable = Ember.Component.extend({
+export default Ember.Component.extend({
   tagName: 'article',
   classNames: ['commits-table']
 });
-
-export default CommitsTable;

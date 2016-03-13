@@ -1,5 +1,2 @@
-{{#link-to 'project' (query-params tag=name)}}
-  {{name}}
-{{/link-to}}
-<i {{action "removeTag" on="click"}} class="glyphicon glyphicon-remove">
-</i>
+{{#link-to 'project' (query-params tag=name)}}{{name}}{{/link-to}}
+<i {{action "removeTag" on="click"}} class="glyphicon glyphicon-remove"></i>

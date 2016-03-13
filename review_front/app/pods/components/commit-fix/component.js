@@ -1,8 +1,5 @@
 import Ember from 'ember';
-var CommitFix;
 
-CommitFix = Ember.Component.extend({
+export default Ember.Component.extend({
   tagName: 'p'
 });
-
-export default CommitFix;
