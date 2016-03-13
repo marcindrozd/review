@@ -9,7 +9,7 @@ class CommitsAboutToExpire
 
   def commits_for_author(author)
     {
-     author.email => commits_soon_to_expire.where("author_id = ?", author.id)
+     author.email => commits_soon_to_expire.where(author: author)
     }
   end
 
