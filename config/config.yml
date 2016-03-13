@@ -15,6 +15,8 @@ development:
   <<: *defaults
   hostname: 'localhost:3000'
   seconds_to_delay_response: 2
+  sendgrid:
+    from_email: review@example.com
 production:
   <<: *defaults
 test:
