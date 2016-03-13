@@ -3,27 +3,13 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>
-          Name
-        </th>
-        <th>
-          Rejected
-        </th>
-        <th>
-          Pending
-        </th>
-        <th>
-          Accepted
-        </th>
-        <th>
-          Total
-        </th>
-        <th>
-          Review status
-        </th>
-        <th>
-          Github link
-        </th>
+        <th>Name</th>
+        <th>Rejected</th>
+        <th>Pending</th>
+        <th>Accepted</th>
+        <th>Total</th>
+        <th>Review status</th>
+        <th>Github link</th>
       </tr>
     </thead>
     <tbody>
@@ -38,17 +24,14 @@
           <td>{{project.total}}</td>
           <td>
             {{#if project.reviewIsGood}}
-              <i class="glyphicon glyphicon-ok text-success">
-              </i>
+              <i class="glyphicon glyphicon-ok text-success"></i>
             {{else}}
-              <i class="glyphicon glyphicon-remove text-danger">
-              </i>
+              <i class="glyphicon glyphicon-remove text-danger"></i>
             {{/if}}
           </td>
           <td>
             <a target="_blank" href={{project.url}}>
-              <span class="glyphicon glyphicon-link">
-              </span>
+              <span class="glyphicon glyphicon-link"></span>
             </a>
           </td>
         </tr>

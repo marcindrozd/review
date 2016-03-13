@@ -1,20 +1,17 @@
-import Ember from 'ember';
-var ProjectsIndexController;
+import Ember from "ember";
 
-ProjectsIndexController = Ember.Controller.extend({
-  queryParams: ['page', 'query'],
-  totalPagesBinding: 'model.totalPages',
+export default Ember.Controller.extend({
+  queryParams: ["page", "query"],
+  totalPagesBinding: "model.totalPages",
   page: 1,
   query: "",
   actions: {
     pageClicked(page) {
-      this.setProperties({ page: page });
+      this.setProperties({ page });
     },
     searchInputChanged(value) {
       this.set("page", 1);
-      return this.set("query", value);
+      this.set("query", value);
     }
   }
 });
-
-export default ProjectsIndexController;
