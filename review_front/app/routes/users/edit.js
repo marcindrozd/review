@@ -10,7 +10,7 @@ UsersEditRoute = Ember.Route.extend({
   },
   deactivate() {
     if (this.currentModel.user.get('hasDirtyAttributes')) {
-      return this.currentModel.user.rollback();
+      return this.currentModel.user.rollbackAttributes();
     }
   }
 });

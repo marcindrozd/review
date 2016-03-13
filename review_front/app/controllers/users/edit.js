@@ -1,7 +1,6 @@
 import Ember from 'ember';
-var UsersEditController;
 
-UsersEditController = Ember.Controller.extend({
+export default Ember.Controller.extend({
   user: Ember.computed.alias('model.user'),
   userRoles: Ember.computed.alias('model.user.roles'),
   projects: Ember.computed.alias('model.projects'),
@@ -53,16 +52,16 @@ UsersEditController = Ember.Controller.extend({
   ],
   actions: {
     update() {
-      var flashMessages;
-      flashMessages = Ember.get(this, 'flashMessages');
-      return this.get('model.user').setProperties(this.get('userForm')).setProperties({
+      const flashMessages = Ember.get(this, "flashMessages");
+      const user = this.get("model.user");
+      user.setProperties(this.get('userForm'));
+      user.setProperties({
         projectIds: this.get('projectIds'),
         role: this.get('roleName')
-      }).save().then(function() {
-        return flashMessages.success('Successfully saved!');
+      });
+      user.save().then(function() {
+        flashMessages.success('Successfully saved!');
       });
     }
   }
 });
-
-export default UsersEditController;
