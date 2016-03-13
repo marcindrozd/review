@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'review-front',
+    podModulePrefix: 'review-front/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
