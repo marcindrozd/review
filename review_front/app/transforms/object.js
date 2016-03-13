@@ -1,7 +1,6 @@
 import DS from 'ember-data';
-var ObjectTransform;
 
-ObjectTransform = DS.Transform.extend({
+export default DS.Transform.extend({
   deserialize(serialized) {
     return serialized;
   },
@@ -9,5 +8,3 @@ ObjectTransform = DS.Transform.extend({
     return deserialized;
   }
 });
-
-export default ObjectTransform;
