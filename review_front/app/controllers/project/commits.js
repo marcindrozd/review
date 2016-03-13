@@ -8,15 +8,16 @@ ProjectCommitsController = Ember.Controller.extend({
   project: Ember.computed.alias('model.project'),
   hideAccepted: true,
   queryParams: ['page', 'q', 'tag'],
-  pageBinding: 'commits.page',
-  perPageBinding: 'commits.perPage',
-  totalPagesBinding: 'commits.totalPages',
   page: 1,
+  totalPagesBinding: 'commits.totalPages',
   tag: "",
   q: {
     state_not_in: ['accepted', 'fixed']
   },
   actions: {
+    pageClicked(page) {
+      this.setProperties({ page: page });
+    },
     toggleAccepted: function() {
       this.toggleProperty('hideAccepted');
       if (this.get('hideAccepted') === false) {

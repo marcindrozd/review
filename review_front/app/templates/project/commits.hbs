@@ -76,4 +76,4 @@
 <br>
   <br>
     {{commits-table commits=commits currentUser=currentUser hideAccepted=hideAccepted filterByTag="filterByTag"}}
-    {{page-numbers content=commits}}
+    {{page-numbers content=commits action=(action 'pageClicked')}}
