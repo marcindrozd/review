@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import destroyApp from '../helpers/destroy-app';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 import Server from '../mocks/server';
@@ -15,7 +15,7 @@ module('Acceptance: Sanity', {
     visit('/');
   },
   afterEach: function() {
-    Ember.run(application, 'destroy');
+    destroyApp(application);
     server.shutdown();
   }
 });

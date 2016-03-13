@@ -18,7 +18,7 @@ ProjectCommitsController = Ember.Controller.extend({
     pageClicked(page) {
       this.setProperties({ page: page });
     },
-    toggleAccepted: function() {
+    toggleAccepted() {
       this.toggleProperty('hideAccepted');
       if (this.get('hideAccepted') === false) {
         return this.transitionToRoute({

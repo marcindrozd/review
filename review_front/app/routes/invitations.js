@@ -4,7 +4,7 @@ var InvitationsRoute;
 
 InvitationsRoute = Ember.Route.extend(RouteMixin, {
   perPage: 25,
-  model: function(params) {
+  model(params) {
     return this.findPaged('invitation', params);
   }
 });

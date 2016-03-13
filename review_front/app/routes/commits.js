@@ -2,7 +2,7 @@ import Ember from 'ember';
 var CommitsRoute;
 
 CommitsRoute = Ember.Route.extend({
-  model: function() {
+  model() {
     return this.store.find('commit');
   }
 });

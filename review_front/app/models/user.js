@@ -8,7 +8,9 @@ User = DS.Model.extend({
   nickname: DS.attr('string'),
   email: DS.attr('string'),
   admin: DS.attr('boolean'),
-  person: DS.belongsTo('author'),
+  person: DS.belongsTo('author', {
+    async: false
+  }),
   token: DS.attr('string'),
   roles: DS.hasMany('role', {
     async: false

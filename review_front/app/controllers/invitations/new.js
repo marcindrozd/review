@@ -33,13 +33,13 @@ InvitationsNewController = Ember.Controller.extend({
       }
     });
   }),
-  invitationDidChange: (function() {
+  invitationDidChange: Ember.observer('model', function() {
     this.set('email', null);
     this.set('selectedRole', null);
     return this.set('selectedProjects', []);
-  }).observes('model'),
+  }),
   actions: {
-    create: function() {
+    create() {
       var flashMessages;
       flashMessages = Ember.get(this, 'flashMessages');
       return this.get('model.invitation').setProperties({

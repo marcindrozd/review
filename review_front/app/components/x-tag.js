@@ -9,7 +9,7 @@ Component = Ember.Component.extend({
     const style = "background-color: " + (this.get("color")) + ";";
     return new Ember.Handlebars.SafeString(style);
   }),
-  toHash: function(string) {
+  toHash(string) {
     var hash, i, idx, ref;
     hash = 0;
     for (idx = i = 0, ref = string.length - 1; 0 <= ref ? i <= ref : i >= ref; idx = 0 <= ref ? ++i : --i) {
@@ -17,7 +17,7 @@ Component = Ember.Component.extend({
     }
     return Math.abs(hash);
   },
-  toColor: function(hash) {
+  toColor(hash) {
     var hex;
     hex = hash.toString(16);
     hex += '000000';
@@ -27,7 +27,7 @@ Component = Ember.Component.extend({
     return this.toColor(this.toHash(this.get("name")));
   }),
   actions: {
-    removeTag: function() {
+    removeTag() {
       return this.sendAction("action", this.get("name"));
     }
   }

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import destroyApp from '../helpers/destroy-app';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 import Server from '../mocks/server';
@@ -16,7 +16,7 @@ module('Acceptance: NavigationBar', {
     visit('/');
   },
   afterEach: function() {
-    Ember.run(application, 'destroy');
+    destroyApp(application);
     return server.shutdown();
   }
 });
@@ -58,7 +58,7 @@ test('from admin page, it transfers to projects after click on projects', functi
 });
 
 test('if user is not admin no admin link is shown', function(assert) {
-  Ember.run(application, 'destroy');
+  destroyApp(application);
   server.shutdown();
   application = startApp();
   server = ServerNoAdmin.create();

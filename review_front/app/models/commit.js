@@ -7,7 +7,9 @@ Commit = DS.Model.extend({
   message: DS.attr('string'),
   state: DS.attr('string'),
   remoteUrl: DS.attr('string'),
-  project: DS.belongsTo('project'),
+  project: DS.belongsTo('project', {
+    async: false
+  }),
   tag: DS.attr('array'),
   expiresAt: DS.attr('date'),
   createdAt: DS.attr('date'),
@@ -15,19 +17,23 @@ Commit = DS.Model.extend({
   author: DS.belongsTo('author', {
     async: false
   }),
-  tickets: DS.hasMany('ticket'),
+  tickets: DS.hasMany('ticket', {
+    async: false
+  }),
   reviewer: DS.belongsTo('user', {
     async: true
   }),
   fixesFor: DS.attr('object'),
   fixedBy: DS.attr('object'),
   fix: DS.hasMany('commit', {
-    inverse: 'fixed'
+    inverse: 'fixed',
+    async: false
   }, {
     async: true
   }),
   fixed: DS.hasMany('commit', {
-    inverse: 'fix'
+    inverse: 'fix',
+    async: false
   }, {
     async: true
   }),

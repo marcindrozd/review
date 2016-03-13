@@ -4,10 +4,10 @@ var CommitTag;
 CommitTag = Ember.Component.extend({
   idEditing: false,
   actions: {
-    displayTagsForm: function() {
+    displayTagsForm() {
       return this.set('isEditing', true);
     },
-    createTag: function() {
+    createTag() {
       var commit, tagNames;
       tagNames = this.get('tagNames');
       commit = this.get('commit');
@@ -18,11 +18,11 @@ CommitTag = Ember.Component.extend({
       this.set('isEditing', false);
       return this.set('tagNames', '');
     },
-    dropEdits: function() {
+    dropEdits() {
       this.set("isEditing", false);
       return this.set('tagNames', '');
     },
-    removeTag: function(name) {
+    removeTag(name) {
       var commit, currentTags, index;
       commit = this.get('commit');
       currentTags = commit.get('tag');
@@ -32,13 +32,13 @@ CommitTag = Ember.Component.extend({
       return this.rerender();
     }
   },
-  createTagsArray: function(commit, tags) {
+  createTagsArray(commit, tags) {
     var addedTags, currentTags;
     currentTags = commit.get('tag');
     addedTags = tags.split(',');
     return this.uniqueTags(currentTags.concat(addedTags));
   },
-  uniqueTags: function(tags) {
+  uniqueTags(tags) {
     var i, unique;
     unique = [];
     i = 0;

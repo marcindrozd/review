@@ -3,14 +3,14 @@ import RouteMixin from 'ember-cli-pagination/remote/route-mixin';
 var Project;
 
 Project = Ember.Route.extend(RouteMixin, {
-  model: function(params) {
+  model(params) {
     return this.store.query('project', {
       name: params.name
     }).then(function(project) {
       return project.get("firstObject");
     });
   },
-  setupController: function(controller, model) {
+  setupController(controller, model) {
     return controller.set('model', model.get("firstObject"));
   }
 });

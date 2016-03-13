@@ -12,7 +12,7 @@ ProjectCommitsRoute = Ember.Route.extend(RouteMixin, {
       refreshModel: true
     }
   },
-  model: function(params) {
+  model(params) {
     var modelsHash, project;
     project = this.modelFor('project');
     params = Ember.merge(params, {

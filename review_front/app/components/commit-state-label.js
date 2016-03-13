@@ -6,7 +6,7 @@ CommitStateLabel = Ember.Component.extend({
   classNames: ['label'],
   classNameBindings: ['labelClass'],
   reviewState: 'unknown',
-  labelClass: (function() {
+  labelClass: Ember.computed('reviewState', function() {
     switch (this.get('reviewState')) {
       case 'accepted':
         return 'label-success';
@@ -20,7 +20,7 @@ CommitStateLabel = Ember.Component.extend({
       default:
         return 'label-default';
     }
-  }).property('reviewState')
+  })
 });
 
 export default CommitStateLabel;

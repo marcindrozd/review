@@ -12,7 +12,7 @@ CommitGithubButton = Ember.Component.extend({
   currentUsersCommit: Ember.computed('currentUser', function() {
     return this.currentUserIsCommitAuthor();
   }),
-  showCommitInModal: function() {
+  showCommitInModal() {
     var commit_prev, left, top, url;
     url = this.get('url');
     left = screen.width / 2 - COMMIT_PREVIEW.width / 2 + screen.availLeft;
@@ -20,13 +20,13 @@ CommitGithubButton = Ember.Component.extend({
     commit_prev = window.open(url, 'commit_preview', "width=" + COMMIT_PREVIEW.width + ", height=" + COMMIT_PREVIEW.height + ", top=" + top + ", left=" + left + ", scrollbars=yes");
     return commit_prev.focus();
   },
-  currentUserIsCommitAuthor: function() {
+  currentUserIsCommitAuthor() {
     if (!this.get('currentUser')) {
       return false;
     }
     return this.get('currentUser').get('nickname') === this.get('commit').get('author').get('username');
   },
-  changeCommitStateTo: function(state) {
+  changeCommitStateTo(state) {
     if (this.currentUserIsCommitAuthor()) {
       return;
     }
@@ -36,16 +36,16 @@ CommitGithubButton = Ember.Component.extend({
     }).save();
   },
   actions: {
-    viewCommit: function() {
+    viewCommit() {
       return this.showCommitInModal();
     },
-    acceptCommit: function() {
+    acceptCommit() {
       return this.changeCommitStateTo('accepted');
     },
-    passCommit: function() {
+    passCommit() {
       return this.changeCommitStateTo('passed');
     },
-    rejectCommit: function() {
+    rejectCommit() {
       return this.changeCommitStateTo('rejected');
     }
   }

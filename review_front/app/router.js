@@ -7,22 +7,30 @@ Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('projects', function() {
+  this.route('projects', {
+    resetNamespace: true
+  }, function() {
     return this.resource('project', {
       path: '/:name'
     }, function() {
       return this.route('commits');
     });
   });
-  this.resource('tickets', function() {
+  this.route('tickets', {
+    resetNamespace: true
+  }, function() {
     return this.resource('ticket', {
       path: '/:ticket_id'
     }, function() {
       return this.route('commits');
     });
   });
-  this.resource('admin', function() {
-    this.resource('invitations', function() {
+  this.route('admin', {
+    resetNamespace: true
+  }, function() {
+    this.route('invitations', {
+      resetNamespace: true
+    }, function() {
       return this.route('new');
     });
     return this.resource('users', function() {

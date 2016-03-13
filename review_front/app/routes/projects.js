@@ -4,7 +4,7 @@ var ProjectsRoute;
 
 ProjectsRoute = Ember.Route.extend(RouteMixin, {
   perPage: 25,
-  model: function(params) {
+  model(params) {
     return this.findPaged('project', params);
   }
 });

@@ -8,7 +8,7 @@ ProjectsIndexRoute = Ember.Route.extend(RouteMixin, {
       refreshModel: true
     }
   },
-  model: function(params) {
+  model(params) {
     return this.findPaged("project", params);
   }
 });

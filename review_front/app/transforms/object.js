@@ -2,10 +2,10 @@ import DS from 'ember-data';
 var ObjectTransform;
 
 ObjectTransform = DS.Transform.extend({
-  deserialize: function(serialized) {
+  deserialize(serialized) {
     return serialized;
   },
-  serialize: function(deserialized) {
+  serialize(deserialized) {
     return deserialized;
   }
 });

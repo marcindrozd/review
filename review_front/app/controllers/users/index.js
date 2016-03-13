@@ -13,7 +13,7 @@ UsersIndexController = Ember.Controller.extend({
     pageClicked(page) {
       this.setProperties({ page: page });
     },
-    searchInputChanged: function(value) {
+    searchInputChanged(value) {
       this.set("page", 1);
       return this.set("query", value);
     }

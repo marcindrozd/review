@@ -7,7 +7,7 @@ Component = Ember.Component.extend({
   onSearchChange: Ember.observer("search", function() {
     return Ember.run.debounce(this, this.processSearchChange, 200);
   }),
-  processSearchChange: function() {
+  processSearchChange() {
     return this.sendAction("action", this.get("search"));
   }
 });

@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import destroyApp from '../helpers/destroy-app';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 import Server from '../mocks/server';
@@ -16,7 +16,7 @@ module('Acceptance: AdminUserPage', {
     click('.navbar-left a:eq(2)');
   },
   afterEach: function() {
-    Ember.run(application, 'destroy');
+    destroyApp(application);
     return server.shutdown();
   }
 });

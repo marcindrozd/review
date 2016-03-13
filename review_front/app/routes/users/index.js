@@ -8,7 +8,7 @@ Route = Ember.Route.extend(RouteMixin, {
       refreshModel: true
     }
   },
-  model: function(params) {
+  model(params) {
     return Ember.RSVP.hash({
       projects: this.store.findAll('project'),
       users: this.findPaged('user', params),

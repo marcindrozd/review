@@ -2,7 +2,7 @@ import Ember from 'ember';
 var AdminIndexRoute;
 
 AdminIndexRoute = Ember.Route.extend({
-  redirect: function() {
+  redirect() {
     return this.transitionTo('users');
   }
 });

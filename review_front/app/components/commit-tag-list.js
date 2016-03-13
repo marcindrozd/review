@@ -8,7 +8,7 @@ Component = Ember.Component.extend({
     return Ember.A((ref = this.get('tags')) != null ? ref.sort() : void 0);
   }),
   actions: {
-    removeTag: function(name) {
+    removeTag(name) {
       return this.sendAction("action", name);
     }
   }

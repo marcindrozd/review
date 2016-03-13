@@ -5,7 +5,7 @@ AutoSelectInput = Ember.TextField.extend({
   attributeBindings: ['readonly', 'size'],
   readonly: true,
   size: 44,
-  mouseUp: function() {
+  mouseUp() {
     return this.$().select();
   }
 });

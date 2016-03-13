@@ -11,9 +11,9 @@ UsersEditController = Ember.Controller.extend({
     };
   }),
   userForm: {},
-  modelObserver: (function() {
+  modelObserver: Ember.observer('model', function() {
     return this.set('userForm', this.get('model.user'));
-  }).observes('model'),
+  }),
   roleNameFromModel: Ember.computed('userRoles', function() {
     var roles;
     roles = this.get('userRoles').getEach('name');
@@ -52,7 +52,7 @@ UsersEditController = Ember.Controller.extend({
     }
   ],
   actions: {
-    update: function() {
+    update() {
       var flashMessages;
       flashMessages = Ember.get(this, 'flashMessages');
       return this.get('model.user').setProperties(this.get('userForm')).setProperties({
