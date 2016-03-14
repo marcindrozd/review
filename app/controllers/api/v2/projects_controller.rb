@@ -6,7 +6,7 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   end
 
   def index
-    if project_by_name.empty? && params[:name]
+    if project_by_name.blank? && params[:name]
       respond_with "{'error': 'not_found'}", status: 404
     elsif project_by_name.present?
       respond_with project_by_name
@@ -20,9 +20,9 @@ class Api::V2::ProjectsController < Api::V2::BaseController
   def show
     return unless params[:name]
       if admin_or_developer?
-        respond_with project_by_name
+        respond_with project_by_name.first
       elsif contractor?(project_by_name.first)
-        respond_with project_by_name
+        respond_with project_by_name.first
       else
         respond_with 'forbidden', status: 403, format: :json
       end

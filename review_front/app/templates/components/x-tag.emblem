@@ -1,4 +1,0 @@
-= link-to 'project.commits' (query-params tag=name)
-  = name
-i.glyphicon.glyphicon-remove click='removeTag'
-

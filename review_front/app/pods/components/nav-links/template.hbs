@@ -1,0 +1,16 @@
+<li>
+  {{#link-to "projects"}}Projects{{/link-to}}
+</li>
+{{#if admin}}
+  {{#dropdown-item class="dropdown admin-dropdown"}}
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Admin <span class="caret"></span></a>
+    <ul role="menu" class="dropdown-menu admin-dropdown__menu">
+      {{#dropdown-item}}
+        {{#link-to "admin.users.index" class="admin-dropdown__link"}}Users{{/link-to}}
+      {{/dropdown-item}}
+      {{#dropdown-item}}
+        {{#link-to "admin.invitations.index" class="admin-dropdown__link"}}Invitations{{/link-to}}
+      {{/dropdown-item}}
+    </ul>
+  {{/dropdown-item}}
+{{/if}}

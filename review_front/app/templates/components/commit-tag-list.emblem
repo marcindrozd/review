@@ -1,3 +1,0 @@
-each orderedTags key="@index" as |tag|
-  = x-tag name=tag action="removeTag"
-  '

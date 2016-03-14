@@ -1,5 +1,0 @@
-ul Fixes for:
-each commits key="remoteId" as |fix|
-  li
-    a{bind-attr href="fix.url"} target="_blank"
-      fix.remoteId

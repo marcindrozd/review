@@ -1,5 +1,5 @@
 class UserSerializer < ApplicationSerializer
-  attributes :id, :email, :nickname, :name, :admin, :person_id, :token, :imageUrl
+  attributes :id, :email, :nickname, :name, :admin, :person_id, :token, :image_url
   has_many :roles
 
   private
@@ -11,7 +11,7 @@ class UserSerializer < ApplicationSerializer
   def token
     object.tokens.first.try(:value)
   end
-  def imageUrl
+  def image_url
     "https://avatars.githubusercontent.com/u/#{object.remote_uid}"
   end
 end

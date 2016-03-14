@@ -8,7 +8,7 @@ class Commit < ActiveRecord::Base
 
   scope :stale_pending,  ->{ pending.where('created_at <= ?', AUTOREJECT_TIME.business_hours.ago) }
   scope :stale_passed,   ->{ passed.where('passed_at <= ?', AUTOREJECT_TIME.business_hours.ago) }
-  scope :soon_to_expire, ->{ pending.where('expires_at < ?', SOON_TO_EXPIRE.business_hours.from_now) }
+  scope :soon_to_expire, ->{ pending.where('expires_at <= ?', SOON_TO_EXPIRE.business_hours.from_now) }
   scope :by_expire_date, ->{ order(:expires_at) }
   scope :by_remote,      ->(remote) { where(remote_id: remote) }
   scope :with_author,    ->{ joins(:author).group("people.email") }
