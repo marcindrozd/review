@@ -31,10 +31,12 @@ export default Ember.Component.extend({
     if (this.currentUserIsCommitAuthor()) {
       return;
     }
-    return this.get('commit').setProperties({
+    const commit = this.get('commit');
+    commit.setProperties({
       state: state,
       reviewer: this.get('currentUser')
-    }).save();
+    });
+    commit.save();
   },
 
   actions: {
